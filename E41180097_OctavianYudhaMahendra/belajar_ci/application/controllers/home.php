@@ -16,6 +16,10 @@ class home extends CI_Controller { //extends controller
         // $error = "";
         // $data = "";
 
+        //  function__construct() {
+        //      parent::__construct();
+        //  }
+
         // if($this->input->method() == "post") {
         //     //konfigurasi
         //     $config['upload_path'] = './gambar/';

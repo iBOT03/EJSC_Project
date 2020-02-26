@@ -23,7 +23,7 @@ Website : <?php //echo $data ["website"]; ?> <br> -->
     if($data) {
         ?>
         <h3>Gambar Berhasil di Upload</h3>
-        <img src="../gambar/ <?php echo $data["file_name"]; ?>" width="200">
+        <img src="<?= base_url()?>gambar/ <?php echo $data["file_name"]; ?>" width="200">
         <?php
     }
 ?>
