@@ -2,42 +2,42 @@
 class Home extends CI_Controller { //mengextends CI_Controller
     public function index () {
         //memanggil library session
-        $this->load->library("session");
-        //set session
-        $this->session->set_userdata("nama", "Politeknik");
-        //show session
-        echo 'Nama Anda : '. $this->session->userdata("nama");
-        echo '<br>Session di Hapus<br>';
-        //hapus session nama
-        $this->session->unset_userdata("nama");
-        echo 'Nama Anda : ' . $this->session->userdata("nama");
+        // $this->load->library("session");
+        // //set session
+        // $this->session->set_userdata("nama", "Politeknik");
+        // //show session
+        // echo 'Nama Anda : '. $this->session->userdata("nama");
+        // echo '<br>Session di Hapus<br>';
+        // //hapus session nama
+        // $this->session->unset_userdata("nama");
+        // echo 'Nama Anda : ' . $this->session->userdata("nama");
 
-        // $error = "";
-        // $data = "";
+        $error = "";
+        $data = "";
 
         // function__construct(){
         //     parent::__construct();
         // }
 
-        // if($this->input->method() == "post"){
-        //     //config
-        //     $config ['upload_path'] = './gambar/';
-        //     $config ['allowed_types'] = 'gif|jpg|png';
-        //     $config ['max_size'] = 1024;
-        //     $config ['max_width'] = 1024;
-        //     $config ['max_height'] = 768;
+        if($this->input->method() == "post"){
+            //config
+            $config ['upload_path'] = './gambar/';
+            $config ['allowed_types'] = 'gif|jpg|png';
+            $config ['max_size'] = 1024;
+            $config ['max_width'] = 1024;
+            $config ['max_height'] = 768;
 
-        //     //panggil library
-        //     $this->load->library('upload', $config);
+            //panggil library
+            $this->load->library('upload', $config);
 
-        //     //status upload
-        //     if(!$this->upload->do_upload('gambar')){
-        //         $error = $this->upload->display_errors();
-        //     } else {
-        //         $data = $this->upload->data();  
-        //     }
-        // }
-        // $this->load->view("HomeView", array('error' => $error, 'data' => $data));
+            //status upload
+            if(!$this->upload->do_upload('gambar')){
+                $error = $this->upload->display_errors();
+            } else {
+                $data = $this->upload->data();  
+            }
+        }
+        $this->load->view("HomeView", array('error' => $error, 'data' => $data));
 
 
         //cek apakah method = post
