@@ -1,48 +1,44 @@
 <?php
 class home extends CI_Controller { //extends controller
     public function index() {
-        //memanggil library session
-        $this->load->library("session");
-        //set session
-        $this->session->set_userdata("nama", "Politeknik");
-        //show session
-        echo 'Nama Anda : ' . $this->session->userdata("nama");
-        echo '<br>Session dihapus<br>';
-        //hapus session nama
-        $this->session->unset_userdata("nama");
-        echo 'Nama Anda : ' . $this->session->userdata("nama");
+        // //memanggil library session
+        // $this->load->library("session");
+        // //set session
+        // $this->session->set_userdata("nama", "Politeknik");
+        // //show session
+        // echo 'Nama Anda : ' . $this->session->userdata("nama");
+        // echo '<br>Session dihapus<br>';
+        // //hapus session nama
+        // $this->session->unset_userdata("nama");
+        // echo 'Nama Anda : ' . $this->session->userdata("nama");
 
 
-        // $error = "";
-        // $data = "";
+        $error = "";
+        $data = "";
 
-        //  function__construct() {
-        //      parent::__construct();
-        //  }
+        if($this->input->method() == "post") {
+            //konfigurasi
+            $config['upload_path'] = './gambar/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1024;
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
 
-        // if($this->input->method() == "post") {
-        //     //konfigurasi
-        //     $config['upload_path'] = './gambar/';
-        //     $config['allowed_types'] = 'gif|jpg|png';
-        //     $config['max_size'] = 1024;
-        //     $config['max_width'] = 1024;
-        //     $config['max_height'] = 768;
+            //panggil library
+            $this->load->library('upload', $config);
 
-        //     //panggil library
-        //     $this->load->library('upload', $config);
+            //cek apakah gagal upload
+            if(!$this->upload->do_upload('gambar')) {
+                $error = $this->upload->display_errors();
+            } else { //jika berhasil di upload
+                $data = $this->upload->data();
+            }
+        }
 
-        //     //cek apakah gagal upload
-        //     if(!$this->upload->do_upload('gambar')) {
-        //         $error = $this->upload->display_errors();
-        //     } else { //jika berhasil di upload
-        //         $data = $this->upload->data();
-        //     }
-        // }
-
-        // $this->load->view("HomeView", array(
-        //     'error' => $error,
-        //     'data' => $data
-        // ));
+        $this->load->view("HomeView", array(
+            'error' => $error,
+            'data' => $data
+        ));
 
 
         //cek apakah method post
