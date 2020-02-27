@@ -1,6 +1,23 @@
 <?php
 class Home extends CI_Controller { //mengextends CI_Controller
     public function index () {
+        $this->load->model("UserModel"); //memanggil UserModel
+        echo '<pre>';
+        print_r($this->UserModel->get());
+        echo '</pre>';
+
+        // $this->load->library('table'); //memanggil library table
+        // $template = array ("table_open"=>"<table border=1 cellpadding=3>");
+        // //set table template
+        // $this->table->set_template($template);
+        // $this->table->set_caption("<h1>Menampilkan Table dengan HTML Table Class</h1>"); //caption
+        // $data = array ( //data yang akan dimasukkan ke table
+        //         array ('Nama', 'Email', 'Jenis Kelamin'),
+        //         array ('Andrea', 'jonathansterben@gmail.com', 'Laki-Laki'),
+        //         array ('Qori', 'qoriningtias@gmail.com', 'Perempuan')
+        // );
+        // echo $this->table->generate ($data); //tampilkan table
+
         //memanggil library session
         // $this->load->library("session");
         // //set session
@@ -12,33 +29,32 @@ class Home extends CI_Controller { //mengextends CI_Controller
         // $this->session->unset_userdata("nama");
         // echo 'Nama Anda : ' . $this->session->userdata("nama");
 
-        $error = "";
-        $data = "";
+        // $error = "";
+        // $data = "";
 
         // function__construct(){
         //     parent::__construct();
         // }
 
-        if($this->input->method() == "post"){
-            //config
-            $config ['upload_path'] = './gambar/';
-            $config ['allowed_types'] = 'gif|jpg|png';
-            $config ['max_size'] = 1024;
-            $config ['max_width'] = 1024;
-            $config ['max_height'] = 768;
+        // if($this->input->method() == "post"){
+        //     //config
+        //     $config ['upload_path'] = './gambar/';
+        //     $config ['allowed_types'] = 'gif|jpg|png';
+        //     $config ['max_size'] = 1024;
+        //     $config ['max_width'] = 1024;
+        //     $config ['max_height'] = 768;
 
-            //panggil library
-            $this->load->library('upload', $config);
+        //     //panggil library
+        //     $this->load->library('upload', $config);
 
-            //status upload
-            if(!$this->upload->do_upload('gambar')){
-                $error = $this->upload->display_errors();
-            } else {
-                $data = $this->upload->data();  
-            }
-        }
-        $this->load->view("HomeView", array('error' => $error, 'data' => $data));
-
+        //     //status upload
+        //     if(!$this->upload->do_upload('gambar')){
+        //         $error = $this->upload->display_errors();
+        //     } else {
+        //         $data = $this->upload->data();  
+        //     }
+        // }
+        // $this->load->view("HomeView", array('error' => $error, 'data' => $data));
 
         //cek apakah method = post
         // if ($this->input->method() == "post"){
