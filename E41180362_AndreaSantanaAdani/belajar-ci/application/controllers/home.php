@@ -4,7 +4,7 @@ class Home extends CI_Controller { //mengextends CI_Controller
         //memanggil library session
         $this->load->library("session");
         //set session
-        $this->load->set_userdata("nama", "Politeknik");
+        $this->session->set_userdata("nama", "Politeknik");
         //show session
         echo 'Nama Anda : '. $this->session->userdata("nama");
         echo '<br>Session di Hapus<br>';
@@ -15,7 +15,11 @@ class Home extends CI_Controller { //mengextends CI_Controller
         // $error = "";
         // $data = "";
 
-        // if($this->input-method() == "post"){
+        // function__construct(){
+        //     parent::__construct();
+        // }
+
+        // if($this->input->method() == "post"){
         //     //config
         //     $config ['upload_path'] = './gambar/';
         //     $config ['allowed_types'] = 'gif|jpg|png';
@@ -33,7 +37,7 @@ class Home extends CI_Controller { //mengextends CI_Controller
         //         $data = $this->upload->data();  
         //     }
         // }
-        // $this->load-view("HomeView", array('error' => $error, 'data' => $data));
+        // $this->load->view("HomeView", array('error' => $error, 'data' => $data));
 
 
         //cek apakah method = post
