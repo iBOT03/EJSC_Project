@@ -2,9 +2,20 @@
 class Home extends CI_Controller { //mengextends CI_Controller
     public function index () {
         $this->load->model("UserModel"); //memanggil UserModel
-        echo '<pre>';
-        print_r($this->UserModel->get());
-        echo '</pre>';
+        $tambah = $this->UserModel->tambah(array(
+            //data yang akan ditambahkan
+            'NAMA' => 'Raditya Dinantara Yudha',
+            'EMAIL' => 'radityayudha@gmail.com',
+            'ALAMAT' => 'Jl. Sagitarius No.34 Satelit Permai Sumenep'
+        ));
+        if($tambah){
+            echo "Insert Data Berhasil";
+        }
+
+        // $this->load->model("UserModel"); //memanggil UserModel
+        // echo '<pre>';
+        // print_r($this->UserModel->get());
+        // echo '</pre>';
 
         // $this->load->library('table'); //memanggil library table
         // $template = array ("table_open"=>"<table border=1 cellpadding=3>");
