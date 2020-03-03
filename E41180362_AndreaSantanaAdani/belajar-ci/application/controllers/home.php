@@ -1,21 +1,69 @@
 <?php
 class Home extends CI_Controller { //mengextends CI_Controller
     public function index () {
-        $this->load->model("UserModel"); //memanggil UserModel
-        $tambah = $this->UserModel->tambah(array(
-            //data yang akan ditambahkan
-            'NAMA' => 'Raditya Dinantara Yudha',
-            'EMAIL' => 'radityayudha@gmail.com',
-            'ALAMAT' => 'Jl. Sagitarius No.34 Satelit Permai Sumenep'
-        ));
-        if($tambah){
-            echo "Insert Data Berhasil";
+        //menampilkan table database
+        $this->load->model("ArtikelModel");
+        $data = array("artikel" => $this->ArtikelModel->get());
+        $this->load->view("HomeView", $data);
+    }
+
+    public function detail($id){
+        $this->load->model("ArtikelModel");
+        $data = array("artikel" => $this->ArtikelModel->detail($id));
+        $this->load->view("DetailView", $data);
+    }
+
+    public function tambah(){
+        $this->load->model("ArtikelModel");
+        if($this->input->method() == "post") {
+            $insert = $this->ArtikelModel->tambah(array(
+                'JUDUL' => $this->input->post("judul"),
+                'PENULIS' => $this->input->post("penulis"),
+                'TANGGAL' => date("Y-m-d H:i:s"),
+                'ISI' => $this->input->post("isi")
+            ));
+            if($insert){
+                echo "Berhasil Menambahkan Artikel";
+            } else {
+                echo "Gagal Menambahkan Artikel";
+            }            
         }
+        $this->load->view("FormView");
+    }
+}
+        //---------------------------------------- POWER POINT KE - 2 ----------------------------------------------//
 
         // $this->load->model("UserModel"); //memanggil UserModel
         // echo '<pre>';
         // print_r($this->UserModel->get());
         // echo '</pre>';
+
+        // $this->load->model("UserModel");
+        // $hapus = $this->UserModel->hapus (2);
+        // if($hapus) {
+        //     echo "Hapus data Berhasil";
+        // }
+
+        // $ubah = $this->UserModel->ubah (array(
+        //     //data yang akan diubah
+        //     'NAMA' => 'Indra Firmansyah',
+        //     'EMAIL' => 'indrafirmansyah@gmail.com',
+        //     'ALAMAT' => 'Jl. Sagitarius No.34 Satelit Permai Sumenep'
+        // ), 3);
+        // if($ubah){
+        //     echo "Ubah Data Berhasil";
+        // }
+
+        // $this->load->model("UserModel"); //memanggil UserModel
+        // $tambah = $this->UserModel->tambah(array(
+        //     //data yang akan ditambahkan
+        //     'NAMA' => 'Raditya Dinantara Yudha',
+        //     'EMAIL' => 'radityayudha@gmail.com',
+        //     'ALAMAT' => 'Jl. Sagitarius No.34 Satelit Permai Sumenep'
+        // ));
+        // if($tambah){
+        //     echo "Insert Data Berhasil";
+        // }
 
         // $this->load->library('table'); //memanggil library table
         // $template = array ("table_open"=>"<table border=1 cellpadding=3>");
@@ -28,6 +76,8 @@ class Home extends CI_Controller { //mengextends CI_Controller
         //         array ('Qori', 'qoriningtias@gmail.com', 'Perempuan')
         // );
         // echo $this->table->generate ($data); //tampilkan table
+
+       //---------------------------------------- POWER POINT KE - 1 ----------------------------------------------//
 
         //memanggil library session
         // $this->load->library("session");
@@ -120,6 +170,6 @@ class Home extends CI_Controller { //mengextends CI_Controller
         //     // echo "status: " . $dataArr["status"] . '<br>';
         //     // echo "website: " . $dataArr["website"] . '<br>';
         // $this->load->view ("HomeView"), array("data" =>$dataArr)); //memanggil HomeView dan data array
-    }
-}
+    
+
 ?>
