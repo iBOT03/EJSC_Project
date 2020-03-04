@@ -1,11 +1,43 @@
 <?php
 class home extends CI_Controller { //extends controller
     public function index() {
-        $this->load->model("DataModel");
-        $hapus = $this->DataModel->hapus(3);
-        if($hapus) {
-            echo "Hapus Data Berhasil";
+        $this->load->model("ArtikelModel");
+        $data = array("artikel" => $this->ArtikelModel->get());
+        $this->load->view("HomeView", $data);
+    }
+
+    public function detail($id) {
+        $this->load->model("ArtikelModel");
+        $data = array("artikel" => $this->ArtikelModel->detail($id));
+        $this->load->view("DetailView", $data);
+    }
+
+    public function tambah() {
+        $this->load->model("ArtikelModel");
+        if($this->input->method() == "post") {
+            $insert = $this->ArtikelModel->tambah(array(
+                'judul' => $this->input->post("judul"),
+                'penulis' => $this->input->post("penulis"),
+                'isi' => $this->input->post("isi"),
+                'tanggal' => date("Y-m-d H:i:s")
+            ));
+
+            if($insert) {
+                echo "Berhasil Menambah Artikel";
+            } else {
+                echo "Gagal Menambah Artikel";
+            }
+
+            $this->load->view("FormView");
         }
+    }
+
+
+        // $this->load->model("DataModel");
+        // $hapus = $this->DataModel->hapus(3);
+        // if($hapus) {
+        //     echo "Hapus Data Berhasil";
+        // }
 
 
         // $this->load->model("DataModel");
@@ -155,6 +187,6 @@ class home extends CI_Controller { //extends controller
         // echo "website : " . $dataArr["website"] . '<br>';
 
         // $this->load->view("HomeView", array("data"=>$dataArr)); //memanggil HomeView
-    }
+//    }
 }
 ?>
