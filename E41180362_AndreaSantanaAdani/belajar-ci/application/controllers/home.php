@@ -1,20 +1,25 @@
 <?php
 class Home extends CI_Controller { //mengextends CI_Controller
+
+        //---------------------------------------- POWER POINT KE - 3 ----------------------------------------------//    
+    public function __construct(){
+        parent::__construct();
+        $this->load->model("ArtikelModel");
+    }
+
     public function index () {
         //menampilkan table database
-        $this->load->model("ArtikelModel");
         $data = array("artikel" => $this->ArtikelModel->get());
         $this->load->view("HomeView", $data);
     }
 
     public function detail($id){
-        $this->load->model("ArtikelModel");
         $data = array("artikel" => $this->ArtikelModel->detail($id));
         $this->load->view("DetailView", $data);
     }
 
     public function tambah(){
-        $this->load->model("ArtikelModel");
+        $autoReload = base_url();
         if($this->input->method() == "post") {
             $insert = $this->ArtikelModel->tambah(array(
                 'JUDUL' => $this->input->post("judul"),
@@ -24,11 +29,41 @@ class Home extends CI_Controller { //mengextends CI_Controller
             ));
             if($insert){
                 echo "Berhasil Menambahkan Artikel";
+                redirect($autoReload);
             } else {
                 echo "Gagal Menambahkan Artikel";
             }            
         }
-        $this->load->view("FormView");
+        $this->load->view("TambahView");
+    }
+
+    public function ubah($id){
+        $autoReload = base_url();
+        $data["artikel"] = $this->ArtikelModel->detail($id);        
+        if($this->input->method() == "post"){
+            $update = $this->ArtikelModel->ubah(array(
+                'JUDUL' => $this->input->post("judul"),
+                'PENULIS' => $this->input->post("penulis"),
+                'TANGGAL' => date("Y-m-d H:i:s"),
+                'ISI' => $this->input->post("isi")
+            ), $id);
+            if($update){
+                echo "Data Berhasil di Ubah";
+                redirect($autoReload);
+            } else {
+                echo "Data Gagal di Ubah";
+            }
+        }
+        $this->load->view("UbahView", $data);
+    }
+
+    public function hapus($id){
+        $autoReload = base_url();
+        $hapus = $this->ArtikelModel->hapus ($id);
+        if($hapus) {
+            echo "Hapus data Berhasil";
+            redirect($autoReload);
+        }
     }
 }
         //---------------------------------------- POWER POINT KE - 2 ----------------------------------------------//

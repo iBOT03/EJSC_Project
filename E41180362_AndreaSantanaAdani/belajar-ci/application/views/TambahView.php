@@ -14,5 +14,5 @@
     </div>
     <button type="submit">Insert</button>
     <button type="reset">Reset</button>
+    <a href="<?= base_url()?>"><button type="button">Kembali</button></a>
 </form>
-<a href="../../">Kembali</a>
