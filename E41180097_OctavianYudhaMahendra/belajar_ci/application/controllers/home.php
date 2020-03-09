@@ -1,19 +1,23 @@
 <?php
 class home extends CI_Controller { //extends controller
-    public function index() {
+
+    public function __construct(){
+        parent::__construct();
         $this->load->model("ArtikelModel");
+    }
+
+    public function index() {
         $data = array("artikel" => $this->ArtikelModel->get());
         $this->load->view("HomeView", $data);
     }
 
-    public function detail($id) {
-        $this->load->model("ArtikelModel");
+    public function detail($id){
         $data = array("artikel" => $this->ArtikelModel->detail($id));
         $this->load->view("DetailView", $data);
     }
 
     public function tambah() {
-        $this->load->model("ArtikelModel");
+        $autoReload = base_url();
         if($this->input->method() == "post") {
             $insert = $this->ArtikelModel->tambah(array(
                 'judul' => $this->input->post("judul"),
@@ -21,16 +25,44 @@ class home extends CI_Controller { //extends controller
                 'isi' => $this->input->post("isi"),
                 'tanggal' => date("Y-m-d H:i:s")
             ));
-
             if($insert) {
                 echo "Berhasil Menambah Artikel";
+                redirect($autoReload);
             } else {
                 echo "Gagal Menambah Artikel";
             }
+        }
+        $this->load->view("TambahView");
+    }
 
-            $this->load->view("FormView");
+    public function update($id) {
+        $autoReload = base_url();
+        $data["artikel"] = $this->ArtikelModel->detail($id);        
+        if($this->input->method() == "post"){
+            $update = $this->ArtikelModel->update(array(
+                'judul' => $this->input->post("judul"),
+                'penulis' => $this->input->post("penulis"),
+                'isi' => $this->input->post("isi"),
+                'tanggal' => date("Y-m-d H:i:s")
+            ), $id);
+            if($update){
+                echo "Data Berhasil di Update";
+                redirect($autoReload);
+            } else {
+                echo "Data Gagal di Update";
+            }
+        }
+        $this->load->view("UpdateView", $data);
+    }
+
+    public function hapus($id) {
+        $autoReload = base_url();
+        $hapus = $this->ArtikelModel->hapus($id);
+        if($hapus) {
+            echo "Hapus Artikel Berhasil";
         }
     }
+}
 
 
         // $this->load->model("DataModel");
@@ -188,5 +220,5 @@ class home extends CI_Controller { //extends controller
 
         // $this->load->view("HomeView", array("data"=>$dataArr)); //memanggil HomeView
 //    }
-}
+//}
 ?>
