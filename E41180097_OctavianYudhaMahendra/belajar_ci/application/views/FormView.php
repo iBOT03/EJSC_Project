@@ -12,7 +12,7 @@
         <label for="isi">Isi</label><br>
         <textarea name="isi" cols="50" row="8" id="isi"></textarea>
     </div>
-    <button type="submit">Tambah</button>
+    <button type="submit">Submit</button>
     <button type="reset">Reset</button>
-    <a href="<?= base_url()?>"><button type="button">Kembali</button></a>
 </form>
+<a href="../../">Kembali</a>
