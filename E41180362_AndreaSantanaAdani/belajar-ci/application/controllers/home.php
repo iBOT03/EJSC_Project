@@ -62,7 +62,6 @@ class Home extends CI_Controller { //mengextends CI_Controller
         $hapus = $this->ArtikelModel->hapus ($id);
         if($hapus) {
             echo "Hapus data Berhasil";
-            redirect($autoReload);
         }
     }
 }
