@@ -1,12 +1,12 @@
 <?php
 
-class Buttons extends CI_Controller {
+class JadwalBooking extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/buttons");
+        $this->load->view("admin/jadwalbooking");
 	}
 }
 

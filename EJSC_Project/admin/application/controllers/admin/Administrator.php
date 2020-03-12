@@ -1,12 +1,12 @@
 <?php
 
-class Tables extends CI_Controller {
+class Administrator extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/tables");
+        $this->load->view("admin/administrator");
 	}
 }
 

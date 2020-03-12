@@ -1,12 +1,12 @@
 <?php
 
-class Cards extends CI_Controller {
+class Pengguna extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/cards");
+        $this->load->view("admin/pengguna");
 	}
 }
 

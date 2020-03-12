@@ -63,7 +63,7 @@
 
       <!-- Nav Item - Jadwal Booking -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/jadwalboking') ?>">
+        <a class="nav-link" href="<?php echo base_url('index.php/admin/jadwalbooking') ?>">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span>Jadwal Booking</span></a>
       </li>

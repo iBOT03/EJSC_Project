@@ -1,12 +1,12 @@
 <?php
 
-class UtilitiesColor extends CI_Controller {
+class Komunitas extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/utilitiescolor");
+        $this->load->view("admin/komunitas");
 	}
 }
 

@@ -1,12 +1,12 @@
 <?php
 
-class UtilitiesAnimation extends CI_Controller {
+class Event extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/utilitiesanimation");
+        $this->load->view("admin/event");
 	}
 }
 
