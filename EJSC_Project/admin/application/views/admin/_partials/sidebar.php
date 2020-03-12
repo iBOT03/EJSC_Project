@@ -12,7 +12,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/dashboard') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/dashboard') ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -33,15 +33,15 @@
         </a>
         <div id="collapsePengguna" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo base_url('index.php/admin/administrator') ?>">Administrator</a>
-            <a class="collapse-item" href="<?php echo base_url('index.php/admin/pengguna') ?>">Pengguna</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/administrator') ?>">Administrator</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/pengguna') ?>">Pengguna</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Data Komunitas -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/komunitas') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/komunitas') ?>">
           <i class="fas fa-fw fa-users"></i>
           <span>Data Komunitas</span></a>
       </li>
@@ -56,14 +56,14 @@
 
       <!-- Nav Item - Data Booking -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/booking') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/booking') ?>">
           <i class="fas fa-fw fa-book"></i>
           <span>Data Booking</span></a>
       </li>
 
       <!-- Nav Item - Jadwal Booking -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/jadwalbooking') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/jadwalbooking') ?>">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span>Jadwal Booking</span></a>
       </li>
@@ -78,7 +78,7 @@
 
       <!-- Nav Item - Data Event -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/event') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/event') ?>">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span>Data Event</span></a>
       </li>
@@ -93,7 +93,7 @@
 
       <!-- Nav Item - TentangKami -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('index.php/admin/tentang') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/tentang') ?>">
           <i class="fas fa-fw fa-info"></i>
           <span>Tentang Kami</span></a>
       </li>
