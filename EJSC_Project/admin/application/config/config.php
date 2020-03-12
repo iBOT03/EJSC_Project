@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/NauraFarm_SMT4/EJSC_Project/admin/application/views/admin/';
+$config['base_url'] = 'http://localhost/NauraFarm_Smt4/EJSC_Project/admin/';
 
 /*
 |--------------------------------------------------------------------------
