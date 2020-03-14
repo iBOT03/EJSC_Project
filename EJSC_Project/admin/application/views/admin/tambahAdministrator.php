@@ -36,16 +36,31 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Nama Lengkap</p>
+                                        <p>NIK</p>
                                         <div class="input-group">
-                                            <input name="nama" id="nama" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2" required>
+                                            <input name="text"
+                                                   id="nik"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan NIK"
+                                                   aria-describedby="basic-addon2"
+                                                   onkeypress="return hanyaAngka(event)"
+                                                   maxlength="16"
+                                                   required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <p>Telepon/Whatsapp</p>
+                                        <p>Nama Lengkap</p>
                                         <div class="input-group">
-                                            <input name="no_telpon" id="no_telpon" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan No Telepon/Whatsapp" aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)" required>
+                                            <input name="nama"
+                                                   id="nama"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Nama Lengkap"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="150"
+                                                   required>
                                         </div>
                                     </div>
                                 </div>
@@ -54,33 +69,89 @@
                                     <div class="col-sm-6">
                                         <p>Email</p>
                                         <div class="input-group">
-                                            <input name="email" id="email" type="email" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Email" aria-describedby="basic-addon2" required>
+                                            <input name="email"
+                                                   id="email"
+                                                   type="email"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Email"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="100"
+                                                   required>
                                         </div>
                                     </div>
-
                                     <div class="col-sm-6">
-                                        <p>Password</p>
+                                        <p>Telepon/Whatsapp</p>
                                         <div class="input-group">
-                                            <input name="password" id="password" type="password" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Password" aria-describedby="basic-addon2" required>
+                                            <input name="no_telpon"
+                                                   id="no_telpon"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan No Telepon/Whatsapp"
+                                                   aria-describedby="basic-addon2"
+                                                   onkeypress="return hanyaAngka(event)"
+                                                   maxlength="13"
+                                                   required>
                                         </div>
                                     </div>
                                 </div>
 
                                 <p>Alamat</p>
                                 <div class="input-group">
-                                    <input name="alamat" id="alamat" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Alamat" aria-describedby="basic-addon2" required>
+                                    <input name="alamat"
+                                           id="alamat"
+                                           type="text"
+                                           class="form-control bg-gray-200 border-0 small mb-3"
+                                           placeholder="Masukkan Alamat"
+                                           aria-describedby="basic-addon2"
+                                           required>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Upload Foto</p>
                                         <div class="input-group">
-                                            <input name="foto" id="foto" type="file" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2" required>
+                                            <input name="foto"
+                                                   id="foto"
+                                                   type="file"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder=""
+                                                   aria-describedby="basic-addon2"
+                                                   required>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Password</p>
+                                        <div class="input-group">
+                                            <input name="password"
+                                                   id="password"
+                                                   type="password"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Password"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="16"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>Konfirmasi Password</p>
+                                        <div class="input-group">
+                                            <input name="konfirmasipassword"
+                                                   id="konfirmasipassword"
+                                                   type="password"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Password"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="16"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- <button type="submit">tambah</button> -->
-                                <button href="#" class="btn btn-info btn-icon-split">
+                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
