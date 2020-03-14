@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Mar 2020 pada 06.07
+-- Waktu pembuatan: 14 Mar 2020 pada 04.41
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -50,24 +50,16 @@ CREATE TABLE `akun` (
 CREATE TABLE `booking` (
   `ID_BOOKING` int(11) NOT NULL,
   `NAMA` varchar(150) NOT NULL,
+  `NOMOR_TELEPON` varchar(13) NOT NULL,
   `KOMUNITAS` varchar(200) NOT NULL,
   `RUANGAN` varchar(100) NOT NULL,
-  `TUJUAN` varchar(255) NOT NULL,
+  `TEMA_KEGIATAN` varchar(255) NOT NULL,
+  `DESKRIPSI_KEGIATAN` varchar(255) NOT NULL,
   `DURASI` int(2) NOT NULL,
-  `PEMINJAMAN_ALAT` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `contact_us`
---
-
-CREATE TABLE `contact_us` (
-  `EMAIL` int(11) NOT NULL,
-  `NOMOR_TELEPON` int(11) NOT NULL,
-  `WHATSAPP` int(11) NOT NULL,
-  `ALAMAT` int(11) NOT NULL
+  `TANGGAL` date NOT NULL,
+  `TANGGAL_KEMBALI` date NOT NULL,
+  `PEMINJAMAN_ALAT` varchar(100) NOT NULL,
+  `STATUS` int(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -83,7 +75,7 @@ CREATE TABLE `event` (
   `PENYELENGGARA` varchar(255) NOT NULL,
   `WAKTU` datetime NOT NULL,
   `KETERANGAN` varchar(255) NOT NULL,
-  `STATUS` varchar(10) NOT NULL
+  `STATUS` int(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -108,6 +100,19 @@ CREATE TABLE `komunitas` (
   `NAMA` varchar(255) NOT NULL,
   `KATEGORI` varchar(100) NOT NULL,
   `NAMA_KETUA` varchar(150) NOT NULL,
+  `ALAMAT` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kontak_kami`
+--
+
+CREATE TABLE `kontak_kami` (
+  `EMAIL` varchar(100) NOT NULL,
+  `NOMOR_TELEPON` varchar(13) NOT NULL,
+  `WHATSAPP` varchar(13) NOT NULL,
   `ALAMAT` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
