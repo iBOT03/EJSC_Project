@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
 
-                                <button href="#" type="submit" class="btn btn-info btn-icon-split">
+                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
