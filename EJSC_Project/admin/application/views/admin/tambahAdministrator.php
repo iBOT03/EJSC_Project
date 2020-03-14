@@ -79,24 +79,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit">tambah</button>
-                                <!-- <a href="#" class="btn btn-info btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <span class="text">Tambah Data</span>
-                                </a> -->
-                                <input name="foto" id="foto" type="file" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2" required>
+                                <!-- <button type="submit">tambah</button> -->
+                                <button href="#" class="btn btn-info btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Tambah Data</span>
+                                </button>
                             </div>
                         </div>
                 </div>
-
-                <button href="#" type="submit" class="btn btn-info btn-icon-split">
-                    <span class="icon text-white-50">
-                        <i class="fas fa-plus"></i>
-                    </span>
-                    <span class="text">Buat Akun</span>
-                </button>
             </div>
         </div>
         <!-- /.card -->
