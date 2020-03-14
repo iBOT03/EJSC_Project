@@ -61,10 +61,32 @@
                       <td><?php echo $row->NAMA_LENGKAP; ?></td>
                       <td><?php echo $row->EMAIL; ?></td>
                       <td><?php echo $row->ALAMAT; ?></td>
-                      <td><?php echo $row->LEVEL; ?></td>
+                      <td>
+                        <?php if($row->LEVEL==1) {
+                          echo 'Super Admin';
+                        } elseif($row->LEVEL==2) {
+                          echo 'Admin';
+                        } elseif($row->LEVEL==3) {
+                          echo 'User';
+                        } ?>
+                      </td>
                       <td>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+
+                        <!-- <?php
+//                        if($_SESSION['level'] == 1) { ?>
+                            <a href="#" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                            <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')" href="#" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+                        <?php
+//                        } elseif($_SESSION['level'] == 2) {
+//                            if($data ['LEVEL'] == 3) { ?>
+                              <a href="#" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                              <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')" href="#" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+                          <?php
+//                            }
+//                        }
+                        ?> -->
                       </td>
                     </tr>
                   <?php

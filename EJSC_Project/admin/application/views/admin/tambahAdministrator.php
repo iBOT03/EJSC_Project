@@ -45,6 +45,7 @@
                                                    placeholder="Masukkan NIK"
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
+                                                   maxlength="16"
                                                    required>
                                         </div>
                                     </div>
@@ -58,6 +59,7 @@
                                                    class="form-control bg-gray-200 border-0 small mb-3"
                                                    placeholder="Masukkan Nama Lengkap"
                                                    aria-describedby="basic-addon2"
+                                                   maxlength="150"
                                                    required>
                                         </div>
                                     </div>
@@ -73,6 +75,7 @@
                                                    class="form-control bg-gray-200 border-0 small mb-3"
                                                    placeholder="Masukkan Email"
                                                    aria-describedby="basic-addon2"
+                                                   maxlength="100"
                                                    required>
                                         </div>
                                     </div>
@@ -86,6 +89,7 @@
                                                    placeholder="Masukkan No Telepon/Whatsapp"
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
+                                                   maxlength="13"
                                                    required>
                                         </div>
                                     </div>
@@ -127,6 +131,7 @@
                                                    class="form-control bg-gray-200 border-0 small mb-3"
                                                    placeholder="Masukkan Password"
                                                    aria-describedby="basic-addon2"
+                                                   maxlength="16"
                                                    required>
                                         </div>
                                     </div>
@@ -139,6 +144,7 @@
                                                    class="form-control bg-gray-200 border-0 small mb-3"
                                                    placeholder="Masukkan Password"
                                                    aria-describedby="basic-addon2"
+                                                   maxlength="16"
                                                    required>
                                         </div>
                                     </div>
