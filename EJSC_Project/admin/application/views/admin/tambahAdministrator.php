@@ -143,6 +143,9 @@
     </div>
     <!-- End of Page Wrapper -->
 
+    <!-- Function-->
+    <?php $this->load->view("admin/_partials/function.php") ?>
+
     <!-- Scroll to Top Button-->
     <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 

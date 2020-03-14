@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
 
     <!-- Head -->
@@ -40,14 +38,29 @@
                                     <div class="col-sm-6">
                                         <p>Nama Lengkap</p>
                                         <div class="input-group">
-                                            <input name="nama" id="nama" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2" required>
+                                            <input name="nama"
+                                                   id="nama"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Nama Lengkap"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="150"
+                                                   required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <p>Telepon/Whatsapp</p>
                                         <div class="input-group">
-                                            <input name="no_telpon" id="no_telpon" type="number" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan No Telepon/Whatsapp" aria-describedby="basic-addon2" required>
+                                            <input name="no_telpon"
+                                                   id="no_telpon"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan No Telepon/Whatsapp"
+                                                   aria-describedby="basic-addon2"
+                                                   onkeypress="return hanyaAngka(event)"
+                                                   maxlength="13"
+                                                   required>
                                         </div>
                                     </div>
                                 </div>
@@ -56,35 +69,64 @@
                                     <div class="col-sm-6">
                                         <p>Email</p>
                                         <div class="input-group">
-                                            <input name="email" id="email" type="email" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Email" aria-describedby="basic-addon2" required>
+                                            <input name="email"
+                                                   id="email"
+                                                   type="email"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Email"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="100"
+                                                   required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <p>Password</p>
                                         <div class="input-group">
-                                            <input name="password" id="password" type="password" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Password" aria-describedby="basic-addon2" required>
+                                            <input name="password"
+                                                   id="password"
+                                                   type="password"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Password"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="16"
+                                                   required>
                                         </div>
                                     </div>
                                 </div>
 
                                 <p>Alamat</p>
                                 <div class="input-group">
-                                    <input name="alamat" id="alamat" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Alamat" aria-describedby="basic-addon2" required>
+                                    <input name="alamat"
+                                           id="alamat"
+                                           type="text"
+                                           class="form-control bg-gray-200 border-0 small mb-3"
+                                           placeholder="Masukkan Alamat"
+                                           aria-describedby="basic-addon2"
+                                           required>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Komunitas</p>
                                         <div class="input-group">
-                                            <input name="komunitas" id="komunitas" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Komunitas" aria-describedby="basic-addon2">
+                                            <input name="komunitas"
+                                                   id="komunitas"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Komunitas"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="200"
+                                                   required>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <p>Kategori Komunitas</p>
                                         <div class="input-group">
-                                            <select class="form-control bg-gray-200 border-0 small mb-3" id="kategori_komunitas" name="kategori_komunitas">
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="kategori_komunitas"
+                                                    name="kategori_komunitas">
                                                 <option value="-"></option>
                                             </select>
                                         </div>
@@ -95,11 +137,16 @@
                                     <div class="col-sm-6">
                                         <p>Upload Foto</p>
                                         <div class="input-group">
-                                            <input name="foto" id="foto" type="file" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2" required>
+                                            <input name="foto" id="foto"
+                                                   type="file"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder=""
+                                                   aria-describedby="basic-addon2"
+                                                   required>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <!-- <div class="col-sm-6">
                                         <p>Level</p>
                                         <div class="input-group">
                                             <select class="form-control bg-gray-200 border-0 small mb-3" id="level" name="level" required>
@@ -108,16 +155,16 @@
                                                 <option value="3">User</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
-                                <button type="submit">tambah</button>
-                                <!-- <a href="#" class="btn btn-info btn-icon-split">
-                                <span class="icon text-white-50">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <span class="text">Tambah Data</span>
-                                </a> -->
+                                <!-- <button type="submit">tambah</button> -->
+                                <button href="#" class="btn btn-info btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="text">Buat Akun</span>
+                                </button>
                             </div>
                         </div>
                         <!-- /.card -->
@@ -137,6 +184,9 @@
 
     </div>
     <!-- End of Page Wrapper -->
+
+    <!-- Function-->
+    <?php $this->load->view("admin/_partials/function.php") ?>
 
     <!-- Scroll to Top Button-->
     <?php $this->load->view("admin/_partials/scrolltop.php") ?>
