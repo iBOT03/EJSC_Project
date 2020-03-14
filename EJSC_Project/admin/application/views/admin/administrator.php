@@ -46,9 +46,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Email</th>
                       <th>Nama</th>
+                      <th>Email</th>
+                      <th>Alamat</th>
                       <th>Level</th>
                       <th style="width: 110px">Aksi</th>
                     </tr>
@@ -58,9 +58,9 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?php echo $row->ID_AKUN; ?></td>
-                      <td><?php echo $row->EMAIL; ?></td>
                       <td><?php echo $row->NAMA_LENGKAP; ?></td>
+                      <td><?php echo $row->EMAIL; ?></td>
+                      <td><?php echo $row->ALAMAT; ?></td>
                       <td><?php echo $row->LEVEL; ?></td>
                       <td>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
