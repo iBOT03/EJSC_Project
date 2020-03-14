@@ -100,7 +100,7 @@
                 </div>
               </div>
 
-              <a href="#" class="btn btn-info btn-icon-split">
+              <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
