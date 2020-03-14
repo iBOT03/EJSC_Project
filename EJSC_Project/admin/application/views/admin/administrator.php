@@ -64,7 +64,7 @@
                       <td><?php echo $row->LEVEL; ?></td>
                       <td>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+                        <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')" href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   <?php

@@ -13,7 +13,6 @@ class Administrator extends CI_Controller {
 	}
 
 	public function tambahadministrator(){
-		$autoReload = base_url();
 		$this->load->model('EjscModel');
 		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambah(array(
@@ -29,7 +28,7 @@ class Administrator extends CI_Controller {
 			));
 			if($insert){
 				echo "Berhasil Menambahkan Akun";
-				redirect($autoReload);
+				
 			} else {
 				echo "Gagal Menambahkan Akun";
 			}
