@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
 
     <!-- Head -->
@@ -47,7 +45,7 @@
                                     <div class="col-sm-6">
                                         <p>Telepon/Whatsapp</p>
                                         <div class="input-group">
-                                            <input name="no_telpon" id="no_telpon" type="number" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan No Telepon/Whatsapp" aria-describedby="basic-addon2" required>
+                                            <input name="no_telpon" id="no_telpon" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan No Telepon/Whatsapp" aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)" required>
                                         </div>
                                     </div>
                                 </div>
@@ -88,25 +86,39 @@
                                 </span>
                                 <span class="text">Tambah Data</span>
                                 </a> -->
+                                <input name="foto" id="foto" type="file" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2" required>
                             </div>
                         </div>
-                        <!-- /.card -->
-                    </form>
-
                 </div>
-                <!-- /.container-fluid -->
 
+                <button href="#" type="submit" class="btn btn-info btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Buat Akun</span>
+                </button>
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
-
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- /.card -->
+        </form>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <?php $this->load->view("admin/_partials/footer.php") ?>
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
+
+    <!-- Function-->
+    <?php $this->load->view("admin/_partials/function.php") ?>
 
     <!-- Scroll to Top Button-->
     <?php $this->load->view("admin/_partials/scrolltop.php") ?>
