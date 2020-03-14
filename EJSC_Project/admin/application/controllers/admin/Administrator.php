@@ -12,18 +12,19 @@ class Administrator extends CI_Controller {
         $this->load->view("admin/administrator", $data);
 	}
 
-	public function tambah(){
+	public function tambahadministrator(){
 		$autoReload = base_url();
-		if($this->input->method == "post") {
+		$this->load->model('EjscModel');
+		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambah(array(
-				'LEVEL' => $this->input->post("level"),
+				'LEVEL' => '2',
 				'FOTO_USER' => $this->input->post("foto"),
 				'NAMA_LENGKAP' => $this->input->post("nama"),
 				'EMAIL' => $this->input->post("email"),
 				'NO_TELEPON' => $this->input->post("no_telpon"),
 				'ALAMAT' => $this->input->post("alamat"),
-				'KOMUNITAS' => $this->input->post("komunitas"),
-				'KATEGORI_KOMUNITAS' => $this->input->post("kategori_komunitas"),
+				'KOMUNITAS' => '',
+				'KATEGORI_KOMUNITAS' => '',
 				'PASSWORD' => $this->input->post("password")							
 			));
 			if($insert){
@@ -33,7 +34,7 @@ class Administrator extends CI_Controller {
 				echo "Gagal Menambahkan Akun";
 			}
 		}
-		$this->load->view("admin/TambahAdministrator");
+		$this->load->view("admin/tambahadministrator");
 	}
 }
 

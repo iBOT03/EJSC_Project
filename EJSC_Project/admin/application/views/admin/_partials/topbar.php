@@ -9,7 +9,7 @@
 <!-- Topbar Logo -->
 <a class="navbar-brand"
     href="<?php echo site_url('admin/dashboard') ?>">
-    <img src="../../img/logo.png" style="width: 130px"></img>
+    <img src="<?= base_url('img/')?>logo.png" style="width: 130px"></img>
 </a>
 
 <!-- <div class="input-group">
