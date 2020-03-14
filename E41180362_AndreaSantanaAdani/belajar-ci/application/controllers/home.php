@@ -1,53 +1,59 @@
 <?php
-class Home extends CI_Controller { //mengextends CI_Controller
+class Home extends CI_Controller
+{ //mengextends CI_Controller
 
-        //---------------------------------------- POWER POINT KE - 3 ----------------------------------------------//    
-    public function __construct(){
+    //---------------------------------------- POWER POINT KE - 3 ----------------------------------------------//    
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model("ArtikelModel");
     }
 
-    public function index () {
+    public function index()
+    {
         //menampilkan table database
         $data = array("artikel" => $this->ArtikelModel->get());
         $this->load->view("HomeView", $data);
     }
 
-    public function detail($id){
+    public function detail($id)
+    {
         $data = array("artikel" => $this->ArtikelModel->detail($id));
         $this->load->view("DetailView", $data);
     }
 
-    public function tambah(){
+    public function tambah()
+    {
         $autoReload = base_url();
-        if($this->input->method() == "post") {
+        if ($this->input->method() == "post") {
             $insert = $this->ArtikelModel->tambah(array(
                 'JUDUL' => $this->input->post("judul"),
                 'PENULIS' => $this->input->post("penulis"),
                 'TANGGAL' => date("Y-m-d H:i:s"),
                 'ISI' => $this->input->post("isi")
             ));
-            if($insert){
+            if ($insert) {
                 echo "Berhasil Menambahkan Artikel";
                 redirect($autoReload);
             } else {
                 echo "Gagal Menambahkan Artikel";
-            }            
+            }
         }
         $this->load->view("TambahView");
     }
 
-    public function ubah($id){
+    public function ubah($id)
+    {
         $autoReload = base_url();
-        $data["artikel"] = $this->ArtikelModel->detail($id);        
-        if($this->input->method() == "post"){
+        $data["artikel"] = $this->ArtikelModel->detail($id);
+        if ($this->input->method() == "post") {
             $update = $this->ArtikelModel->ubah(array(
                 'JUDUL' => $this->input->post("judul"),
                 'PENULIS' => $this->input->post("penulis"),
                 'TANGGAL' => date("Y-m-d H:i:s"),
                 'ISI' => $this->input->post("isi")
             ), $id);
-            if($update){
+            if ($update) {
                 echo "Data Berhasil di Ubah";
                 redirect($autoReload);
             } else {
@@ -57,10 +63,11 @@ class Home extends CI_Controller { //mengextends CI_Controller
         $this->load->view("UbahView", $data);
     }
 
-    public function hapus($id){
+    public function hapus($id)
+    {
         $autoReload = base_url();
-        $hapus = $this->ArtikelModel->hapus ($id);
-        if($hapus) {
+        $hapus = $this->ArtikelModel->hapus($id);
+        if ($hapus) {
             echo "Hapus data Berhasil";
             redirect($autoReload);
         }
@@ -205,6 +212,3 @@ class Home extends CI_Controller { //mengextends CI_Controller
         //     // echo "status: " . $dataArr["status"] . '<br>';
         //     // echo "website: " . $dataArr["website"] . '<br>';
         // $this->load->view ("HomeView"), array("data" =>$dataArr)); //memanggil HomeView dan data array
-    
-
-?>
