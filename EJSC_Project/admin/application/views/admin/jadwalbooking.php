@@ -106,15 +106,31 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">Tanggal</th>
+                      <th style="width: 30px">Jam</th>
                       <th>Ruangan</th>
                       <th>Komunitas</th>
                       <th>Durasi</th>
+                      <th>Kegiatan</th>
+                      <th>Deskripsi</th>
                       <th style="width: 110px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
+                      <td>07.00 - 08.00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>08.00 - 09.00</td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

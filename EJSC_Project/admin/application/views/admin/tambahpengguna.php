@@ -159,7 +159,7 @@
                                 </div>
 
                                 <!-- <button type="submit">tambah</button> -->
-                                <button href="#" class="btn btn-info btn-icon-split">
+                                <button type="submit" href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
