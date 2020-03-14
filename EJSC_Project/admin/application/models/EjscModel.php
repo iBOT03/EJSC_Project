@@ -10,5 +10,13 @@ class EjscModel extends CI_Model {
         $this->load->database();
         return $this->db->insert("akun", $data);
     }
+
+    public function getuser(){
+        $this->load->database();
+        return $this->db->get_where("akun", ['level' => 3])->result();
+    }
+
+    
+
 }
 ?>

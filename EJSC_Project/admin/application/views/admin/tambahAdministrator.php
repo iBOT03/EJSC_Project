@@ -75,42 +75,12 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Komunitas</p>
-                                        <div class="input-group">
-                                            <input name="komunitas" id="komunitas" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Komunitas" aria-describedby="basic-addon2">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <p>Kategori Komunitas</p>
-                                        <div class="input-group">
-                                            <select class="form-control bg-gray-200 border-0 small mb-3" id="kategori_komunitas" name="kategori_komunitas">
-                                                <option value="-"></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
                                         <p>Upload Foto</p>
                                         <div class="input-group">
                                             <input name="foto" id="foto" type="file" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-6">
-                                        <p>Level</p>
-                                        <div class="input-group">
-                                            <select class="form-control bg-gray-200 border-0 small mb-3" id="level" name="level" required>
-                                                <option value="1">Super Admin</option>
-                                                <option value="2">Admin</option>
-                                                <option value="3">User</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
-
                                 <button type="submit">tambah</button>
                                 <!-- <a href="#" class="btn btn-info btn-icon-split">
                                 <span class="icon text-white-50">
