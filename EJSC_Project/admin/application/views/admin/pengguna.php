@@ -50,7 +50,7 @@
                       <th>Email</th>
                       <th>Nama</th>
                       <th>Level</th>
-                      <th style="width: 150px">Aksi</th>
+                      <th style="width: 110px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -143,7 +143,7 @@
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
                   </div>
-                </div>
+                </div> <!-- End Chart -->
               </div>
             </div>
           </div>
