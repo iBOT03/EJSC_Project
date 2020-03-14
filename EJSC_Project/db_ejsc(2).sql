@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Mar 2020 pada 04.41
+-- Waktu pembuatan: 14 Mar 2020 pada 05.25
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `akun` (
-  `ID_AKUN` int(11) NOT NULL,
+  `NIK` varchar(16) NOT NULL,
   `LEVEL` int(1) NOT NULL COMMENT '1.SuperAdmin, 2.Admin, 3.User',
   `FOTO_USER` varchar(100) NOT NULL,
   `NAMA_LENGKAP` varchar(150) NOT NULL,
@@ -97,10 +97,14 @@ CREATE TABLE `kategori_komunitas` (
 
 CREATE TABLE `komunitas` (
   `ID_KOMUNITAS` int(11) NOT NULL,
+  `EMAIL` varchar(150) NOT NULL,
   `NAMA` varchar(255) NOT NULL,
   `KATEGORI` varchar(100) NOT NULL,
   `NAMA_KETUA` varchar(150) NOT NULL,
-  `ALAMAT` text NOT NULL
+  `ALAMAT` text NOT NULL,
+  `TWITTER` varchar(150) NOT NULL,
+  `FACEBOOK` varchar(150) NOT NULL,
+  `INSTAGRAM` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -124,7 +128,7 @@ CREATE TABLE `kontak_kami` (
 -- Indeks untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  ADD PRIMARY KEY (`ID_AKUN`);
+  ADD PRIMARY KEY (`NIK`);
 
 --
 -- Indeks untuk tabel `booking`
@@ -153,12 +157,6 @@ ALTER TABLE `komunitas`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
-
---
--- AUTO_INCREMENT untuk tabel `akun`
---
-ALTER TABLE `akun`
-  MODIFY `ID_AKUN` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `booking`
