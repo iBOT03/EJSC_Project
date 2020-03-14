@@ -1,12 +1,12 @@
 <?php
 
-class TambahAdministrator extends CI_Controller {
+class TambahPengguna extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/tambahadministrator");
+        $this->load->view("admin/tambahpengguna");
 	}
 }
 

@@ -34,11 +34,11 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="#" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+            <a href="<?php echo site_url('admin/tambahpengguna') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
               <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
               </span>
-              <span class="text"> Tambah Data</span>
+              <span class="text"> Tambah Pengguna</span>
             </a>
             </div>
             <div class="card-body">
@@ -52,18 +52,24 @@
                       <th>Level</th>
                       <th style="width: 150px">Aksi</th>
                     </tr>
+                    <?php
+                    foreach ($akun as $row) {
+                    ?>
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?php echo $row->ID_AKUN; ?></td>
+                      <td><?php echo $row->EMAIL; ?></td>
+                      <td><?php echo $row->NAMA_LENGKAP; ?></td>
+                      <td><?php echo $row->LEVEL; ?></td>
                       <td>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
+                    <?php
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
