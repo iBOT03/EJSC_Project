@@ -142,7 +142,7 @@
                                                    id="konfirmasipassword"
                                                    type="password"
                                                    class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Password"
+                                                   placeholder="Konfirmasi Password"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="16"
                                                    required>
@@ -157,20 +157,19 @@
                                     </span>
                                     <span class="text">Tambah Data</span>
                                 </button>
-                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
+                                <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-reply"></i>
                                     </span>
                                     <span class="text">Kembali</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
         </div>
         <!-- /.card -->
-        </form>
-
     </div>
     <!-- /.container-fluid -->
 
