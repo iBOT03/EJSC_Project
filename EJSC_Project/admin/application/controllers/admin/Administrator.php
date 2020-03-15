@@ -18,7 +18,7 @@ class Administrator extends CI_Controller {
     //     $this->load->view("detailview", $data);
     // }
 
-	public function tambahadministrator(){
+	public function tambahadministrator() {
 		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambahadmin(array(
 				'NIK' => $this->input->post("nik"),
@@ -42,8 +42,7 @@ class Administrator extends CI_Controller {
 		$this->load->view("admin/tambahadministrator");
 	}
 
-	public function hapusadmin($nik)
-    {
+	public function hapusadmin($nik) {
         $autoReload = base_url("admin/administrator");
         $hapus = $this->EjscModel->hapusadmin($nik);
         if ($hapus) {
@@ -52,9 +51,9 @@ class Administrator extends CI_Controller {
         }
 	}
 	
-	public function ubahadmin($nik){
+	public function ubahadmin($nik) {
 		$data["akun"] = $this->EjscModel->detail($nik);
-		if($this->input->method() == "post"){
+		if($this->input->method() == "post") {
 			$update = $this->EjscModel->ubahadmin(array(
 				'NIK' => $this->input->post("nik"),
 				'LEVEL' => '2',

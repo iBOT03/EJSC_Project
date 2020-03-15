@@ -71,9 +71,17 @@
                         } ?>
                       </td>
                       <td>
-                        <a href="<?php echo "administrator/ubahadmin/" ?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
-
-                        <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')" href="<?php echo "administrator/hapusadmin/" . $row->NIK; ?>" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>                    
+                        <a href="<?php echo site_url('admin/editadministrator/'.$row->NIK)?>"
+                           style="width:35px"
+                           class="btn btn-sm btn-info shadow-sm">
+                           <i class="fas fa-edit"></i>
+                        </a>
+                        <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')"
+                           href="<?php echo "administrator/hapusadmin/" . $row->NIK; ?>"
+                           style="width:35px"
+                           class="btn btn-sm btn-danger shadow-sm">
+                           <i class="fas fa-trash"></i>
+                        </a>                    
 
                         <!-- <?php
                         //if($_SESSION['level'] == 1) { 

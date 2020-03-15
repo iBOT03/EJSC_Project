@@ -30,7 +30,7 @@
 
                     <!-- Page Heading -->
                     <form method="post">
-                        <h1 class="h3 mb-2 text-gray-800">Ubah Data Administrator</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Edit Data Administrator</h1>
 
                         <div class="card shadow mb-4">
                             <div class="card-body">
@@ -151,27 +151,25 @@
                                     </div>
                                 </div>
 
-                                <!-- <button type="submit">tambah</button> -->
                                 <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
                                     <span class="text">Tambah Data</span>
                                 </button>
-                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
+                                <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-reply"></i>
                                     </span>
                                     <span class="text">Kembali</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
         </div>
         <!-- /.card -->
-        </form>
-
     </div>
     <!-- /.container-fluid -->
 

@@ -35,37 +35,20 @@
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <p>Nama Lengkap</p>
+                                <div class="col-sm-6">
+                                        <p>NIK</p>
                                         <div class="input-group">
-                                            <input name="nama"
-                                                   id="nama"
+                                            <input name="nik"
+                                                   id="nik"
                                                    type="text"
                                                    class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Nama Lengkap"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="150"
-                                                   required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <p>Telepon/Whatsapp</p>
-                                        <div class="input-group">
-                                            <input name="no_telpon"
-                                                   id="no_telpon"
-                                                   type="text"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan No Telepon/Whatsapp"
+                                                   placeholder="Masukkan NIK"
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
-                                                   maxlength="13"
+                                                   maxlength="16"
                                                    required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-sm-6">
                                         <p>Email</p>
                                         <div class="input-group">
@@ -79,17 +62,33 @@
                                                    required>
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Password</p>
+                                        <p>Nama Lengkap</p>
                                         <div class="input-group">
-                                            <input name="password"
-                                                   id="password"
-                                                   type="password"
+                                            <input name="nama"
+                                                   id="nama"
+                                                   type="text"
                                                    class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Password"
+                                                   placeholder="Masukkan Nama Lengkap"
                                                    aria-describedby="basic-addon2"
-                                                   maxlength="16"
+                                                   maxlength="150"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>Telepon/Whatsapp</p>
+                                        <div class="input-group">
+                                            <input name="no_telpon"
+                                                   id="no_telpon"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan No Telepon/Whatsapp"
+                                                   aria-describedby="basic-addon2"
+                                                   onkeypress="return hanyaAngka(event)"
+                                                   maxlength="13"
                                                    required>
                                         </div>
                                     </div>
@@ -158,6 +157,35 @@
                                     </div> -->
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Password</p>
+                                        <div class="input-group">
+                                            <input name="password"
+                                                   id="password"
+                                                   type="password"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Password"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="16"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>Konfirmasi Password</p>
+                                        <div class="input-group">
+                                            <input name="konfirmasipassword"
+                                                   id="konfirmasipassword"
+                                                   type="password"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Konfirmasi Password"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="16"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <!-- <button type="submit">tambah</button> -->
                                 <button type="submit" href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
@@ -165,6 +193,12 @@
                                     </span>
                                     <span class="text">Buat Akun</span>
                                 </button>
+                                <a href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-reply"></i>
+                                    </span>
+                                    <span class="text">Kembali</span>
+                                </a>
                             </div>
                         </div>
                         <!-- /.card -->
