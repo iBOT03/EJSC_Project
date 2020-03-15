@@ -33,19 +33,38 @@
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            <!-- <a href="#" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-              <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="text"> Tambah Data</span>
-            </a> -->
+            <nav class="navbar navbar-expand card-header py-3">
             
-              <div class="row">
+              <!-- Ruangan -->
+              <div class="col-sm-1">
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-info dropdown-toggle"
+                          type="button"
+                          id="dropdownMenuButton"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false">
+                    Ruangan
+                  </button>
+                  <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Meeting Room</a>
+                    <a class="dropdown-item" href="#">Training Room</a>
+                    <a class="dropdown-item" href="#">Conference Room</a>
+                    <a class="dropdown-item" href="#">Co-Working Space</a>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="navbar-nav ml-auto row">
                 <!-- Tahun -->
-                <div class="col-sm-1">
+                <li class="nav-item col-lg-4">
                   <div class="dropdown">
-                    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-sm btn-info dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
                       Tahun
                     </button>
                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
@@ -54,11 +73,16 @@
                       <a class="dropdown-item" href="#">2018</a>
                     </div>
                   </div>
-                </div>
+                </li>
                 <!-- Bulan -->
-                <div class="col-sm-1">
+                <li class="nav-item col-lg-4">
                   <div class="dropdown">
-                    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-sm btn-info dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
                       Bulan
                     </button>
                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
@@ -76,11 +100,15 @@
                       <a class="dropdown-item" href="#">Desember</a>
                     </div>
                   </div>              
-                </div>
+                </li>
                 <!-- Tanggal -->
-                <div class="col-sm-1">
+                <li class="nav-item col-lg-4">
                   <div class="dropdown">
-                    <button class="btn btn-sm btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-sm btn-info dropdown-toggle"
+                            type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
                       Tanggal
                     </button>
                     <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
@@ -98,21 +126,21 @@
                       <a class="dropdown-item" href="#">12</a>
                     </div>
                   </div>              
-                </div>
-              </div> <!-- End Row -->
-            </div>
+                </li>
+              </ul> <!-- End Row -->
+            </nav>
+
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th style="width: 30px">Jam</th>
-                      <th>Ruangan</th>
                       <th>Komunitas</th>
                       <th>Durasi</th>
                       <th>Kegiatan</th>
                       <th>Deskripsi</th>
-                      <th style="width: 110px">Aksi</th>
+                      <th style="width: 96px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -122,8 +150,8 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
                       <td>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
@@ -134,8 +162,8 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
                       <td>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>

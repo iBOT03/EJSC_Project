@@ -51,7 +51,7 @@
                       <th>Email</th>
                       <th>Alamat</th>
                       <th>Level</th>
-                      <th style="width: 110px">Aksi</th>
+                      <th style="width: 96px">Aksi</th>
                     </tr>
                     <?php
                     foreach ($akun as $row) {

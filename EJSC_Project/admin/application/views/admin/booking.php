@@ -55,7 +55,7 @@
                       <th>Tanggal</th>
                       <th>Peminjaman Alat</th>
                       <th>Status</th>
-                      <th style="width: 110px">Aksi</th>
+                      <th style="width: 96px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>

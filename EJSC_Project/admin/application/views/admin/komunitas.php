@@ -57,7 +57,7 @@
                       <th>Twitter</th>
                       <th>Facebook</th>
                       <th>Instagram</th>
-                      <th style="width: 110px">Aksi</th>
+                      <th style="width: 96px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
