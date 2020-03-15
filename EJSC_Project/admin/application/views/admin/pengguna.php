@@ -46,7 +46,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">No</th>
+                      <th style="width: 5px">No</th>
                       <th>Email</th>
                       <th>Nama</th>
                       <th>Level</th>

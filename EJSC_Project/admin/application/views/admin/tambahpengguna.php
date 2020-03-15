@@ -105,23 +105,33 @@
                                            aria-describedby="basic-addon2"
                                            required>
                                 </div>
-                                <div class="row">
-                                        <div class="col-sm-6">
-                                            <p>Komunitas</p>
-                                            <div class="input-group">
-                                                <input name="komunitas" id="komunitas" type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="Masukkan Komunitas" aria-describedby="basic-addon2" maxlength="200" required>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-sm-6">
-                                            <p>Kategori Komunitas</p>
-                                            <div class="input-group">
-                                                <select class="form-control bg-gray-200 border-0 small mb-3" id="kategori_komunitas" name="kategori_komunitas">
-                                                    <option value="-"></option>
-                                                </select>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Komunitas</p>
+                                        <div class="input-group">
+                                            <input name="komunitas"
+                                                   id="komunitas"
+                                                   type="text"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Komunitas"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="200"
+                                                   required>
                                         </div>
-                                    </div>                        
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>Kategori Komunitas</p>
+                                        <div class="input-group">
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="kategori_komunitas"
+                                                    name="kategori_komunitas">
+                                                <option value="-"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                     
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Password</p>
@@ -170,7 +180,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span class="text">Tambah Data</span>
+                                    <span class="text">Tambah Akun Pengguna</span>
                                 </button>
                                 <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">

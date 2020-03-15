@@ -46,16 +46,28 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">No</th>
+                      <th style="width: 5px">No</th>
                       <th>Nama Komunitas</th>
+                      <th>Logo</th>
+                      <th>Email</th>
                       <th>Kategori</th>
                       <th>Nama Ketua</th>
                       <th>Alamat</th>
+                      <th>No.Telepon</th>
+                      <th>Twitter</th>
+                      <th>Facebook</th>
+                      <th>Instagram</th>
                       <th style="width: 110px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>
