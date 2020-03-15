@@ -55,6 +55,15 @@
                 </div>
               </div>
 
+              <div class="col-sm-2">
+                <a href="<?php echo site_url('admin/tambahbooking')?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                  </span>
+                  <span class="text"> Booking</span>
+                </a>
+              </div>
+
               <ul class="navbar-nav ml-auto row">
                 <!-- Tahun -->
                 <li class="nav-item col-lg-4">
@@ -151,7 +160,7 @@
                       <td></td>
                       <td></td>
                       <td>
-                        <a href="<?php echo site_url('admin/booking') ?>" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+                        <a href="<?php echo site_url('admin/detailbooking') ?>" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
@@ -163,7 +172,7 @@
                       <td></td>
                       <td></td>
                       <td>
-                        <a href="<?php echo site_url('admin/booking') ?>" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+                        <a href="<?php echo site_url('admin/detailbooking') ?>" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>

@@ -4,7 +4,7 @@
       <!-- Sidebar - Brand -->
       <div class="sidebar-brand d-flex align-items-center justify-content-center"
           href="<?php echo site_url('admin/dashboard') ?>">
-          <img src="../../img/jatim.png" style="width:50px">
+          <img src="<?php echo base_url('img/jatim.png') ?>" style="width:50px">
       </div>
 
       <!-- Divider -->
@@ -54,13 +54,6 @@
         Data Booking
       </div>
 
-      <!-- Nav Item - Data Booking -->
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/booking') ?>">
-          <i class="fas fa-fw fa-book"></i>
-          <span>Data Booking</span></a>
-      </li> -->
-
       <!-- Nav Item - Jadwal Booking -->
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('admin/jadwalbooking') ?>">
@@ -91,11 +84,19 @@
         Tentang Kami
       </div>
 
-      <!-- Nav Item - TentangKami -->
+      <!-- Nav Item - Tentang Kami Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/tentang') ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTentang" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-info"></i>
-          <span>Tentang Kami</span></a>
+          <span>Tentang Kami</span>
+        </a>
+        <div id="collapseTentang" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="<?php echo site_url('admin/ruangan') ?>">Ruangan</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/alat') ?>">Alat</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/tentang') ?>">Tentang Kami</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->

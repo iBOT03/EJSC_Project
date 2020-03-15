@@ -1,12 +1,12 @@
 <?php
 
-class ForgotPassword extends CI_Controller {
+class DetailBooking extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 	}
 
 	public function index() {
-        $this->load->view("admin/forgotpassword");
+        $this->load->view("admin/detailbooking");
 	}
 }
 

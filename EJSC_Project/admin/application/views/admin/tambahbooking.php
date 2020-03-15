@@ -29,31 +29,25 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <form method="post">
-                        <h1 class="h3 mb-2 text-gray-800">Ubah Data Administrator</h1>
+                    <form method="post" action="<?= site_url('admin/pengguna/tambahpengguna')?>">
+                        <h1 class="h3 mb-2 text-gray-800">Tambah Booking</h1>
 
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>NIK</p>
+                                        <p>Komunitas</p>
                                         <div class="input-group">
-                                            <input name="nik"
-                                                   id="nik"
-                                                   type="text"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan NIK"
-                                                   aria-describedby="basic-addon2"
-                                                   onkeypress="return hanyaAngka(event)"
-                                                   maxlength="16"
-                                                   value="<?php echo $akun[0]->NIK; ?>"
-                                                   readonly
-                                                   required>
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="komunitas"
+                                                    name="komunitas">
+                                                    <option value="-"></option>
+                                            </select>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <p>Nama Lengkap</p>
+                                        <p>Nama Penanggung Jawab</p>
                                         <div class="input-group">
                                             <input name="nama"
                                                    id="nama"
@@ -62,7 +56,6 @@
                                                    placeholder="Masukkan Nama Lengkap"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="150"
-                                                   value="<?php echo $akun[0]->NAMA_LENGKAP; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -70,59 +63,26 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Email</p>
+                                        <p>Ruangan</p>
                                         <div class="input-group">
-                                            <input name="email"
-                                                   id="email"
-                                                   type="email"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Email"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="100"
-                                                   value="<?php echo $akun[0]->EMAIL; ?>"
-                                                   required>
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="ruangan"
+                                                    name="ruangan">
+                                                    <option value="-"></option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p>Telepon/Whatsapp</p>
+                                        <p>Jumlah Peserta</p>
                                         <div class="input-group">
-                                            <input name="no_telpon"
-                                                   id="no_telpon"
+                                            <input name="jumlahpeserta"
+                                                   id="jumlahpeserta"
                                                    type="text"
                                                    class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan No Telepon/Whatsapp"
+                                                   placeholder="Masukkan Jumlah Peserta"
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
-                                                   maxlength="13"
-                                                   value="<?php echo $akun[0]->NO_TELEPON; ?>"
-                                                   required>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p>Alamat</p>
-                                <div class="input-group">
-                                    <input name="alamat"
-                                           id="alamat"
-                                           type="text"
-                                           class="form-control bg-gray-200 border-0 small mb-3"
-                                           placeholder="Masukkan Alamat"
-                                           aria-describedby="basic-addon2"
-                                           value="<?php echo $akun[0]->ALAMAT; ?>"
-                                           required>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <p>Upload Foto</p>
-                                        <div class="input-group">
-                                            <input name="foto"
-                                                   id="foto"
-                                                   type="file"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder=""
-                                                   aria-describedby="basic-addon2"
-                                                   value="<?php echo $akun[0]->FOTO_USER; ?>"
+                                                   maxlength="3"
                                                    required>
                                         </div>
                                     </div>
@@ -130,41 +90,89 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Password</p>
+                                        <p>Tujuan Kegiatan</p>
                                         <div class="input-group">
-                                            <input name="password"
-                                                   id="password"
-                                                   type="password"
+                                            <input name="tujuan"
+                                                   id="tujuan"
+                                                   type="text"
                                                    class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Password"
+                                                   placeholder="Masukkan Tujuan Kegiatan"
                                                    aria-describedby="basic-addon2"
-                                                   maxlength="16"
-                                                   value="<?php echo $akun[0]->PASSWORD; ?>"
+                                                   maxlength="100"
                                                    required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p>Konfirmasi Password</p>
+                                        <p>Deskripsi Kegiatan</p>
                                         <div class="input-group">
-                                            <input name="konfirmasipassword"
-                                                   id="konfirmasipassword"
-                                                   type="password"
+                                            <input name="deskripsi"
+                                                   id="deskripsi"
+                                                   type="text"
                                                    class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Password"
+                                                   placeholder="Masukkan Deskripsi Kegiatan"
                                                    aria-describedby="basic-addon2"
-                                                   maxlength="16"
+                                                   maxlength="200"
                                                    required>
                                         </div>
                                     </div>
                                 </div>
 
-                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-info btn-icon-split">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Tanggal</p>
+                                        <div class="input-group">
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="tanggal"
+                                                    name="tanggal">
+                                                    <option value="-"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>Durasi Kegiatan (jam)</p>
+                                        <div class="input-group">
+                                            <input name="durasi"
+                                                   id="durasi"
+                                                   type="text"                                                   
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Durasi Kegiatan"
+                                                   aria-describedby="basic-addon2"
+                                                   onkeypress="return hanyaAngka(event)"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                                     
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Peminjaman Alat</p>
+                                        <div class="input-group">
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="peminjamanalat"
+                                                    name="peminjamanalat">
+                                                    <option value="-"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>Jumlah Alat</p>
+                                        <div class="input-group">
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="jumlahalat"
+                                                    name="jumlahalat">
+                                                    <option value="-"></option>
+                                            </select>
+                                        </div>
+                                    </div>               
+                                </div>
+
+                                <button type="submit" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span class="text">Ubah Data Admin</span>
+                                    <span class="text">Tambah Booking</span>
                                 </button>
-                                <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
+                                <a href="<?php echo site_url('admin/jadwalbooking') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-reply"></i>
                                     </span>
