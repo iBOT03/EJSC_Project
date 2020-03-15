@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Mar 2020 pada 05.25
+-- Waktu pembuatan: 15 Mar 2020 pada 05.57
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -40,6 +40,14 @@ CREATE TABLE `akun` (
   `KATEGORI_KOMUNITAS` varchar(200) NOT NULL,
   `PASSWORD` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `akun`
+--
+
+INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_USER`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `KATEGORI_KOMUNITAS`, `PASSWORD`) VALUES
+('', 2, 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '', '1234'),
+('1', 1, '', 'admin', 'admin@admin.com', '', '', '', '', 'admin');
 
 -- --------------------------------------------------------
 
@@ -97,11 +105,13 @@ CREATE TABLE `kategori_komunitas` (
 
 CREATE TABLE `komunitas` (
   `ID_KOMUNITAS` int(11) NOT NULL,
+  `LOGO` varchar(150) NOT NULL,
   `EMAIL` varchar(150) NOT NULL,
   `NAMA` varchar(255) NOT NULL,
   `KATEGORI` varchar(100) NOT NULL,
   `NAMA_KETUA` varchar(150) NOT NULL,
   `ALAMAT` text NOT NULL,
+  `NO_TELEPON` varchar(13) NOT NULL,
   `TWITTER` varchar(150) NOT NULL,
   `FACEBOOK` varchar(150) NOT NULL,
   `INSTAGRAM` varchar(150) NOT NULL
