@@ -35,7 +35,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="row">
-                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <p>NIK</p>
                                         <div class="input-group">
                                             <input name="nik"
@@ -49,22 +49,7 @@
                                                    required>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <p>Email</p>
-                                        <div class="input-group">
-                                            <input name="email"
-                                                   id="email"
-                                                   type="email"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Email"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="100"
-                                                   required>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
                                     <div class="col-sm-6">
                                         <p>Nama Lengkap</p>
                                         <div class="input-group">
@@ -75,6 +60,22 @@
                                                    placeholder="Masukkan Nama Lengkap"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="150"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Email</p>
+                                        <div class="input-group">
+                                            <input name="email"
+                                                   id="email"
+                                                   type="email"
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder="Masukkan Email"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="100"
                                                    required>
                                         </div>
                                     </div>
@@ -119,33 +120,18 @@
                                                    required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Upload Foto</p>
+                                        <p>Kategori Komunitas</p>
                                         <div class="input-group">
-                                            <input name="foto" id="foto"
-                                                   type="file"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder=""
-                                                   aria-describedby="basic-addon2"
-                                                   required>
-                                        </div>
-                                    </div>
-
-                                    <!-- <div class="col-sm-6">
-                                        <p>Level</p>
-                                        <div class="input-group">
-                                            <select class="form-control bg-gray-200 border-0 small mb-3" id="level" name="level" required>
-                                                <option value="1">Super Admin</option>
-                                                <option value="2">Admin</option>
-                                                <option value="3">User</option>
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="kategori_komunitas"
+                                                    name="kategori_komunitas">
+                                                <option value="-"></option>
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 </div>
-
+                                     
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Password</p>
@@ -172,17 +158,31 @@
                                                    maxlength="16"
                                                    required>
                                         </div>
+                                    </div>                                
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>Upload Foto</p>
+                                        <div class="input-group">
+                                            <input name="foto"
+                                                   id="foto"
+                                                   type="file"                                                   
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder=""
+                                                   aria-describedby="basic-addon2"
+                                                   required>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- <button type="submit">tambah</button> -->
-                                <button type="submit" href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-info btn-icon-split">
+                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
                                     <span class="text">Tambah Akun Pengguna</span>
                                 </button>
-                                <a href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-danger btn-icon-split">
+                                <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-reply"></i>
                                     </span>
@@ -190,20 +190,22 @@
                                 </a>
                             </div>
                         </div>
-                        <!-- /.card -->
                     </form>
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <?php $this->load->view("admin/_partials/footer.php") ?>
-
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- /.card -->
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <?php $this->load->view("admin/_partials/footer.php") ?>
+
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->

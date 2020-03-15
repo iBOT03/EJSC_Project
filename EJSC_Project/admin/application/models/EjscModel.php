@@ -15,6 +15,11 @@ class EjscModel extends CI_Model {
         $this->load->database();
         return $this->db->insert("akun", $data);
     }
+    //INSERT USER DATA
+    public function tambahpengguna($data = array()){
+        $this->load->database();
+        return $this->db->insert("akun", $data);
+    }
     //GET USER DATA
     public function getuser() {
         $this->load->database();

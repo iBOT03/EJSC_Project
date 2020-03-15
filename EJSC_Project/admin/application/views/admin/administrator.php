@@ -71,7 +71,7 @@
                         } ?>
                       </td>
                       <td>
-                        <a href="<?php echo site_url('admin/editadministrator/'.$row->NIK)?>"
+                        <a href="<?php echo site_url('admin/administrator/ubahadmin/'.$row->NIK)?>"
                            style="width:35px"
                            class="btn btn-sm btn-info shadow-sm">
                            <i class="fas fa-edit"></i>
