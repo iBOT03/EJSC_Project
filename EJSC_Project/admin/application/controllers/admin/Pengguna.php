@@ -12,10 +12,10 @@ class Pengguna extends CI_Controller {
         $this->load->view("admin/pengguna", $data);
 	}
 
-	public function tambah(){
+	public function tambahpengguna(){
 		$autoReload = base_url();
 		if($this->input->method == "post") {
-			$insert = $this->EjscModel->tambah(array(
+			$insert = $this->EjscModel->tambahpengguna(array(
 				'LEVEL' => $this->input->post("level"),
 				'FOTO_USER' => $this->input->post("foto"),
 				'NAMA_LENGKAP' => $this->input->post("nama"),
@@ -28,12 +28,12 @@ class Pengguna extends CI_Controller {
 			));
 			if($insert){
 				echo "Berhasil Menambahkan Akun";
-				redirect($autoReload);
+				//redirect($autoReload);
 			} else {
 				echo "Gagal Menambahkan Akun";
 			}
 		}
-		$this->load->view("admin/TambahAdministrator");
+		$this->load->view("admin/tambahpengguna");
 	}
 }
 

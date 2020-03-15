@@ -34,7 +34,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a href="<?php echo site_url('admin/tambahpengguna') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+              <a href="<?php echo site_url('admin/pengguna/tambahpengguna/') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
