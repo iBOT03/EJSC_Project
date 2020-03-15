@@ -46,9 +46,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Nama Penanggung Jawab</th>
                       <th>Komunitas</th>
+                      <th>Nama Penanggung Jawab</th>
                       <th>Ruangan</th>
                       <th>Tujuan</th>
                       <th>Durasi</th>
@@ -60,7 +59,6 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

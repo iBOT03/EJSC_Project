@@ -2,10 +2,10 @@
     <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center"
+      <div class="sidebar-brand d-flex align-items-center justify-content-center"
           href="<?php echo site_url('admin/dashboard') ?>">
-          <?php echo SITE_NAME ?>
-      </a>
+          <img src="../../img/jatim.png" style="width:50px">
+      </div>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -55,11 +55,11 @@
       </div>
 
       <!-- Nav Item - Data Booking -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('admin/booking') ?>">
           <i class="fas fa-fw fa-book"></i>
           <span>Data Booking</span></a>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Jadwal Booking -->
       <li class="nav-item">

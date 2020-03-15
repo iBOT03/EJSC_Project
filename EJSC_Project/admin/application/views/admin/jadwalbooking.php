@@ -137,10 +137,10 @@
                     <tr>
                       <th style="width: 30px">Jam</th>
                       <th>Komunitas</th>
-                      <th>Durasi</th>
                       <th>Kegiatan</th>
-                      <th>Deskripsi</th>
-                      <th style="width: 96px">Aksi</th>
+                      <th>Peminjaman Alat</th>
+                      <th>Status</th>
+                      <th style="width: 100px">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -151,7 +151,7 @@
                       <td></td>
                       <td></td>
                       <td>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+                        <a href="<?php echo site_url('admin/booking') ?>" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
@@ -163,7 +163,7 @@
                       <td></td>
                       <td></td>
                       <td>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
+                        <a href="<?php echo site_url('admin/booking') ?>" style="width:35px" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
