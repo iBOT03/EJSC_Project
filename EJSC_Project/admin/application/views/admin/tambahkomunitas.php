@@ -36,75 +36,130 @@
               <div class="row">
                 <div class="col-sm-6">
                   <p>Nama Komunitas</p>
-                  <form class="">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                    </div>
-                  </form>
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan Nama Komunitas"
+                           aria-describedby="basic-addon2"
+                           required>
+                  </div>
                 </div>
 
                 <div class="col-sm-6">
                   <p>Email Komunitas</p>
-                  <form class="">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                    </div>
-                  </form>  
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan Email Komunitas"
+                           aria-describedby="basic-addon2"
+                           required>
+                  </div>  
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Nama Ketua Komunitas</p>
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan Nama Ketua Komunitas"
+                           aria-describedby="basic-addon2"
+                           required>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <p>Kategori Komunitas</p>
+                  <div class="input-group">
+                    <select class="form-control bg-gray-200 border-0 small mb-3"
+                            id="kategori_komunitas"
+                            name="kategori_komunitas">
+                      <option value="-"></option>
+                    </select>
+                  </div>
                 </div>
               </div>
             
               <p>Alamat Komunitas</p>
-              <form class="">
-                <div class="input-group">
-                  <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                </div>
-              </form>
+              <div class="input-group">
+                <input type="text"
+                       class="form-control bg-gray-200 border-0 small mb-3"
+                       placeholder="Masukkan Alamat Komunitas"
+                       aria-describedby="basic-addon2"
+                       required>
+              </div>
 
               <div class="row">
                 <div class="col-sm-6">
                   <p>Telepon/Whatsapp</p>
-                  <form class="">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                    </div>
-                  </form>
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan No Telepon/Whatsapp Komunitas"
+                           aria-describedby="basic-addon2"
+                           required>
+                  </div>
                 </div>
 
                 <div class="col-sm-6">
                   <p>Twitter</p>
-                  <form class="">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                    </div>
-                  </form>
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan Twitter Komunitas"
+                           aria-describedby="basic-addon2">
+                  </div>
+                </div>
+            </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Facebook</p>
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan Facebook Komunitas"
+                           aria-describedby="basic-addon2">
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <p>Instagram</p>
+                  <div class="input-group">
+                    <input type="text"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder="Masukkan Instagram Komunitas"
+                           aria-describedby="basic-addon2">
+                  </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-sm-6">
-                  <p>Facebook</p>
-                  <form class="">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                    </div>
-                  </form>
-                </div>
-
-                <div class="col-sm-6">
-                  <p>Instagram</p>
-                  <form class="">
-                    <div class="input-group">
-                      <input type="text" class="form-control bg-gray-200 border-0 small mb-3" placeholder="" aria-describedby="basic-addon2">
-                    </div>
-                  </form>
+                  <p>Upload Logo Komunitas</p>
+                  <div class="input-group">
+                    <input name="foto" id="foto"
+                           type="file"
+                           class="form-control bg-gray-200 border-0 small mb-3"
+                           placeholder=""
+                           aria-describedby="basic-addon2"
+                           required>
+                  </div>
                 </div>
               </div>
 
-              <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-info btn-icon-split">
+              <button type="submit" href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Tambah Data</span>
+                <span class="text">Tambah Komunitas</span>
+              </button>
+              <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-danger btn-icon-split">
+                <span class="icon text-white-50">
+                  <i class="fas fa-reply"></i>
+                </span>
+                <span class="text">Kembali</span>
               </a>
 
             </div>

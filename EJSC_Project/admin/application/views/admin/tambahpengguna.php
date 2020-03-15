@@ -119,17 +119,6 @@
                                                    required>
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-6">
-                                        <p>Kategori Komunitas</p>
-                                        <div class="input-group">
-                                            <select class="form-control bg-gray-200 border-0 small mb-3"
-                                                    id="kategori_komunitas"
-                                                    name="kategori_komunitas">
-                                                <option value="-"></option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -191,7 +180,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span class="text">Buat Akun</span>
+                                    <span class="text">Tambah Akun Pengguna</span>
                                 </button>
                                 <a href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">

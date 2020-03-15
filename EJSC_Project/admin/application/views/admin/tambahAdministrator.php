@@ -156,7 +156,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span class="text">Tambah Data</span>
+                                    <span class="text">Tambah Administrator</span>
                                 </button>
                                 <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
