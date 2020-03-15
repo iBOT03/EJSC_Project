@@ -7,7 +7,7 @@ class Administrator extends CI_Controller {
 	}
 
 	public function index() {
-		$data = array ("akun" => $this->EjscModel->get());
+		$data = array ("akun" => $this->EjscModel->getadmin());
 
         $this->load->view("admin/administrator", $data);
 	}
@@ -73,7 +73,7 @@ class Administrator extends CI_Controller {
 				echo "Data Gagal di Ubah";
 			}
 		}
-		$this->load->view("admin/tambahadministrator", $data);
+		$this->load->view("admin/editadministrator", $data);
 	}
 }
 

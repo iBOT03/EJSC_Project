@@ -22,8 +22,8 @@
       <!-- Main Content -->
       <div id="content">
 
-      <!-- Topbar -->
-      <?php $this->load->view("admin/_partials/topbar.php") ?>
+        <!-- Topbar -->
+        <?php $this->load->view("admin/_partials/topbar.php") ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -34,12 +34,12 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/tambahpengguna') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-              <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="text"> Tambah Pengguna</span>
-            </a>
+              <a href="<?php echo site_url('admin/tambahpengguna') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span class="text"> Tambah Pengguna</span>
+              </a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -58,18 +58,24 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?php echo $row->ID_AKUN; ?></td>
+                      <td><?php echo $row->NIK; ?></td>
                       <td><?php echo $row->EMAIL; ?></td>
                       <td><?php echo $row->NAMA_LENGKAP; ?></td>
-                      <td><?php echo $row->LEVEL; ?></td>
+                      <td><?php if ($row->LEVEL == 1) {
+                            echo 'Super Admin';
+                          } elseif ($row->LEVEL == 2) {
+                            echo 'Admin';
+                          } elseif ($row->LEVEL == 3) {
+                            echo 'User';
+                          } ?></td>
                       <td>
                         <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
-                    <?php
+                  <?php
                     }
-                    ?>
+                  ?>
                   </tbody>
                 </table>
               </div>

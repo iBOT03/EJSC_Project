@@ -6,9 +6,9 @@ class EjscModel extends CI_Model {
         return $this->db->get("akun")->result();
     }
     //GET ADMIN DATA
-    public function get(){
+    public function getadmin(){
         $this->load->database();
-        return $this->db->get("akun")->result();
+        return $this->db->get_where("akun", ['level' => 2])->result();
     }
     //INSERT DATA
     public function tambahadmin($data = array()){

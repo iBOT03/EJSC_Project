@@ -7,7 +7,7 @@ class Pengguna extends CI_Controller {
 
 	public function index() {
         $this->load->model("EjscModel");
-		$data = array ("akun" => $this->EjscModel->get());
+		$data = array ("akun" => $this->EjscModel->getuser());
 
         $this->load->view("admin/pengguna", $data);
 	}
