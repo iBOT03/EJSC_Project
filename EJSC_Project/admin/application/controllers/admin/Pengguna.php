@@ -3,20 +3,21 @@
 class Pengguna extends CI_Controller {
     public function __construct() {
 		parent::__construct();
+		$this->load->model('EjscModel');
 	}
 
 	public function index() {
-        $this->load->model("EjscModel");
 		$data = array ("akun" => $this->EjscModel->getuser());
 
         $this->load->view("admin/pengguna", $data);
 	}
 
 	public function tambahpengguna(){
-		$autoReload = base_url();
-		if($this->input->method == "post") {
+		$kategori['KATEGORI'] = $this->EjscModel->kategori();
+		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambahpengguna(array(
-				'LEVEL' => $this->input->post("level"),
+				'NIK' => $this->input->post("nik"),
+				'LEVEL' => '3',
 				'FOTO_USER' => $this->input->post("foto"),
 				'NAMA_LENGKAP' => $this->input->post("nama"),
 				'EMAIL' => $this->input->post("email"),
@@ -27,13 +28,64 @@ class Pengguna extends CI_Controller {
 				'PASSWORD' => $this->input->post("password")							
 			));
 			if($insert){
-				echo "Berhasil Menambahkan Akun";
-				//redirect($autoReload);
+				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
+				Berhasil Menambahkan Akun!
+			  </div>'); 
+			  redirect('admin/pengguna');
+				
 			} else {
-				echo "Gagal Menambahkan Akun";
+				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
+				Gagal Menambahkan Akun!
+			  </div>'); 
+			  redirect('admin/pengguna');
 			}
 		}
-		$this->load->view("admin/tambahpengguna");
+		$this->load->view("admin/tambahpengguna", $kategori);
+	}
+
+	public function ubahpengguna($nik) {
+		$data["akun"] = $this->EjscModel->detail($nik);
+		$this->load->view("admin/editpengguna", $data);
+		if($this->input->method() == "post") {
+			$update = $this->EjscModel->ubahuser(array(
+				'NIK' => $this->input->post("nik"),
+				'LEVEL' => '3',
+				'FOTO_USER' => $this->input->post("foto"),
+				'NAMA_LENGKAP' => $this->input->post("nama"),
+				'EMAIL' => $this->input->post("email"),
+				'NO_TELEPON' => $this->input->post("no_telpon"),
+				'ALAMAT' => $this->input->post("alamat"),
+				'KOMUNITAS' => $this->input->post("komunitas"),
+				'KATEGORI_KOMUNITAS' => $this->input->post("kategori_komunitas"),
+				'PASSWORD' => $this->input->post("password")							
+			), $nik);
+			if($update){
+				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
+				Berhasil Mengubah Akun!
+			  </div>'); 
+			  redirect('admin/pengguna');
+			}else {
+				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
+				Gagal Mengubah Akun!
+			  </div>'); 
+			  redirect('admin/pengguna');
+			}
+		}
+	}
+
+	public function hapuspengguna($nik) {
+        $hapus = $this->EjscModel->hapususer($nik);
+        if ($hapus) {
+            $this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
+				Berhasil Menghapus Akun!
+			  </div>'); 
+			  redirect('admin/pengguna');
+        } else {
+			$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
+			Gagal Menghapus Akun!
+		  </div>'); 
+		  redirect('admin/pengguna');
+		}
 	}
 }
 

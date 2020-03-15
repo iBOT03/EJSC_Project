@@ -31,11 +31,28 @@ class EjscModel extends CI_Model {
         $this->db->where('NIK', $nik);
         return $this->db->delete("akun");
     }
+    //DELETE USER DATA
+    public function hapususer($nik) {
+        $this->load->database();
+        $this->db->where('NIK', $nik);
+        return $this->db->delete("akun");
+    }
     //UPDATE ADMIN DATA
     public function ubahadmin($data = array(), $nik) {
         $this->load->database();
         $this->db->where('NIK', $nik);
         return $this->db->update("akun", $data);
+    }
+    //UPDATE USER DATA
+    public function ubahuser($data = array(), $nik) {
+        $this->load->database();
+        $this->db->where('NIK', $nik);
+        return $this->db->update("akun", $data);
+    }
+    //GET KATEGORI KOMUNITAS
+    public function kategori(){
+        $this->load->database();
+        return $this->db->get("kategori_komunitas")->result();
     }
 
 }

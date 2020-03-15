@@ -42,6 +42,7 @@
               </a>
             </div>
             <div class="card-body">
+            <?php echo $this->session->userdata('Pesan');?>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -69,8 +70,17 @@
                             echo 'User';
                           } ?></td>
                       <td>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+                      <a href="<?php echo site_url('admin/pengguna/ubahpengguna/'.$row->NIK)?>"
+                           style="width:35px"
+                           class="btn btn-sm btn-info shadow-sm">
+                           <i class="fas fa-edit"></i>
+                        </a>
+                        <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')"
+                           href="<?php echo "pengguna/hapuspengguna/" . $row->NIK; ?>"
+                           style="width:35px"
+                           class="btn btn-sm btn-danger shadow-sm">
+                           <i class="fas fa-trash"></i>
+                        </a>
                       </td>
                     </tr>
                   <?php

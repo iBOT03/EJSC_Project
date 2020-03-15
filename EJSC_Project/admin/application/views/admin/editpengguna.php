@@ -29,8 +29,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <form method="post" action="<?= site_url('admin/pengguna/tambahpengguna')?>">
-                        <h1 class="h3 mb-2 text-gray-800">Tambah Data Pengguna</h1>
+                    <form method="post">
+                        <h1 class="h3 mb-2 text-gray-800">Ubah Data Pengguna</h1>
 
                         <div class="card shadow mb-4">
                             <div class="card-body">
@@ -46,6 +46,8 @@
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
                                                    maxlength="16"
+                                                   value="<?php echo $akun[0]->NIK; ?>"
+                                                   readonly
                                                    required>
                                         </div>
                                     </div>
@@ -60,6 +62,7 @@
                                                    placeholder="Masukkan Nama Lengkap"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="150"
+                                                   value="<?php echo $akun[0]->NAMA_LENGKAP; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -76,6 +79,7 @@
                                                    placeholder="Masukkan Email"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="100"
+                                                   value="<?php echo $akun[0]->EMAIL; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -90,6 +94,7 @@
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
                                                    maxlength="13"
+                                                   value="<?php echo $akun[0]->NO_TELEPON; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -103,6 +108,7 @@
                                            class="form-control bg-gray-200 border-0 small mb-3"
                                            placeholder="Masukkan Alamat"
                                            aria-describedby="basic-addon2"
+                                           value="<?php echo $akun[0]->ALAMAT; ?>"
                                            required>
                                 </div>
 
@@ -117,6 +123,7 @@
                                                    placeholder="Masukkan Komunitas"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="200"
+                                                   value="<?php echo $akun[0]->KOMUNITAS; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -126,7 +133,7 @@
                                             <select class="form-control bg-gray-200 border-0 small mb-3"
                                                     id="kategori_komunitas"
                                                     name="kategori_komunitas">
-                                                    <option value="-">haha</option>
+                                                    <option value=""><?php echo $akun[0]->KATEGORI_KOMUNITAS; ?></option>
                                             </select>
                                         </div>
                                     </div>
@@ -143,6 +150,7 @@
                                                    placeholder="Masukkan Password"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="16"
+                                                   value="<?php echo $akun[0]->PASSWORD; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -170,6 +178,7 @@
                                                    class="form-control bg-gray-200 border-0 small mb-3"
                                                    placeholder=""
                                                    aria-describedby="basic-addon2"
+                                                   value="<?php echo $akun[0]->FOTO_USER; ?>"
                                                    required>
                                         </div>
                                     </div>
@@ -180,7 +189,7 @@
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span class="text">Tambah Akun Pengguna</span>
+                                    <span class="text">Ubah Akun Pengguna</span>
                                 </button>
                                 <a href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
