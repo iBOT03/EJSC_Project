@@ -110,24 +110,23 @@
                                     <div class="col-sm-6">
                                         <p>Komunitas</p>
                                         <div class="input-group">
-                                            <input name="komunitas"
-                                                   id="komunitas"
-                                                   type="text"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Komunitas"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="200"
-                                                   required>
+                                            <select class="form-control bg-gray-200 border-0 small mb-3"
+                                                    id="komunitas"
+                                                    name="komunitas">
+                                                    <option value="-"></option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p>Kategori Komunitas</p>
+                                    <p>Upload Foto KTP</p>
                                         <div class="input-group">
-                                            <select class="form-control bg-gray-200 border-0 small mb-3"
-                                                    id="kategori_komunitas"
-                                                    name="kategori_komunitas">
-                                                    <option value="-">haha</option>
-                                            </select>
+                                            <input name="fotoktp"
+                                                   id="fotoktp"
+                                                   type="file"                                                   
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder=""
+                                                   aria-describedby="basic-addon2"
+                                                   required>
                                         </div>
                                     </div>
                                 </div>
@@ -159,20 +158,6 @@
                                                    required>
                                         </div>
                                     </div>                                
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <p>Upload Foto</p>
-                                        <div class="input-group">
-                                            <input name="foto"
-                                                   id="foto"
-                                                   type="file"                                                   
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder=""
-                                                   aria-describedby="basic-addon2"
-                                                   required>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <!-- <button type="submit">tambah</button> -->

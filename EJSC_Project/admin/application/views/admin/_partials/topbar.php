@@ -9,7 +9,7 @@
   <!-- Topbar Logo -->
   <a class="navbar-brand"
      href="<?php echo site_url('admin/dashboard') ?>">
-    <img src="<?= base_url('img/')?>logo.png" style="width: 130px"></img>
+    <img src="<?= base_url('img/logo.png')?>" style="width: 130px"></img>
   </a>
 
   <!-- Topbar Navbar -->
@@ -98,7 +98,7 @@
         </h6>
         <a class="dropdown-item d-flex align-items-center" href="#">
           <div class="dropdown-list-image mr-3">
-            <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+            <img class="rounded-circle" src="<?php echo base_url('img/user.png')?>" alt="">
             <div class="status-indicator bg-success"></div>
           </div>
           <div class="font-weight-bold">
@@ -108,7 +108,7 @@
         </a>
         <a class="dropdown-item d-flex align-items-center" href="#">
           <div class="dropdown-list-image mr-3">
-            <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+            <img class="rounded-circle" src="<?php echo base_url('img/user.png')?>" alt="">
             <div class="status-indicator"></div>
           </div>
           <div>
@@ -118,7 +118,7 @@
         </a>
         <a class="dropdown-item d-flex align-items-center" href="#">
           <div class="dropdown-list-image mr-3">
-            <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+            <img class="rounded-circle" src="<?php echo base_url('img/user.png')?>" alt="">
             <div class="status-indicator bg-warning"></div>
           </div>
           <div>
@@ -128,7 +128,7 @@
         </a>
         <a class="dropdown-item d-flex align-items-center" href="#">
           <div class="dropdown-list-image mr-3">
-            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+            <img class="rounded-circle" src="<?php echo base_url('img/user.png')?>" alt="">
             <div class="status-indicator bg-success"></div>
           </div>
           <div>
@@ -146,7 +146,7 @@
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small">Get session Nama&Foto Admin yg login</span>
-        <img class="img-profile rounded-circle" src="https://i.pinimg.com/474x/83/c0/0f/83c00f59d66869aa22d3bd5f35e26c6d.jpg">
+        <img class="img-profile rounded-circle" src="<?php echo base_url('img/user.png')?>">
       </a>
       <!-- Dropdown - User Information -->
       <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

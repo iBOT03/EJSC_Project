@@ -29,16 +29,16 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Data Booking</h1>
+          <h1 class="h3 mb-2 text-gray-800">Data Ruangan</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="#" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+            <a href="<?php echo site_url('admin/tambahruangan') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
               <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
               </span>
-              <span class="text"> Tambah Data</span>
+              <span class="text"> Tambah Ruangan</span>
             </a>
             </div>
             <div class="card-body">
@@ -46,14 +46,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Komunitas</th>
-                      <th>Nama Penanggung Jawab</th>
                       <th>Ruangan</th>
-                      <th>Tujuan</th>
-                      <th>Durasi</th>
-                      <th>Tanggal</th>
-                      <th>Peminjaman Alat</th>
-                      <th>Status</th>
+                      <th>Foto Ruangan</th>
+                      <th>Kapasitas</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
                   </thead>
@@ -62,14 +57,18 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
                       <td>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
+                      <a href="<?php echo site_url('admin/editruangan/')?>"
+                           style="width:35px"
+                           class="btn btn-sm btn-info shadow-sm">
+                           <i class="fas fa-edit"></i>
+                        </a>
+                        <a onclick="return confirm('Apakah Anda yakin untuk menghapus?')"
+                           href="<?php //echo "ruangan/hapusruangan/" . $row->ID_RUANGAN; ?>"
+                           style="width:35px"
+                           class="btn btn-sm btn-danger shadow-sm">
+                           <i class="fas fa-trash"></i>
+                        </a>
                       </td>
                     </tr>
                   </tbody>

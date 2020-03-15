@@ -47,9 +47,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 5px">No</th>
+                      <th style="width: 5px">NIK</th>
                       <th>Email</th>
                       <th>Nama</th>
+                      <th>Komunitas</th>
+                      <th>No. Telepon</th>
                       <th>Level</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
@@ -62,6 +64,8 @@
                       <td><?php echo $row->NIK; ?></td>
                       <td><?php echo $row->EMAIL; ?></td>
                       <td><?php echo $row->NAMA_LENGKAP; ?></td>
+                      <td><?php echo $row->KOMUNITAS; ?></td>
+                      <td><?php echo $row->NO_TELEPON; ?></td>
                       <td><?php if ($row->LEVEL == 1) {
                             echo 'Super Admin';
                           } elseif ($row->LEVEL == 2) {

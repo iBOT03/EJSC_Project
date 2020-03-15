@@ -172,8 +172,8 @@
                                     <div class="col-sm-6">
                                         <p>Upload Foto</p>
                                         <div class="input-group">
-                                            <input name="foto"
-                                                   id="foto"
+                                            <input name="fotopengguna"
+                                                   id="fotopengguna"
                                                    type="file"                                                   
                                                    class="form-control bg-gray-200 border-0 small mb-3"
                                                    placeholder=""
@@ -184,12 +184,11 @@
                                     </div>
                                 </div>
 
-                                <!-- <button type="submit">tambah</button> -->
                                 <button type="submit" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
-                                    <span class="text">Ubah Akun Pengguna</span>
+                                    <span class="text">Ubah Data Pengguna</span>
                                 </button>
                                 <a href="<?php echo site_url('admin/pengguna') ?>" class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">

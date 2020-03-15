@@ -29,29 +29,25 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Data Event</h1>
+          <h1 class="h3 mb-2 text-gray-800">Detail Booking</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/tambahevent') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-              <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="text"> Tambah Event</span>
-            </a>
-            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Judul</th>
-                      <th>Poster</th>
-                      <th>Penyelenggara</th>
+                      <th>Komunitas</th>
+                      <th>Nama Penanggung Jawab</th>
+                      <th>Ruangan</th>
+                      <th>Jumlah Peserta</th>
+                      <th>Tujuan</th>
+                      <th>Deskripsi Kegiatan</th>
                       <th>Tanggal</th>
-                      <th>Keterangan</th>
+                      <th>Durasi</th>
+                      <th>Peminjaman Alat</th>
+                      <th>Jumlah Peminjaman Alat</th>
                       <th>Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
@@ -65,8 +61,12 @@
                       <td></td>
                       <td></td>
                       <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td>
-                        <a href="<?php echo site_url('admin/editevent')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                        <a href="<?php echo site_url('admin/editbooking')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>

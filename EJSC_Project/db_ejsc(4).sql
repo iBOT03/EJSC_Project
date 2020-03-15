@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Mar 2020 pada 05.57
+-- Waktu pembuatan: 15 Mar 2020 pada 15.14
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -46,8 +46,21 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_USER`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `KATEGORI_KOMUNITAS`, `PASSWORD`) VALUES
-('', 2, 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '', '1234'),
-('1', 1, '', 'admin', 'admin@admin.com', '', '', '', '', 'admin');
+('1', 1, '', 'admin', 'admin@admin.com', '', '', '', '', 'admin'),
+('2', 2, 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '', '1234'),
+('3500000000000005', 3, '', 'Aku User', 'user@user.com', '123456789012', 'alamat user', 'komunitas user', 'kategori komunitas', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `alat`
+--
+
+CREATE TABLE `alat` (
+  `ID_ALAT` int(11) NOT NULL,
+  `NAMA_ALAT` varchar(100) NOT NULL,
+  `JUMLAH_ALAT` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -61,12 +74,14 @@ CREATE TABLE `booking` (
   `NOMOR_TELEPON` varchar(13) NOT NULL,
   `KOMUNITAS` varchar(200) NOT NULL,
   `RUANGAN` varchar(100) NOT NULL,
+  `JUMLAH_ORANG` int(3) NOT NULL,
   `TEMA_KEGIATAN` varchar(255) NOT NULL,
   `DESKRIPSI_KEGIATAN` varchar(255) NOT NULL,
   `DURASI` int(2) NOT NULL,
   `TANGGAL` date NOT NULL,
   `TANGGAL_KEMBALI` date NOT NULL,
   `PEMINJAMAN_ALAT` varchar(100) NOT NULL,
+  `JUMLAH_PEMINJAMAN_ALAT` int(3) NOT NULL,
   `STATUS` int(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -130,6 +145,29 @@ CREATE TABLE `kontak_kami` (
   `ALAMAT` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ruangan`
+--
+
+CREATE TABLE `ruangan` (
+  `ID_RUANGAN` int(11) NOT NULL,
+  `FOTO_RUANGAN` varchar(100) NOT NULL,
+  `NAMA_RUANGAN` varchar(100) NOT NULL,
+  `KAPASITAS` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ruangan`
+--
+
+INSERT INTO `ruangan` (`ID_RUANGAN`, `FOTO_RUANGAN`, `NAMA_RUANGAN`, `KAPASITAS`) VALUES
+(1, '', 'Meeting Room', 0),
+(2, '', 'Training Room', 0),
+(3, '', 'Conference Room', 0),
+(4, '', 'Co-Working Space', 0);
+
 --
 -- Indexes for dumped tables
 --
@@ -139,6 +177,12 @@ CREATE TABLE `kontak_kami` (
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`NIK`);
+
+--
+-- Indeks untuk tabel `alat`
+--
+ALTER TABLE `alat`
+  ADD PRIMARY KEY (`ID_ALAT`);
 
 --
 -- Indeks untuk tabel `booking`
@@ -165,8 +209,20 @@ ALTER TABLE `komunitas`
   ADD PRIMARY KEY (`ID_KOMUNITAS`);
 
 --
+-- Indeks untuk tabel `ruangan`
+--
+ALTER TABLE `ruangan`
+  ADD PRIMARY KEY (`ID_RUANGAN`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `alat`
+--
+ALTER TABLE `alat`
+  MODIFY `ID_ALAT` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `booking`
@@ -191,6 +247,12 @@ ALTER TABLE `kategori_komunitas`
 --
 ALTER TABLE `komunitas`
   MODIFY `ID_KOMUNITAS` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ruangan`
+--
+ALTER TABLE `ruangan`
+  MODIFY `ID_RUANGAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
