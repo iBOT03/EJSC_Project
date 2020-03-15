@@ -42,6 +42,7 @@
               </a>
             </div>
             <div class="card-body">
+              <?php echo $this->session->userdata('Pesan');?>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
