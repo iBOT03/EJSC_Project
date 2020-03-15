@@ -72,7 +72,10 @@ class Administrator extends CI_Controller {
 				echo "Data Gagal di Ubah";
 			}
 		}
+		
+
 		$this->load->view("admin/editadministrator", $data);
+		
 	}
 }
 
