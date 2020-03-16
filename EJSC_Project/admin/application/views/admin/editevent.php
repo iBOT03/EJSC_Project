@@ -40,6 +40,7 @@
                          class="form-control bg-gray-200 border-0 small mb-3"
                          placeholder="Masukkan Judul Event"
                          aria-describedby="basic-addon2"
+                         value="<?php echo $event[0]->JUDUL; ?>"
                          required>
                 </div>
 
@@ -72,31 +73,40 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-sm-6">
+              <div class="input-group">
                   <p>Tanggal</p>
                   <div class="input-group">
-                    <select class="form-control bg-gray-200 border-0 small mb-3"
-                            id="tanggal"
-                            name="tanggal">
-                      <option value="-"></option>
-                    </select>
+                    <input type="date"
+                          id="tanggal"
+                          name="tanggal"
+                          class="form-control bg-gray-200 border-0 small mb-3"
+                          placeholder="Masukkan Tanggal"
+                          aria-describedby="basic-addon2"
+                          required>
                   </div>
                 </div>
-              </div>
               
-              <p>Keterangan Event</p>
-                <form class="">
-                  <div class="input-group">
-                    <input id="keterangan"
-                           name="keterangan"
-                           type="text"
-                           class="form-control bg-gray-200 border-0 small mb-3"
-                           placeholder="Masukkan Keterangan Event"
-                           aria-describedby="basic-addon2"
-                           required>
-                  </div>
-                </form>
+                <p>Keterangan Event</p>
+              <div class="input-group">
+                <input id="keterangan"
+                       name="keterangan"
+                       type="text"
+                       class="form-control bg-gray-200 border-0 small mb-3"
+                       placeholder="Masukkan Keterangan Event"
+                       aria-describedby="basic-addon2"
+                       required>
+              </div>  
+
+              <p>Status</p>
+              <div class="input-group">
+                      <input name="status"
+                            id="status"
+                            type="text"
+                            class="form-control bg-gray-200 border-0 small mb-3"
+                            placeholder="Masukkan Status"
+                            aria-describedby="basic-addon2"
+                            required>
+                    </div>
 
               <button href="<?php echo site_url('admin/event') ?>" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
