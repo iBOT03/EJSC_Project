@@ -38,30 +38,22 @@
                                     <div class="col-sm-6">
                                         <p>NIK</p>
                                         <div class="input-group">
-                                            <input name="nik"
-                                                   id="nik"
-                                                   type="text"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan NIK"
-                                                   aria-describedby="basic-addon2"
-                                                   onkeypress="return hanyaAngka(event)"
-                                                   maxlength="16"
-                                                   required>
+                                            <input name="nik" id="nik" type="text"
+                                                class="form-control bg-gray-200 border-0 small mb-3"
+                                                placeholder="Masukkan NIK" aria-describedby="basic-addon2"
+                                                onkeypress="return hanyaAngka(event)">
                                         </div>
+                                        <?= form_error('nik', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <p>Nama Lengkap</p>
                                         <div class="input-group">
-                                            <input name="nama"
-                                                   id="nama"
-                                                   type="text"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Nama Lengkap"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="150"
-                                                   required>
+                                            <input name="nama" id="nama" type="text"
+                                                class="form-control bg-gray-200 border-0 small mb-3"
+                                                placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2">
                                         </div>
+                                        <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -69,54 +61,40 @@
                                     <div class="col-sm-6">
                                         <p>Email</p>
                                         <div class="input-group">
-                                            <input name="email"
-                                                   id="email"
-                                                   type="email"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Email"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="100"
-                                                   required>
+                                            <input name="email" id="email" type="text"
+                                                class="form-control bg-gray-200 border-0 small mb-3"
+                                                placeholder="Masukkan Email" aria-describedby="basic-addon2"
+                                                maxlength="100">
                                         </div>
+                                        <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Telepon/Whatsapp</p>
                                         <div class="input-group">
-                                            <input name="no_telpon"
-                                                   id="no_telpon"
-                                                   type="text"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan No Telepon/Whatsapp"
-                                                   aria-describedby="basic-addon2"
-                                                   onkeypress="return hanyaAngka(event)"
-                                                   maxlength="13"
-                                                   required>
+                                            <input name="no_telpon" id="no_telpon" type="text"
+                                                class="form-control bg-gray-200 border-0 small mb-3"
+                                                placeholder="Masukkan No Telepon/Whatsapp"
+                                                aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)">
                                         </div>
+                                        <?= form_error('no_telpon', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
                                 <p>Alamat</p>
                                 <div class="input-group">
-                                    <input name="alamat"
-                                           id="alamat"
-                                           type="text"
-                                           class="form-control bg-gray-200 border-0 small mb-3"
-                                           placeholder="Masukkan Alamat"
-                                           aria-describedby="basic-addon2"
-                                           required>
+                                    <input name="alamat" id="alamat" type="text"
+                                        class="form-control bg-gray-200 border-0 small mb-3"
+                                        placeholder="Masukkan Alamat" aria-describedby="basic-addon2">
                                 </div>
+                                <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Upload Foto</p>
                                         <div class="input-group">
-                                            <input name="foto"
-                                                   id="foto"
-                                                   type="file"                                                   
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder=""
-                                                   aria-describedby="basic-addon2"
-                                                   required>
+                                            <input name="foto" id="foto" type="file"
+                                                class="form-control bg-gray-200 border-0 small mb-3" placeholder=""
+                                                aria-describedby="basic-addon2">
                                         </div>
                                     </div>
                                 </div>
@@ -125,39 +103,33 @@
                                     <div class="col-sm-6">
                                         <p>Password</p>
                                         <div class="input-group">
-                                            <input name="password"
-                                                   id="password"
-                                                   type="password"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Masukkan Password"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="16"
-                                                   required>
+                                            <input name="password1" id="password" type="password"
+                                                class="form-control bg-gray-200 border-0 small mb-3"
+                                                placeholder="Masukkan Password" aria-describedby="basic-addon2">
                                         </div>
+                                        <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Konfirmasi Password</p>
                                         <div class="input-group">
-                                            <input name="konfirmasipassword"
-                                                   id="konfirmasipassword"
-                                                   type="password"
-                                                   class="form-control bg-gray-200 border-0 small mb-3"
-                                                   placeholder="Konfirmasi Password"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="16"
-                                                   required>
+                                            <input name="password2" id="password2" type="password"
+                                                class="form-control bg-gray-200 border-0 small mb-3"
+                                                placeholder="Konfirmasi Password" aria-describedby="basic-addon2">
                                         </div>
+                                        <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
                                 <!-- <button type="submit">tambah</button> -->
-                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>" class="btn btn-info btn-icon-split">
+                                <button type="submit" href="<?php echo site_url('admin/administrator') ?>"
+                                    class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
                                     </span>
                                     <span class="text">Tambah Administrator</span>
                                 </button>
-                                <a href="<?php echo site_url('admin/administrator') ?>" class="btn btn-danger btn-icon-split">
+                                <a href="<?php echo site_url('admin/administrator') ?>"
+                                    class="btn btn-danger btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-reply"></i>
                                     </span>
