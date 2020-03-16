@@ -89,12 +89,12 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <p>Upload Foto</p>
+                                        <p>Upload Foto KTP</p>
                                         <div class="input-group">
-                                            <input name="foto" id="foto" type="file"
+                                            <input name="fotoktp" id="fotoktp" type="file"
                                                 class="form-control bg-gray-200 border-0 small mb-3" placeholder=""
                                                 aria-describedby="basic-addon2"
-                                                value="<?php echo $akun[0]->FOTO_USER; ?>" required>
+                                                value="<?php echo $akun[0]->FOTO_KTP; ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -139,13 +139,7 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.container-fluid -->
 
-    </div>
-    <!-- End of Main Content -->
 
     <!-- Footer -->
     <?php $this->load->view("admin/_partials/footer.php") ?>

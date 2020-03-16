@@ -8,7 +8,7 @@ class EjscModel extends CI_Model {
     //GET ADMIN DATA
     public function getadmin() {
         $this->load->database();
-        return $this->db->get_where("akun", ['level' => 2])->result();
+        return $this->db->get_where("akun", ['level' => 1])->result();
     }
     //INSERT ADMIN DATA
     public function tambahadmin($data = array()) {
@@ -23,7 +23,7 @@ class EjscModel extends CI_Model {
     //GET USER DATA
     public function getuser() {
         $this->load->database();
-        return $this->db->get_where("akun", ['level' => 3])->result();
+        return $this->db->get_where("akun", ['level' => 2])->result();
     }
     //DELETE ADMIN DATA
     public function hapusadmin($nik) {

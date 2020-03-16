@@ -29,7 +29,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tambah Data Komunitas</h1>
+          <h1 class="h3 mb-2 text-gray-800">Ubah Data Komunitas</h1>
 
           <div class="card shadow mb-4">
             <div class="card-body">
@@ -162,7 +162,7 @@
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Tambah Komunitas</span>
+                <span class="text">Ubah Data Komunitas</span>
               </button>
               <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-danger btn-icon-split">
                 <span class="icon text-white-50">
