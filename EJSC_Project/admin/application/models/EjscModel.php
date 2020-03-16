@@ -55,4 +55,17 @@ class EjscModel extends CI_Model {
         return $this->db->get("kategori_komunitas")->result();
     }
 
+    //GET EVENT DATA
+    public function getevent() {
+        $this->load->database();
+        return $this->db->get("event")->result();
+    }
+
+    //GET DETAIL EVENT
+    public function detail_event($id){
+        $this->load->database();
+        $this->db->where('ID_EVENT', $id);
+        return $this->db->get("event")->result();
+    }
+
 }
