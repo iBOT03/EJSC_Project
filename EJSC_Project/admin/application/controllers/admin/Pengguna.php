@@ -13,6 +13,13 @@ class Pengguna extends CI_Controller {
 	}
 
 	public function tambahpengguna(){
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[16]|matches[password2]');
+		$this->form_validation->set_rules('password2', 'Kofirmasi Password', 'required|trim|matches[password1]');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[akun.EMAIL]');
+		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|max_length[16]|is_unique[akun.NIK]');
+		$this->form_validation->set_rules('nama', 'Nama', 'required|trim|max_length[100]');
+		$this->form_validation->set_rules('no_telpon', 'No Telepon ', 'required|trim|max_length[13]|numeric');
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 		$kategori['KATEGORI'] = $this->EjscModel->kategori();
 		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambahpengguna(array(

@@ -94,7 +94,7 @@
                                         <div class="input-group">
                                             <input name="foto" id="foto" type="file"
                                                 class="form-control bg-gray-200 border-0 small mb-3" placeholder=""
-                                                aria-describedby="basic-addon2">
+                                                aria-describedby="basic-addon2" required>
                                         </div>
                                     </div>
                                 </div>
