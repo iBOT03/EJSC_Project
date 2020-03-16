@@ -55,15 +55,18 @@
                       <th>Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
+                  <?php
+                  foreach ($event as $row){
+                    ?>
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?= $row->ID_EVENT; ?></td>
+                      <td><?= $row->JUDUL; ?></td>
+                      <td><?= $row->FOTO; ?></td>
+                      <td><?= $row->PENYELENGGARA; ?></td>
+                      <td><?= $row->WAKTU; ?></td>
+                      <td><?= $row->KETERANGAN; ?></td>
                       <td></td>
                       <td>
                         <a href="<?php echo site_url('admin/editevent')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
@@ -71,6 +74,9 @@
                       </td>
                     </tr>
                   </tbody>
+                  <?php
+                  }
+                  ?>
                 </table>
               </div>
             </div>
