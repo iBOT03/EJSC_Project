@@ -66,14 +66,21 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Data Event
+        Event
       </div>
 
-      <!-- Nav Item - Data Event -->
+      <!-- Nav Item - Tentang Kami Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/event') ?>">
-          <i class="fas fa-fw fa-calendar-alt"></i>
-          <span>Data Event</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-info"></i>
+          <span>Event</span>
+        </a>
+        <div id="collapseEvent" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="<?php echo site_url('admin/event') ?>">Event</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/seminar') ?>">Seminar</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->

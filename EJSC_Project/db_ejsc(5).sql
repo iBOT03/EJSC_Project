@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Mar 2020 pada 15.14
+-- Waktu pembuatan: 16 Mar 2020 pada 09.09
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -30,14 +30,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `akun` (
   `NIK` varchar(16) NOT NULL,
-  `LEVEL` int(1) NOT NULL COMMENT '1.SuperAdmin, 2.Admin, 3.User',
-  `FOTO_USER` varchar(100) NOT NULL,
+  `LEVEL` varchar(1) NOT NULL COMMENT '1.Admin, 2.User',
+  `FOTO_KTP` varchar(100) NOT NULL,
   `NAMA_LENGKAP` varchar(150) NOT NULL,
   `EMAIL` varchar(100) NOT NULL,
   `NO_TELEPON` varchar(13) NOT NULL,
   `ALAMAT` text NOT NULL,
   `KOMUNITAS` varchar(200) NOT NULL,
-  `KATEGORI_KOMUNITAS` varchar(200) NOT NULL,
   `PASSWORD` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,10 +44,10 @@ CREATE TABLE `akun` (
 -- Dumping data untuk tabel `akun`
 --
 
-INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_USER`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `KATEGORI_KOMUNITAS`, `PASSWORD`) VALUES
-('1', 1, '', 'admin', 'admin@admin.com', '', '', '', '', 'admin'),
-('2', 2, 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '', '1234'),
-('3500000000000005', 3, '', 'Aku User', 'user@user.com', '123456789012', 'alamat user', 'komunitas user', 'kategori komunitas', '1234');
+INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `PASSWORD`) VALUES
+('1', '1', '', 'admin', 'admin@admin.com', '', '', '', 'admin'),
+('2', '1', 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '1234'),
+('3500000000000005', '2', '', 'Aku User', 'user@user.com', '123456789012', 'alamat user', 'komunitas user', '1234');
 
 -- --------------------------------------------------------
 
@@ -77,12 +76,13 @@ CREATE TABLE `booking` (
   `JUMLAH_ORANG` int(3) NOT NULL,
   `TEMA_KEGIATAN` varchar(255) NOT NULL,
   `DESKRIPSI_KEGIATAN` varchar(255) NOT NULL,
-  `DURASI` int(2) NOT NULL,
+  `DURASI` time NOT NULL,
   `TANGGAL` date NOT NULL,
   `TANGGAL_KEMBALI` date NOT NULL,
   `PEMINJAMAN_ALAT` varchar(100) NOT NULL,
   `JUMLAH_PEMINJAMAN_ALAT` int(3) NOT NULL,
-  `STATUS` int(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
+  `SURAT_PENGAJUAN` varchar(255) NOT NULL,
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -98,7 +98,7 @@ CREATE TABLE `event` (
   `PENYELENGGARA` varchar(255) NOT NULL,
   `WAKTU` datetime NOT NULL,
   `KETERANGAN` varchar(255) NOT NULL,
-  `STATUS` int(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -168,6 +168,22 @@ INSERT INTO `ruangan` (`ID_RUANGAN`, `FOTO_RUANGAN`, `NAMA_RUANGAN`, `KAPASITAS`
 (3, '', 'Conference Room', 0),
 (4, '', 'Co-Working Space', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `seminar`
+--
+
+CREATE TABLE `seminar` (
+  `ID_SEMINAR` int(11) NOT NULL,
+  `JUDUL` varchar(255) NOT NULL,
+  `FOTO` varchar(255) NOT NULL,
+  `PENYELENGGARA` varchar(255) NOT NULL,
+  `WAKTU` datetime NOT NULL,
+  `KETERANGAN` varchar(255) NOT NULL,
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -215,6 +231,12 @@ ALTER TABLE `ruangan`
   ADD PRIMARY KEY (`ID_RUANGAN`);
 
 --
+-- Indeks untuk tabel `seminar`
+--
+ALTER TABLE `seminar`
+  ADD PRIMARY KEY (`ID_SEMINAR`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -253,6 +275,12 @@ ALTER TABLE `komunitas`
 --
 ALTER TABLE `ruangan`
   MODIFY `ID_RUANGAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `seminar`
+--
+ALTER TABLE `seminar`
+  MODIFY `ID_SEMINAR` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
