@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Mar 2020 pada 09.09
+-- Waktu pembuatan: 16 Mar 2020 pada 09.12
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -124,6 +124,7 @@ CREATE TABLE `komunitas` (
   `EMAIL` varchar(150) NOT NULL,
   `NAMA` varchar(255) NOT NULL,
   `KATEGORI` varchar(100) NOT NULL,
+  `DESKRIPSI_KOMUNITAS` text NOT NULL,
   `NAMA_KETUA` varchar(150) NOT NULL,
   `ALAMAT` text NOT NULL,
   `NO_TELEPON` varchar(13) NOT NULL,
