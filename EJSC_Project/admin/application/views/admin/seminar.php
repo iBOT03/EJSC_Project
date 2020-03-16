@@ -29,16 +29,16 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Data Komunitas</h1>
+          <h1 class="h3 mb-2 text-gray-800">Data Seminar</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/tambahkomunitas') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+            <a href="<?php echo site_url('admin/tambahseminar') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
               <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
               </span>
-              <span class="text"> Tambah Data</span>
+              <span class="text"> Tambah Seminar</span>
             </a>
             </div>
             <div class="card-body">
@@ -46,17 +46,13 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 5px">No</th>
-                      <th>Nama Komunitas</th>
-                      <th>Logo</th>
-                      <th>Email</th>
-                      <th>Kategori</th>
-                      <th>Nama Ketua</th>
-                      <th>Alamat</th>
-                      <th>No.Telepon</th>
-                      <th>Twitter</th>
-                      <th>Facebook</th>
-                      <th>Instagram</th>
+                      <th style="width: 10px">No</th>
+                      <th>Judul</th>
+                      <th>Poster</th>
+                      <th>Penyelenggara</th>
+                      <th>Tanggal</th>
+                      <th>Keterangan</th>
+                      <th>Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
                   </thead>
@@ -69,12 +65,8 @@
                       <td></td>
                       <td></td>
                       <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
                       <td>
-                        <a href="<?php echo site_url('admin/editkomunitas')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                        <a href="<?php echo site_url('admin/editseminar')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>

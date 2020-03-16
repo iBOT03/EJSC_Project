@@ -98,13 +98,7 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.container-fluid -->
 
-    </div>
-    <!-- End of Main Content -->
 
     <!-- Footer -->
     <?php $this->load->view("admin/_partials/footer.php") ?>

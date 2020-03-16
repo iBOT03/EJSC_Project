@@ -29,7 +29,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <form method="post" action="<?= site_url('admin/pengguna/tambahpengguna')?>">
+                    <form method="post" action="<?= site_url('admin/jadwalbooking/tambahbooking')?>">
                         <h1 class="h3 mb-2 text-gray-800">Tambah Booking</h1>
 
                         <div class="card shadow mb-4">
@@ -166,6 +166,21 @@
                                     </div>               
                                 </div>
 
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <p>Upload Surat Pengajuan Komunitas</p>
+                                        <div class="input-group">
+                                            <input name="suratpengajuan"
+                                                   id="suratpengajuan"
+                                                   type="file"                                                   
+                                                   class="form-control bg-gray-200 border-0 small mb-3"
+                                                   placeholder=""
+                                                   aria-describedby="basic-addon2"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <button type="submit" class="btn btn-info btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-plus"></i>
@@ -179,17 +194,15 @@
                                     <span class="text">Kembali</span>
                                 </a>
                             </div>
+                            <!-- Card Body -->
                         </div>
+                        <!-- Card -->
                     </form>
                 </div>
-            </div>
-        </div>
-        <!-- /.card -->
-    </div>
-    <!-- /.container-fluid -->
+                <!-- /.container-fluid -->
 
-    </div>
-    <!-- End of Main Content -->
+            </div>
+            <!-- End of Main Content -->
 
     <!-- Footer -->
     <?php $this->load->view("admin/_partials/footer.php") ?>
