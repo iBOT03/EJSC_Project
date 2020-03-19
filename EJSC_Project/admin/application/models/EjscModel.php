@@ -54,5 +54,4 @@ class EjscModel extends CI_Model {
         $this->load->database();
         return $this->db->get("kategori_komunitas")->result();
     }
-
 }
