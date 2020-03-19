@@ -29,16 +29,16 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Data Event</h1>
+          <h1 class="h3 mb-2 text-gray-800">Data Seminar</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/tambahevent') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+            <a href="<?php echo site_url('admin/tambahseminar') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
               <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
               </span>
-              <span class="text"> Tambah Event</span>
+              <span class="text"> Tambah Seminar</span>
             </a>
             </div>
             <div class="card-body">
@@ -55,28 +55,22 @@
                       <th>Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
-                  <?php
-                  foreach ($event as $row){
-                    ?>
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?= $row->ID_EVENT; ?></td>
-                      <td><?= $row->JUDUL; ?></td>
-                      <td><?= $row->FOTO; ?></td>
-                      <td><?= $row->PENYELENGGARA; ?></td>
-                      <td><?= $row->WAKTU; ?></td>
-                      <td><?= $row->KETERANGAN; ?></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td></td>
                       <td>
-                        <a href="<?php echo site_url('admin/editevent')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                        <a href="<?php echo site_url('admin/editseminar')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   </tbody>
-                  <?php
-                  }
-                  ?>
                 </table>
               </div>
             </div>

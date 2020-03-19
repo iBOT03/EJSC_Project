@@ -28,19 +28,17 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-        <form method="post" action="<?= site_url('admin/event/tambahevent')?>">
-
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tambah Data Event</h1>
+          <h1 class="h3 mb-2 text-gray-800">Tambah Data Seminar</h1>
           <div class="card shadow mb-4">
             <div class="card-body">
-              <p>Judul Event</p>
+              <p>Judul Seminar</p>
               <div class="input-group">
-                <input name="judulevent"
-                       id="judulevent"
+                <input name="judulseminar"
+                       id="judulseminar"
                        type="text"
                        class="form-control bg-gray-200 border-0 small mb-3"
-                       placeholder="Masukkan Judul Event"
+                       placeholder="Masukkan Judul Seminar"
                        aria-describedby="basic-addon2"
                        required>
               </div>
@@ -61,10 +59,10 @@
                   </form>
                 </div>
                 <div class="col-sm-6">
-                  <p>Upload Poster Event</p>
+                  <p>Upload Poster Seminar</p>
                   <div class="input-group">
-                    <input name="posterevent"
-                          id="posterevent"
+                    <input name="posterseminar"
+                          id="posterseminar"
                           type="file"                                                   
                           class="form-control bg-gray-200 border-0 small mb-3"
                           placeholder=""
@@ -74,48 +72,37 @@
                 </div>
               </div>
 
-                <div class="input-group">
+              <div class="row">
+                <div class="col-sm-6">
                   <p>Tanggal</p>
                   <div class="input-group">
-                    <input type="date"
-                          id="tanggal"
-                          name="tanggal"
-                          class="form-control bg-gray-200 border-0 small mb-3"
-                          placeholder="Masukkan Tanggal"
-                          aria-describedby="basic-addon2"
-                          required>
+                    <select class="form-control bg-gray-200 border-0 small mb-3"
+                            id="tanggal"
+                            name="tanggal">
+                      <option value="-"></option>
+                    </select>
                   </div>
                 </div>
+              </div>
               
-              <p>Keterangan Event</p>
+              <p>Keterangan Seminar</p>
               <div class="input-group">
                 <input id="keterangan"
                        name="keterangan"
                        type="text"
                        class="form-control bg-gray-200 border-0 small mb-3"
-                       placeholder="Masukkan Keterangan Event"
+                       placeholder="Masukkan Keterangan Seminar"
                        aria-describedby="basic-addon2"
                        required>
               </div>
 
-              <p>Status</p>
-              <div class="input-group">
-                      <input name="status"
-                            id="status"
-                            type="text"
-                            class="form-control bg-gray-200 border-0 small mb-3"
-                            placeholder="Masukkan Status"
-                            aria-describedby="basic-addon2"
-                            required>
-                    </div>
-
-              <button type="submit" class="btn btn-info btn-icon-split">
+              <button href="<?php echo site_url('admin/seminar') ?>" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Tambah Event</span>
+                <span class="text">Tambah Seminar</span>
               </button>
-              <a href="<?php echo site_url('admin/event') ?>" class="btn btn-danger btn-icon-split">
+              <a href="<?php echo site_url('admin/seminar') ?>" class="btn btn-danger btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-reply"></i>
                 </span>
@@ -125,8 +112,6 @@
             </div>
           </div>
           <!-- /.card -->
-
-        </form>
 
         </div>
         <!-- /.container-fluid -->

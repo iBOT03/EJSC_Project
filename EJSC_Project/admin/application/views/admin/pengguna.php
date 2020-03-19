@@ -67,12 +67,11 @@
                       <td><?php echo $row->KOMUNITAS; ?></td>
                       <td><?php echo $row->NO_TELEPON; ?></td>
                       <td><?php if ($row->LEVEL == 1) {
-                            echo 'Super Admin';
-                          } elseif ($row->LEVEL == 2) {
                             echo 'Admin';
-                          } elseif ($row->LEVEL == 3) {
+                          } elseif ($row->LEVEL == 2) {
                             echo 'User';
-                          } ?></td>
+                          }
+                          ?></td>
                       <td>
                       <a href="<?php echo site_url('admin/pengguna/ubahpengguna/'.$row->NIK)?>"
                            style="width:35px"

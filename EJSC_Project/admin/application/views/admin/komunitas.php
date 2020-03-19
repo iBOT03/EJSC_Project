@@ -74,7 +74,7 @@
                       <td></td>
                       <td></td>
                       <td>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                        <a href="<?php echo site_url('admin/editkomunitas')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
                         <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>

@@ -88,17 +88,11 @@
       </div>
       <!-- /.card -->
 
-    </div>
-    <!-- /.container-fluid -->
-
-  </div>
-  <!-- End of Main Content -->
-
   <!-- Footer -->
   <?php $this->load->view("admin/_partials/footer.php") ?>
 
-</div>
-<!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Content Wrapper -->
 
   </div>
   <!-- End of Page Wrapper -->
