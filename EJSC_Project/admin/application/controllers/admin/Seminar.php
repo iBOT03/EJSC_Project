@@ -6,7 +6,15 @@ class Seminar extends CI_Controller {
 	}
 
 	public function index() {
-        $this->load->view("admin/seminar");
+        $this->load->view("admin/seminar/seminar");
+	}
+
+	public function edit() {
+        $this->load->view("admin/seminar/editseminar");
+	}
+
+	public function tambah() {
+        $this->load->view("admin/seminar/tambahseminar");
 	}
 }
 

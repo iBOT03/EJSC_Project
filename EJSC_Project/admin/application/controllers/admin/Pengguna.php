@@ -9,10 +9,10 @@ class Pengguna extends CI_Controller {
 	public function index() {
 		$data = array ("akun" => $this->EjscModel->getuser());
 
-        $this->load->view("admin/pengguna", $data);
+        $this->load->view("admin/pengguna/pengguna", $data);
 	}
 
-	public function tambahpengguna(){
+	public function tambah(){
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[16]|matches[password2]');
 		$this->form_validation->set_rules('password2', 'Kofirmasi Password', 'required|trim|matches[password1]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[akun.EMAIL]');
@@ -38,21 +38,21 @@ class Pengguna extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menambahkan Akun!
 			  </div>'); 
-			  redirect('admin/pengguna');
+			  redirect('admin/pengguna/pengguna');
 				
 			} else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Menambahkan Akun!
 			  </div>'); 
-			  redirect('admin/pengguna');
+			  redirect('admin/pengguna/pengguna');
 			}
 		}
-		$this->load->view("admin/tambahpengguna", $kategori);
+		$this->load->view("admin/pengguna/tambahpengguna", $kategori);
 	}
 
-	public function ubahpengguna($nik) {
+	public function edit($nik) {
 		$data["akun"] = $this->EjscModel->detail($nik);
-		$this->load->view("admin/editpengguna", $data);
+		$this->load->view("admin/pengguna/editpengguna", $data);
 		if($this->input->method() == "post") {
 			$update = $this->EjscModel->ubahuser(array(
 				'NIK' => $this->input->post("nik"),
@@ -70,28 +70,28 @@ class Pengguna extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Mengubah Akun!
 			  </div>'); 
-			  redirect('admin/pengguna');
+			  redirect('admin/pengguna/pengguna');
 			}else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Mengubah Akun!
 			  </div>'); 
-			  redirect('admin/pengguna');
+			  redirect('admin/pengguna/pengguna');
 			}
 		}
 	}
 
-	public function hapuspengguna($nik) {
+	public function hapus($nik) {
         $hapus = $this->EjscModel->hapususer($nik);
         if ($hapus) {
             $this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menghapus Akun!
 			  </div>'); 
-			  redirect('admin/pengguna');
+			  redirect('admin/pengguna/pengguna');
         } else {
 			$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 			Gagal Menghapus Akun!
 		  </div>'); 
-		  redirect('admin/pengguna');
+		  redirect('admin/pengguna/pengguna');
 		}
 	}
 }

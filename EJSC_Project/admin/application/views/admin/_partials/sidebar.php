@@ -41,9 +41,16 @@
 
       <!-- Nav Item - Data Komunitas -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/komunitas') ?>">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKomunitas" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-users"></i>
-          <span>Data Komunitas</span></a>
+          <span>Komunitas</span>
+        </a>
+        <div id="collapseKomunitas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="<?php echo site_url('admin/komunitas') ?>">Data Komunitas</a>
+            <a class="collapse-item" href="<?php echo site_url('admin/komunitas/kategori') ?>">Kategori Komunitas</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
@@ -56,7 +63,7 @@
 
       <!-- Nav Item - Jadwal Booking -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('admin/jadwalbooking') ?>">
+        <a class="nav-link" href="<?php echo site_url('admin/booking') ?>">
           <i class="fas fa-fw fa-calendar-alt"></i>
           <span>Jadwal Booking</span></a>
       </li>
@@ -69,10 +76,10 @@
         Event
       </div>
 
-      <!-- Nav Item - Tentang Kami Collapse Menu -->
+      <!-- Nav Item - Event Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-info"></i>
+          <i class="fas fa-fw fa-calendar-alt"></i>
           <span>Event</span>
         </a>
         <div id="collapseEvent" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -88,14 +95,14 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Tentang Kami
+        Master Data
       </div>
 
       <!-- Nav Item - Tentang Kami Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTentang" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-info"></i>
-          <span>Tentang Kami</span>
+          <span>Master Data</span>
         </a>
         <div id="collapseTentang" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">

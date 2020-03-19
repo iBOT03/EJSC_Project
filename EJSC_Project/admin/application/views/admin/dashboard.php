@@ -125,23 +125,23 @@
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-info">Grafik Kunjungan</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <!-- <div class="dropdown no-arrow"> -->
+                    <!-- <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    </a> -->
+                    <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Filter Berdasarkan:</div>
                       <a class="dropdown-item" href="#">Tahun</a>
                       <a class="dropdown-item" href="#">Bulan</a>
                       <a class="dropdown-item" href="#">Minggu</a>
                       <a class="dropdown-item" href="#">Hari</a>
-                    </div>
-                  </div>
+                    </div> -->
+                  <!-- </div> -->
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <canvas id="grafikPengunjung"></canvas>
                   </div>
                 </div> <!-- End Chart -->
               </div>

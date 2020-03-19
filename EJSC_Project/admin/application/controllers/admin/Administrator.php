@@ -13,7 +13,7 @@ class Administrator extends CI_Controller
 	{
 		$data = array("akun" => $this->EjscModel->getadmin());
 
-		$this->load->view("admin/administrator", $data);
+		$this->load->view("admin/administrator/administrator", $data);
 	}
 
 	// public function detail($nik)
@@ -22,7 +22,7 @@ class Administrator extends CI_Controller
 	//     $this->load->view("detailview", $data);
 	// }
 
-	public function tambahadministrator()
+	public function tambah()
 	{
 		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[16]|matches[password2]');
 		$this->form_validation->set_rules('password2', 'Kofirmasi Password', 'required|trim|matches[password1]');
@@ -33,7 +33,7 @@ class Administrator extends CI_Controller
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 	
 		if ($this->form_validation->run() == false) {
-			$this->load->view("admin/tambahadministrator");
+			$this->load->view("admin/administrator/tambahadministrator");
 			
 		} else {
 			if ($this->input->method() == "post") {
@@ -53,35 +53,35 @@ class Administrator extends CI_Controller
 					$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menambahkan Akun!
 			  </div>');
-					redirect('admin/administrator');
+					redirect('admin/administrator/administrator');
 				} else {
 					$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Menambahkan Akun!
 			  </div>');
-					redirect('admin/administrator');
+					redirect('admin/administrator/administrator');
 				}
 			}
 		}
 	}
 
-	public function hapusadmin($nik)
+	public function hapus($nik)
 	{
-		$autoReload = base_url("admin/administrator");
+		$autoReload = base_url("admin/administrator/administrator");
 		$hapus = $this->EjscModel->hapusadmin($nik);
 		if ($hapus) {
 			$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menghapus Akun!
 			  </div>');
-			redirect('admin/administrator');
+			redirect('admin/administrator/administrator');
 		} else {
 			$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 			Gagal Menghapus Akun!
 		  </div>');
-			redirect('admin/administrator');
+			redirect('admin/administrator/administrator');
 		}
 	}
 
-	public function ubahadmin($nik)
+	public function edit($nik)
 	{
 		$data["akun"] = $this->EjscModel->detail($nik);
 		if ($this->input->method() == "post") {
@@ -101,14 +101,14 @@ class Administrator extends CI_Controller
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Mengubah Akun!
 			  </div>');
-				redirect('admin/administrator');
+				redirect('admin/administrator/administrator');
 			} else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Mengubah Akun!
 			  </div>');
-				redirect('admin/administrator');
+				redirect('admin/administrator/administrator');
 			}
 		}
-		$this->load->view("admin/editadministrator", $data);
+		$this->load->view("admin/administrator/editadministrator", $data);
 	}
 }

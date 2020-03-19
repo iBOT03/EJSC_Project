@@ -9,10 +9,10 @@ class Event extends CI_Controller {
 	public function index() {
 		$data = array ("event" => $this->EjscModel->getevent());
 
-        $this->load->view("admin/event", $data);
+        $this->load->view("admin/acara/event", $data);
 	}
 
-	public function tambahevent(){
+	public function tambah(){
 		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambahevent(array(
 				"ID_EVENT" => '',
@@ -27,21 +27,21 @@ class Event extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menambahkan Event!
 			  </div>'); 
-			  redirect('admin/event');
+			  redirect('admin/acara/event');
 				
 			} else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Menambahkan Event!
 			  </div>'); 
-			  redirect('admin/event');
+			  redirect('admin/acara/event');
 			}
 		}
-		$this->load->view("admin/tambahevent");
+		$this->load->view("admin/acara/tambahevent");
 	}
 
-	public function ubahevent($id) {
+	public function edit($id) {
 		$data["event"] = $this->EjscModel->detail($id);
-		$this->load->view("admin/editevent", $data);
+		$this->load->view("adminacara//editevent", $data);
 		if($this->input->method() == "post") {
 			$update = $this->EjscModel->ubahevent(array(
 				'JUDUL' => $this->input->post("Judul"),
@@ -55,28 +55,28 @@ class Event extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Mengubah Akun!
 			  </div>'); 
-			  redirect('admin/event');
+			  redirect('admin/acara/event');
 			}else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Mengubah Akun!
 			  </div>'); 
-			  redirect('admin/event');
+			  redirect('admin/acara/event');
 			}
 		}
 	}
 
-	public function hapusevent($id) {
+	public function hapus($id) {
         $hapus = $this->EjscModel->hapusevent($id);
         if ($hapus) {
             $this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menghapus Akun!
 			  </div>'); 
-			  redirect('admin/event');
+			  redirect('admin/acara/event');
         } else {
 			$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 			Gagal Menghapus Akun!
 		  </div>'); 
-		  redirect('admin/event');
+		  redirect('admin/acara/event');
 		}
 	}
 }

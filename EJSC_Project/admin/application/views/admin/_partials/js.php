@@ -20,3 +20,9 @@
   <script src="<?php echo base_url('js/demo/chart-area-demo.js') ?>"></script>
   <script src="<?php echo base_url('js/demo/chart-pie-demo.js') ?>"></script>
   <script src="<?php echo base_url('js/demo/chart-bar-demo.js') ?>"></script>
+
+  <!-- Date Picker -->
+  <script type="text/javascript" src="<?php echo base_url('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js') ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js') ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/datepicker/daterangepicker.js') ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('assets/datepicker/daterangepicker.css') ?>"></script>
