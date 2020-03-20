@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2020 at 11:59 AM
+-- Generation Time: Mar 20, 2020 at 12:25 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -186,6 +186,8 @@ CREATE TABLE `kontak_kami` (
   `EMAIL` varchar(100) NOT NULL,
   `NOMOR_TELEPON` varchar(13) NOT NULL,
   `WHATSAPP` varchar(13) NOT NULL,
+  `FACEBOOK` varchar(100) NOT NULL,
+  `INSTAGRAM` varchar(100) NOT NULL,
   `ALAMAT` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -193,8 +195,8 @@ CREATE TABLE `kontak_kami` (
 -- Dumping data for table `kontak_kami`
 --
 
-INSERT INTO `kontak_kami` (`EMAIL`, `NOMOR_TELEPON`, `WHATSAPP`, `ALAMAT`) VALUES
-('ejsc@gmail.com', '081', '081', 'Jl. Kalimantan');
+INSERT INTO `kontak_kami` (`EMAIL`, `NOMOR_TELEPON`, `WHATSAPP`, `FACEBOOK`, `INSTAGRAM`, `ALAMAT`) VALUES
+('ejsc@gmail.com', '081', '081', '', '', 'Jl. Kalimantan');
 
 -- --------------------------------------------------------
 
