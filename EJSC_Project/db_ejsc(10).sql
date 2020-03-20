@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2020 at 12:25 PM
+-- Generation Time: Mar 20, 2020 at 01:32 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -45,10 +45,10 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `PASSWORD`) VALUES
-('0000000000000000', '2', 'Logo Politeknik Negeri Jember.png', '000', '000@gmail.com', '0000000000000', 'jember', '-', '0000000000'),
-('1234567890098', '1', '', 'Tyo', 'tyo@gmail.com', '', '', '', 'admin'),
+('1', '1', '', 'Tyo', 'tyo@gmail.com', '', '', '', 'admin'),
 ('2', '1', 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '1234'),
-('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', 'komunitas user', '1234');
+('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', 'komunitas user', '1234'),
+('80913485901', '1', '1.jpg', 'ryan', 'admin@admin.com', '213131', '1321', '213123', 'admin');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,7 @@ CREATE TABLE `alat` (
 --
 
 INSERT INTO `alat` (`ID_ALAT`, `NAMA_ALAT`, `JUMLAH_ALAT`) VALUES
-(1, 'laptop', 15),
+(1, 'gitar', 3),
 (2, 'viewer', 2);
 
 -- --------------------------------------------------------
@@ -99,9 +99,9 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`ID_BOOKING`, `NAMA`, `NOMOR_TELEPON`, `KOMUNITAS`, `RUANGAN`, `JUMLAH_ORANG`, `TEMA_KEGIATAN`, `DESKRIPSI_KEGIATAN`, `DURASI`, `TANGGAL`, `TANGGAL_KEMBALI`, `PEMINJAMAN_ALAT`, `JUMLAH_PEMINJAMAN_ALAT`, `SURAT_PENGAJUAN`, `STATUS`) VALUES
-(1, 'yudha', '081252989930', 'nekad dev', '', 4, 'meeting', 'membuat app', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '1'),
-(2, 'ryan', '081', 'nekad', '', 4, 'meet', 'meet', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '2'),
-(3, 'andre', '081', 'nekad', '', 4, 'meet', 'me', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '3');
+(1, 'yudha', '081252989930', '', '', 4, 'ngoding', 'mabar', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '1'),
+(2, 'ryan', '081', '', '', 4, 'mabar', 'ngoding', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '2'),
+(3, 'andre', '081', '', '', 4, 'mabar', 'mabar', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '3');
 
 -- --------------------------------------------------------
 
@@ -126,8 +126,8 @@ CREATE TABLE `event` (
 
 INSERT INTO `event` (`ID_EVENT`, `JUDUL`, `FOTO`, `PENYELENGGARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `KETERANGAN`, `STATUS`) VALUES
 (1, 'Lomba Smart App', '', 'EJSC', '2020-03-19', '0000-00-00', '', '1'),
-(2, 'mabar', '', 'nekad', '2020-03-20', '0000-00-00', '', '2'),
-(3, 'ngoding', '', 'nekad', '2020-03-20', '0000-00-00', '', '3');
+(2, 'ngoding', '', 'nekad', '2020-03-20', '2020-03-20', '', '2'),
+(3, 'mabar', '', 'nekad', '2020-03-20', '2020-03-20', '', '3');
 
 -- --------------------------------------------------------
 
@@ -145,8 +145,8 @@ CREATE TABLE `kategori_komunitas` (
 --
 
 INSERT INTO `kategori_komunitas` (`ID_KATEGORI`, `KATEGORI`) VALUES
-(1, 'musik'),
-(2, 'coding');
+(1, 'Musician'),
+(2, 'Pengusaha');
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE `komunitas` (
   `LOGO` varchar(150) NOT NULL,
   `EMAIL` varchar(150) NOT NULL,
   `NAMA` varchar(255) NOT NULL,
-  `KATEGORI` varchar(100) NOT NULL,
+  `ID_KATEGORI` varchar(100) NOT NULL,
   `DESKRIPSI_KOMUNITAS` text NOT NULL,
   `NAMA_KETUA` varchar(150) NOT NULL,
   `ALAMAT` text NOT NULL,
@@ -173,8 +173,10 @@ CREATE TABLE `komunitas` (
 -- Dumping data for table `komunitas`
 --
 
-INSERT INTO `komunitas` (`ID_KOMUNITAS`, `LOGO`, `EMAIL`, `NAMA`, `KATEGORI`, `DESKRIPSI_KOMUNITAS`, `NAMA_KETUA`, `ALAMAT`, `NO_TELEPON`, `TWITTER`, `FACEBOOK`, `INSTAGRAM`) VALUES
-(1, '', 'nekad@dev.com', 'NEKAD Dev', '', 'Nekad ngoding', 'Ryan Hartadi', 'Jl. Kalimantan Gd. EJSC Bakorwil V Jember', '081252989930', '', '', '');
+INSERT INTO `komunitas` (`ID_KOMUNITAS`, `LOGO`, `EMAIL`, `NAMA`, `ID_KATEGORI`, `DESKRIPSI_KOMUNITAS`, `NAMA_KETUA`, `ALAMAT`, `NO_TELEPON`, `TWITTER`, `FACEBOOK`, `INSTAGRAM`) VALUES
+(1, '', 'nekad@dev.com', 'NEKAD Dev', '', 'Nekad ngoding', 'Ryan Hartadi', 'Jl. Kalimantan Gd. EJSC Bakorwil V Jember', '081252989930', '', '', ''),
+(2, 'JTI.jpg', 'Coding@gmail.com', 'Coding', '2', 'Komunitas Musisi Jember', 'Ryan', 'Jl.Trunojoyo', '09918', '', '', ''),
+(3, 'f5192848fe49eb3245358ea6efbf0e0b.jpg', 'KMJ@Gmail.com', 'Komunitas Musisi Jember', '1', 'yoo', 'Agus Pindhank', 'Jl', '05022', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -184,6 +186,7 @@ INSERT INTO `komunitas` (`ID_KOMUNITAS`, `LOGO`, `EMAIL`, `NAMA`, `KATEGORI`, `D
 
 CREATE TABLE `kontak_kami` (
   `EMAIL` varchar(100) NOT NULL,
+  `ID` int(11) NOT NULL,
   `NOMOR_TELEPON` varchar(13) NOT NULL,
   `WHATSAPP` varchar(13) NOT NULL,
   `FACEBOOK` varchar(100) NOT NULL,
@@ -195,8 +198,8 @@ CREATE TABLE `kontak_kami` (
 -- Dumping data for table `kontak_kami`
 --
 
-INSERT INTO `kontak_kami` (`EMAIL`, `NOMOR_TELEPON`, `WHATSAPP`, `FACEBOOK`, `INSTAGRAM`, `ALAMAT`) VALUES
-('ejsc@gmail.com', '081', '081', '', '', 'Jl. Kalimantan');
+INSERT INTO `kontak_kami` (`EMAIL`, `ID`, `NOMOR_TELEPON`, `WHATSAPP`, `FACEBOOK`, `INSTAGRAM`, `ALAMAT`) VALUES
+('ejscjember@gmail.com', 1, '', '085749806996', 'ejsc jember', 'ejscjember', 'Jl. Kalimantan');
 
 -- --------------------------------------------------------
 
@@ -243,7 +246,9 @@ CREATE TABLE `seminar` (
 --
 
 INSERT INTO `seminar` (`ID_SEMINAR`, `JUDUL`, `FOTO`, `PENYELENGGARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `KETERANGAN`, `STATUS`) VALUES
-(1, 'Seminar Pemrograman', '', 'EJSC', '2020-03-19', '0000-00-00', '', '');
+(1, 'Seminar Pemrograman', '', 'EJSC', '2020-03-19', '0000-00-00', '', ''),
+(2, 'mabar', '', 'nekad', '2020-03-20', '2020-03-20', '', '2'),
+(3, 'ngopi', '', 'nekad', '2020-03-20', '2020-03-20', '', '3');
 
 --
 -- Indexes for dumped tables
@@ -284,6 +289,12 @@ ALTER TABLE `kategori_komunitas`
 --
 ALTER TABLE `komunitas`
   ADD PRIMARY KEY (`ID_KOMUNITAS`);
+
+--
+-- Indexes for table `kontak_kami`
+--
+ALTER TABLE `kontak_kami`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `ruangan`
@@ -329,7 +340,13 @@ ALTER TABLE `kategori_komunitas`
 -- AUTO_INCREMENT for table `komunitas`
 --
 ALTER TABLE `komunitas`
-  MODIFY `ID_KOMUNITAS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_KOMUNITAS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `kontak_kami`
+--
+ALTER TABLE `kontak_kami`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ruangan`
@@ -341,7 +358,7 @@ ALTER TABLE `ruangan`
 -- AUTO_INCREMENT for table `seminar`
 --
 ALTER TABLE `seminar`
-  MODIFY `ID_SEMINAR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_SEMINAR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
