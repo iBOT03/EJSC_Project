@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2020 at 01:32 PM
+-- Generation Time: Mar 21, 2020 at 10:42 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -36,7 +36,7 @@ CREATE TABLE `akun` (
   `EMAIL` varchar(100) NOT NULL,
   `NO_TELEPON` varchar(13) NOT NULL,
   `ALAMAT` text NOT NULL,
-  `KOMUNITAS` varchar(200) NOT NULL,
+  `KOMUNITAS` varchar(150) NOT NULL,
   `PASSWORD` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,10 +45,11 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `PASSWORD`) VALUES
-('1', '1', '', 'Tyo', 'tyo@gmail.com', '', '', '', 'admin'),
-('2', '1', 'yudha.jpg', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka Gg. 4 No. 9 Perumnas Patrang, Jember', '', '1234'),
-('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', 'komunitas user', '1234'),
-('80913485901', '1', '1.jpg', 'ryan', 'admin@admin.com', '213131', '1321', '213123', 'admin');
+('0918309139183918', '2', 'user.png', 'ppp', 'ppp@gmail.com', '0918398173987', 'www', 'NEKAD Dev', 'pppppppp'),
+('1', '1', 'dicky.jpg', 'Admin 1', 'admin@admin.com', '000', 'admin', '', 'asdasdasd'),
+('1234567890098', '1', '', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka 4/9 Perumnas Patrang Jember', '', 'admin'),
+('2', '1', 'userprofil.png', 'Admin 2', 'admin2@admin.com', '0000', 'admin', '', 'asdasdasd'),
+('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', 'komunitas user', '1234');
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TEL
 --
 
 CREATE TABLE `alat` (
-  `ID_ALAT` int(11) NOT NULL,
+  `ID_ALAT` int(3) NOT NULL,
   `NAMA_ALAT` varchar(100) NOT NULL,
   `JUMLAH_ALAT` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -81,27 +82,25 @@ CREATE TABLE `booking` (
   `NAMA` varchar(150) NOT NULL,
   `NOMOR_TELEPON` varchar(13) NOT NULL,
   `KOMUNITAS` varchar(200) NOT NULL,
-  `RUANGAN` varchar(100) NOT NULL,
+  `RUANGAN` varchar(50) NOT NULL,
   `JUMLAH_ORANG` int(3) NOT NULL,
-  `TEMA_KEGIATAN` varchar(255) NOT NULL,
-  `DESKRIPSI_KEGIATAN` varchar(255) NOT NULL,
-  `DURASI` time NOT NULL,
-  `TANGGAL` date NOT NULL,
+  `TEMA_KEGIATAN` varchar(150) NOT NULL,
+  `DESKRIPSI_KEGIATAN` text NOT NULL,
+  `WAKTU` time NOT NULL,
+  `TANGGAL_MULAI` date NOT NULL,
   `TANGGAL_KEMBALI` date NOT NULL,
-  `PEMINJAMAN_ALAT` varchar(100) NOT NULL,
-  `JUMLAH_PEMINJAMAN_ALAT` int(3) NOT NULL,
-  `SURAT_PENGAJUAN` varchar(255) NOT NULL,
-  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Pending, 3.Selesai, 4.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`ID_BOOKING`, `NAMA`, `NOMOR_TELEPON`, `KOMUNITAS`, `RUANGAN`, `JUMLAH_ORANG`, `TEMA_KEGIATAN`, `DESKRIPSI_KEGIATAN`, `DURASI`, `TANGGAL`, `TANGGAL_KEMBALI`, `PEMINJAMAN_ALAT`, `JUMLAH_PEMINJAMAN_ALAT`, `SURAT_PENGAJUAN`, `STATUS`) VALUES
-(1, 'yudha', '081252989930', '', '', 4, 'ngoding', 'mabar', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '1'),
-(2, 'ryan', '081', '', '', 4, 'mabar', 'ngoding', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '2'),
-(3, 'andre', '081', '', '', 4, 'mabar', 'mabar', '01:00:00', '2020-03-20', '2020-03-20', '', 0, '', '3');
+INSERT INTO `booking` (`ID_BOOKING`, `NAMA`, `NOMOR_TELEPON`, `KOMUNITAS`, `RUANGAN`, `JUMLAH_ORANG`, `TEMA_KEGIATAN`, `DESKRIPSI_KEGIATAN`, `WAKTU`, `TANGGAL_MULAI`, `TANGGAL_KEMBALI`, `STATUS`) VALUES
+(1, 'yudha', '081252989930', '', '', 4, 'ngoding', 'mabar', '01:00:00', '2020-03-20', '2020-03-20', '1'),
+(2, 'ryan', '081', '', '', 4, 'mabar', 'ngoding', '01:00:00', '2020-03-20', '2020-03-20', '2'),
+(3, 'andre', '081', '', '', 4, 'mabar', 'mabar', '01:00:00', '2020-03-20', '2020-03-20', '3'),
+(4, 'yudha', '081', 'nekad', '', 4, '', '', '01:00:00', '2020-03-21', '2020-03-21', '4');
 
 -- --------------------------------------------------------
 
@@ -111,23 +110,33 @@ INSERT INTO `booking` (`ID_BOOKING`, `NAMA`, `NOMOR_TELEPON`, `KOMUNITAS`, `RUAN
 
 CREATE TABLE `event` (
   `ID_EVENT` int(11) NOT NULL,
-  `JUDUL` varchar(255) NOT NULL,
-  `FOTO` varchar(255) NOT NULL,
-  `PENYELENGGARA` varchar(255) NOT NULL,
+  `JUDUL` varchar(150) NOT NULL,
+  `FOTO` varchar(150) NOT NULL,
+  `SURAT_PENGAJUAN` varchar(100) NOT NULL,
+  `PENYELENGGARA` varchar(150) NOT NULL,
+  `NAMA_PJ` varchar(150) NOT NULL,
+  `NAMA_PENGISI_ACARA` varchar(150) NOT NULL,
   `TANGGAL_MULAI` date NOT NULL,
   `TANGGAL_SELESAI` date NOT NULL,
-  `KETERANGAN` varchar(255) NOT NULL,
-  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
+  `WAKTU` time NOT NULL,
+  `RUANGAN` varchar(1) NOT NULL,
+  `ASAL_PESERTA` varchar(150) NOT NULL,
+  `JUMLAH_PESERTA` int(2) NOT NULL,
+  `KETERANGAN` text NOT NULL,
+  `PEMINJAMAN_ALAT` varchar(50) NOT NULL,
+  `JUMLAH_PEMINJAMAN_ALAT` int(3) NOT NULL,
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Pending, 3.Selesai, 4.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`ID_EVENT`, `JUDUL`, `FOTO`, `PENYELENGGARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `KETERANGAN`, `STATUS`) VALUES
-(1, 'Lomba Smart App', '', 'EJSC', '2020-03-19', '0000-00-00', '', '1'),
-(2, 'ngoding', '', 'nekad', '2020-03-20', '2020-03-20', '', '2'),
-(3, 'mabar', '', 'nekad', '2020-03-20', '2020-03-20', '', '3');
+INSERT INTO `event` (`ID_EVENT`, `JUDUL`, `FOTO`, `SURAT_PENGAJUAN`, `PENYELENGGARA`, `NAMA_PJ`, `NAMA_PENGISI_ACARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `WAKTU`, `RUANGAN`, `ASAL_PESERTA`, `JUMLAH_PESERTA`, `KETERANGAN`, `PEMINJAMAN_ALAT`, `JUMLAH_PEMINJAMAN_ALAT`, `STATUS`) VALUES
+(1, 'Lomba Smart App', '', '', 'EJSC', '', '', '2020-03-19', '0000-00-00', '00:00:00', '', '', 0, '', '', 0, '1'),
+(2, 'ngoding', '', '', 'nekad', '', '', '2020-03-20', '2020-03-20', '00:00:00', '', '', 0, '', '', 0, '2'),
+(3, 'mabar', '', '', 'nekad', '', '', '2020-03-20', '2020-03-20', '00:00:00', '', '', 0, '', '', 0, '3'),
+(4, 'push rank', '', '', 'nekad', '', '', '2020-03-21', '2020-03-21', '00:00:00', '', '', 0, '', '', 0, '4');
 
 -- --------------------------------------------------------
 
@@ -136,7 +145,7 @@ INSERT INTO `event` (`ID_EVENT`, `JUDUL`, `FOTO`, `PENYELENGGARA`, `TANGGAL_MULA
 --
 
 CREATE TABLE `kategori_komunitas` (
-  `ID_KATEGORI` int(11) NOT NULL,
+  `ID_KATEGORI` int(3) NOT NULL,
   `KATEGORI` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -145,8 +154,7 @@ CREATE TABLE `kategori_komunitas` (
 --
 
 INSERT INTO `kategori_komunitas` (`ID_KATEGORI`, `KATEGORI`) VALUES
-(1, 'Musician'),
-(2, 'Pengusaha');
+(1, 'Musician');
 
 -- --------------------------------------------------------
 
@@ -158,8 +166,8 @@ CREATE TABLE `komunitas` (
   `ID_KOMUNITAS` int(11) NOT NULL,
   `LOGO` varchar(150) NOT NULL,
   `EMAIL` varchar(150) NOT NULL,
-  `NAMA` varchar(255) NOT NULL,
-  `ID_KATEGORI` varchar(100) NOT NULL,
+  `NAMA` varchar(200) NOT NULL,
+  `ID_KATEGORI` varchar(3) NOT NULL,
   `DESKRIPSI_KOMUNITAS` text NOT NULL,
   `NAMA_KETUA` varchar(150) NOT NULL,
   `ALAMAT` text NOT NULL,
@@ -224,32 +232,6 @@ INSERT INTO `ruangan` (`ID_RUANGAN`, `FOTO_RUANGAN`, `NAMA_RUANGAN`, `KAPASITAS`
 (3, '', 'Conference Room', 20),
 (4, '', 'Co-Working Space', 25);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `seminar`
---
-
-CREATE TABLE `seminar` (
-  `ID_SEMINAR` int(11) NOT NULL,
-  `JUDUL` varchar(255) NOT NULL,
-  `FOTO` varchar(255) NOT NULL,
-  `PENYELENGGARA` varchar(255) NOT NULL,
-  `TANGGAL_MULAI` date NOT NULL,
-  `TANGGAL_SELESAI` date NOT NULL,
-  `KETERANGAN` varchar(255) NOT NULL,
-  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Selesai, 3.Batal'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `seminar`
---
-
-INSERT INTO `seminar` (`ID_SEMINAR`, `JUDUL`, `FOTO`, `PENYELENGGARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `KETERANGAN`, `STATUS`) VALUES
-(1, 'Seminar Pemrograman', '', 'EJSC', '2020-03-19', '0000-00-00', '', ''),
-(2, 'mabar', '', 'nekad', '2020-03-20', '2020-03-20', '', '2'),
-(3, 'ngopi', '', 'nekad', '2020-03-20', '2020-03-20', '', '3');
-
 --
 -- Indexes for dumped tables
 --
@@ -303,12 +285,6 @@ ALTER TABLE `ruangan`
   ADD PRIMARY KEY (`ID_RUANGAN`);
 
 --
--- Indexes for table `seminar`
---
-ALTER TABLE `seminar`
-  ADD PRIMARY KEY (`ID_SEMINAR`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -316,25 +292,25 @@ ALTER TABLE `seminar`
 -- AUTO_INCREMENT for table `alat`
 --
 ALTER TABLE `alat`
-  MODIFY `ID_ALAT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_ALAT` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `ID_BOOKING` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_BOOKING` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kategori_komunitas`
 --
 ALTER TABLE `kategori_komunitas`
-  MODIFY `ID_KATEGORI` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_KATEGORI` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `komunitas`
@@ -353,12 +329,6 @@ ALTER TABLE `kontak_kami`
 --
 ALTER TABLE `ruangan`
   MODIFY `ID_RUANGAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `seminar`
---
-ALTER TABLE `seminar`
-  MODIFY `ID_SEMINAR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
