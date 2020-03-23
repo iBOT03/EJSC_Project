@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2020 at 10:42 AM
+-- Generation Time: Mar 23, 2020 at 12:16 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -36,7 +36,7 @@ CREATE TABLE `akun` (
   `EMAIL` varchar(100) NOT NULL,
   `NO_TELEPON` varchar(13) NOT NULL,
   `ALAMAT` text NOT NULL,
-  `KOMUNITAS` varchar(150) NOT NULL,
+  `KOMUNITAS` varchar(3) NOT NULL,
   `PASSWORD` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,11 +45,14 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `KOMUNITAS`, `PASSWORD`) VALUES
-('0918309139183918', '2', 'user.png', 'ppp', 'ppp@gmail.com', '0918398173987', 'www', 'NEKAD Dev', 'pppppppp'),
+('0918309139183918', '2', 'user.png', 'ppp', 'ppp@gmail.com', '0918398173987', 'www', '1', 'pppppppp'),
 ('1', '1', 'dicky.jpg', 'Admin 1', 'admin@admin.com', '000', 'admin', '', 'asdasdasd'),
 ('1234567890098', '1', '', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka 4/9 Perumnas Patrang Jember', '', 'admin'),
 ('2', '1', 'userprofil.png', 'Admin 2', 'admin2@admin.com', '0000', 'admin', '', 'asdasdasd'),
-('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', 'komunitas user', '1234');
+('22', '2', '', 'ww', 'ww', '22', 'ww', '3', '22'),
+('2222', '2', '', 'qq', 'qq', '11', 'qq', '1', 'qq'),
+('33', '2', '', 'ee', 'ee', '33', 'ee', '3', '33'),
+('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', '1', '1234');
 
 -- --------------------------------------------------------
 
@@ -310,7 +313,7 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `kategori_komunitas`
 --
 ALTER TABLE `kategori_komunitas`
-  MODIFY `ID_KATEGORI` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_KATEGORI` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `komunitas`
