@@ -6,7 +6,7 @@ class Event extends CI_Controller {
 	}
 
 	public function index() {
-        $this->load->view("admin/acara/event", $data);
+        $this->load->view("admin/acara/event");
 	}
 
 	public function tambah() {
@@ -17,11 +17,11 @@ class Event extends CI_Controller {
 		$this->load->view("admin/acara/editevent");
 	}
 
-	public function detail($id){
+	public function detail() {
 		$this->load->view("admin/acara/detailevent");
 	}
 
-	public function hapus($id) {
+	public function hapus() {
 	}
 }
 ?>

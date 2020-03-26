@@ -41,7 +41,7 @@
                                             <input name="nik" id="nik" type="text"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan NIK"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="16" value="<?php echo $akun[0]->NIK; ?>" readonly required>
+                                                maxlength="16" value="" readonly required>
                                         </div>
                                     </div>
 
@@ -51,7 +51,7 @@
                                             <input name="nama" id="nama" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2"
-                                                maxlength="150" value="<?php echo $akun[0]->NAMA_LENGKAP; ?>" required>
+                                                maxlength="150" value="" required>
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                             <input name="email" id="email" type="email"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan Email"
                                                 aria-describedby="basic-addon2" maxlength="100"
-                                                value="<?php echo $akun[0]->EMAIL; ?>" required>
+                                                value="" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -73,7 +73,7 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan No Telepon/Whatsapp"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="13" value="<?php echo $akun[0]->NO_TELEPON; ?>" required>
+                                                maxlength="13" value="" required>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                 <div class="input-group">
                                     <textarea name="alamat" id="alamat" type="text"
                                         class="form-control border-dark small mb-3" placeholder="Masukkan Alamat"
-                                        aria-describedby="basic-addon2" value="<?php echo $akun[0]->ALAMAT; ?>"
+                                        aria-describedby="basic-addon2" value=""
                                         required></textarea>
                                 </div>
 
@@ -93,7 +93,7 @@
                                             <input name="foto" id="foto" type="file"
                                                 class="form-control border-dark small mb-3" placeholder=""
                                                 aria-describedby="basic-addon2"
-                                                value="<?php echo $akun[0]->FOTO_KTP; ?>" required>
+                                                value="" required>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                             <input name="password1" id="password1" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="16" value="<?php echo $akun[0]->PASSWORD; ?>" required>
+                                                maxlength="16" value="" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">

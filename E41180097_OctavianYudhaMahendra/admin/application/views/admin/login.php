@@ -50,9 +50,9 @@
                                             </div>
                                         </div>
 
-                                        <button type=" submit" class="btn btn-info btn-user btn-block">
+                                        <a href="<?php echo site_url('admin/dashboard') ?>" type="submit" class="btn btn-info btn-user btn-block">
                                             Login
-                                        </button>
+                                        </a>
 
                                 </div>
                             </div>
