@@ -1,15 +1,3 @@
-/*!
- * Start Bootstrap - SB Admin 2 v4.0.7 (https://startbootstrap.com/template-overviews/sb-admin-2)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/master/LICENSE)
- */
-
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
@@ -20,14 +8,14 @@
   --yellow: #f6c23e;
   --green: #1cc88a;
   --teal: #20c9a6;
-  --cyan: #36b9cc;
+  --cyan: #247b8c;
   --white: #fff;
   --gray: #858796;
   --gray-dark: #5a5c69;
   --primary: #4e73df;
   --secondary: #858796;
   --success: #1cc88a;
-  --info: #36b9cc;
+  --info: #247b8c;
   --warning: #f6c23e;
   --danger: #e74a3b;
   --light: #f8f9fc;
@@ -494,6 +482,10 @@ mark,
   border-radius: 0.35rem;
   max-width: 100%;
   height: auto;
+}
+
+.logo-komunitas {
+  width: 10rem;
 }
 
 .figure {
@@ -2357,8 +2349,8 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #fff;
-  background-color: #36b9cc;
-  border-color: #36b9cc;
+  background-color: #247b8c;
+  border-color: #247b8c;
 }
 
 .btn-info:hover {
@@ -2373,8 +2365,8 @@ fieldset:disabled a.btn {
 
 .btn-info.disabled, .btn-info:disabled {
   color: #fff;
-  background-color: #36b9cc;
-  border-color: #36b9cc;
+  background-color: #247b8c;
+  border-color: #247b8c;
 }
 
 .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
@@ -2622,14 +2614,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info {
-  color: #36b9cc;
-  border-color: #36b9cc;
+  color: #247b8c;
+  border-color: #247b8c;
 }
 
 .btn-outline-info:hover {
   color: #fff;
-  background-color: #36b9cc;
-  border-color: #36b9cc;
+  background-color: #247b8c;
+  border-color: #247b8c;
 }
 
 .btn-outline-info:focus, .btn-outline-info.focus {
@@ -2637,15 +2629,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info.disabled, .btn-outline-info:disabled {
-  color: #36b9cc;
+  color: #247b8c;
   background-color: transparent;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active,
 .show > .btn-outline-info.dropdown-toggle {
   color: #fff;
-  background-color: #36b9cc;
-  border-color: #36b9cc;
+  background-color: #247b8c;
+  border-color: #247b8c;
 }
 
 .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus,
@@ -4757,7 +4749,7 @@ a.badge-success:focus, a.badge-success.focus {
 
 .badge-info {
   color: #fff;
-  background-color: #36b9cc;
+  background-color: #247b8c;
 }
 
 a.badge-info:hover, a.badge-info:focus {
@@ -6234,7 +6226,7 @@ button.bg-success:focus {
 }
 
 .bg-info {
-  background-color: #36b9cc !important;
+  background-color: #247b8c !important;
 }
 
 a.bg-info:hover, a.bg-info:focus,
@@ -6344,7 +6336,7 @@ button.bg-dark:focus {
 }
 
 .border-info {
-  border-color: #36b9cc !important;
+  border-color: #247b8c !important;
 }
 
 .border-warning {
@@ -9387,7 +9379,7 @@ a.text-success:hover, a.text-success:focus {
 }
 
 .text-info {
-  color: #36b9cc !important;
+  color: #247b8c !important;
 }
 
 a.text-info:hover, a.text-info:focus {
@@ -9685,8 +9677,8 @@ a:focus {
 }
 
 .bg-gradient-info {
-  background-color: #36b9cc;
-  background-image: linear-gradient(180deg, #36b9cc 10%, #258391 100%);
+  background-color: #247b8c;
+  background-image: linear-gradient(180deg, #247b8c 10%, #258391 100%);
   background-size: cover;
 }
 
@@ -9832,11 +9824,11 @@ a:focus {
 }
 
 .border-left-info {
-  border-left: 0.25rem solid #36b9cc !important;
+  border-left: 0.25rem solid #247b8c !important;
 }
 
 .border-bottom-info {
-  border-bottom: 0.25rem solid #36b9cc !important;
+  border-bottom: 0.25rem solid #247b8c !important;
 }
 
 .border-left-warning {
@@ -10583,8 +10575,17 @@ a:focus {
   }
 }
 
+.custom-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("../img/bg-login.png");
   background-position: center;
   background-size: cover;
 }
