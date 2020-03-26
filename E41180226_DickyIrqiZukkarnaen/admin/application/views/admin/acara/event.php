@@ -34,12 +34,12 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a href="<?php echo site_url('admin/event/tambah') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-plus"></i>
-                </span>
-                <span class="text"> Tambah Event</span>
-              </a>
+            <a href="<?php echo site_url('admin/event/tambah') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+              <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="text"> Tambah Event</span>
+            </a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -47,54 +47,39 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">No</th>
-                      <th>Tanggal Mulai</th>
-                      <th>Tanggal Selesai</th>
+                      <th>Tanggal</th>
                       <th>Judul</th>
                       <th>Penyelenggara</th>
-                      <th>Nama Penanggung Jawab</th>
                       <th style="width: 150px">Poster</th>
+                      <th>Keterangan</th>
                       <th style="width: 60px">Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
+                  <?php
+                  foreach ($event as $row){
+                    ?>
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?= $row->ID_EVENT; ?></td>
+                      <td><?= $row->WAKTU; ?></td>
+                      <td><?= $row->JUDUL; ?></td>
+                      <td><?= $row->PENYELENGGARA; ?></td>
+                      <td><?= $row->FOTO; ?></td>
+                      <td><?= $row->KETERANGAN; ?></td>
                       <td>
-                        <?php //if ($row->STATUS == 1) {
-                          //echo '<div class="badge badge-primary badge-pill">Aktif</div>';
-                        //} elseif ($row->STATUS == 2) {
-                          //echo '<div class="badge badge-warning badge-pill">Pending</div>';
-                        //} elseif ($row->STATUS == 3) {
-                          //echo '<div class="badge badge-success badge-pill">Selesai</div>';
-                        //} elseif ($row->STATUS == 4) {
-                          //echo '<div class="badge badge-danger badge-pill">Batal</div>';
-                        //} ?>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-success shadow-sm"><i class="fas fa-check"></i></a>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-times"></i></a>
                       </td>
                       <td>
-                        <a href="<?php echo site_url('admin/event/detail/');?>"
-                           class="btn btn-sm btn-primary btn-circle">
-                          <i class="fas fa-plus"></i>
-                        </a>
-                        <a href="<?php echo site_url('admin/event/edit')?>"
-                           class="btn btn-sm btn-info btn-circle">
-                           <i class="fa fa-pencil-alt"></i>
-                        </a>
-                        <a href="#"
-                           onclick=""
-                           class="btn btn-sm btn-danger btn-circle"
-                           data-toggle="modal" data-target="#hapusModal">
-                           <i class="fa fa-trash"></i>
-                        </a>
+                        <a href="<?php echo site_url('admin/event/edit')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
+                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   </tbody>
+                  <?php
+                  }
+                  ?>
                 </table>
               </div>
             </div>
@@ -120,15 +105,6 @@
 
   <!-- Logout Modal-->
   <?php $this->load->view("admin/_partials/modal.php") ?>
-
-    <script type="text/javascript">
-        function confirm_modal(delete_url) {
-            $('#hapusModal').modal('show', {
-                backdrop: 'static'
-            });
-            document.getElementById('delete_link').setAttribute('href', delete_url);
-        }
-    </script>
 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
