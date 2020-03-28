@@ -41,7 +41,7 @@
                                             <input name="nik" id="nik" type="text"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan NIK"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="16" required>
+                                                maxlength="16" required value="<?= set_value('nik'); ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -50,7 +50,7 @@
                                             <input name="nama" id="nama" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2"
-                                                maxlength="150" required>
+                                                maxlength="150" required value="<?= set_value('nama'); ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,8 @@
                                         <div class="input-group">
                                             <input name="email" id="email" type="email"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan Email"
-                                                aria-describedby="basic-addon2" maxlength="100" required>
+                                                aria-describedby="basic-addon2" maxlength="100" required
+                                                value="<?= set_value('email'); ?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -71,7 +72,7 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan No Telepon/Whatsapp"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="13" required>
+                                                maxlength="13" required value="<?= set_value('no_telpon'); ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +81,8 @@
                                 <div class="input-group">
                                     <textarea name="alamat" id="alamat" type="text"
                                         class="form-control border-dark small mb-3" placeholder="Masukkan Alamat"
-                                        aria-describedby="basic-addon2" required></textarea>
+                                        aria-describedby="basic-addon2" required
+                                        value="<?= set_value('alamat'); ?>"></textarea>
                                 </div>
 
                                 <div class="row">
@@ -88,8 +90,11 @@
                                         <p>Komunitas</p>
                                         <div class="input-group">
                                             <select class="form-control border-dark small mb-3" id="komunitas"
-                                                name="komunitas" value="">
-                                                <option value=""></option>
+                                                name="komunitas">
+                                                <?php foreach ($komunitas as $row) { ?>
+                                                <option value="<?php echo $row['NAMA']; ?>">
+                                                    <?php echo $row['NAMA']; ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>

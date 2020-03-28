@@ -29,7 +29,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <h1 class="h3 mb-2 text-gray-800">Ubah Data Pengguna</h1>
 
                         <div class="card shadow mb-4">
@@ -41,8 +41,9 @@
                                             <input name="nik" id="nik" type="text"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan NIK"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="16" value="" readonly required>
+                                                maxlength="16" value="<?php echo $akun[0]->NIK; ?>" readonly required>
                                         </div>
+                                        <?= form_error('nik', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
 
                                     <div class="col-sm-6">
@@ -51,8 +52,9 @@
                                             <input name="nama" id="nama" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2"
-                                                maxlength="150" value="" required>
+                                                maxlength="150" value="<?php echo $akun[0]->NAMA_LENGKAP; ?>" required>
                                         </div>
+                                        <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -63,8 +65,9 @@
                                             <input name="email" id="email" type="email"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan Email"
                                                 aria-describedby="basic-addon2" maxlength="100"
-                                                value="" required>
+                                                value="<?php echo $akun[0]->EMAIL; ?>" required>
                                         </div>
+                                        <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Telepon/Whatsapp</p>
@@ -73,8 +76,9 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan No Telepon/Whatsapp"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="13" value="" required>
+                                                maxlength="13" value="<?php echo $akun[0]->NO_TELEPON; ?>" required>
                                         </div>
+                                        <?= form_error('no_telpon', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -82,8 +86,9 @@
                                 <div class="input-group">
                                     <textarea name="alamat" id="alamat" type="text"
                                         class="form-control border-dark small mb-3" placeholder="Masukkan Alamat"
-                                        aria-describedby="basic-addon2" value=""
+                                        aria-describedby="basic-addon2" value="<?php echo $akun[0]->ALAMAT; ?>"
                                         required></textarea>
+                                    <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
 
                                 <div class="row">
@@ -93,7 +98,7 @@
                                             <input name="komunitas" id="komunitas" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Komunitas" aria-describedby="basic-addon2"
-                                                maxlength="200" value="" required
+                                                maxlength="200" value="<?php echo $akun[0]->KOMUNITAS; ?>" required
                                                 readonly>
                                         </div>
                                     </div>
@@ -103,7 +108,7 @@
                                             <input name="foto" id="foto" type="file"
                                                 class="form-control border-dark small mb-3" placeholder=""
                                                 aria-describedby="basic-addon2"
-                                                value="" required>
+                                                value="<?php echo $akun[0]->FOTO_KTP; ?>" required>
                                         </div>
                                     </div>
                                 </div>
@@ -112,20 +117,22 @@
                                     <div class="col-sm-6">
                                         <p>Password</p>
                                         <div class="input-group">
-                                            <input name="password" id="password" type="password"
+                                            <input name="password1" id="password1" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="16" value="" required>
+                                                maxlength="16" value="<?php echo $akun[0]->PASSWORD; ?>" required>
                                         </div>
+                                        <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Konfirmasi Password</p>
                                         <div class="input-group">
-                                            <input name="konfirmasipassword" id="konfirmasipassword" type="password"
+                                            <input name="password2" id="password2" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Konfirmasi Password" aria-describedby="basic-addon2"
                                                 maxlength="16" required>
                                         </div>
+                                        <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -149,8 +156,8 @@
             </div>
 
 
-        <!-- Footer -->
-        <?php $this->load->view("admin/_partials/footer.php") ?>
+            <!-- Footer -->
+            <?php $this->load->view("admin/_partials/footer.php") ?>
 
         </div>
         <!-- End of Content Wrapper -->
