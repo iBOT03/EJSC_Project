@@ -68,10 +68,17 @@ class EjscModel extends CI_Model {
         return $this->db->get("event")->result();
     }
 
-    //INSERT USER DATA
+    //INSERT DATA EVENT
     public function tambahevent($id = array()){
         $this->load->database();
         return $this->db->insert("event", $id);
+    }
+
+    //UPDATE USER EVENT
+    public function ubahevent($data = array(), $id) {
+        $this->load->database();
+        $this->db->where('ID_EVENT', $id);
+        return $this->db->update("event", $data);
     }
 
 }
