@@ -41,6 +41,7 @@
               <span class="text"> Tambah Ruangan</span>
             </a>
             <div class="col mt-3">
+            <?php echo $this->session->flashdata('pesan')?>
             </div>
             </div>
             <div class="card-body">
@@ -56,23 +57,28 @@
                     </tr>
                   </thead>
                   <tbody>
+                  <?php 
+                      $no = 1;
+                        foreach($ruangan as $p):
+                    ?>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?php echo $no++?></td>
+                      <td><?php echo $p->NAMA_RUANGAN?></td>
+                      <td><img src="<?= base_url('uploads/ruangan/') . $p->FOTO_RUANGAN; ?>" alt="" style="width:140px"></td>
+                      <td><?php echo $p->KAPASITAS?></td>
                       <td>
-                        <a href="<?php echo site_url('admin/ruangan/edit/')?>"
+                        <a href="<?php echo site_url('admin/ruangan/edit/' . $p->ID_RUANGAN)?>"
                            class="btn btn-sm btn-info btn-circle">
                            <i class="fa fa-pencil-alt"></i>
                         </a>
                         <a href="#"
-                           onclick=""
+                           onclick="confirm_modal('<?php echo 'ruangan/hapus/' . $p->ID_RUANGAN; ?>')"
                            class="btn btn-sm btn-danger btn-circle"
                            data-toggle="modal" data-target="#hapusModal">
                            <i class="fa fa-trash"></i>
                         </a>
                       </td>
+                        <?php endforeach;?>
                     </tr>
 
                   </tbody>
