@@ -30,6 +30,7 @@
       
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Kontak Kami</h1>
+          <?php foreach($tentang as $a){?>
           <form method="post">
           <div class="row">
             <div class="col-sm-6">
@@ -39,9 +40,10 @@
                        placeholder=""
                        name="email"
                        id="email"
-                       value=""
+                       value="<?php echo $a->EMAIL?>"
                        aria-describedby="basic-addon2">
               </div>
+              <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
             </div>
           </div>
 
@@ -53,9 +55,10 @@
                        placeholder=""
                        name="no"
                        id="no"
-                       value=""
+                       value="<?php echo $a->NOMOR_TELEPON?>"
                        aria-describedby="basic-addon2">
-              </div>
+              </div> 
+              <?= form_error('no', '<small class="text-danger pl-2">', '</small>'); ?>
             </div>
           </div>
 
@@ -67,7 +70,7 @@
                        placeholder=""
                        name="wa"
                        id="wa"
-                       value=""
+                       value="<?php echo $a->WHATSAPP?>"
                        aria-describedby="basic-addon2">
               </div>
             </div>
@@ -81,7 +84,7 @@
                        placeholder=""
                        name="fb"
                        id="fb"
-                       value=""
+                       value="<?php echo $a->FACEBOOK?>"
                        aria-describedby="basic-addon2">
               </div>
             </div>
@@ -95,7 +98,7 @@
                        placeholder=""
                        name="ig"
                        id="ig"
-                       value=""
+                       value="<?php echo $a->INSTAGRAM?>"
                        aria-describedby="basic-addon2">
               </div>
             </div>
@@ -108,9 +111,9 @@
                       name="alamat"
                       id="alamat"
                       value=""
-                      placeholder=""
-                      aria-describedby="basic-addon2">
+                      placeholder="" aria-describedby="basic-addon2"><?php echo $a->ALAMAT?>
             </textarea>
+            <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
           </div>
 
           <button type="submit" class="btn btn-info btn-icon-split">
@@ -122,17 +125,18 @@
        
       </div>
       <!-- /.card -->
-    </form>
-
+      </form>
   <!-- Footer -->
   <?php $this->load->view("admin/_partials/footer.php") ?>
 
   </div>
+
+     
   <!-- End of Content Wrapper -->
  
   </div>
   <!-- End of Page Wrapper -->
-
+  <?php } ?>
   <!-- Scroll to Top Button-->
   <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 

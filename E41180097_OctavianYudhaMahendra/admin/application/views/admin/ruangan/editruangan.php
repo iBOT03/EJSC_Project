@@ -27,8 +27,9 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                <?php foreach ($ruangan as $r) { ?>
                     <!-- Page Heading -->
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <h1 class="h3 mb-2 text-gray-800">Ubah Data Ruangan</h1>
 
                 <div class="card shadow mb-4">
@@ -44,8 +45,9 @@
                                             placeholder="Masukkan Nama Ruangan"
                                             aria-describedby="basic-addon2"
                                             maxlength="100"
-                                            value=""
-                                            readonly>
+                                            value="<?php echo $r->NAMA_RUANGAN?>"
+                                            readonly
+                                        >
                                 </div>
                             </div>
 
@@ -59,8 +61,9 @@
                                             placeholder="Masukkan Kapasitas Ruangan"
                                             aria-describedby="basic-addon2"
                                             maxlength="3"
-                                            value=""
-                                            onkeypress="return hanyaAngka(event)">
+                                            value="<?php echo $r->KAPASITAS?>"
+                                            onkeypress="return hanyaAngka(event)"
+                                            >
                                 </div>
                             </div>
                         </div>
@@ -74,7 +77,8 @@
                                             type="file"                                                   
                                             class="form-control border-dark small mb-3"
                                             placeholder=""
-                                            aria-describedby="basic-addon2">
+                                            aria-describedby="basic-addon2"
+                                            >
                                 </div>
                             </div>
                         </div>
@@ -82,7 +86,7 @@
                             <div class="col-sm-6">
                                 <p>Upload Foto Ruangan</p>
                                 <div class="input-group">
-                                 <img src="<?= base_url('uploads/ruangan/')?>" alt="" srcset="">
+                                 <img src="<?= base_url('uploads/ruangan/'.$r->FOTO_RUANGAN)?>" alt="" srcset="" width="100px">
                                 </div>
                             </div>
                         </div>
@@ -111,7 +115,7 @@
 
     </div>
     <!-- End of Content Wrapper -->
-    
+                <?php } ?>
     </div>
     <!-- End of Page Wrapper -->
 

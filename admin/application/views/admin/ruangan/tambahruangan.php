@@ -44,8 +44,11 @@
                                                    class="form-control border-dark small mb-3"
                                                    placeholder="Masukkan Nama Ruangan"
                                                    aria-describedby="basic-addon2"
-                                                   maxlength="100">
+                                                   maxlength="100"
+                                                   >
                                         </div>
+                                        <?= form_error('namaruangan', '<small class="text-danger">', '</small>')?>
+    
                                     </div>
 
                                     <div class="col-sm-6">
@@ -58,8 +61,11 @@
                                                    placeholder="Masukkan Kapasitas Ruangan"
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
-                                                   maxlength="3">
+                                                   maxlength="3"
+                                                   >
                                         </div>
+                                        <?= form_error('kapasitasruangan', '<small class="text-danger">', '</small>')?>
+    
                                     </div>
                                 </div>
 
@@ -72,7 +78,8 @@
                                                    type="file"                                                   
                                                    class="form-control border-dark small mb-3"
                                                    placeholder=""
-                                                   aria-describedby="basic-addon2">
+                                                   aria-describedby="basic-addon2"
+                                                   >
                                         </div>
                                     </div>
                                 </div>

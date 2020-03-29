@@ -30,7 +30,10 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Kontak Kami</h1>
-          <div class="col mt-3"></div>
+          <div class="col mt-3">
+            <?php echo $this->session->flashdata('pesan')?>
+          </div>
+          <?php foreach ($tentang as $a) { ?>
           <div class="row">
             <div class="col-sm-6">
               <p>Email</p>
@@ -38,7 +41,7 @@
                 <div class="input-group">
                   <input type="text" class="form-control border-dark small mb-3"
                         placeholder=""
-                        value=""
+                        value="<?php echo $a->EMAIL?>"
                         disabled
                         aria-describedby="basic-addon2">
 
@@ -54,7 +57,7 @@
                 <div class="input-group">
                   <input type="text" class="form-control border-dark small mb-3"
                         placeholder=""
-                        value=""
+                        value="<?php echo $a->NOMOR_TELEPON?>"
                         disabled
                         aria-describedby="basic-addon2">
                 </div>
@@ -70,7 +73,7 @@
                   <input type="text" class="form-control border-dark small mb-3"
                         placeholder=""
                         disabled
-                        value=""
+                        value="<?php echo $a->WHATSAPP?>"
                         aria-describedby="basic-addon2">
                 </div>
               </form>
@@ -85,7 +88,7 @@
                   <input type="text" class="form-control border-dark small mb-3"
                         placeholder=""
                         disabled
-                        value=""
+                        value="<?php echo $a->FACEBOOK?>"
                         aria-describedby="basic-addon2">
                 </div>
               </form>
@@ -100,7 +103,7 @@
                   <input type="text" class="form-control border-dark small mb-3"
                         placeholder=""
                         disabled
-                        value=""
+                        value="<?php echo $a->INSTAGRAM?>"
                         aria-describedby="basic-addon2">
                 </div>
               </form>
@@ -108,17 +111,13 @@
           </div>
             
           <p>Alamat</p>
-          <form class="">
-            <div class="input-group">
-              <textarea type="text" class="form-control border-dark small mb-3" 
-                        disabled
-                        placeholder=""
-                        aria-describedby="basic-addon2">
-              </textarea>
-            </div>
-          </form>
-
-          <a href="<?php echo site_url('admin/tentang/ubah/') ?>" class="btn btn-info btn-icon-split">
+          <div class="input-group">
+            <textarea type="text" class="form-control border-dark mb-3" 
+                      disabled>
+                      <?php echo $a->ALAMAT?></textarea>
+          </div>
+          
+          <a href="<?php echo site_url('admin/tentang/ubah/'.$a->ID) ?>" class="btn btn-info btn-icon-split">
             <span class="icon text-white-50">
               <i class="fas fa-pencil-alt"></i>
             </span>
@@ -128,6 +127,7 @@
         </div>
       </div>
       <!-- /.card -->
+      <?php } ?>
   <!-- Footer -->
   <?php $this->load->view("admin/_partials/footer.php") ?>
 
