@@ -34,7 +34,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/event/tambah') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+            <a href="<?php echo site_url('admin/acara/tambah') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
               <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
               </span>
@@ -68,8 +68,14 @@
                       <td><?= $row->FOTO; ?></td>
                       <td><?= $row->KETERANGAN; ?></td>
                       <td>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-success shadow-sm"><i class="fas fa-check"></i></a>
-                        <a href="#" style="width:35px" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-times"></i></a>
+                        <a href="<?php echo site_url("admin/event/detail/" .$row->ID_EVENT);?>"
+                          class="btn btn-sm btn-primary btn-circle">
+                          <i class="fas fa-plus"></i>
+                        </a>
+                        <a href="<?php echo site_url('admin/event/edit')?>"
+                          class="btn btn-sm btn-info btn-circle">
+                          <i class="fa fa-pencil-alt"></i>
+                        </a>
                       </td>
                       <td>
                         <a href="<?php echo site_url('admin/event/edit')?>" style="width:35px" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-edit"></i></a>
