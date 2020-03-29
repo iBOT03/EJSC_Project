@@ -48,7 +48,7 @@ class Pengguna extends CI_Controller
 					'NO_TELEPON' => $this->input->post("no_telpon"),
 					'ALAMAT' => $this->input->post("alamat"),
 					'KOMUNITAS' => $this->input->post("komunitas"),
-					'PASSWORD' => $this->input->post("password1")
+					'PASSWORD' => password_hash($this->input->post("password1"), PASSWORD_DEFAULT)
 
 				);
 				if ($this->EjscModel->tambahpengguna($dataPost)) {
