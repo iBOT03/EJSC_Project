@@ -7,6 +7,7 @@ class Administrator extends CI_Controller
 		parent::__construct();
 		$this->load->model("EjscModel");
 		$this->load->library('form_validation');
+		belumlogin();
 	}
 
 	public function index()
