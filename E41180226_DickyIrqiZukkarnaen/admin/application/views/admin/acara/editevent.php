@@ -28,7 +28,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-        <form method="post" action="<?= site_url('admin/event/editevent')?>">
+        <form method="post" action="<?= site_url('admin/acara/editevent')?>">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Event</h1>
