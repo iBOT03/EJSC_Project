@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EJSC</string>
+    <string name="daftar">Daftar</string>
+    <string name="mulai">Mulai</string>
+    <string name="skip">Skip</string>
+    <string name="selanjutnya">Selanjutnya</string>
+    <string name="title_activity_bottom_navigation">BottomNavigation</string>
+    <string name="title_beranda">Beranda</string>
+    <string name="title_booking">Booking</string>
+    <string name="title_event">Event</string>
+    <string name="title_akun">Akun</string>
 </resources>

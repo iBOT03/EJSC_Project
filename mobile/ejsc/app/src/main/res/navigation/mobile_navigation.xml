@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_beranda">
+
+    <fragment
+        android:id="@+id/navigation_beranda"
+        android:name="com.bakorwil.ejsc.botnav.beranda.BerandaFragment"
+        android:label="@string/title_beranda"
+        tools:layout="@layout/fragment_beranda" />
+
+    <fragment
+        android:id="@+id/navigation_booking"
+        android:name="com.bakorwil.ejsc.botnav.booking.BookingFragment"
+        android:label="@string/title_booking"
+        tools:layout="@layout/fragment_booking" />
+
+    <fragment
+        android:id="@+id/navigation_event"
+        android:name="com.bakorwil.ejsc.botnav.event.EventFragment"
+        android:label="@string/title_event"
+        tools:layout="@layout/fragment_event" />
+
+    <fragment
+        android:id="@+id/navigation_akun"
+        android:name="com.bakorwil.ejsc.botnav.akun.AkunFragment"
+        android:label="@string/title_akun"
+        tools:layout="@layout/fragment_akun" />
+</navigation>
