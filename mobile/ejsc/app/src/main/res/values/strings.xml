@@ -9,4 +9,25 @@
     <string name="title_booking">Booking</string>
     <string name="title_event">Event</string>
     <string name="title_akun">Akun</string>
+    <string name="logo_ejsc">Logo EJSC</string>
+    <string name="email">Email</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="lupa_kata_sandi">Lupa Kata Sandi?</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_memiliki_akun">Belum memiliki akun?</string>
+    <string name="daftar_sekarang">Daftar Sekarang</string>
+    <string name="nik">NIK</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
+    <string name="konfirmasi_kata_sandi">Konfirmasi Kata Sandi</string>
+    <string name="nomor_telepon">Nomor Telepon</string>
+    <string name="alamat">Alamat</string>
+    <string name="komunitas">Komunitas</string>
+    <string name="pilih_komunitas">Pilih Komunitas</string>
+    <string name="submit">Submit</string>
+    <string name="kode_reset_kata_sandi">Kode Reset Kata Sandi</string>
+    <string name="kata_sandi_baru">Kata Sandi Baru</string>
+    <string name="konfirmasi_kata_sandi_baru">Konfirmasi Kata Sandi Baru</string>
+    <string name="blank">-</string>
+    <string name="selamat_datang">Selamat Datang,</string>
 </resources>
