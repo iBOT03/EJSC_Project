@@ -81,4 +81,22 @@ class EjscModel extends CI_Model {
         return $this->db->update("event", $data);
     }
 
+    //GET DETAIL BOOKING
+    public function detail_booking($id){
+        $this->load->database();
+        $this->db->where('ID_BOOKING', $id);
+        return $this->db->get("booking")->result();
+    }
+
+    //INSERT DATA BOOKING
+    public function tambahbooking($id = array()){
+        $this->load->database();
+        return $this->db->insert("booking", $id);
+    }
+
+    public function getbooking() {
+        $this->load->database();
+        return $this->db->get("booking")->result();
+    }
+
 }

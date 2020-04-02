@@ -83,20 +83,23 @@
                       <th style="width: 60px">Status</th>
                       <th style="width: 100px">Aksi</th>
                     </tr>
+                  <?php
+                  foreach ($booking as $row){
+                    ?>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>jam get dari datepicker, jaraknya 1 jam</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?= $row->DURASI; ?></td>
+                      <td><?= $row->KOMUNITAS; ?></td>
+                      <td><?= $row->TEMA_KEGIATAN; ?></td>
+                      <td><?= $row->PEMINJAMAN_ALAT ?></td>
+                      <td><?= $row->STATUS; ?></td>
                       <td>
-                        <a href="<?php echo site_url('admin/booking/detail') ?>"
+                        <a href="<?php echo site_url("admin/booking/detail/" .$row->ID_BOOKING); ?>"
                            class="btn btn-sm btn-primary btn-circle">
                           <i class="fas fa-plus"></i>
                         </a>
-                        <a href="<?php echo site_url('admin/booking/edit') ?>"
+                        <a href="<?php echo site_url("admin/booking/edit/" .$row->ID_BOOKING); ?>"
                            class="btn btn-sm btn-info btn-circle">
                           <i class="fas fa-pencil-alt"></i>
                         </a>
@@ -108,6 +111,9 @@
                       </td>
                     </tr>
                   </tbody>
+                  <?php
+                  }
+                  ?>
                 </table>
               </div>
             </div> <!-- End Card Body -->
@@ -149,3 +155,4 @@
 </body>
 
 </html>
+      
