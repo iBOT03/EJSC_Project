@@ -5,6 +5,7 @@
     <color name="colorAccent">#F8AF1A</color>
     <color name="darkGrey">#707070</color>
     <color name="lightGrey">#9E9E9E</color>
+    <color name="superLightGrey">#E4E4E4</color>
     <color name="white">#ffffff</color>
     <color name="tab_indicator_gray">#c0c0c0</color>
 </resources>

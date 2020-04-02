@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".botnav.beranda.BerandaFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/logoOptimaUKM"
         android:layout_width="100dp"
@@ -16,16 +25,6 @@
         android:src="@drawable/logo_ejsc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/ic_notifications_green_52dp"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/logoOptimaUKM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logoOptimaUKM"
-        android:contentDescription="@string/notifikasi" />
 
     <TextView
         android:id="@+id/text_selamat_datang"
