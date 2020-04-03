@@ -39,4 +39,7 @@
     <string name="tanggal_notifikasi">Tanggal Notifikasi</string>
     <string name="judul_notifikasi">Judul Notifikasi</string>
     <string name="keterangan_notifikasi">Keterangan Notifikasi</string>
+    <string name="simpan">Simpan</string>
+    <string name="kata_sandi_lama">Kata Sandi Lama</string>
+    <string name="optional">Optional</string>
 </resources>
