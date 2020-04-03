@@ -30,4 +30,13 @@
     <string name="konfirmasi_kata_sandi_baru">Konfirmasi Kata Sandi Baru</string>
     <string name="blank">-</string>
     <string name="selamat_datang">Selamat Datang,</string>
+    <string name="notifikasi">Notifikasi</string>
+    <string name="event">Event</string>
+    <string name="judul_event">Judul Event</string>
+    <string name="keterangan_event">Keterangan Event</string>
+    <string name="tanggal_event">Tanggal Event</string>
+    <string name="belum_ada_data">Belum ada data</string>
+    <string name="tanggal_notifikasi">Tanggal Notifikasi</string>
+    <string name="judul_notifikasi">Judul Notifikasi</string>
+    <string name="keterangan_notifikasi">Keterangan Notifikasi</string>
 </resources>
