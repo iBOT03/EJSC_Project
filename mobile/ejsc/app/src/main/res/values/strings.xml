@@ -39,4 +39,14 @@
     <string name="tanggal_notifikasi">Tanggal Notifikasi</string>
     <string name="judul_notifikasi">Judul Notifikasi</string>
     <string name="keterangan_notifikasi">Keterangan Notifikasi</string>
+    <string name="edit_akun">Edit Akun</string>
+    <string name="kontak_kami">Kontak Kami</string>
+    <string name="versi_aplikasi">Versi Aplikasi</string>
+    <string name="keluar">Keluar</string>
+    <string name="_1_0">1.0</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="optional">Optional</string>
+    <string name="kata_sandi_lama">Kata Sandi Lama</string>
+    <string name="simpan">Simpan</string>
+    <string name="batal">Batal</string>
 </resources>
