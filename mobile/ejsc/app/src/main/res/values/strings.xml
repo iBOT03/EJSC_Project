@@ -49,4 +49,9 @@
     <string name="kata_sandi_lama">Kata Sandi Lama</string>
     <string name="simpan">Simpan</string>
     <string name="batal">Batal</string>
+    <string name="poster_event">Poster Event</string>
+    <string name="diselenggarakan_oleh">Diselenggarakan Oleh:</string>
+    <string name="waktu_pelaksanaan">Waktu Pelaksanaan:</string>
+    <string name="event_telah_selesai">Event Telah Selesai</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sem risus, dapibus in massa eu, viverra imperdiet neque.</string>
 </resources>

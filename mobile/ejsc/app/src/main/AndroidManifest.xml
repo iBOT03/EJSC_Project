@@ -12,9 +12,9 @@
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".akun.EditAkunActivity"></activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".botnav.event.DetailEventActivity"></activity>
+        <activity android:name=".akun.EditAkunActivity" />
         <activity
             android:name=".botnav.beranda.NotifikasiActivity"
             android:configChanges="orientation"
