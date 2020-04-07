@@ -1,0 +1,365 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 06 Apr 2020 pada 07.36
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.1.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_ejsc`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `akun`
+--
+
+CREATE TABLE `akun` (
+  `NIK` varchar(16) NOT NULL,
+  `LEVEL` varchar(1) NOT NULL COMMENT '1.Admin, 2.User',
+  `FOTO_KTP` varchar(100) NOT NULL,
+  `NAMA_LENGKAP` varchar(150) NOT NULL,
+  `EMAIL` varchar(100) NOT NULL,
+  `NO_TELEPON` varchar(13) NOT NULL,
+  `ALAMAT` text NOT NULL,
+  `ID_KOMUNITAS` varchar(3) NOT NULL,
+  `PASSWORD` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `akun`
+--
+
+INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `ID_KOMUNITAS`, `PASSWORD`) VALUES
+('0918309139183918', '2', 'user.png', 'ppp', 'ppp@gmail.com', '0918398173987', 'www', '1', 'pppppppp'),
+('1', '1', 'dicky.jpg', 'Admin 1', 'admin@admin.com', '000', 'admin', '', '1'),
+('1234567890098', '1', '', 'Octavian Yudha Mahendra', 'yudhaoctavian01@gmail.com', '081252989930', 'Jl. Nangka 4/9 Perumnas Patrang Jember', '', 'admin'),
+('2', '1', 'userprofil.png', 'Admin 2', 'admin2@admin.com', '0000', 'admin', '', 'asdasdasd'),
+('22', '2', '', 'ww', 'ww', '22', 'ww', '3', '22'),
+('2222', '2', '', 'qq', 'qq', '11', 'qq', '1', 'qq'),
+('33', '2', '', 'ee', 'ee', '33', 'ee', '3', '33'),
+('3500000000000005', '2', '', 'Aku User', 'user@gmail.com', '123456789012', 'alamat user', '1', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `alat`
+--
+
+CREATE TABLE `alat` (
+  `ID_ALAT` int(3) NOT NULL,
+  `NAMA_ALAT` varchar(100) NOT NULL,
+  `JUMLAH_ALAT` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `alat`
+--
+
+INSERT INTO `alat` (`ID_ALAT`, `NAMA_ALAT`, `JUMLAH_ALAT`) VALUES
+(1, 'gitar', 3),
+(2, 'viewer', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `booking`
+--
+
+CREATE TABLE `booking` (
+  `ID_BOOKING` int(11) NOT NULL,
+  `NAMA` varchar(150) NOT NULL,
+  `NOMOR_TELEPON` varchar(13) NOT NULL,
+  `ID_KOMUNITAS` varchar(200) NOT NULL,
+  `ID_RUANGAN` varchar(50) NOT NULL,
+  `JUMLAH_ORANG` int(3) NOT NULL,
+  `DESKRIPSI_KEGIATAN` text NOT NULL,
+  `TUJUAN` text NOT NULL,
+  `TANGGAL_MULAI` date NOT NULL,
+  `DURASI` int(11) NOT NULL,
+  `JAM_MULAI` time NOT NULL,
+  `JAM_SELESAI` varchar(225) NOT NULL,
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Pending, 3.Selesai, 4.Batal'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `booking`
+--
+
+INSERT INTO `booking` (`ID_BOOKING`, `NAMA`, `NOMOR_TELEPON`, `ID_KOMUNITAS`, `ID_RUANGAN`, `JUMLAH_ORANG`, `DESKRIPSI_KEGIATAN`, `TUJUAN`, `TANGGAL_MULAI`, `DURASI`, `JAM_MULAI`, `JAM_SELESAI`, `STATUS`) VALUES
+(6, 'Anthine Amar', '08125153', '1', '1', 12, '                        ', 'Ngobar', '2020-02-08', 2, '20:00:00', '', '1'),
+(8, 'Ryan Hartadi', '08125153', '1', '2', 14, '', 'Ngobar', '2020-02-08', 2, '20:20:00', '', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `detail_event`
+--
+
+CREATE TABLE `detail_event` (
+  `ID_DETAIL_EVENT` int(11) NOT NULL,
+  `ID_EVENT` varchar(225) NOT NULL,
+  `ID_ALAT` varchar(225) NOT NULL,
+  `JUMLAH` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `detail_event`
+--
+
+INSERT INTO `detail_event` (`ID_DETAIL_EVENT`, `ID_EVENT`, `ID_ALAT`, `JUMLAH`) VALUES
+(8, 'E001', '1', 1),
+(9, 'E001', '1', 1),
+(21, 'E008', '1', 1),
+(22, 'E008', '1', 2),
+(30, 'E009', '1', 1),
+(31, 'E009', '1', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `event`
+--
+
+CREATE TABLE `event` (
+  `ID_EVENT` varchar(11) NOT NULL,
+  `JUDUL` varchar(150) NOT NULL,
+  `FOTO` varchar(150) NOT NULL,
+  `SURAT_PENGAJUAN` varchar(100) NOT NULL,
+  `PENYELENGGARA` varchar(150) NOT NULL,
+  `NAMA_PJ` varchar(150) NOT NULL,
+  `NAMA_PENGISI_ACARA` varchar(150) NOT NULL,
+  `TANGGAL_MULAI` date NOT NULL,
+  `TANGGAL_SELESAI` date NOT NULL,
+  `WAKTU` time NOT NULL,
+  `ID_RUANGAN` varchar(1) NOT NULL,
+  `ASAL_PESERTA` varchar(150) NOT NULL,
+  `JUMLAH_PESERTA` int(2) NOT NULL,
+  `KETERANGAN` text NOT NULL,
+  `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Pending, 3.Selesai, 4.Batal'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `event`
+--
+
+INSERT INTO `event` (`ID_EVENT`, `JUDUL`, `FOTO`, `SURAT_PENGAJUAN`, `PENYELENGGARA`, `NAMA_PJ`, `NAMA_PENGISI_ACARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `WAKTU`, `ID_RUANGAN`, `ASAL_PESERTA`, `JUMLAH_PESERTA`, `KETERANGAN`, `STATUS`) VALUES
+('E008', 'Event baru', 'Doc3.png', 'DeniHidayatullah (E41180853).pdf', 'Ryan', 'fdsafad', 'ss', '2000-09-08', '2000-02-02', '19:00:00', '4', 'ss', 2, 'ss', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kategori_komunitas`
+--
+
+CREATE TABLE `kategori_komunitas` (
+  `ID_KATEGORI` int(3) NOT NULL,
+  `KATEGORI` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kategori_komunitas`
+--
+
+INSERT INTO `kategori_komunitas` (`ID_KATEGORI`, `KATEGORI`) VALUES
+(1, 'Musician');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `komunitas`
+--
+
+CREATE TABLE `komunitas` (
+  `ID_KOMUNITAS` int(11) NOT NULL,
+  `LOGO` varchar(150) NOT NULL,
+  `EMAIL` varchar(150) NOT NULL,
+  `NAMA` varchar(200) NOT NULL,
+  `ID_KATEGORI` varchar(3) NOT NULL,
+  `DESKRIPSI_KOMUNITAS` text NOT NULL,
+  `NAMA_KETUA` varchar(150) NOT NULL,
+  `ALAMAT` text NOT NULL,
+  `NO_TELEPON` varchar(13) NOT NULL,
+  `TWITTER` varchar(150) NOT NULL,
+  `FACEBOOK` varchar(150) NOT NULL,
+  `INSTAGRAM` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `komunitas`
+--
+
+INSERT INTO `komunitas` (`ID_KOMUNITAS`, `LOGO`, `EMAIL`, `NAMA`, `ID_KATEGORI`, `DESKRIPSI_KOMUNITAS`, `NAMA_KETUA`, `ALAMAT`, `NO_TELEPON`, `TWITTER`, `FACEBOOK`, `INSTAGRAM`) VALUES
+(1, '', 'nekad@dev.com', 'NEKAD Dev', '', 'Nekad ngoding', 'Ryan Hartadi', 'Jl. Kalimantan Gd. EJSC Bakorwil V Jember', '081252989930', '', '', ''),
+(2, 'JTI.jpg', 'Coding@gmail.com', 'Coding', '2', 'Komunitas Musisi Jember', 'Ryan', 'Jl.Trunojoyo', '09918', '', '', ''),
+(3, 'f5192848fe49eb3245358ea6efbf0e0b.jpg', 'KMJ@Gmail.com', 'Komunitas Musisi Jember', '1', 'yoo', 'Agus Pindhank', 'Jl', '05022', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kontak_kami`
+--
+
+CREATE TABLE `kontak_kami` (
+  `EMAIL` varchar(100) NOT NULL,
+  `ID` int(11) NOT NULL,
+  `NOMOR_TELEPON` varchar(13) NOT NULL,
+  `WHATSAPP` varchar(13) NOT NULL,
+  `FACEBOOK` varchar(100) NOT NULL,
+  `INSTAGRAM` varchar(100) NOT NULL,
+  `ALAMAT` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kontak_kami`
+--
+
+INSERT INTO `kontak_kami` (`EMAIL`, `ID`, `NOMOR_TELEPON`, `WHATSAPP`, `FACEBOOK`, `INSTAGRAM`, `ALAMAT`) VALUES
+('ejscjember@gmail.com', 1, '080203165', '085749806996', 'ejsc jember', 'ejscjember', 'Jl. Kalimantan            ');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ruangan`
+--
+
+CREATE TABLE `ruangan` (
+  `ID_RUANGAN` int(11) NOT NULL,
+  `FOTO_RUANGAN` varchar(100) NOT NULL,
+  `NAMA_RUANGAN` varchar(100) NOT NULL,
+  `KAPASITAS` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ruangan`
+--
+
+INSERT INTO `ruangan` (`ID_RUANGAN`, `FOTO_RUANGAN`, `NAMA_RUANGAN`, `KAPASITAS`) VALUES
+(1, '', 'Meeting Room', 15),
+(2, '', 'Training Room', 15),
+(3, '', 'Conference Room', 20),
+(4, '', 'Co-Working Space', 25),
+(5, 'Screenshot_(1).png', 'Ruang Musik', 12);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `akun`
+--
+ALTER TABLE `akun`
+  ADD PRIMARY KEY (`NIK`);
+
+--
+-- Indeks untuk tabel `alat`
+--
+ALTER TABLE `alat`
+  ADD PRIMARY KEY (`ID_ALAT`);
+
+--
+-- Indeks untuk tabel `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`ID_BOOKING`);
+
+--
+-- Indeks untuk tabel `detail_event`
+--
+ALTER TABLE `detail_event`
+  ADD PRIMARY KEY (`ID_DETAIL_EVENT`);
+
+--
+-- Indeks untuk tabel `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`ID_EVENT`);
+
+--
+-- Indeks untuk tabel `kategori_komunitas`
+--
+ALTER TABLE `kategori_komunitas`
+  ADD PRIMARY KEY (`ID_KATEGORI`);
+
+--
+-- Indeks untuk tabel `komunitas`
+--
+ALTER TABLE `komunitas`
+  ADD PRIMARY KEY (`ID_KOMUNITAS`);
+
+--
+-- Indeks untuk tabel `kontak_kami`
+--
+ALTER TABLE `kontak_kami`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indeks untuk tabel `ruangan`
+--
+ALTER TABLE `ruangan`
+  ADD PRIMARY KEY (`ID_RUANGAN`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `alat`
+--
+ALTER TABLE `alat`
+  MODIFY `ID_ALAT` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `ID_BOOKING` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `detail_event`
+--
+ALTER TABLE `detail_event`
+  MODIFY `ID_DETAIL_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT untuk tabel `kategori_komunitas`
+--
+ALTER TABLE `kategori_komunitas`
+  MODIFY `ID_KATEGORI` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `komunitas`
+--
+ALTER TABLE `komunitas`
+  MODIFY `ID_KOMUNITAS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `kontak_kami`
+--
+ALTER TABLE `kontak_kami`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `ruangan`
+--
+ALTER TABLE `ruangan`
+  MODIFY `ID_RUANGAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
