@@ -11,7 +11,7 @@ class Dashboard extends CI_Controller {
 		$data['total_pengguna'] = $this->EjscModel->pengguna();
 		$data['total_boking'] = $this->EjscModel->boking();
 		$data['total_event'] = $this->EjscModel->event();
-		
+		$data['total_komunitas'] = $this->EjscModel->totkomunitas();
         $this->load->view("admin/dashboard", $data);
 	}
 }

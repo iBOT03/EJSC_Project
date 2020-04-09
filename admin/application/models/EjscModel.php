@@ -115,4 +115,14 @@ class EjscModel extends CI_Model
             return 0;
         }
     }
+    //GET TOTAL KOMUNITAS
+    public function totkomunitas()
+    {
+        $query = $this->db->get("komunitas");
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 }
