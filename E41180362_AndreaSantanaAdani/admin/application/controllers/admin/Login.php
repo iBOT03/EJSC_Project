@@ -24,12 +24,10 @@ class Login extends CI_Controller {
 		$user = $this->db->get_where('akun', ['email' => $email]) ->row_array();
 		if($user){
 			if($user['LEVEL'] == 1){
-				if($password == $user['PASSWORD']){
+				if(password_verify($password, $user['PASSWORD'])) {
 					$data = [
 						'NAMA_LENGKAP' => $user['NAMA_LENGKAP']
-	
 					];
-	
 					$this->session->set_userdata($data);
 					redirect('admin/Dashboard');
 				} else {
