@@ -115,7 +115,7 @@
                                             <input name="password1" id="password1" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="16" required>
+                                                maxlength="100" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -124,7 +124,7 @@
                                             <input name="password2" id="password2" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Konfirmasi Password" aria-describedby="basic-addon2"
-                                                maxlength="16" required>
+                                                maxlength="100" required>
                                         </div>
                                     </div>
                                 </div>

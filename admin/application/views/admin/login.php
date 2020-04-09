@@ -28,6 +28,7 @@
 
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">East Java Super Corridor</h1>
+                                        <?php echo $this->session->flashdata('pesan'); ?>
                                     </div>
 
                                     <form class="user" method="post">
@@ -35,11 +36,13 @@
                                             <input type="text" class="form-control form-control-user" name="email"
                                                 id="email" aria-describedby="emailHelp"
                                                 placeholder="Masukkan Alamat Email">
+                                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
 
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                 name="password" id="password" placeholder="Masukkan Password">
+                                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
 
                                         <div class="form-group">
@@ -50,9 +53,9 @@
                                             </div>
                                         </div>
 
-                                        <a href="<?php echo site_url('admin/dashboard') ?>" type="submit" class="btn btn-info btn-user btn-block">
+                                        <button type=" submit" class="btn btn-info btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
 
                                 </div>
                             </div>

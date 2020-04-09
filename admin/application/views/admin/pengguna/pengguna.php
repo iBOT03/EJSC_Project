@@ -56,35 +56,41 @@
                                             <th>Level</th>
                                             <th style="width: 96px">Aksi</th>
                                         </tr>
+                                        <?php
+                            foreach ($akun as $row) {
+                          ?>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $row->NIK; ?></td>
+                                            <td><?php echo $row->EMAIL; ?></td>
+                                            <td><?php echo $row->NAMA_LENGKAP; ?></td>
+                                            <td><?php echo $row->ID_KOMUNITAS; ?></td>
+                                            <td><?php echo $row->NO_TELEPON; ?></td>
                                             <td>
-                                                <?php //if ($row->LEVEL == 1) {
-                                                //        echo 'Admin';
-                                                //    } elseif ($row->LEVEL == 2) {
-                                                //        echo 'User';
-                                                //    }
-                                                ?>
+                                                <?php if ($row->LEVEL == 1) {
+                                echo 'Admin';
+                              } elseif ($row->LEVEL == 2) {
+                                echo 'User';
+                              }
+                            ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo site_url('admin/pengguna/edit/') ?>"
+                                                <a href="<?php echo site_url('admin/pengguna/edit/'. $row->NIK) ?>"
                                                     class="btn btn-sm btn-info btn-circle">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="<?php echo site_url('admin/pengguna/hapus/') ?>"
-                                                    onclick=""
+                                                <a href="<?php echo site_url('admin/pengguna/hapus/' . $row->NIK) ?>"
+                                                    onclick="confirm_modal('<?php echo 'pengguna/hapus/' . $row->NIK; ?>')"
                                                     class="btn btn-sm btn-danger btn-circle" data-toggle="modal"
                                                     data-target="#hapusModal">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
+                                        <?php
+                          }
+                          ?>
                                     </tbody>
                                 </table>
                                 <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"

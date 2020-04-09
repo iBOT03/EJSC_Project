@@ -110,7 +110,7 @@
                                             <input name="password1" id="password1" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="16" value="<?php echo $akun[0]->PASSWORD; ?>" required>
+                                                maxlength="100" required>
                                         </div>
                                         <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -120,7 +120,7 @@
                                             <input name="password2" id="password2" type="password"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="16" required>
+                                                maxlength="100" required>
                                         </div>
                                         <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>

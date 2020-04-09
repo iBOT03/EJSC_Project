@@ -41,16 +41,20 @@
                                         <div class="input-group">
                                             <input name="nik" id="nik" type="text"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan NIK"
-                                                aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)">
+                                                aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
+                                                value="<?= set_value('nik'); ?>">
                                         </div>
+                                        <?= form_error('nik', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Nama Lengkap</p>
                                         <div class="input-group">
                                             <input name="nama" id="nama" type="text"
                                                 class="form-control border-dark small mb-3"
-                                                placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2">
+                                                placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2"
+                                                value="<?= set_value('nama'); ?>">
                                         </div>
+                                        <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -60,8 +64,10 @@
                                         <div class="input-group">
                                             <input name="email" id="email" type="text"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan Email"
-                                                aria-describedby="basic-addon2" maxlength="100">
+                                                aria-describedby="basic-addon2" maxlength="100"
+                                                value="<?= set_value('email'); ?>">
                                         </div>
+                                        <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Telepon/Whatsapp</p>
@@ -69,8 +75,10 @@
                                             <input name="no_telpon" id="no_telpon" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan No Telepon/Whatsapp"
-                                                aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)">
+                                                aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
+                                                value="<?= set_value('no_telpon'); ?>">
                                         </div>
+                                        <?= form_error('no_telpon', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -78,7 +86,7 @@
                                 <div class="input-group">
                                     <textarea name="alamat" id="alamat" type="text"
                                         class="form-control border-dark small mb-3" placeholder="Masukkan Alamat"
-                                        aria-describedby="basic-addon2"></textarea>
+                                        aria-describedby="basic-addon2" value="<?= set_value('alamat'); ?>"></textarea>
                                 </div>
                                 <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
 
@@ -101,6 +109,7 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Password" aria-describedby="basic-addon2">
                                         </div>
+                                        <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Konfirmasi Password</p>
@@ -109,6 +118,7 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Konfirmasi Password" aria-describedby="basic-addon2">
                                         </div>
+                                        <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
