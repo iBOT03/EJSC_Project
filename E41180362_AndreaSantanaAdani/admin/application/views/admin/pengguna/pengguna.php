@@ -65,7 +65,7 @@
                                             <td><?php echo $row->NIK; ?></td>
                                             <td><?php echo $row->EMAIL; ?></td>
                                             <td><?php echo $row->NAMA_LENGKAP; ?></td>
-                                            <td><?php echo $row->KOMUNITAS; ?></td>
+                                            <td><?php echo $row->ID_KOMUNITAS; ?></td>
                                             <td><?php echo $row->NO_TELEPON; ?></td>
                                             <td>
                                                 <?php if ($row->LEVEL == 1) {

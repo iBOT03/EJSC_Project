@@ -19,7 +19,7 @@ class Administrator extends CI_Controller
 
 	public function tambah()
 	{
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[16]|matches[password2]');
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[100]|matches[password2]');
 		$this->form_validation->set_rules('password2', 'Kofirmasi Password', 'required|trim|matches[password1]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[akun.EMAIL]');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric|max_length[16]|is_unique[akun.NIK]');
@@ -46,7 +46,7 @@ class Administrator extends CI_Controller
 					'EMAIL' => $this->input->post("email"),
 					'NO_TELEPON' => $this->input->post("no_telpon"),
 					'ALAMAT' => $this->input->post("alamat"),
-					'KOMUNITAS' => '',
+					'ID_KOMUNITAS' => '',
 					'PASSWORD' => password_hash($this->input->post("password1"), PASSWORD_DEFAULT)
 
 				);
@@ -118,7 +118,7 @@ class Administrator extends CI_Controller
 
 	public function edit($nik)
     {
-		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[16]|matches[password2]');
+		$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|max_length[100]|matches[password2]');
 		$this->form_validation->set_rules('password2', 'Kofirmasi Password', 'required|trim|matches[password1]');
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric|max_length[16]');
@@ -146,7 +146,7 @@ class Administrator extends CI_Controller
                     'EMAIL' => $this->input->post("email"),
                     'NO_TELEPON' => $this->input->post("no_telpon"),
                     'ALAMAT' => $this->input->post("alamat"),
-                    'KOMUNITAS' => '',
+                    'ID_KOMUNITAS' => '',
                     'PASSWORD' => password_hash($this->input->post("password1"), PASSWORD_DEFAULT)
                 ), $nik);
                 if ($data) {
