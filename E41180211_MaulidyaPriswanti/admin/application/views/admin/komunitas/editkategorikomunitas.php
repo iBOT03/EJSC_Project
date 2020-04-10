@@ -27,6 +27,7 @@
       <form action="" method="post">
         <!-- Begin Page Content -->
         <div class="container-fluid">
+        <?php foreach ($kat as $k) { ?>
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Kategori Komunitas</h1>
           <div class="card shadow mb-4">
@@ -41,9 +42,10 @@
                             class="form-control border-dark small mb-3"
                             placeholder="Masukkan Kategori Komunitas"
                             aria-describedby="basic-addon2"
-                            value=""
+                            value="<?php echo $k->KATEGORI;?>"
                            >
                     </div>
+                    <?php echo form_error('namaalat','<small class="text-danger">','</small>')?>
                 </div>
               </div>
 
@@ -66,6 +68,7 @@
 
         </div>
         <!-- /.container-fluid -->
+        <?php } ?>
       </div>
       <!-- End of Main Content -->
       </form>

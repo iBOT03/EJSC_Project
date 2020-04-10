@@ -45,8 +45,10 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
+                           value="<?php echo set_value('nama_komunitas')?>"
+                           >
                   </div>
+                           <?= form_error('nama_komunitas', '<small class="text-danger">', '</small>')?>
                 </div>
 
                 <div class="col-sm-6">
@@ -58,8 +60,10 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Email Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
-                  </div>
+                           value="<?php echo set_value('email_komunitas')?>"
+                           >
+                  </div> 
+                  <?= form_error('email_komunitas', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
 
@@ -73,8 +77,10 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Ketua Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
+                           value="<?php echo set_value('ketua_komunitas')?>"
+                           >
                   </div>
+                  <?= form_error('ketua_komunitas', '<small class="text-danger">', '</small>')?> 
                 </div>
 
                 <div class="col-sm-6">
@@ -83,10 +89,14 @@
                     <select class="form-control border-dark small mb-3"
                             id="kategori_komunitas"
                             name="kategori_komunitas"
-                            value="">
-                         <option value=""></option>
+                            value="<?php echo set_value('kategori_komunitas')?>">
+                      <?php foreach($komunitas as $l){ ?>
+                         <option value="<?php echo $l['ID_KATEGORI']; ?>"><?php echo $l['KATEGORI']; ?>   </option>
+                      <?php } ?>
+                     
                     </select>
                   </div>
+                  <?= form_error('kategori_komunitas', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
             
@@ -97,9 +107,10 @@
                        name="alamat_komunitas"
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Alamat Komunitas"
-                       value=""
+                       value="<?php echo set_value('alamat_komunitas')?>"
                        aria-describedby="basic-addon2"></textarea>
               </div>
+              <?= form_error('alamat_komunitas', '<small class="text-danger">', '</small>')?> 
               <p>Deskripsi Komunitas</p>
               <div class="input-group">
                 <textarea type="text"
@@ -107,9 +118,10 @@
                        name="deskripsi_komunitas"
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Deskripsi Komunitas"
-                       value=""
+                       value="<?php echo set_value('deskripsi_komunitas')?>"
                        aria-describedby="basic-addon2"></textarea>
               </div>
+              <?= form_error('deskripsi_komunitas', '<small class="text-danger">', '</small>')?> 
 
               <div class="row">
                 <div class="col-sm-6">
@@ -120,9 +132,11 @@
                     name="no_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan No Telepon/Whatsapp Komunitas"
-                           value=""
-                           aria-describedby="basic-addon2">
+                           value="<?php echo set_value('no_komunitas')?>"
+                           aria-describedby="basic-addon2"
+                           >
                   </div>
+                  <?= form_error('no_komunitas', '<small class="text-danger">', '</small>')?> 
                 </div>
 
                 <div class="col-sm-6">
@@ -133,7 +147,7 @@
                     name="twitter_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Twitter Komunitas"
-                           value=""
+                           value="<?php echo set_value('twitter_komunitas')?>"
                            aria-describedby="basic-addon2">
                   </div>
                 </div>
@@ -148,7 +162,7 @@
                     name="facebook_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Facebook Komunitas"
-                           value=""
+                           value="<?php echo set_value('facebook_komunitas')?>"
                            aria-describedby="basic-addon2">
                   </div>
                 </div>
@@ -161,7 +175,7 @@
                     name="ig_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Instagram Komunitas"
-                           value=""
+                           value="<?php echo set_value('ig_komunitas')?>"
                            aria-describedby="basic-addon2">
                   </div>
                 </div>
@@ -175,8 +189,10 @@
                            type="file"
                            class="form-control border-dark small mb-3"
                            placeholder=""
-                           aria-describedby="basic-addon2">
+                           aria-describedby="basic-addon2"
+                           >
                   </div>
+                  <?= form_error('foto', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
 
