@@ -6,6 +6,7 @@ class Alat extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('form_validation');
+		belumlogin();
 	}
 
 	public function index() {
