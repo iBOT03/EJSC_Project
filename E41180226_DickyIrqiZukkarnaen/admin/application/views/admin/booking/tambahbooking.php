@@ -41,16 +41,24 @@
                                         <div class="input-group">
                                             <input class="form-control border-dark small mb-3"
                                                    type="date"
-                                                   id="singleDatePicker">
+                                                   id="tanggal"
+                                                   name="tanggal"
+                                                   placeholder="Masukkan Tanggal"
+                                                   aria-describedby="basic-addon2"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <p>Jam Mulai</p>
                                         <div class="input-group">
                                             <input class="form-control border-dark small mb-3"
-                                                    
                                                    type="time"
-                                                   id="start">
+                                                   id="start"
+                                                   name="start"
+                                                   placeholder="Masukkan Jam"
+                                                   aria-describedby="basic-addon2"
+                                                   required>
+                                                   
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -77,7 +85,7 @@
                                                    class="form-control border-dark small mb-3"
                                                    placeholder="Jam Selesai"
                                                    aria-describedby="basic-addon2"
-                                                   >
+                                                   e>
                                         </div>
                                      
                                     </div>
@@ -140,8 +148,8 @@
                                     <div class="col-sm-6">
                                         <p>Nomor Telepon</p>
                                         <div class="input-group">
-                                            <input name="jumlahpeserta"
-                                                   id="jumlahpeserta"
+                                            <input name="nomortelepon"
+                                                   id="nomortelepon"
                                                    type="text"
                                                    class="form-control border-dark small mb-3"
                                                    placeholder="Masukkan Nomor Telepon"

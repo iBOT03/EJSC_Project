@@ -27,20 +27,20 @@ class Event extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menambahkan Event!
 			  </div>'); 
-			  redirect('admin/acara/event');
+			  redirect('admin/event');
 				
 			} else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Menambahkan Event!
 			  </div>'); 
-			  redirect('admin/acara/event');
+			  redirect('admin/event');
 			}
 		}
 		$this->load->view("admin/acara/tambahevent");
 	}
 
 	public function edit($id) {
-		$data["event"] = $this->EjscModel->detail($id);
+		$data["event"] = $this->EjscModel->detail_event($id);
 		$this->load->view("admin/acara/editevent", $data);
 		if($this->input->method() == "post") {
 			$update = $this->EjscModel->ubahevent(array(
@@ -75,12 +75,12 @@ class Event extends CI_Controller {
             $this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menghapus Akun!
 			  </div>'); 
-			  redirect('admin/acara/event');
+			  redirect('admin/event');
         } else {
 			$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 			Gagal Menghapus Akun!
 		  </div>'); 
-		  redirect('admin/acara/event');
+		  redirect('admin/event');
 		}
 	}
 }

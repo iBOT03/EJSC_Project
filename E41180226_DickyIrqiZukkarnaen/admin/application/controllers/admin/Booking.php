@@ -7,7 +7,7 @@ class Booking extends CI_Controller {
 	}
 
 	public function index() {
-		$data = array ("booking" => $this->EjscModel->getevent());
+		$data = array ("booking" => $this->EjscModel->getbooking());
 
         $this->load->view("admin/booking/booking", $data);
 	}
@@ -16,12 +16,19 @@ class Booking extends CI_Controller {
 		if($this->input->method() == "post") {
 			$insert = $this->EjscModel->tambahevent(array(
 				"ID_BOOKING" => '',
-				'JUDUL' => $this->input->post("judulevent"),
-				'FOTO' => $this->input->post("posterevent"),
-				'PENYELENGGARA' => $this->input->post("penyelenggara"),
-				'WAKTU' => $this->input->post("tanggal"),
-				'KETERANGAN' => $this->input->post("keterangan"),
-				'STATUS' => $this->input->post("status")							
+				'NAMA' => $this->input->post("nama"),
+				'NOMOR_TELEPON' => $this->input->post("nomortelepon"),
+				'KOMUNITAS' => $this->input->post("komunitas"),
+				'RUANGAN' => $this->input->post("ruangan"),
+				'JUMLAH_ORANG' => $this->input->post("jumlahorang"),
+				'TEMA_KEGIATAN' => $this->input->post("temakegiatan"),
+				'DURASI' => $this->input->post("durasi"),
+				'TANGGAL' => $this->input->post("tanggal"),							
+				'TANGGAL_KEMBALI' => $this->input->post("tanggalkembali"),
+				'PEMINJAMAN_ALAT' => $this->input->post("peminjamanalat"),
+				'JUMLAH_PEMINJAMAN_ALAT' => $this->input->post("jumlahpeminjamanalat"),
+				'SURAT_PENGAJUAN' => $this->input->post("suratpengajuan"),
+				'STATUS' => $this->input->post("status")
 			));
 			if($insert){
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
@@ -44,18 +51,25 @@ class Booking extends CI_Controller {
 		$this->load->view("admin/booking/editbooking", $data);
 		if($this->input->method() == "post") {
 			$update = $this->EjscModel->ubahbooking(array(
-				'JUDUL' => $this->input->post("Judul"),
-				'FOTO' => $this->input->post("Poster"),
-				'PENYELENGGARA' => $this->input->post("Penyelenggara"),
-				'WAKTU' => $this->input->post("Tanggal"),
-				'KETERANGAN' => $this->input->post("Keterangan"),
-				'STATUS' => $this->input->post("Status")							
+				'NAMA' => $this->input->post("nama"),
+				'NOMOR_TELEPON' => $this->input->post("nomortelepon"),
+				'KOMUNITAS' => $this->input->post("komunitas"),
+				'RUANGAN' => $this->input->post("ruangan"),
+				'JUMLAH_ORANG' => $this->input->post("jumlahorang"),
+				'TEMA_KEGIATAN' => $this->input->post("temakegiatan"),
+				'DURASI' => $this->input->post("durasi"),
+				'TANGGAL' => $this->input->post("tanggal"),							
+				'TANGGAL_KEMBALI' => $this->input->post("tanggalkembali"),
+				'PEMINJAMAN_ALAT' => $this->input->post("peminjamanalat"),
+				'JUMLAH_PEMINJAMAN_ALAT' => $this->input->post("jumlahpeminjamanalat"),
+				'SURAT_PENGAJUAN' => $this->input->post("suratpengajuan"),
+				'STATUS' => $this->input->post("status")							
 			), $id);
 			if($update){
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Mengubah booking!
 			  </div>'); 
-			  redirect('admin/booking/booking');
+			  redirect('admin/booking/editbooking');
 			}else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Mengubah Akun!

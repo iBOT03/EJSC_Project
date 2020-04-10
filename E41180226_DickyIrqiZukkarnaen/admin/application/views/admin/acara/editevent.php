@@ -28,7 +28,9 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-        <form method="post" action="<?= site_url('admin/acara/editevent')?>">
+
+
+        <form method="post" action="<?= site_url('admin/event/editevent')?>">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Event</h1>
@@ -51,6 +53,7 @@
               <p>Judul Event</p>
               <div class="input-group">
                 <input name="judulevent"
+                       value="<?php echo $event[0]->JUDUL;?>"
                        id="judulevent"
                        type="text"
                        class="form-control border-dark small mb-3"
@@ -65,6 +68,7 @@
                   <div class="input-group">
                     <input name="penyelenggara"
                            id="penyelenggara"
+                           value="<?php echo $event[0]->PENYELENGGARA;?>"
                            type="text"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Penyelenggara"
@@ -77,6 +81,7 @@
                   <div class="input-group">
                     <input name="nama_pj"
                           id="nama_pj"
+                          value="<?php echo $event[0]->PENYELENGGARA;?>"
                           type="text"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Nama Penanggung Jawab"
@@ -128,6 +133,7 @@
                   <div class="input-group">
                     <textarea id="keterangan"
                               name="keterangan"
+                              value="<?php echo $event[0]->KETERANGAN;?>"
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"

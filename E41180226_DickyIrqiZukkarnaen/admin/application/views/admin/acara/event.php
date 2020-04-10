@@ -65,9 +65,19 @@
                       <td><?= $row->WAKTU; ?></td>
                       <td><?= $row->JUDUL; ?></td>
                       <td><?= $row->PENYELENGGARA; ?></td>
-                      <td><?= $row->FOTO; ?></td>
+                      <td><img src="<?= base_url('uploads/event/'). $row->FOTO?>" alt="" width="100" srcset=""></td>
                       <td><?= $row->KETERANGAN; ?></td>
-                      <td><?= $row->STATUS; ?></td>
+                      <td>
+                      <?php if ($row->STATUS == 1) {
+                          echo '<div class="badge badge-primary badge-pill">Aktif</div>';
+                        } elseif ($row->STATUS == 2) {
+                          echo '<div class="badge badge-warning badge-pill">Pending</div>';
+                        } elseif ($row->STATUS == 3) {
+                          echo '<div class="badge badge-success badge-pill">Selesai</div>';
+                        }elseif ($row->STATUS == 4) {
+                          echo '<div class="badge badge-danger badge-pill">Batal</div>';
+                        } ?>
+                    </td>
                       <td>
                         <a href="<?php echo site_url("admin/event/detail/" .$row->ID_EVENT);?>"
                           class="btn btn-sm btn-primary btn-circle">
@@ -77,8 +87,8 @@
                           class="btn btn-sm btn-info btn-circle">
                           <i class="fa fa-pencil-alt"></i>
                         </a>
-                        <a href="#"
-                           onclick=""
+                        <a href="<?php echo site_url("admin/event/hapus/" .$row->ID_EVENT);?>"
+                           onclick="confirm_modal('<?php echo 'event/hapus/' . $row->ID_EVENT; ?>')"
                            class="btn btn-sm btn-danger btn-circle"
                            data-toggle="modal" data-target="#hapusModal">
                            <i class="fa fa-trash"></i>
@@ -90,10 +100,28 @@
                   }
                   ?>
                 </table>
+                <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"
+                       aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakinuntuk menghapus?</h5>
+                          <button class="close" type="button" data-dismiss="modal"
+                                  aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Pilih "Hapus" untuk menghapus, pilih "Batal" untuk kembali ke Panel Admin.</div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info" type="button" data-dismiss="modal">Batal</button>
+                          <a id="delete_link" class="btn btn-danger" href="">Hapus</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
+        </div>
         </div>
         <!-- /.container-fluid -->
 
@@ -114,6 +142,15 @@
 
   <!-- Logout Modal-->
   <?php $this->load->view("admin/_partials/modal.php") ?>
+
+  <script type="text/javascript">
+    function confirm_modal(delete_url) {
+        $('#hapusModal').modal('show', {
+            backdrop: 'static'
+        });
+        document.getElementById('delete_link').setAttribute('href', delete_url);
+    }
+  </script>
 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
