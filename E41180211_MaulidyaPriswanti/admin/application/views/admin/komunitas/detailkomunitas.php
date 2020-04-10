@@ -50,7 +50,7 @@
                   <p>Nama Komunitas:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p><?= $a->NAMA;?></p>
+                  <p><?= $a->NAMA_KOMUNITAS;?></p>
                 </div>
               </div>
 
