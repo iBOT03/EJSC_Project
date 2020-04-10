@@ -9,7 +9,7 @@ class Alat extends CI_Controller
 	}
 
 	public function index() {
-		$this->load->view("admin/alat/alat", $data);
+		$this->load->view("admin/alat/alat");
 	}
 
 	public function tambah() {

@@ -54,34 +54,43 @@
                                             <th>Level</th>
                                             <th style="width: 96px">Aksi</th>
                                         </tr>
+                                        <?php
+                                            foreach ($akun as $row) {
+                                            ?>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $row->NAMA_LENGKAP; ?></td>
+                                            <td><?php echo $row->EMAIL; ?></td>
+                                            <td><?php echo $row->ALAMAT; ?></td>
                                             <td>
-                                                <?php //if ($row->LEVEL == 1) {
-                                                  //echo 'Admin';
-                                                //} elseif ($row->LEVEL == 2) {
-                                                //echo 'User';
-                                                //} ?>
+                                                <?php if ($row->LEVEL == 1) {
+                                                  echo 'Admin';
+                                                } elseif ($row->LEVEL == 2) {
+                                                echo 'User';
+                                                } ?>
                                             </td>
                                             <td>
                                                 <?php
-                                                //if($_SESSION['NAMA_LENGKAP'] == $row->NAMA_LENGKAP) {
+                                                if($_SESSION['NAMA_LENGKAP'] == $row->NAMA_LENGKAP) {
                                                 ?>
-                                                <a href="<?php echo site_url('admin/administrator/edit/') ?>"
+                                                <a href="<?php echo site_url('admin/administrator/edit/' . $row->NIK) ?>"
                                                     class="btn btn-sm btn-info btn-circle">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="<?php echo site_url('admin/administrator/hapus/') ?>"
-                                                    onclick=""
+                                                <a href="<?php echo site_url('admin/administrator/hapus/' . $row->NIK) ?>"
+                                                    onclick="confirm_modal('<?php echo 'administrator/hapus/' . $row->NIK; ?>')"
                                                     class="btn btn-sm btn-danger btn-circle" data-toggle="modal">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
+                                                <?php
+                                                }
+                                                ?>
                                             </td>
                                         </tr>
+                                        <?php
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                                 <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"
@@ -130,6 +139,15 @@
 
     <!-- Logout Modal-->
     <?php $this->load->view("admin/_partials/modal.php") ?>
+
+    <script type="text/javascript">
+    function confirm_modal(delete_url) {
+        $('#hapusModal').modal('show', {
+            backdrop: 'static'
+        });
+        document.getElementById('delete_link').setAttribute('href', delete_url);
+    }
+    </script>
 
     <!-- JavaScript-->
     <?php $this->load->view("admin/_partials/js.php") ?>
