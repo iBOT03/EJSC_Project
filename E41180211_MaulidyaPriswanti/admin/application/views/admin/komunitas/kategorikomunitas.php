@@ -57,16 +57,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($kategori_komunitas as $p) :
+                                        ?>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $p->KATEGORI; ?></td>
                                             <td>
-                                                <a href="<?php echo site_url('admin/komunitas/editkategori/') ?>"
+                                                <a href="<?php echo site_url('admin/komunitas/editkategori/' . $p->ID_KATEGORI) ?>"
                                                     style="width:35px" class="btn btn-sm btn-info shadow-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a  onclick="confirm_modal('<?php echo 'hapuskategori/'?>')"
-                                                    href="<?php echo site_url('hapuskategori/') ?>"
+                                                <a  onclick="confirm_modal('<?php echo 'hapuskategori/' . $p->ID_KATEGORI; ?>')"
+                                                    href="<?php echo site_url('hapuskategori/' . $p->ID_KATEGORI) ?>"
                                                     style="width:35px" class="btn btn-sm btn-danger shadow-sm"
                                                     data-toggle="modal"
                                                     data-target="#hapusModal">
@@ -76,6 +80,7 @@
                                             </td>
 
                                         </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                                 <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"

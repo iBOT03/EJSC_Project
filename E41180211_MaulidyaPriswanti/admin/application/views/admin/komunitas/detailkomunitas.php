@@ -30,9 +30,10 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Detail Komunitas</h1>
+          <?php foreach($komunitas as $a) {?>
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a href="<?php echo site_url('admin/komunitas/anggota/') ?>"
+              <a href="<?php echo site_url('admin/komunitas/anggota/' .$a->ID_KOMUNITAS) ?>"
                  class="btn btn-sm btn-info btn-icon-split shadow-sm">
                 <span class="icon text-white-50">
                   <i class="fas fa-users"></i>
@@ -42,14 +43,14 @@
             </div>
             <div class="card-body">
 
-              <img src="<?= base_url('uploads/')?>" alt="Logo Komunitas" class="logo-komunitas mx-auto d-block mb-5">
+              <img src="<?= base_url('uploads/') . $a->LOGO; ?>" alt="Logo Komunitas" class="logo-komunitas mx-auto d-block mb-5">
 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Nama Komunitas:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->NAMA;?></p>
                 </div>
               </div>
 
@@ -58,7 +59,7 @@
                   <p>Nama Ketua Komunitas:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->NAMA_KETUA;?></p>
                 </div>
               </div>
 
@@ -67,7 +68,7 @@
                   <p>Kategori Komunitas:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->KATEGORI;?></p>
                 </div>
               </div>
 
@@ -76,7 +77,7 @@
                   <p>Alamat:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->ALAMAT;?></p>
                 </div>
               </div>
 
@@ -85,7 +86,7 @@
                   <p>Nomor Telepon:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->NO_TELEPON;?></p>
                 </div>
               </div>
 
@@ -94,7 +95,7 @@
                   <p>Email:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->EMAIL;?></p>
                 </div>
               </div>
 
@@ -103,7 +104,7 @@
                   <p>Facebook:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->FACEBOOK;?></p>
                 </div>
               </div>
 
@@ -112,7 +113,7 @@
                   <p>Twitter:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->TWITTER;?></p>
                 </div>
               </div>
 
@@ -121,7 +122,7 @@
                   <p>Instagram:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->INSTAGRAM;?></p>
                 </div>
               </div>
 
@@ -130,9 +131,10 @@
                   <p>Deskripsi Komunitas:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p></p>
+                  <p><?= $a->DESKRIPSI_KOMUNITAS;?></p>
                 </div>
               </div>
+          <?php } ?>
               <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-danger btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-reply"></i>

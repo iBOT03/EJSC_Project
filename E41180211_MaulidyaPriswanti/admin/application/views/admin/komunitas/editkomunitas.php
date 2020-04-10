@@ -27,9 +27,11 @@
  
         <!-- Begin Page Content -->
         <div class="container-fluid">
+        <?php foreach($komunitas as $a){?>
           <!-- Page Heading -->
    
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Komunitas</h1>
+          
           <form method="post" enctype="multipart/form-data">
      
           <div class="card shadow mb-4">
@@ -44,8 +46,10 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
+                           value="<?php echo $a->NAMA;?>"
+                           >
                   </div>
+                  <?php echo form_error('nama_komunitas','<small class="text-danger">','</small>')?>
                 </div>
 
                 <div class="col-sm-6">
@@ -57,7 +61,8 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Email Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
+                           value="<?php echo $a->EMAIL;?>"
+                           >
                   </div>  
                 </div>
               </div>
@@ -72,7 +77,8 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Ketua Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
+                           value="<?php echo $a->NAMA_KETUA;?>"
+                           >
                   </div>
                 </div>
 
@@ -83,8 +89,12 @@
                             id="kategori_komunitas"
                             value="<?php echo $a->KATEGORI?>"
                             name="kategori_komunitas">
-                            <option value="">
-                         <option value=""></option>
+                            <option value=""><?php echo $a->KATEGORI ?>
+                         
+                      <?php foreach($jeniskomunitas as $d){ ?>
+                         <option value="<?php echo $d['ID_KATEGORI'] ?>" <?= ($a->ID_KATEGORI == $d['ID_KATEGORI'] ? 'selected' :'' )  ?>><?php echo $d['KATEGORI'] ?>
+                         </option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -98,7 +108,8 @@
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Alamat Komunitas"
                        aria-describedby="basic-addon2"
-                       value="">
+                       value="<?php echo $a->ALAMAT;?>"
+                       >
               </div>
 
               <p>Deskripsi Komunitas</p>
@@ -109,7 +120,8 @@
                        id="deskripsi_komunitas"
                        placeholder="Masukkan Deskripsi Komunitas"
                        aria-describedby="basic-addon2"
-                       value="">
+                       value="<?php echo $a->DESKRIPSI_KOMUNITAS;?>"
+                       >
               </div>
 
               <div class="row">
@@ -122,7 +134,8 @@
                            id="no_komunitas"
                            placeholder="Masukkan No Telepon/Whatsapp Komunitas"
                            aria-describedby="basic-addon2"
-                           value="">
+                           value="<?php echo $a->NO_TELEPON;?>"
+                           >
                   </div>
                 </div>
 
@@ -134,7 +147,7 @@
                           id="twitter_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Twitter Komunitas"
-                           value=""
+                           value="<?php echo $a->TWITTER;?>"
                            aria-describedby="basic-addon2">
                   </div>
                 </div>
@@ -149,7 +162,7 @@
                           id="facebook_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Facebook Komunitas"
-                           value=""
+                           value="<?php echo $a->FACEBOOK;?>"
                            aria-describedby="basic-addon2">
                   </div>
                 </div>
@@ -162,7 +175,7 @@
                           id="ig_komunitas"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Instagram Komunitas"
-                           value=""
+                           value="<?php echo $a->INSTAGRAM;?>"
                            aria-describedby="basic-addon2">
                   </div>
                 </div>
@@ -176,12 +189,12 @@
                            type="file"
                            class="form-control border-dark small mb-3"
                            placeholder=""
-                           aria-describedby="basic-addon2">
+                           aria-describedby="basic-addon2"
+                           >
                   </div>
                 </div>
               </div>
-              <button type="submit" href="<?php echo site_url('admin/komunitas/ubahdata') ?>"
-                      class="btn btn-info btn-icon-split">
+              <button type="submit" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
@@ -199,6 +212,7 @@
           </div>
           <!-- /.card -->
          
+          <?php } ?>  
         </div>
         <!-- /.container-fluid -->
        

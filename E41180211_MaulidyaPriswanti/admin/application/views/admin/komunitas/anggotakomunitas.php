@@ -44,16 +44,21 @@
                         <th>Email</th>
                         <th>Alamat</th>
                       </tr>
+                      <?php
+                        $no = 1;
+                        foreach($anggota as $a) {
+                      ?>
                     </thead>
                     <tbody>
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $a->NIK; ?></td>
+                        <td><?php echo $a->NAMA_LENGKAP; ?></td>
+                        <td><?php echo $a->NO_TELEPON; ?></td>
+                        <td><?php echo $a->EMAIL; ?></td>
+                        <td><?php echo $a->ALAMAT; ?></td>
                       </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                   <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-danger btn-icon-split">

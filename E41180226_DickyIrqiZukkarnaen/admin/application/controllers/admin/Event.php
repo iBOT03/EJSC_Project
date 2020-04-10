@@ -27,21 +27,21 @@ class Event extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menambahkan Event!
 			  </div>'); 
-			  redirect('admin/acara/event');
+			  redirect('admin/event');
 				
 			} else {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Menambahkan Event!
 			  </div>'); 
-			  redirect('admin/acara/event');
+			  redirect('admin/event');
 			}
 		}
 		$this->load->view("admin/acara/tambahevent");
 	}
 
 	public function edit($id) {
-		$data["event"] = $this->EjscModel->detail($id);
-		$this->load->view("adminacara//editevent", $data);
+		$data["event"] = $this->EjscModel->detail_event($id);
+		$this->load->view("admin/acara/editevent", $data);
 		if($this->input->method() == "post") {
 			$update = $this->EjscModel->ubahevent(array(
 				'JUDUL' => $this->input->post("Judul"),
@@ -49,7 +49,7 @@ class Event extends CI_Controller {
 				'PENYELENGGARA' => $this->input->post("Penyelenggara"),
 				'WAKTU' => $this->input->post("Tanggal"),
 				'KETERANGAN' => $this->input->post("Keterangan"),
-				'STATUS' => $this->input->post("Status"),							
+				'STATUS' => $this->input->post("Status")							
 			), $id);
 			if($update){
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
@@ -65,18 +65,22 @@ class Event extends CI_Controller {
 		}
 	}
 
+	public function detail() {
+		$this->load->view("admin/acara/detailevent");
+	}
+
 	public function hapus($id) {
         $hapus = $this->EjscModel->hapusevent($id);
         if ($hapus) {
             $this->session->set_flashdata('Pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menghapus Akun!
 			  </div>'); 
-			  redirect('admin/acara/event');
+			  redirect('admin/event');
         } else {
 			$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 			Gagal Menghapus Akun!
 		  </div>'); 
-		  redirect('admin/acara/event');
+		  redirect('admin/event');
 		}
 	}
 }
