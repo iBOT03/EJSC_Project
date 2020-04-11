@@ -31,7 +31,7 @@ public class KodeResetActivity extends AppCompatActivity {
 
         edt_kode_reset = findViewById(R.id.edt_kode_reset);
         btnSubmit = findViewById(R.id.buttonSubmit);
-        daftar = findViewById(R.id.tvDaftarSekarang);
+        daftar = findViewById(R.id.btnDaftarSekarang);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,7 +8,7 @@
     tools:context=".botnav.event.DetailEventActivity">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/done"
+                android:id="@+id/eventSelesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
@@ -37,7 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivEvent"
+                android:id="@+id/ivPosterEvent"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:background="@drawable/placeholder"
@@ -47,37 +47,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvJudulFasilitasi"
+                android:id="@+id/tvJudulEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:maxLines="1"
-                android:text="@string/blank"
+                android:maxLines="3"
                 android:textColor="#000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivEvent" />
-
-            <TextView
-                android:id="@+id/tvSertifikatTrainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/blank"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvNamaTrainer"
-                app:layout_constraintTop_toBottomOf="@+id/tvNamaTrainer" />
+                app:layout_constraintTop_toBottomOf="@+id/ivPosterEvent"
+                tools:text="@tools:sample/lorem/random" />
 
             <TextView
                 android:id="@+id/textView"
@@ -88,11 +72,11 @@
                 android:text="@string/diselenggarakan_oleh"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tvJudulFasilitasi"
-                app:layout_constraintTop_toBottomOf="@+id/tvJudulFasilitasi" />
+                app:layout_constraintStart_toStartOf="@+id/tvJudulEvent"
+                app:layout_constraintTop_toBottomOf="@+id/tvJudulEvent" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/fotoTrainer"
+                android:id="@+id/fotoPenyelenggara"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
@@ -100,22 +84,28 @@
                 app:layout_constraintStart_toStartOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-            <TextView
-                android:id="@+id/tvNamaTrainer"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutPenyelenggara"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_medium"
-                android:paddingStart="0dp"
-                android:paddingEnd="16dp"
-                android:text="@string/blank"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:layout_marginStart="96dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/fotoTrainer"
-                app:layout_constraintTop_toTopOf="@+id/fotoTrainer" />
+                app:layout_constraintStart_toEndOf="@+id/fotoPenyelenggara"
+                app:layout_constraintTop_toTopOf="@+id/fotoPenyelenggara">
+
+                <TextView
+                    android:id="@+id/tvPenyelenggara"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:maxLines="2"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/lorem/random" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/textView1"
@@ -126,45 +116,47 @@
                 android:text="@string/waktu_pelaksanaan"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/fotoTrainer"
-                app:layout_constraintTop_toBottomOf="@+id/fotoTrainer" />
+                app:layout_constraintStart_toStartOf="@+id/fotoPenyelenggara"
+                app:layout_constraintTop_toBottomOf="@+id/fotoPenyelenggara" />
 
             <TextView
-                android:id="@+id/tvTglEvent"
+                android:id="@+id/tvTglMulai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/blank"
+                android:maxLines="1"
+                android:singleLine="true"
                 android:textColor="@color/darkGrey"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView1"
-                app:layout_constraintTop_toBottomOf="@+id/textView1" />
+                app:layout_constraintTop_toBottomOf="@+id/textView1"
+                tools:text="@tools:sample/lorem/random" />
 
             <TextView
-                android:id="@+id/tvKeteranganFasilitasi"
+                android:id="@+id/tvKeteranganEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/lorem"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTglEvent" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTglMulai"
+                tools:text="@tools:sample/lorem/random" />
 
             <ProgressBar
                 android:id="@+id/progressbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/ivEvent"
+                app:layout_constraintBottom_toBottomOf="@+id/ivPosterEvent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

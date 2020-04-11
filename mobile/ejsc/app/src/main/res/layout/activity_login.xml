@@ -73,7 +73,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/tvLupaPassword"
+                android:id="@+id/btnLupaPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -102,7 +102,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLupaPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/btnLupaPassword" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -112,7 +112,7 @@
         android:id="@+id/tvBelumPunyaAkun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/tvDaftarSekarang"
+        android:layout_above="@id/btnDaftarSekarang"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/poppins_medium"
@@ -121,7 +121,7 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/tvDaftarSekarang"
+        android:id="@+id/btnDaftarSekarang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

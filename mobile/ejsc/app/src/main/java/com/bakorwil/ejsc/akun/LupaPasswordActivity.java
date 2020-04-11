@@ -31,7 +31,7 @@ public class LupaPasswordActivity extends AppCompatActivity {
 
         edt_email = findViewById(R.id.edt_email);
         btnSubmit = findViewById(R.id.buttonSubmit);
-        daftar = findViewById(R.id.tvDaftarSekarang);
+        daftar = findViewById(R.id.btnDaftarSekarang);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
