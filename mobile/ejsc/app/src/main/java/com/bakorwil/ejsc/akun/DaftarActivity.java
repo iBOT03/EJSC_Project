@@ -1,9 +1,6 @@
 package com.bakorwil.ejsc.akun;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +12,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,22 +30,24 @@ import java.util.Map;
 public class DaftarActivity extends AppCompatActivity {
     Button btnDaftar, btnPilihKomunitas;
     TextView masuk;
-    EditText edt_nik, edt_nama, edt_email, edt_nomor_telepon,  edt_alamat, edt_password, edt_kofirmasi_password;
+    EditText edt_nik, edt_nama, edt_email, edt_nomor_telepon, edt_alamat, edt_password, edt_kofirmasi_password;
     String NIKHolder, NamaHolder, EmailHolder, TeleponHolder, AlamatHolder, PasswordHolder, ConfirmPasswordHolder;
-    RequestQueue requestQueue;
-    ProgressBar progressBar;
     ProgressDialog progressDialog;
-    String HttpUrl = "http://192.168.1.5/ejsc/user_registration.php";
+    ProgressBar progressBar;
+    RequestQueue requestQueue;
+    String HttpUrl = "http://192.168.1.4/EJSC_Project/mobile/api/daftar.php";
     Boolean CheckEditText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar);
 
-        progressDialog = new ProgressDialog(this);
         progressBar = new ProgressBar(DaftarActivity.this);
         progressBar.setVisibility(View.GONE);
+        requestQueue = Volley.newRequestQueue(DaftarActivity.this);
+        progressDialog = new ProgressDialog(this);
 
         edt_nik = findViewById(R.id.edt_nik);
         edt_nama = findViewById(R.id.edt_nama);
@@ -64,9 +66,7 @@ public class DaftarActivity extends AppCompatActivity {
                 progressDialog.setMessage("Tunggu Beberapa Saat");
                 progressDialog.show();
                 progressBar.setVisibility(View.VISIBLE);
-
                 CheckEditTextIsEmptyOrNot();
-
                 if (CheckEditText) {
                     UserRegistration();
                 } else if (edt_nik.getText().toString().isEmpty()) {
@@ -79,28 +79,25 @@ public class DaftarActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 } else if (edt_email.getText().toString().isEmpty()) {
                     Toast.makeText(DaftarActivity.this, "Email Tidak Boleh Kosong",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 } else if (edt_nomor_telepon.getText().toString().isEmpty()) {
                     Toast.makeText(DaftarActivity.this, "Nomor Telepon Tidak Boleh Kosong",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 } else if (edt_alamat.getText().toString().isEmpty()) {
                     Toast.makeText(DaftarActivity.this, "Alamat Tidak Boleh Kosong",
-                            Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-                } else if (edt_password.getText().toString().isEmpty()) {
-                    Toast.makeText(DaftarActivity.this, "Kata Sandi Tidak Boleh Kosong",
                             Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 } else if (!edt_password.getText().toString().equals(edt_kofirmasi_password.getText().toString())) {
-                    Toast.makeText(DaftarActivity.this, "Kata Sandi Harus sama",
+                    Toast.makeText(DaftarActivity.this, "Kata Sandi Harus Sama",
                             Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             }
         });
 
+        masuk = findViewById(R.id.btnMasuk);
         masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,11 +134,11 @@ public class DaftarActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("NIK", NIKHolder);
-                params.put("NAMA", NamaHolder);
+                params.put("NAMA_LENGKAP", NamaHolder);
                 params.put("EMAIL", EmailHolder);
                 params.put("NO_TELEPON", TeleponHolder);
                 params.put("ALAMAT", AlamatHolder);
-                params.put("User_Password", PasswordHolder);
+                params.put("PASSWORD", PasswordHolder);
                 return params;
             }
         };
@@ -158,10 +155,9 @@ public class DaftarActivity extends AppCompatActivity {
         PasswordHolder = edt_password.getText().toString().trim();
         ConfirmPasswordHolder = edt_kofirmasi_password.getText().toString().trim();
 
-        if (TextUtils.isEmpty(NIKHolder) || TextUtils.isEmpty(NamaHolder) ||
-                TextUtils.isEmpty(EmailHolder) || TextUtils.isEmpty(TeleponHolder) ||
-                TextUtils.isEmpty(AlamatHolder) || TextUtils.isEmpty(PasswordHolder) ||
-                TextUtils.isEmpty(ConfirmPasswordHolder)) {
+        if (TextUtils.isEmpty(NIKHolder) || TextUtils.isEmpty(NamaHolder) || TextUtils.isEmpty(EmailHolder) ||
+                TextUtils.isEmpty(TeleponHolder) || TextUtils.isEmpty(AlamatHolder) ||
+                TextUtils.isEmpty(PasswordHolder) || TextUtils.isEmpty(ConfirmPasswordHolder)) {
             CheckEditText = false;
         } else {
             CheckEditText = true;
@@ -173,14 +169,12 @@ public class DaftarActivity extends AppCompatActivity {
                 .setIcon(R.drawable.logo_ejsc)
                 .setTitle("Keluar Aplikasi")
                 .setMessage("Apakah Anda ingin keluar dari EJSC?")
-                .setPositiveButton("Ya", new DialogInterface.OnClickListener()
-                {
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ActivityCompat.finishAffinity(DaftarActivity.this);
                         finish();
                     }
-
                 })
                 .setNegativeButton("Tidak", null)
                 .show();

@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -104,33 +104,37 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnLupaPassword" />
 
+            <TextView
+                android:id="@+id/tvBelumPunyaAkun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/belum_memiliki_akun"
+                android:textColor="@color/lightGrey"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonMasuk" />
+
+            <TextView
+                android:id="@+id/btnDaftarSekarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/daftar_sekarang"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBelumPunyaAkun" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <TextView
-        android:id="@+id/tvBelumPunyaAkun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btnDaftarSekarang"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/belum_memiliki_akun"
-        android:textColor="@color/lightGrey"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/btnDaftarSekarang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/daftar_sekarang"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp" />
 
     <ProgressBar
         android:id="@+id/progressbar"
