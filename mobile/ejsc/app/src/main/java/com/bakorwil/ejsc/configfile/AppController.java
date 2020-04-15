@@ -7,19 +7,20 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+//AppController digunakan untuk mengatur volley pada aplikasi
 public class AppController extends Application {
     private final String TAG = AppController.class.getSimpleName();
     private static AppController instance;
     RequestQueue mRequest;
 
-    public static AppController getInstance() {
-        return instance;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
+    }
+
+    public static synchronized AppController getInstance() {
+        return instance;
     }
 
     private RequestQueue getmRequest() {

@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bakorwil.ejsc.R;
+import com.bakorwil.ejsc.configfile.ServerApi;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class DaftarActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     ProgressBar progressBar;
     RequestQueue requestQueue;
-    String HttpUrl = "http://192.168.1.4/EJSC_Project/mobile/api/daftar.php";
+//    String HttpUrl = "http://192.168.1.4/EJSC_Project/mobile/api/daftar.php";
     Boolean CheckEditText;
 
 
@@ -111,7 +112,7 @@ public class DaftarActivity extends AppCompatActivity {
         progressDialog.setMessage("Harap Tunggu");
         progressDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, HttpUrl,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ServerApi.URL_DAFTAR,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String ServerResponse) {
@@ -133,12 +134,12 @@ public class DaftarActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("NIK", NIKHolder);
-                params.put("NAMA_LENGKAP", NamaHolder);
-                params.put("EMAIL", EmailHolder);
-                params.put("NO_TELEPON", TeleponHolder);
-                params.put("ALAMAT", AlamatHolder);
-                params.put("PASSWORD", PasswordHolder);
+                params.put("nik", NIKHolder);
+                params.put("nama_lengkap", NamaHolder);
+                params.put("email", EmailHolder);
+                params.put("no_telepon", TeleponHolder);
+                params.put("alamat", AlamatHolder);
+                params.put("password", PasswordHolder);
                 return params;
             }
         };
