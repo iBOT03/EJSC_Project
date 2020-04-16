@@ -10,7 +10,6 @@
 			"id_event"=>$row['ID_EVENT'],
 			"judul"=>$row['JUDUL'],
 			"foto"=>$row['FOTO'],
-			"id_event"=>$row['ID_EVENT'],
 			"penyelenggara"=>$row['PENYELENGGARA'],
 			"nama_pengisi_acara"=>$row['NAMA_PENGISI_ACARA'],
 			"tanggal_mulai"=>$row['TANGGAL_MULAI'],
