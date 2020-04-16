@@ -59,7 +59,7 @@ public class EventFragment extends Fragment {
     }
 
     private void loadJSON() {
-        pd.setMessage("Mengambil Data Event");
+        pd.setMessage("Memuat Daftar Event");
         pd.setCancelable(false);
         pd.show();
 
@@ -72,10 +72,19 @@ public class EventFragment extends Fragment {
                     try {
                         JSONObject data = response.getJSONObject(i);
                         ModelEvent md = new ModelEvent();
-                        md.setFoto(data.getString("foto"));
-                        md.setTgl_mulai(data.getString("tanggal_mulai"));
+                        md.setId_event(data.getString("id_event"));
                         md.setJudul(data.getString("judul"));
+                        md.setFoto(data.getString("foto"));
+                        md.setPenyelenggara(data.getString("penyelenggara"));
+                        md.setNama_pengisi_acara(data.getString("nama_pengisi_acara"));
+                        md.setTgl_mulai(data.getString("tanggal_mulai"));
+                        md.setTgl_selesai(data.getString("tanggal_selesai"));
+                        md.setWaktu(data.getString("waktu"));
+                        md.setRuangan(data.getString("id_ruangan"));
+                        md.setAsal_peserta(data.getString("asal_peserta"));
+                        md.setJumlah_peserta(data.getString("jumlah_peserta"));
                         md.setKeterangan(data.getString("keterangan"));
+                        md.setStatus(data.getString("status"));
                         arrayList.add(md);
                     } catch (JSONException e) {
                         e.printStackTrace();
