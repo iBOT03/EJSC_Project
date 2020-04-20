@@ -62,7 +62,7 @@
                   <tbody>
                     <tr>
                       <td><?= $row->ID_EVENT; ?></td>
-                      <td><?= $row->WAKTU; ?></td>
+                      <td><?= $row->TANGGAL_MULAI; ?></td>
                       <td><?= $row->JUDUL; ?></td>
                       <td><?= $row->PENYELENGGARA; ?></td>
                       <td><img src="<?= base_url('uploads/event/'). $row->FOTO?>" alt="" width="100" srcset=""></td>

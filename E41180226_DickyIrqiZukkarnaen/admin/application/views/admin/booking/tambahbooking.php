@@ -57,7 +57,7 @@
                                                    name="start"
                                                    placeholder="Masukkan Jam"
                                                    aria-describedby="basic-addon2"
-                                                   required>
+                                                   >
                                                    
                                         </div>
                                     </div>

@@ -151,4 +151,20 @@ class EjscModel extends CI_Model {
         return $this->db->get_where("booking",['ID_BOOKING' => $id] )->result();
     }
 
+    public function pilihruangan(){
+        // $query = $this->db->get('ruangan');
+        // return $query->result_array();
+        $this->db->select('NAMA_RUANGAN,ID_RUANGAN');
+        $this->db->from('ruangan');
+        $ruangan = $this->db->get();
+        return $ruangan->result();
+    }
+    public function pilihAlat(){
+        // $query = $this->db->get('ruangan');
+        // return $query->result_array();
+        $this->db->select('NAMA_ALAT,JUMLAH_ALAT,ID_ALAT');
+        $this->db->from('alat');
+        $alat = $this->db->get();
+        return $alat->result();
+    }
 }

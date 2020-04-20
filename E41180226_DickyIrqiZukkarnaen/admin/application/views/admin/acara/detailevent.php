@@ -40,7 +40,7 @@
                   <p>Judul Event:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Main brawl Star akwkowkwokwwko</p>
+                  <p><?php echo $event[0]->JUDUL?></p>
                 </div>
               </div>
 
@@ -49,7 +49,7 @@
                   <p>Penyelenggara:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>nekad</p>
+                  <p><?php echo $event[0]->PENYELENGGARA?></p>
                 </div>
               </div>
 
@@ -58,7 +58,7 @@
                   <p>Nama Penanggung Jawab:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>bambank</p>
+                  <p><?php echo $event[0]->NAMA_PJ?></p>
                 </div>
               </div>
 
@@ -148,11 +148,13 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php $no=1; foreach ($alat as $alat  ){?>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td><?= $no++?></td>
+                      <td><?= $alat->NAMA_ALAT?></td>
+                      <td><?= $alat->JUMLAH_ALAT?></td>
                     </tr>
+                    <?php }?>
                   </tbody>
                 </table>
               </div>

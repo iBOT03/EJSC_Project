@@ -81,7 +81,7 @@
                   <div class="input-group">
                     <input name="nama_pj"
                           id="nama_pj"
-                          value="<?php echo $event[0]->PENYELENGGARA;?>"
+                          value="<?php echo $event[0]->NAMA_PJ;?>"
                           type="text"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Nama Penanggung Jawab"
@@ -97,6 +97,7 @@
                   <div class="input-group">
                     <input type="date"
                           id="tanggalmulai"
+                          value="<?php echo $event[0]->TANGGAL_MULAI;?>"
                           name="tanggalmulai"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Mulai"
@@ -109,6 +110,7 @@
                   <div class="input-group">
                     <input type="date"
                           id="tanggalselesai"
+                          value="<?php echo $event[0]->TANGGAL_SELESAI;?>"
                           name="tanggalselesai"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Selesai"
@@ -122,6 +124,7 @@
                     <input class="form-control border-dark small mb-3"
                            type="time"
                            id="waktu"
+                           value="<?php echo $event[0]->WAKTU;?>"
                            name="waktu">
                   </div>
                 </div>
@@ -150,6 +153,7 @@
                   <div class="input-group">
                     <textarea id="pengisiacara"
                           name="pengisiacara"
+                          value="<?php echo $event[0]->NAMA_PENGISI_ACARA;?>"
                           type="text"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Pengisi Acara"
@@ -163,6 +167,7 @@
                   <div class="input-group">
                     <textarea id="asalpeserta"
                               name="asalpeserta"
+                              value="<?php echo $event[0]->ASAL_PESERTA;?>"
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
@@ -189,6 +194,7 @@
                   <div class="input-group">
                     <input name="jumlahpeserta"
                           id="jumlahpeserta"
+                          value="<?php echo $event[0]->JUMLAH_PESERTA;?>"
                           type="text"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Jumlah Peserta"
