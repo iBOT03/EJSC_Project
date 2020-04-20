@@ -25,7 +25,7 @@
                 <!-- Topbar -->
                 <?php $this->load->view("admin/_partials/topbar.php") ?>
 
-                <!-- Begin Page Content -->
+                <!-- Begin Page Content --> 
                 <div class="container-fluid">
 
                     <!-- Page Heading -->

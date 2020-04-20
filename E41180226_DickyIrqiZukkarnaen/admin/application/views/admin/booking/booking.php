@@ -49,11 +49,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Tanggal Mulai</th>
-                      <th>Judul</th>
-                      <th>Nama Penanggung Jawab</th>
-                      <th style="width: 150px">Poster</th>
+                      <th style="width: 10px">Jam</th>
+                      <th>Nama</th>
+                      <th>Komunitas</th>
+                      <th>Kegiatan</th>
+                      <th>Durasi</th>
                       <th style="width: 60px">Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
@@ -64,11 +64,11 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?= $no++ ?></td>
-                      <td><?= $row->DURASI; ?></td>
-                      <td><?= $row->TEMA_KEGIATAN; ?></td>
+                      <td><?= $row->JAM_MULAI; ?></td>
                       <td><?= $row->NAMA; ?></td>
-                      <td><img src="<?= base_url('uploads/event/'). $row->FOTO?>" alt="" width="100" srcset=""></td>
+                      <td><?= $row->ID_KOMUNITAS; ?></td>
+                      <td><?= $row->TUJUAN; ?></td>
+                      <td><?= $row->DURASI; ?></td>
                       <td>
                         <?php if ($row->STATUS == 1) {
                           echo '<div class="badge badge-primary badge-pill">Aktif</div>';

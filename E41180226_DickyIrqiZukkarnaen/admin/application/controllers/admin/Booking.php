@@ -14,7 +14,7 @@ class Booking extends CI_Controller {
 
 	public function tambah(){
 		if($this->input->method() == "post") {
-			$insert = $this->EjscModel->tambahevent(array(
+			$insert = $this->EjscModel->tambahbooking(array(
 				"ID_BOOKING" => '',
 				'NAMA' => $this->input->post("nama"),
 				'NOMOR_TELEPON' => $this->input->post("nomortelepon"),
@@ -43,7 +43,7 @@ class Booking extends CI_Controller {
 			  redirect('admin/booking/booking');
 			}
 		}
-		$this->load->view("admin/booking/Booking");
+		$this->load->view("admin/booking/tambahbooking");
 	}
 
 	public function edit($id) {
@@ -74,7 +74,7 @@ class Booking extends CI_Controller {
 				$this->session->set_flashdata('Pesan', '<div class="alert alert-danger" role="alert">
 				Gagal Mengubah Akun!
 			  </div>'); 
-			  redirect('admin/booking/booking');
+			  redirect('admin/booking/editbooking');
 			}
 		}
 	}

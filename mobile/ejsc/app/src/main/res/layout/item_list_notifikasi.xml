@@ -9,38 +9,30 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/linear"
+        <ImageView
+            android:id="@+id/ivNotifikasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <ImageView
-                android:id="@+id/ivNotifikasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:contentDescription="@string/notifikasi"
-                android:background="@drawable/custom_circle_menu"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:src="@drawable/ic_notifications_white_22dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_circle_menu"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:contentDescription="@string/notifikasi"
+            android:src="@drawable/ic_notifications_white_22dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="75dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/linear"
+            app:layout_constraintStart_toEndOf="@+id/ivNotifikasi"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
@@ -52,6 +44,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
+                android:maxLines="1"
                 android:text="@string/tanggal_notifikasi"
                 android:textColor="@color/darkGrey"
                 android:textSize="12sp"
@@ -61,19 +54,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvNotifikasi"
+                android:id="@+id/tvJudulNotifikasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/judul_notifikasi"
+                android:maxLines="2"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTglNotifikasi" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTglNotifikasi"
+                tools:text="@tools:sample/lorem/random" />
 
             <TextView
                 android:id="@+id/tvKeteranganNotifikasi"
@@ -81,22 +76,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/poppins_regular"
                 android:maxLines="2"
-                android:text="@string/keterangan_notifikasi"
-                android:textColor="@android:color/black"
+                android:paddingBottom="8dp"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNotifikasi" />
+                app:layout_constraintTop_toBottomOf="@+id/tvJudulNotifikasi"
+                tools:text="@tools:sample/lorem/random" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="0.2dp"
+            android:layout_height="1dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -106,7 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/ivNotifikasi"
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

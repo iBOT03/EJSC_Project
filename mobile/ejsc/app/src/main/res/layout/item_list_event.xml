@@ -83,7 +83,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/tanggal_event"
                 android:textColor="@color/darkGrey"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

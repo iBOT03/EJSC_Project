@@ -28,7 +28,8 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-        <form method="post" action="<?= site_url('admin/event/tambah')?>">
+        <form method="post" action="<?= site_url('admin/event/tambah')?>"
+        enctype="multipart/form-data">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tambah Data Event</h1>
@@ -42,8 +43,10 @@
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Judul Event"
                        aria-describedby="basic-addon2"
+                       value="<?= set_value('judulevent'); ?>"
                        required>
               </div>
+              <?= form_error('judulevent', '<small class="text-danger pl-2">', '</small>'); ?>
 
               <div class="row">
                 <div class="col-sm-6">
@@ -55,8 +58,10 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Penyelenggara"
                            aria-describedby="basic-addon2"
+                           value="<?= set_value('penyelenggara'); ?>"
                            required>
                   </div>
+                  <?= form_error('penyelenggara', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-6">
                   <p>Nama Penanggung Jawab</p>
@@ -67,8 +72,10 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Nama Penanggung Jawab"
                           aria-describedby="basic-addon2"
+                          value="<?= set_value('nama_pj'); ?>"
                           required>
                   </div>
+                  <?= form_error('nama_pj', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
               </div>
 
@@ -82,8 +89,10 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Mulai"
                           aria-describedby="basic-addon2"
+                          value="<?= set_value('tanggalmulai'); ?>"
                           required>
                   </div>
+                  <?= form_error('tanggalmulai', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-3">
                   <p>Tanggal Selesai</p>
@@ -94,8 +103,10 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Selesai"
                           aria-describedby="basic-addon2"
+                          value="<?= set_value('tanggalselesai'); ?>"
                           required>
                   </div>
+                  <?= form_error('tanggalselesai', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-3">
                   <p>Waktu</p>
@@ -103,8 +114,10 @@
                     <input class="form-control border-dark small mb-3"
                            type="time"
                            id="waktu"
-                           name="waktu">
+                           name="waktu"
+                           value="<?= set_value('waktu'); ?>">
                   </div>
+                  <?= form_error('waktu', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
               </div>
               
@@ -118,9 +131,11 @@
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
                               aria-describedby="basic-addon2"
+                              value="<?= set_value('keterangan'); ?>"
                               required>
                     </textarea>
                   </div>
+                  <?= form_error('keterangan', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
               </div>
 
@@ -134,9 +149,11 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Pengisi Acara"
                           aria-describedby="basic-addon2"
+                          value="<?= set_value('pengisiacara'); ?>"
                           required>
                     </textarea>
                   </div>
+                  <?= form_error('pengisiacara', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-6">
                   <p>Asal Peserta/Audiens</p>
@@ -147,9 +164,11 @@
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
                               aria-describedby="basic-addon2"
+                              value="<?= set_value('asalpeserta'); ?>"
                               required>
                     </textarea>
                   </div>
+                  <?= form_error('asalpeserta', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
               </div>
 
@@ -157,12 +176,15 @@
                 <div class="col-sm-6">
                   <p>Ruangan</p>
                   <div class="input-group">
-                    <select class="form-control border-dark small mb-3"
-                            id="ruangan"
-                            name="ruangan">
-                      <option value="">Pilih Ruangan</option>
+                  <select name="NAMA_RUANGAN" id="ID_RUANGAN" class="form-control" data-live-search="true">
+                   <option style="margin: 50px;" class="selectpicker form-control">--Pilih Ruangan--</option>
+                    <?php foreach($ruangan as $k):?>
+                      <option  value="<?php echo $k->ID_RUANGAN;?>"><?php echo $k->NAMA_RUANGAN;?></option>
+                   <?php endforeach;?> 
+              </select>
                     </select>
                   </div>
+                  <?= form_error('ruangan', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-6">
                   <p>Jumlah Peserta</p>
@@ -174,8 +196,10 @@
                           placeholder="Masukkan Jumlah Peserta"
                           aria-describedby="basic-addon2"
                           onkeypress="return hanyaAngka(event)"
+                          value="<?= set_value('jumlahpeserta'); ?>"
                           required>
                   </div>
+                  <?= form_error('jumlahpeserta', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
               </div>
 
@@ -189,8 +213,10 @@
                           class="form-control border-dark small mb-3"
                           placeholder=""
                           aria-describedby="basic-addon2"
+                          value="<?= set_value('posterevent'); ?>"
                           required>
                   </div>
+                  <?= form_error('posterevent', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-6">
                   <p>Upload Surat Perijinan Komunitas</p>
@@ -201,8 +227,10 @@
                            class="form-control border-dark small mb-3"
                            placeholder=""
                            aria-describedby="basic-addon2"
+                           value="<?= set_value('suratpeijinan'); ?>"
                            required>
                   </div>
+                  <?= form_error('suratperijinan', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
               </div>
 
@@ -210,22 +238,38 @@
                 <div class="col-sm-3">
                   <p>Peminjaman Alat</p>
                   <div class="input-group">
-                    <select class="form-control border-dark small mb-3"
+                  <select name="NAMA_ALAT" id="ID_ALAT" class="form-control" data-live-search="true">
+                   <option style="margin: 50px;" class="selectpicker form-control">--Pilih Alat--</option>
+                    <?php foreach($alat as $k):?>
+                      <option  value="<?php echo $k->ID_ALAT;?>"><?php echo $k->NAMA_ALAT;?></option>
+                   <?php endforeach;?> 
+              </select>
+                  <!-- <select class="form-control border-dark small mb-3"
                             id="peminjamanalat"
-                            name="peminjamanalat">
+                            name="peminjamanalat"
+                            value="<?= set_value('peminjamanalat'); ?>">
                       <option value="-">Pilih Alat yang Akan Dipinjam</option>
-                    </select>
+                    </select> -->
                   </div>
+                  <?= form_error('peminjamanalat', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-3">
                   <p>Jumlah Alat</p>
                   <div class="input-group">
-                    <select class="form-control border-dark small mb-3"
+                  <select name="JUMLAH_ALAT" id="ID_ALAT" class="form-control" data-live-search="true">
+                   <option style="margin: 50px;" class="selectpicker form-control">Masukan Jumlah</option>
+                    <?php foreach($alat as $k):?>
+                      <option  value="<?php echo $k->ID_ALAT;?>"><?php echo $k->JUMLAH_ALAT;?></option>
+                   <?php endforeach;?> 
+              </select>
+                    <!-- <select class="form-control border-dark small mb-3"
                             id="jumlahalat"
-                            name="jumlahalat">
+                            name="jumlahalat"
+                            value="<?= set_value('jumlahalat'); ?>">
                       <option value="-">Masukkan Jumlah Alat</option>
-                    </select>
+                    </select> -->
                   </div>
+                  <?= form_error('jumlahalat', '<small class="text-danger pl-2">', '</small>'); ?>
                 </div>
                 <div class="col-sm-3 my-5">
                   <a href="#" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i></a>           
