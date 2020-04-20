@@ -53,7 +53,6 @@
     <string name="diselenggarakan_oleh">Diselenggarakan Oleh:</string>
     <string name="waktu_pelaksanaan">Waktu Pelaksanaan:</string>
     <string name="event_telah_selesai">Event Telah Selesai</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sem risus, dapibus in massa eu, viverra imperdiet neque.</string>
     <string name="foto_ktp">Foto KTP</string>
     <string name="upload_foto_ktp">Upload Foto KTP</string>
 </resources>

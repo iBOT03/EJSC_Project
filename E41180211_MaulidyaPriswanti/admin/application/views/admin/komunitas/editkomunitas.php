@@ -46,7 +46,7 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Komunitas"
                            aria-describedby="basic-addon2"
-                           value="<?php echo $a->NAMA;?>"
+                           value="<?php echo $a->NAMA_KOMUNITAS;?>"
                            >
                   </div>
                   <?php echo form_error('nama_komunitas','<small class="text-danger">','</small>')?>

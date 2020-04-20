@@ -32,7 +32,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         edt_password_baru = findViewById(R.id.edt_password_baru);
         edt_kofirmasi_password_baru = findViewById(R.id.edt_confirm_password_daftar);
         btnSubmit = findViewById(R.id.buttonSubmit);
-        daftar = findViewById(R.id.tvDaftarSekarang);
+        daftar = findViewById(R.id.btnDaftarSekarang);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -68,7 +68,7 @@
                       ?>
                       <tr>
                         <td><?php echo $no++; ?></td>
-                        <td><?php echo $p->NAMA; ?></td>
+                        <td><?php echo $p->NAMA_KOMUNITAS; ?></td>
                         <!-- <td><img src="<?= base_url('uploads/') . $p->LOGO; ?>" alt="" style="width:140px"></td> -->
                         <td><?php echo $p->NO_TELEPON; ?></td>
                         <td><?php echo $p->EMAIL; ?></td>

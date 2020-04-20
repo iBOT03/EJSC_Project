@@ -4,6 +4,7 @@ class Tentang extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 		$this->load->model('model_tentang');
+		belumlogin();
 	}
 
 	public function index() {

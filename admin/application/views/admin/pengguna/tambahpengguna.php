@@ -92,8 +92,8 @@
                                             <select class="form-control border-dark small mb-3" id="komunitas"
                                                 name="komunitas">
                                                 <?php foreach ($komunitas as $row) { ?>
-                                                <option value="<?php echo $row['NAMA']; ?>">
-                                                    <?php echo $row['NAMA']; ?></option>
+                                                <option value="<?php echo $row['NAMA_KOMUNITAS']; ?>">
+                                                    <?php echo $row['NAMA_KOMUNITAS']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>

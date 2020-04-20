@@ -33,9 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
         edt_email = findViewById(R.id.edt_email);
         edt_kata_sandi = findViewById(R.id.edt_kata_sandi);
-        lupaPassword = findViewById(R.id.tvLupaPassword);
+        lupaPassword = findViewById(R.id.btnLupaPassword);
         btnMasuk = findViewById(R.id.buttonMasuk);
-        daftar = findViewById(R.id.tvDaftarSekarang);
+        daftar = findViewById(R.id.btnDaftarSekarang);
 
         btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
