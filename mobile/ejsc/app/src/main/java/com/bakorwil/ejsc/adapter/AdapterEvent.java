@@ -46,7 +46,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
     @Override
     public void onBindViewHolder(@NonNull final HolderData holder, int position) {
         ModelEvent modelEvent = modelEventList.get(position);
-        //klik untuk melihat detail event
+        //klik untuk Intent dan parsing data ke detail event
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -55,7 +55,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
 //                holder.itemView.getContext().startActivity(detail);
 //            }
 //        });
-//
+
         try {
             holder.id_event = modelEvent.getId_event();
             holder.tanggal.setText(modelEvent.getTgl_mulai());
