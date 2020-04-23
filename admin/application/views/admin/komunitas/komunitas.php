@@ -43,6 +43,7 @@
                 </a>
 
                 <div class="col mt-3">
+                  <?php echo $this->session->flashdata('pesan')?>
                 </div>
               </div>
 
@@ -61,30 +62,35 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <?php 
+                        $no = 1;
+                        foreach($komunitas as $p):
+                      ?>
                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $p->NAMA_KOMUNITAS; ?></td>
+                        <!-- <td><img src="<?= base_url('uploads/') . $p->LOGO; ?>" alt="" style="width:140px"></td> -->
+                        <td><?php echo $p->NO_TELEPON; ?></td>
+                        <td><?php echo $p->EMAIL; ?></td>
+                        <td><?php echo $p->ALAMAT; ?></td>
                         <td>
-                          <a href="<?php echo site_url("admin/komunitas/detail/")?>"
+                          <a href="<?php echo site_url("admin/komunitas/detail/" .$p->ID_KOMUNITAS);?>"
                              class="btn btn-sm btn-primary btn-circle">
                             <i class="fas fa-plus"></i>
                           </a>
-                          <a href="<?php echo site_url('admin/komunitas/ubahdata/')?>"
+                          <a href="<?php echo site_url('admin/komunitas/ubahdata/'.$p->ID_KOMUNITAS)?>"
                              class="btn btn-sm btn-info btn-circle">
                             <i class="fa fa-pencil-alt"></i>
                           </a>
                           <a href="#"
-                             onclick=""
+                             onclick="confirm_modal('<?php echo 'komunitas/hapus/' . $p->ID_KOMUNITAS; ?>')"
                              class="btn btn-sm btn-danger btn-circle"
                              data-toggle="modal" data-target="#hapusModal">
                             <i class="fa fa-trash"></i>
                           </a>
                         </td>
                       </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                   <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"
@@ -92,7 +98,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakinuntuk menghapus?</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakin untuk menghapus?</h5>
                           <button class="close" type="button" data-dismiss="modal"
                                   aria-label="Close">
                             <span aria-hidden="true">×</span>
