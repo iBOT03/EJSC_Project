@@ -41,7 +41,7 @@
                                             <input name="nik" id="nik" type="text"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan NIK"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="16" value="<?php echo $akun[0]->NIK; ?>" readonly required>
+                                                maxlength="16" value="<?php echo $akun[0]->NIK; ?>" readonly>
                                         </div>
                                         <?= form_error('nik', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -52,7 +52,7 @@
                                             <input name="nama" id="nama" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2"
-                                                maxlength="150" value="<?php echo $akun[0]->NAMA_LENGKAP; ?>" required>
+                                                maxlength="150" value="<?php echo $akun[0]->NAMA_LENGKAP; ?>" >
                                         </div>
                                         <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -65,7 +65,7 @@
                                             <input name="email" id="email" type="email"
                                                 class="form-control border-dark small mb-3" placeholder="Masukkan Email"
                                                 aria-describedby="basic-addon2" maxlength="100"
-                                                value="<?php echo $akun[0]->EMAIL; ?>" required>
+                                                value="<?php echo $akun[0]->EMAIL; ?>" >
                                         </div>
                                         <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -76,7 +76,7 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan No Telepon/Whatsapp"
                                                 aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)"
-                                                maxlength="13" value="<?php echo $akun[0]->NO_TELEPON; ?>" required>
+                                                maxlength="13" value="<?php echo $akun[0]->NO_TELEPON; ?>" >
                                         </div>
                                         <?= form_error('no_telpon', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -86,8 +86,8 @@
                                 <div class="input-group">
                                     <textarea name="alamat" id="alamat" type="text"
                                         class="form-control border-dark small mb-3" placeholder="Masukkan Alamat"
-                                        aria-describedby="basic-addon2" value="<?php echo $akun[0]->ALAMAT; ?>"
-                                        required></textarea>
+                                        aria-describedby="basic-addon2"
+                                        required><?php echo $akun[0]->ALAMAT; ?></textarea>
                                 </div>
                                 <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
 
@@ -96,31 +96,48 @@
                                         <p>Upload Foto KTP</p>
                                         <div class="input-group">
                                             <input name="foto" id="foto" type="file"
+                                                accept="image/*" onchange="tampilkanPreview(this,'preview')" 
                                                 class="form-control border-dark small mb-3" placeholder=""
-                                                aria-describedby="basic-addon2"
-                                                value="<?php echo $akun[0]->FOTO_KTP; ?>" required>
+                                                aria-describedby="basic-addon2">                          
+                                        </div>
+                                    </div>    
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <input type="hidden" name="blank" id="blank" class="form-control border-dark small mb-3" placeholder="blank" aria-describedby="basic-addon2">            
+                                            <?php foreach ($akun as $row) { ?>
+                                              <br>    <a href="<?= base_url('uploads/KTP/') . $row->FOTO_KTP ?>">Lihat Foto</a>
+                                            <?php } ?> 
+                                        </div>
+                                    </div>                            
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <img id="preview" src="" alt="" width="320px" /> <br>                                            
+                                        </div>                                        
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <input type="hidden" name="blank" id="blank" class="form-control border-dark small mb-3" placeholder="blank" aria-describedby="basic-addon2">
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p>Password</p>
                                         <div class="input-group">
                                             <input name="password1" id="password1" type="password"
                                                 class="form-control border-dark small mb-3"
-                                                placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="100" required>
+                                                placeholder="Masukkan Password" aria-describedby="basic-addon2">
                                         </div>
                                         <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class=" col-sm-6">
                                         <p>Konfirmasi Password</p>
                                         <div class="input-group">
                                             <input name="password2" id="password2" type="password"
                                                 class="form-control border-dark small mb-3"
-                                                placeholder="Masukkan Password" aria-describedby="basic-addon2"
-                                                maxlength="100" required>
+                                                placeholder="Masukkan Password" aria-describedby="basic-addon2">
                                         </div>
                                         <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -146,6 +163,34 @@
                 </div>
             </div>
 
+            <script>
+                function tampilkanPreview(gambar, idpreview) {
+                    //                membuat objek gambar
+                    var gb = gambar.files;
+                    //                loop untuk merender gambFar
+                    for (var i = 0; i < gb.length; i++) {
+                        //                    bikin variabel
+                        var gbPreview = gb[i];
+                        var imageType = /image.*/;
+                        var preview = document.getElementById(idpreview);
+                        var reader = new FileReader();
+                        if (gbPreview.type.match(imageType)) {
+                            //                        jika tipe data sesuai
+                            preview.file = gbPreview;
+                            reader.onload = (function(element) {
+                                return function(e) {
+                                    element.src = e.target.result;
+                                };
+                            })(preview);
+                            //                    membaca data URL gambar
+                            reader.readAsDataURL(gbPreview);
+                        } else {
+                            //                        jika tipe data tidak sesuai
+                            alert("Hanya dapat menampilkan preview tipe gambar. Harap simpan perubahan untuk melihat dan merubah gambar.");
+                        }
+                    }
+                }
+            </script>
 
             <!-- Footer -->
             <?php $this->load->view("admin/_partials/footer.php") ?>
