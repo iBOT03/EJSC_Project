@@ -27,39 +27,23 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-
-
-        <form method="post" action="<?= site_url('admin/event/editevent')?>">
+    <?php foreach($event as $e){ ?>
+        <form method="post" enctype="multipart/form-data">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Event</h1>
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <a href="#" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-check"></i>
-                </span>
-                <span class="text"> Setujui</span>
-              </a>
-              <a href="#" class="btn btn-sm btn-danger btn-icon-split shadow-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-times"></i>
-                </span>
-                <span class="text"> Tolak</span>
-              </a>
-            </div>
+         
             <div class="card-body">
               <p>Judul Event</p>
               <div class="input-group">
                 <input name="judulevent"
-                       value="<?php echo $event[0]->JUDUL;?>"
                        id="judulevent"
                        type="text"
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Judul Event"
                        aria-describedby="basic-addon2"
-                       required>
+                       value="<?= $e['JUDUL']?>"
+                       >
               </div>
 
               <div class="row">
@@ -68,12 +52,12 @@
                   <div class="input-group">
                     <input name="penyelenggara"
                            id="penyelenggara"
-                           value="<?php echo $event[0]->PENYELENGGARA;?>"
                            type="text"
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Penyelenggara"
                            aria-describedby="basic-addon2"
-                           required>
+                           value="<?= $e['PENYELENGGARA']?>"
+                           >
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -81,12 +65,12 @@
                   <div class="input-group">
                     <input name="nama_pj"
                           id="nama_pj"
-                          value="<?php echo $event[0]->NAMA_PJ;?>"
                           type="text"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Nama Penanggung Jawab"
                           aria-describedby="basic-addon2"
-                          required>
+                          value="<?= $e['NAMA_PJ']?>"
+                          >
                   </div>
                 </div>
               </div>
@@ -97,12 +81,12 @@
                   <div class="input-group">
                     <input type="date"
                           id="tanggalmulai"
-                          value="<?php echo $event[0]->TANGGAL_MULAI;?>"
                           name="tanggalmulai"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Mulai"
                           aria-describedby="basic-addon2"
-                          required>
+                          value="<?= $e['TANGGAL_MULAI']?>"
+                          >
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -110,12 +94,12 @@
                   <div class="input-group">
                     <input type="date"
                           id="tanggalselesai"
-                          value="<?php echo $event[0]->TANGGAL_SELESAI;?>"
                           name="tanggalselesai"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Selesai"
                           aria-describedby="basic-addon2"
-                          required>
+                          value="<?= $e['TANGGAL_SELESAI']?>"
+                          >
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -124,8 +108,8 @@
                     <input class="form-control border-dark small mb-3"
                            type="time"
                            id="waktu"
-                           value="<?php echo $event[0]->WAKTU;?>"
-                           name="waktu">
+                           name="waktu"
+                           value="<?= $e['WAKTU']?>">
                   </div>
                 </div>
               </div>
@@ -136,13 +120,10 @@
                   <div class="input-group">
                     <textarea id="keterangan"
                               name="keterangan"
-                              value="<?php echo $event[0]->KETERANGAN;?>"
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
-                              aria-describedby="basic-addon2"
-                              required>
-                    </textarea>
+                              aria-describedby="basic-addon2"><?= $e['KETERANGAN']?></textarea>
                   </div>
                 </div>
               </div>
@@ -153,13 +134,10 @@
                   <div class="input-group">
                     <textarea id="pengisiacara"
                           name="pengisiacara"
-                          value="<?php echo $event[0]->NAMA_PENGISI_ACARA;?>"
                           type="text"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Pengisi Acara"
-                          aria-describedby="basic-addon2"
-                          required>
-                    </textarea>
+                          aria-describedby="basic-addon2"><?= $e['NAMA_PENGISI_ACARA']?></textarea>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -167,13 +145,10 @@
                   <div class="input-group">
                     <textarea id="asalpeserta"
                               name="asalpeserta"
-                              value="<?php echo $event[0]->ASAL_PESERTA;?>"
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
-                              aria-describedby="basic-addon2"
-                              required>
-                    </textarea>
+                              aria-describedby="basic-addon2"><?= $e['ASAL_PESERTA']?></textarea>
                   </div>
                 </div>
               </div>
@@ -185,7 +160,10 @@
                     <select class="form-control border-dark small mb-3"
                             id="ruangan"
                             name="ruangan">
-                      <option value="">Pilih Ruangan</option>
+                            <option value=""><?= $e['NAMA_RUANGAN'] ?></option>
+                            <?php foreach($get as $r):?>
+                                <option value="<?=$r->ID_RUANGAN?>"<?= ($e['ID_RUANGAN'] == $r->ID_RUANGAN? 'selected' : '')?>><?php echo $r->NAMA_RUANGAN ?></option>
+                            <?php endforeach;?>
                     </select>
                   </div>
                 </div>
@@ -194,13 +172,12 @@
                   <div class="input-group">
                     <input name="jumlahpeserta"
                           id="jumlahpeserta"
-                          value="<?php echo $event[0]->JUMLAH_PESERTA;?>"
                           type="text"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Jumlah Peserta"
                           aria-describedby="basic-addon2"
-                          onkeypress="return hanyaAngka(event)"
-                          required>
+                          value="<?= $e['JUMLAH_PESERTA']?>"
+                          onkeypress="return hanyaAngka(event)">
                   </div>
                 </div>
               </div>
@@ -209,13 +186,13 @@
                 <div class="col-sm-6">
                   <p>Upload Poster Event</p>
                   <div class="input-group">
-                    <input name="posterevent"
-                          id="posterevent"
+                    <input name="foto"
+                          id="foto"
                           type="file"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder=""
                           aria-describedby="basic-addon2"
-                          required>
+                          >
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -227,7 +204,7 @@
                            class="form-control border-dark small mb-3"
                            placeholder=""
                            aria-describedby="basic-addon2"
-                           required>
+                           >
                   </div>
                 </div>
               </div>
@@ -239,18 +216,23 @@
                     <select class="form-control border-dark small mb-3"
                             id="peminjamanalat"
                             name="peminjamanalat">
-                      <option value="-">Pilih Alat yang Akan Dipinjam</option>
+                      <?php foreach ($alat as $r) {?>
+                               <option value="<?php echo $r->ID_ALAT?>"><?php echo $r->NAMA_ALAT?></option>
+                      <?php }?> 
                     </select>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <p>Jumlah Alat</p>
                   <div class="input-group">
-                    <select class="form-control border-dark small mb-3"
-                            id="jumlahalat"
-                            name="jumlahalat">
-                      <option value="-">Masukkan Jumlah Alat</option>
-                    </select>
+                  <input name="jumlahalat"
+                           id="jumlahalat"
+                           type="number"                                                   
+                           class="form-control border-dark small mb-3"
+                           placeholder=""
+                           aria-describedby="basic-addon2"
+                                 value="<?php echo set_value('jumlahalat')?>"
+                           >
                   </div>
                 </div>
                 <div class="col-sm-3 my-5">
@@ -265,21 +247,28 @@
                       <th style="width:10px">No</th>
                       <th>Nama Alat</th>
                       <th>Jumlah</th>
-                      <th style="width: 50px">Aksi</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="target">
+                  <?php 
+                    $no = 1;
+                  foreach($data as $d):?>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
+                        <td><?=$no++?></td>
+                        <td><?=$d->NAMA_ALAT?></td>
+                        <td><?=$d->JUMLAH?></td>
+                        <td>
                         <a href="#"
-                           class="btn btn-sm btn-danger btn-circle">
-                          <i class="fas fa-trash"></i>
+                           onclick="hapusdata()"
+                           class="btn btn-sm btn-danger btn-circle"
+                           data-toggle="modal" data-target="#hapusModal">
+                           <i class="fa fa-trash"></i>
                         </a>
-                      </td>
+                        </td>
+                        
                     </tr>
+                  <?php endforeach;?>
                   </tbody>
                 </table>
               </div>
@@ -302,15 +291,15 @@
           <!-- /.card -->
 
         </form>
-
+    <?php }?>
         </div>
         <!-- /.container-fluid -->
-
+        <?php $this->load->view("admin/_partials/footer.php") ?>
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php $this->load->view("admin/_partials/footer.php") ?>
+
 
     </div>
     <!-- End of Content Wrapper -->
@@ -326,7 +315,22 @@
 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
+  <script type="text/javascript">
+       function hapusdata(id) {
+        var tanya = confirm('apakah anda ingin hapus data ? ');
 
+        if (tanya) {
+          $.ajax({
+            type:'POST',
+            data:'ID_DETAIL_ALAT='+id,
+            url:'<?php echo base_url()."index.php/admin/event/hapusdata"?>',
+            success: function (data) {
+              console.log(data);
+            }
+          });
+        }
+      }
+  </script>
 </body>
 
 </html>

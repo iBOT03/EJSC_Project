@@ -27,19 +27,22 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+        <form method="POST" enctype="multipart/form-data">
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Data Event</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-            <a href="<?php echo site_url('admin/event/tambah') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-              <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="text"> Tambah Event</span>
-            </a>
+              <a href="<?php echo site_url('admin/event/tambah') ?>" class="btn btn-sm btn-info btn-icon-split shadow-sm">
+                <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+                </span>
+                <span class="text"> Tambah Event</span>
+              </a>
+              <div class="col mt-3">
+            <?php echo $this->session->flashdata('pesan')?>
+            </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -47,28 +50,29 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">No</th>
-                      <th>Tanggal</th>
+                      <th>Tanggal Mulai</th>
                       <th>Judul</th>
-                      <th>Penyelenggara</th>
+                      <th>Nama Penanggung Jawab</th>
+                      <th>Surat Pengesahan</th>
                       <th style="width: 150px">Poster</th>
-                      <th>Keterangan</th>
                       <th style="width: 60px">Status</th>
                       <th style="width: 96px">Aksi</th>
                     </tr>
                   <?php
+                  $no = 1;
                   foreach ($event as $row){
                     ?>
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?= $row->ID_EVENT; ?></td>
+                      <td><?= $no++ ?></td>
                       <td><?= $row->TANGGAL_MULAI; ?></td>
                       <td><?= $row->JUDUL; ?></td>
-                      <td><?= $row->PENYELENGGARA; ?></td>
+                      <td><?= $row->NAMA_PJ; ?></td>
+                      <td><a href="<?= base_url('uploads/event/').$row->SURAT_PENGAJUAN ?>">Download file</a></td>
                       <td><img src="<?= base_url('uploads/event/'). $row->FOTO?>" alt="" width="100" srcset=""></td>
-                      <td><?= $row->KETERANGAN; ?></td>
                       <td>
-                      <?php if ($row->STATUS == 1) {
+                        <?php if ($row->STATUS == 1) {
                           echo '<div class="badge badge-primary badge-pill">Aktif</div>';
                         } elseif ($row->STATUS == 2) {
                           echo '<div class="badge badge-warning badge-pill">Pending</div>';
@@ -77,17 +81,17 @@
                         }elseif ($row->STATUS == 4) {
                           echo '<div class="badge badge-danger badge-pill">Batal</div>';
                         } ?>
-                    </td>
+                      </td>
                       <td>
                         <a href="<?php echo site_url("admin/event/detail/" .$row->ID_EVENT);?>"
-                          class="btn btn-sm btn-primary btn-circle">
+                           class="btn btn-sm btn-primary btn-circle">
                           <i class="fas fa-plus"></i>
                         </a>
-                        <a href="<?php echo site_url("admin/event/edit/" .$row->ID_EVENT);?>"
-                          class="btn btn-sm btn-info btn-circle">
-                          <i class="fa fa-pencil-alt"></i>
+                        <a href="<?php echo site_url('admin/event/edit/' .$row->ID_EVENT) ?>"
+                           class="btn btn-sm btn-info btn-circle">
+                           <i class="fa fa-pencil-alt"></i>
                         </a>
-                        <a href="<?php echo site_url("admin/event/hapus/" .$row->ID_EVENT);?>"
+                        <a href="#"
                            onclick="confirm_modal('<?php echo 'event/hapus/' . $row->ID_EVENT; ?>')"
                            class="btn btn-sm btn-danger btn-circle"
                            data-toggle="modal" data-target="#hapusModal">
@@ -115,13 +119,14 @@
                         <div class="modal-footer">
                           <button class="btn btn-info" type="button" data-dismiss="modal">Batal</button>
                           <a id="delete_link" class="btn btn-danger" href="">Hapus</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
-        </div>
+          </form>
         </div>
         <!-- /.container-fluid -->
 
@@ -143,14 +148,14 @@
   <!-- Logout Modal-->
   <?php $this->load->view("admin/_partials/modal.php") ?>
 
-  <script type="text/javascript">
-    function confirm_modal(delete_url) {
-        $('#hapusModal').modal('show', {
-            backdrop: 'static'
-        });
-        document.getElementById('delete_link').setAttribute('href', delete_url);
-    }
-  </script>
+    <script type="text/javascript">
+        function confirm_modal(delete_url) {
+            $('#hapusModal').modal('show', {
+                backdrop: 'static'
+            });
+            document.getElementById('delete_link').setAttribute('href', delete_url);
+        }
+    </script>
 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>

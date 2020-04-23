@@ -24,23 +24,34 @@
 
       <!-- Topbar -->
       <?php $this->load->view("admin/_partials/topbar.php") ?>
-
+      <form action="" method="post">
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Detail Event</h1>
           <div class="card shadow mb-4">
+            <div class="card-header py-3">
+            <button class="btn btn-sm btn-info btn-icon-split shadow-sm" type="submit" name="setuju" id="setuju">
+              <span class="icon text-white-50"><i class="fas fa-check"></i></span><span class="text">Setujui</span></button>
+              
+              <button class="btn btn-sm btn-danger btn-icon-split shadow-sm" type="submit" name="tolak" id="tolak">
+              <span class="icon text-white-50"><i class="fas fa-times"></i></span><span class="text">Tolak</span></button>
+       
+            </div>
+            <?php foreach($event as $e):?>
+          <div class="card shadow mb-4">
+          
             <div class="card-body">
 
-              <img src="<?= base_url('img/modalin.png') ?>" alt="Poster Event" class="logo-komunitas mx-auto d-block mb-5">
+              <img src="<?= base_url('uploads/event/').$e['FOTO'] ?>" alt="Poster Event" class="logo-komunitas mx-auto d-block mb-5">
 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Judul Event:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p><?php echo $event[0]->JUDUL?></p>
+                  <p><?= $e['JUDUL']?></p>
                 </div>
               </div>
 
@@ -49,7 +60,7 @@
                   <p>Penyelenggara:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p><?php echo $event[0]->PENYELENGGARA?></p>
+                  <p><?= $e['PENYELENGGARA']?></p>
                 </div>
               </div>
 
@@ -58,7 +69,7 @@
                   <p>Nama Penanggung Jawab:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p><?php echo $event[0]->NAMA_PJ?></p>
+                  <p><?= $e['NAMA_PJ']?></p>
                 </div>
               </div>
 
@@ -67,7 +78,7 @@
                   <p>Ruangan:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>lapangan bal balan</p>
+                  <p><?= $e['NAMA_RUANGAN']?></p>
                 </div>
               </div>
 
@@ -76,7 +87,7 @@
                   <p>Tanggal Mulai:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Setelah ashar</p>
+                  <p><?= $e['TANGGAL_MULAI']?></p>
                 </div>
               </div>
 
@@ -85,7 +96,7 @@
                   <p>Tanggal Selesai:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>gak maghrib gak leren akwokwokwok</p>
+                  <p><?= $e['TANGGAL_SELESAI']?></p>
                 </div>
               </div>
 
@@ -94,7 +105,7 @@
                   <p>Waktu:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>15.00-17.30</p>
+                  <p><?= $e['WAKTU']?></p>
                 </div>
               </div>
 
@@ -103,10 +114,8 @@
                   <p>Nama Pengisi Acara:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Andre</p>
-                  <p>Yudha</p>
-                  <p>Ryan</p>
-                  <p>Andre</p>
+                  <p><?= $e['NAMA_PENGISI_ACARA']?></p>
+                  
                 </div>
               </div>
 
@@ -115,7 +124,15 @@
                   <p>Asal peserta:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>SMA/SMK se lapangan :v</p>
+                  <p><?= $e['ASAL_PESERTA']?></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="my-auto col-sm-2">
+                  <p>Surat:</p>
+                </div>
+                <div class="my-auto col-sm-9">
+                  <p><a href="<?= base_url('uploads/event/').$e['SURAT_PENGAJUAN'] ?>">Lihat file</a></p>
                 </div>
               </div>
 
@@ -124,7 +141,7 @@
                   <p>Jumlah Peserta:</p>
                 </div>
                 <div class="my-auto col-sm-1">
-                  <p>4</p>
+                  <p><?= $e['JUMLAH_PESERTA']?></p>
                 </div>
                 <p>orang</p>
               </div>
@@ -134,7 +151,7 @@
                   <p>Keterangan Event:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>kalah belikan minum</p>
+                  <p><?= $e['KETERANGAN']?></p>
                 </div>
               </div>
 
@@ -147,19 +164,22 @@
                       <th>Jumlah</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <?php $no=1; foreach ($alat as $alat  ){?>
+                  <tbody id="target">
+                  <?php 
+                    $no = 1;
+                  foreach($data as $d):?>
                     <tr>
-                      <td><?= $no++?></td>
-                      <td><?= $alat->NAMA_ALAT?></td>
-                      <td><?= $alat->JUMLAH_ALAT?></td>
+                        <td><?=$no++?></td>
+                        <td><?=$d->NAMA_ALAT?></td>
+                        <td><?=$d->JUMLAH?></td>
+                        
                     </tr>
-                    <?php }?>
+                  <?php endforeach;?>
                   </tbody>
                 </table>
               </div>
 
-              <a href="<?php echo site_url('admin/komunitas') ?>" class="btn btn-danger btn-icon-split">
+              <a href="<?php echo site_url('admin/event') ?>" class="btn btn-danger btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-reply"></i>
                 </span>
@@ -169,7 +189,7 @@
             </div>
           </div>
           <!-- /.card -->
-
+            <?php endforeach;?>
         </div>
         <!-- /.container-fluid -->
 
@@ -181,6 +201,7 @@
 
     </div>
     <!-- End of Content Wrapper -->
+    </form>
 
   </div>
   <!-- End of Page Wrapper -->
@@ -193,7 +214,29 @@
 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
-
+<script type="text/javascript">
+// ambil();
+  function ambil(){
+        $.ajax({
+          type:'POST',
+          url:'<?php echo base_url()."index.php/admin/event/ambildata"?>',
+          dataType:'json',
+          success: function(data){
+             var baris='';
+             for(var i=0;i<data.length;i++){
+               baris+= '<tr>'+
+                            '<td>'+ data[i].ID_EVENT +'</td>'+
+                            '<td>'+ data[i].NAMA_ALAT +'</td>'+
+                            '<td>'+ data[i].JUMLAH +'</td>'+
+                            '<td hidden>'+ data[i].ID_DETAIL_EVENT +'</td>'+
+                                    '</tr>'
+             }
+             $('#target').html(baris);
+             console.log(baris);
+          }
+        });
+      }
+      </script>
 </body>
 
 </html>
