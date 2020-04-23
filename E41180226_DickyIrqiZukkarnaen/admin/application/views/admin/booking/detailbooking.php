@@ -30,7 +30,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Detail Booking</h1>
-
+          <?php foreach($booking as $b):?>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-body">
@@ -40,7 +40,7 @@
                   <p>Ruangan:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Meeting Room (get DB)</p>
+                  <p><?= $b->NAMA_RUANGAN?></p>
                 </div>
               </div>
 
@@ -49,25 +49,33 @@
                   <p>Tanggal:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>18/03/2020 (get DB)</p>
+                  <p><?= $b->TANGGAL_MULAI?></p>
                 </div>
               </div>
-              
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Durasi:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>08.00-09.00 (get DB)</p>
+                  <p><?= $b->DURASI?> Jam</p>
                 </div>
               </div>
-
+             
+              <div class="row">
+                <div class="my-auto col-sm-2">
+                  <p>Jam:</p>
+                </div>
+                <div class="my-auto col-sm-9">
+                  <p><?= $b->JAM_MULAI?> - <?= $b->JAM_SELESAI?></p>
+                </div>
+              </div>
+              
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Komunitas:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>NEKAD Dev (get DB)</p>
+                  <p><?= $b->NAMA_KOMUNITAS?></p>
                 </div>
               </div>
 
@@ -76,7 +84,7 @@
                   <p>Nama Penanggung Jawab:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Ryan Hartadi (get DB)</p>
+                  <p><?= $b->NAMA?></p>
                 </div>
               </div>
 
@@ -85,9 +93,11 @@
                   <p>Jumlah Peserta:</p>
                 </div>
                 <div class="my-auto col-sm-1">
-                  <p>4</p>
+                  <p><?= $b->JUMLAH_ORANG ?></p>
+            
                 </div>
-                <p>orang</p>
+                <p>Orang</p>
+               
               </div>
 
               <div class="row">
@@ -95,7 +105,7 @@
                   <p>Tema Kegiatan:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Meeting (get DB)</p>
+                  <p><?= $b->TUJUAN?></p>
                 </div>
               </div>
 
@@ -104,35 +114,11 @@
                   <p>Deskripsi Kegiatan:</p>
                 </div>
                 <div class="my-auto col-sm-9">
-                  <p>Meeting pembuatan aplikasi EJSC Bakorwil V Jember (get DB)</p>
+                  <p><?= $b->DESKRIPSI_KEGIATAN?></p>
                 </div>
               </div>
 
-              <div class="row">
-                <div class="my-auto col-sm-2">
-                  <p>Peminjaman Alat:</p>
-                </div>
-              </div>
-
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataAlat" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th style="width:10px">No</th>
-                      <th>Nama Alat</th>
-                      <th>Jumlah</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
+           
               <a href="<?php echo site_url('admin/booking') ?>" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-reply"></i>
@@ -142,7 +128,7 @@
 
             </div>
           </div>
-
+            <?php endforeach ; ?>
         </div>
         <!-- /.container-fluid -->
 
