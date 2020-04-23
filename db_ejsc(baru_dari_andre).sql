@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Apr 2020 pada 18.18
--- Versi server: 10.4.8-MariaDB
--- Versi PHP: 7.1.33
+-- Generation Time: Apr 23, 2020 at 08:24 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `akun`
+-- Table structure for table `akun`
 --
 
 CREATE TABLE `akun` (
@@ -41,17 +41,19 @@ CREATE TABLE `akun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `akun`
+-- Dumping data for table `akun`
 --
 
 INSERT INTO `akun` (`NIK`, `LEVEL`, `FOTO_KTP`, `NAMA_LENGKAP`, `EMAIL`, `NO_TELEPON`, `ALAMAT`, `ID_KOMUNITAS`, `PASSWORD`) VALUES
-('3529010308000005', '2', 'Logo Flowbyte - color.png', 'User', 'user@gmail.com', '0918398173987', 'user', '1', '$2y$10$EvBRN0nSFdZamwg.n/rTOOUIvzgX2GDXCI0ZdJyHuS7jmhQW9Ui7C'),
-('3529010308000011', '1', 'Logo Flowbyte - color.png', 'Admin', 'admin@gmail.com', '0987239461909', 'Admin', '', '$2y$10$/VV0UyYGfHCz0auAD9knuexbsxZseYOoRRE5cpjWWdwk2Pf3615jG');
+('3529010308000005', '2', 'Task_Andre1.PNG', 'User', 'nekad@dev.com', '081252989930', 'Jl. Kalimantan Gd. EJSC Bakorwil V Jember', '1', '$2y$10$PHibE0LQ9299ZdtwFu3UmOpzfutEMzrVWz.AncS8bJ7sM7btsNsFe'),
+('3529010308000011', '1', 'KTM_AndreaSA.jpeg', 'Admin', 'admin@gmail.com', '0987239461909', 'Admin', '', '$2y$10$kG/3E6Ed6EFa6IdoBXDWXuuvwmhw5ode8u7MUvnNtUpGSiZGES3pa'),
+('3529010308000017', '2', 'ejscmobile1.png', 'Tes Bug', 'Coding@gmail.com', '09918', 'Jl.Trunojoyo', '2', '$2y$10$HqV9gw2MGr2vV43w4TPgbOjZ1./qdybV/p3PNS2LV7PWCbdMVTB9i'),
+('3529010308000028', '2', 'KTM_Andrea_S_A.jpeg', 'tes', 'KMJ@Gmail.com', '05022', 'Jl', '3', '$2y$10$B2HPqbddTvMZ1ewh4UAK9ue3q9D1mGwixCJeUZvE59mDOuiId6vA.');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `alat`
+-- Table structure for table `alat`
 --
 
 CREATE TABLE `alat` (
@@ -61,7 +63,7 @@ CREATE TABLE `alat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `alat`
+-- Dumping data for table `alat`
 --
 
 INSERT INTO `alat` (`ID_ALAT`, `NAMA_ALAT`, `JUMLAH_ALAT`) VALUES
@@ -71,7 +73,7 @@ INSERT INTO `alat` (`ID_ALAT`, `NAMA_ALAT`, `JUMLAH_ALAT`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `booking`
+-- Table structure for table `booking`
 --
 
 CREATE TABLE `booking` (
@@ -86,22 +88,22 @@ CREATE TABLE `booking` (
   `TANGGAL_MULAI` date NOT NULL,
   `DURASI` int(11) NOT NULL,
   `JAM_MULAI` time NOT NULL,
-  `JAM_SELESAI` datetime NOT NULL DEFAULT current_timestamp(),
+  `JAM_SELESAI` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `STATUS` varchar(1) NOT NULL COMMENT '1.Aktif, 2.Pending, 3.Selesai, 4.Batal'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `booking`
+-- Dumping data for table `booking`
 --
 
 INSERT INTO `booking` (`ID_BOOKING`, `NAMA`, `NOMOR_TELEPON`, `ID_KOMUNITAS`, `ID_RUANGAN`, `JUMLAH_ORANG`, `DESKRIPSI_KEGIATAN`, `TUJUAN`, `TANGGAL_MULAI`, `DURASI`, `JAM_MULAI`, `JAM_SELESAI`, `STATUS`) VALUES
-(47, 'Kabupaten Jember', '0825', '1', '3', 14, '', 'Ngobar1', '2020-02-05', 1, '21:42:00', '2020-04-16 22:42:00', '3'),
+(47, 'Kabupaten Jember', '0825', '3', '3', 14, '', 'Ngobar1', '2020-02-05', 1, '21:42:00', '2020-02-05 22:42:00', '3'),
 (48, 'Kabupaten Jember', '03060', '1', '2', 2, '', 'Ngobar', '2020-02-08', 2, '21:16:00', '2020-02-08 23:17:00', '3');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_event`
+-- Table structure for table `detail_event`
 --
 
 CREATE TABLE `detail_event` (
@@ -112,7 +114,7 @@ CREATE TABLE `detail_event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `detail_event`
+-- Dumping data for table `detail_event`
 --
 
 INSERT INTO `detail_event` (`ID_DETAIL_EVENT`, `ID_EVENT`, `ID_ALAT`, `JUMLAH`) VALUES
@@ -128,7 +130,7 @@ INSERT INTO `detail_event` (`ID_DETAIL_EVENT`, `ID_EVENT`, `ID_ALAT`, `JUMLAH`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `event`
+-- Table structure for table `event`
 --
 
 CREATE TABLE `event` (
@@ -150,17 +152,17 @@ CREATE TABLE `event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `event`
+-- Dumping data for table `event`
 --
 
 INSERT INTO `event` (`ID_EVENT`, `JUDUL`, `FOTO`, `SURAT_PENGAJUAN`, `PENYELENGGARA`, `NAMA_PJ`, `NAMA_PENGISI_ACARA`, `TANGGAL_MULAI`, `TANGGAL_SELESAI`, `WAKTU`, `ID_RUANGAN`, `ASAL_PESERTA`, `JUMLAH_PESERTA`, `KETERANGAN`, `STATUS`) VALUES
-('E008', 'Event baru11', 'images4.png', 'KUIS_STATISTIKA_kedua_TIF_16_AB.pdf', 'Ryan', 'fdsafad', 'ss', '2000-09-08', '2000-02-02', '19:00:00', '1', 'ss', 2, 'ss', '4'),
+('E008', 'Event baru11', 'images4.png', 'KUIS_STATISTIKA_kedua_TIF_16_AB.pdf', 'Ryan', 'fdsafad', 'ss', '2000-09-08', '2000-02-02', '19:00:00', '1', 'ssl', 2, 'ss', '4'),
 ('E009', 'Event baru', 'images.png', 'Materi - Procedure.pdf', 'Ryan', 'fdsafad', 'q', '2020-02-08', '2020-04-16', '05:00:00', '3', 'q', 1, 'ew', '3');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_komunitas`
+-- Table structure for table `kategori_komunitas`
 --
 
 CREATE TABLE `kategori_komunitas` (
@@ -169,7 +171,7 @@ CREATE TABLE `kategori_komunitas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori_komunitas`
+-- Dumping data for table `kategori_komunitas`
 --
 
 INSERT INTO `kategori_komunitas` (`ID_KATEGORI`, `KATEGORI`) VALUES
@@ -178,7 +180,7 @@ INSERT INTO `kategori_komunitas` (`ID_KATEGORI`, `KATEGORI`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komunitas`
+-- Table structure for table `komunitas`
 --
 
 CREATE TABLE `komunitas` (
@@ -197,7 +199,7 @@ CREATE TABLE `komunitas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `komunitas`
+-- Dumping data for table `komunitas`
 --
 
 INSERT INTO `komunitas` (`ID_KOMUNITAS`, `LOGO`, `EMAIL`, `NAMA_KOMUNITAS`, `ID_KATEGORI`, `DESKRIPSI_KOMUNITAS`, `NAMA_KETUA`, `ALAMAT`, `NO_TELEPON`, `TWITTER`, `FACEBOOK`, `INSTAGRAM`) VALUES
@@ -208,7 +210,7 @@ INSERT INTO `komunitas` (`ID_KOMUNITAS`, `LOGO`, `EMAIL`, `NAMA_KOMUNITAS`, `ID_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kontak_kami`
+-- Table structure for table `kontak_kami`
 --
 
 CREATE TABLE `kontak_kami` (
@@ -222,7 +224,7 @@ CREATE TABLE `kontak_kami` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kontak_kami`
+-- Dumping data for table `kontak_kami`
 --
 
 INSERT INTO `kontak_kami` (`EMAIL`, `ID`, `NOMOR_TELEPON`, `WHATSAPP`, `FACEBOOK`, `INSTAGRAM`, `ALAMAT`) VALUES
@@ -231,7 +233,7 @@ INSERT INTO `kontak_kami` (`EMAIL`, `ID`, `NOMOR_TELEPON`, `WHATSAPP`, `FACEBOOK
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ruangan`
+-- Table structure for table `ruangan`
 --
 
 CREATE TABLE `ruangan` (
@@ -242,7 +244,7 @@ CREATE TABLE `ruangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ruangan`
+-- Dumping data for table `ruangan`
 --
 
 INSERT INTO `ruangan` (`ID_RUANGAN`, `FOTO_RUANGAN`, `NAMA_RUANGAN`, `KAPASITAS`) VALUES
@@ -257,101 +259,101 @@ INSERT INTO `ruangan` (`ID_RUANGAN`, `FOTO_RUANGAN`, `NAMA_RUANGAN`, `KAPASITAS`
 --
 
 --
--- Indeks untuk tabel `akun`
+-- Indexes for table `akun`
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`NIK`);
 
 --
--- Indeks untuk tabel `alat`
+-- Indexes for table `alat`
 --
 ALTER TABLE `alat`
   ADD PRIMARY KEY (`ID_ALAT`);
 
 --
--- Indeks untuk tabel `booking`
+-- Indexes for table `booking`
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`ID_BOOKING`);
 
 --
--- Indeks untuk tabel `detail_event`
+-- Indexes for table `detail_event`
 --
 ALTER TABLE `detail_event`
   ADD PRIMARY KEY (`ID_DETAIL_EVENT`);
 
 --
--- Indeks untuk tabel `event`
+-- Indexes for table `event`
 --
 ALTER TABLE `event`
   ADD PRIMARY KEY (`ID_EVENT`);
 
 --
--- Indeks untuk tabel `kategori_komunitas`
+-- Indexes for table `kategori_komunitas`
 --
 ALTER TABLE `kategori_komunitas`
   ADD PRIMARY KEY (`ID_KATEGORI`);
 
 --
--- Indeks untuk tabel `komunitas`
+-- Indexes for table `komunitas`
 --
 ALTER TABLE `komunitas`
   ADD PRIMARY KEY (`ID_KOMUNITAS`);
 
 --
--- Indeks untuk tabel `kontak_kami`
+-- Indexes for table `kontak_kami`
 --
 ALTER TABLE `kontak_kami`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indeks untuk tabel `ruangan`
+-- Indexes for table `ruangan`
 --
 ALTER TABLE `ruangan`
   ADD PRIMARY KEY (`ID_RUANGAN`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `alat`
+-- AUTO_INCREMENT for table `alat`
 --
 ALTER TABLE `alat`
   MODIFY `ID_ALAT` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `booking`
+-- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
   MODIFY `ID_BOOKING` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
--- AUTO_INCREMENT untuk tabel `detail_event`
+-- AUTO_INCREMENT for table `detail_event`
 --
 ALTER TABLE `detail_event`
   MODIFY `ID_DETAIL_EVENT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori_komunitas`
+-- AUTO_INCREMENT for table `kategori_komunitas`
 --
 ALTER TABLE `kategori_komunitas`
   MODIFY `ID_KATEGORI` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `komunitas`
+-- AUTO_INCREMENT for table `komunitas`
 --
 ALTER TABLE `komunitas`
   MODIFY `ID_KOMUNITAS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `kontak_kami`
+-- AUTO_INCREMENT for table `kontak_kami`
 --
 ALTER TABLE `kontak_kami`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `ruangan`
+-- AUTO_INCREMENT for table `ruangan`
 --
 ALTER TABLE `ruangan`
   MODIFY `ID_RUANGAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
