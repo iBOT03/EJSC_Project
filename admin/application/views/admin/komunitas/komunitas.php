@@ -78,7 +78,7 @@
                              class="btn btn-sm btn-primary btn-circle">
                             <i class="fas fa-plus"></i>
                           </a>
-                          <a href="<?php echo site_url('admin/komunitas/ubahdata/'.$p->ID_KOMUNITAS)?>"
+                          <a href="<?php echo site_url('admin/komunitas/edit/'.$p->ID_KOMUNITAS)?>"
                              class="btn btn-sm btn-info btn-circle">
                             <i class="fa fa-pencil-alt"></i>
                           </a>
@@ -98,7 +98,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakin untuk menghapus?</h5>
+                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakinuntuk menghapus?</h5>
                           <button class="close" type="button" data-dismiss="modal"
                                   aria-label="Close">
                             <span aria-hidden="true">×</span>

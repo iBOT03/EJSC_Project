@@ -4,7 +4,7 @@ class Komunitas extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 		$this->load->model('model_komunitas');
-		//belumlogin();
+		belumlogin();
 	}
 
 	public function index() {
@@ -71,6 +71,8 @@ class Komunitas extends CI_Controller {
 					'</div>');
 					redirect('admin/komunitas');
 			}
+
+
 		}
 	}
 
@@ -108,7 +110,7 @@ class Komunitas extends CI_Controller {
 	}
 
 
-	public function ubahdata($id){
+public function ubahdata($id){
 		$this->form_validation->set_rules('nama_komunitas', 'Nama Komunitas', 'required');
 		$this->form_validation->set_rules('email_komunitas', 'Email Komunitas', 'required|valid_email|trim');
 		$this->form_validation->set_rules('ketua_komunitas', 'Ketua Komunitas', 'required');
@@ -123,8 +125,8 @@ class Komunitas extends CI_Controller {
 			$this->load->view("admin/komunitas/editkomunitas" ,$kategori);
 		}else{
 			$update = $this->model_komunitas->updatedata(array(
-			'NAMA_KOMUNITAS' => $this->input->post('nama_komunitas'),
-			'EMAIL' => $this->input->post('email_komunitas'),
+				'NAMA_KOMUNITAS' => $this->input->post('nama_komunitas'),
+				'EMAIL' => $this->input->post('email_komunitas'),
 				'NAMA_KETUA' => $this->input->post('ketua_komunitas'),
 				'ID_KATEGORI' => $this->input->post('kategori_komunitas'),
 				'ALAMAT' => $this->input->post('alamat_komunitas'),
@@ -206,20 +208,20 @@ class Komunitas extends CI_Controller {
 		if ($this->form_validation->run() == false) { //jika data tidak lolos == isi full
 			$this->load->view("admin/komunitas/tambahkategorikomunitas");
 		} else {
-			$datainsert = array(
+		$datainsert = array(
 			'KATEGORI' => $this->input->post('kategori')
-			);
-
-			if ($this->model_komunitas->insertkategori($datainsert)) {
+		);
+		if ($this->model_komunitas->insertkategori($datainsert)) {
 			$this->session->set_flashdata('pesan','<div class="alert alert-success" role="alert">
 			Data Berhasil Ditambahkan
-		  	</div>');
-		  	redirect('admin/komunitas/kategori');
-			}else{
-				$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">GAGAL</div>');
-			redirect('admin/komunitas/kategori');
-			}		
-		}
+		  </div>');
+		  redirect('admin/komunitas/kategori');
+		}else{
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger" role="alert">GAGAL</div>');
+		  redirect('admin/komunitas/kategori');
+		}		
+	}
+		// 
 	}
 	public function tambahdata(){
 		$this->load->view("admin/komunitas/tambahkomunitas");
@@ -235,5 +237,7 @@ class Komunitas extends CI_Controller {
 		// $data = array("akun" => $this->model_komunitas->getanggota());
 		$this->load->view("admin/komunitas/anggotakomunitas", $data);
 	}
+
+
+
 }
-?>
