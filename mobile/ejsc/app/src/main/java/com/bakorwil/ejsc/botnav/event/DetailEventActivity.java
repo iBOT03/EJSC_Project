@@ -51,55 +51,55 @@ public class DetailEventActivity extends AppCompatActivity {
         keterangan = findViewById(R.id.tvKeteranganEvent);
         selesai = findViewById(R.id.eventSelesai);
 
-//        loadDetail();
+        loadDetail();
     }
 
-//    private void loadDetail() {
-//        progressDialog.setMessage("Sedang Memuat Data");
-//        progressDialog.setCancelable(false);
-//        progressDialog.show();
-//
-//        StringRequest sendData = new StringRequest(Request.Method.POST, ServerApi.URL_GET_EVENT + kode, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                JSONObject res = null;
-//                try {
-//                    progressDialog.cancel();
-//                    res = new JSONObject(response);
-//                    JSONObject data = res.getJSONObject();
-//                    judul.setText(data.getString("judul"));
-//                    penyelenggara.setText(data.getString("penyelenggara"));
-//                    tgl_mulai.setText(data.getString("tanggal_mulai"));
-//                    keterangan.setText(data.getString("keterangan"));
-//                    if (data.getString("status").equals("1")) {
-//                        selesai.setVisibility(View.GONE);
-//                    } else {
-//                        selesai.setVisibility(View.VISIBLE);
-//                    }
-//                    Picasso.get()
-//                            .load(ServerApi.URL_GET_EVENT + data.getString("foto"))
-//                            .into(foto);
-//                } catch (JSONException ex) {
-//                    ex.printStackTrace();
-//                }
-//                progressBar.setVisibility(View.GONE);
-//            }
-//        },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("volley", "errornya : " + error.getMessage());
-//                    }
-//                }) {
-//            @Override
-//            public Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//
-//                params.put("id_event", kode);
-//                return params;
-//            }
-//        };
-//
-//        AppController.getInstance().addToRequestQueue(sendData);
-//    }
+    private void loadDetail() {
+        progressDialog.setMessage("Sedang Memuat Data");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        StringRequest sendData = new StringRequest(Request.Method.POST, ServerApi.URL_GET_EVENT + kode, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject res = null;
+                try {
+                    progressDialog.cancel();
+                    res = new JSONObject(response);
+                    JSONObject data = res.getJSONObject("data_detailevent");
+                    judul.setText(data.getString("judul"));
+                    penyelenggara.setText(data.getString("penyelenggara"));
+                    tgl_mulai.setText(data.getString("tanggal_mulai"));
+                    keterangan.setText(data.getString("keterangan"));
+                    if (data.getString("status").equals("1")) {
+                        selesai.setVisibility(View.GONE);
+                    } else {
+                        selesai.setVisibility(View.VISIBLE);
+                    }
+                    Picasso.get()
+                            .load(ServerApi.URL_GET_EVENT + data.getString("foto"))
+                            .into(foto);
+                } catch (JSONException ex) {
+                    ex.printStackTrace();
+                }
+                progressBar.setVisibility(View.GONE);
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("volley", "errornya : " + error.getMessage());
+                    }
+                }) {
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("id_event", kode);
+                return params;
+            }
+        };
+
+        AppController.getInstance().addToRequestQueue(sendData);
+    }
 }
