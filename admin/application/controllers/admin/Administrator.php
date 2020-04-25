@@ -31,10 +31,13 @@ class Administrator extends CI_Controller
 		if ($this->form_validation->run() == false) {
 			$this->load->view("admin/administrator/tambahadministrator");
 		} else {
-			$foto = str_replace(' ', '_', $_FILES['foto']['name']);
+			//$foto = str_replace(' ', '_', $_FILES['foto']['name']);
+			$temp = explode(".", $_FILES['foto']['name']);
+			$foto = round(microtime(true)) . '.' . end($temp);
+			move_uploaded_file($_FILES['foto']['KTP'], "./uploads/KTP/" . $foto);
 			$config['allowed_types'] = 'jpg|png|gif|svg|pdf|jpeg';
 			$config['max_size'] = '2048';
-			$config['upload_path'] = './uploads';
+			$config['upload_path'] = './uploads/KTP/';
 			$config['file_name'] = $foto;
 
 			$this->load->library('upload', $config);
@@ -116,8 +119,9 @@ class Administrator extends CI_Controller
 			), $nik);
 
 			if ($update) {
-				$ubahfoto = $_FILES['foto']['name'];
-				
+				//$ubahfoto = str_replace(' ', '_', $_FILES['foto']['name']);
+				$ubahfoto = "file_" . time();
+
 				if ($ubahfoto) {
 					$config['allowed_types'] = 'jpg|png|gif|jpeg|pdf';
 					$config['max_size'] = '2048';

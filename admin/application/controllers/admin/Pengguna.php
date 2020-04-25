@@ -33,10 +33,15 @@ class Pengguna extends CI_Controller
 			$komunitas['komunitas'] = $this->EjscModel->getkomunitas();
 			$this->load->view("admin/pengguna/tambahpengguna", $komunitas);
 		} else {
-			$foto = str_replace(' ', '_', $_FILES['foto']['name']);
+			//$foto = str_replace(' ', '_', $_FILES['foto']['name']);			
+			//$foto = "file_" . time();
+			$temp = explode(".", $_FILES['foto']['name']);
+			$foto = round(microtime(true)) . '.' . end($temp);
+			move_uploaded_file($_FILES['foto']['KTP'], "./uploads/KTP/" . $foto);
+			//$foto = date('dmYHis');
 			$config['allowed_types'] = 'jpg|png|gif|jpeg|svg|pdf';
 			$config['max_size'] = '2048';
-			$config['upload_path'] = './uploads/KTP';
+			$config['upload_path'] = './uploads/KTP/';
 			$config['file_name'] = $foto;
 
 			$this->load->library('upload', $config);
@@ -45,7 +50,7 @@ class Pengguna extends CI_Controller
 				$dataPost = array(
 					'NIK' => $this->input->post("nik"),
 					'LEVEL' => '2',
-					'FOTO_KTP' => $foto,
+					'FOTO_KTP' => trim($foto),
 					'NAMA_LENGKAP' => $this->input->post("nama"),
 					'EMAIL' => $this->input->post("email"),
 					'NO_TELEPON' => $this->input->post("no_telpon"),
@@ -102,12 +107,13 @@ class Pengguna extends CI_Controller
 			), $nik);
 
 			if ($update) {
-				$ubahfoto = $_FILES['foto']['name'];
+				$ubahfoto = "file_" . time();
 				
 				if ($ubahfoto) {
 					$config['allowed_types'] = 'jpg|png|gif|jpeg|pdf';
 					$config['max_size'] = '2048';
 					$config['upload_path'] = './uploads/KTP/';
+					$config['file_name'] = $ubahfoto;
 
 					$this->load->library('upload', $config);
 
