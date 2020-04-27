@@ -62,3 +62,13 @@ $route['api/Akun/login'] = 'api/akun/login';
 // Event API Routes
 $route['api/Event/event'] = 'api/event/event';
 $route['api/DetailEvent/detailevent'] = 'api/detailevent/detailevent';
+
+//Booking API Routes
+$route['api/booking/tambah'] = 'api/booking/tambahBooking';
+
+// Delete Booking API Routes
+# https://codeigniter.com/userguide3/general/routing.html
+$route['api/booking/(:num)/delete']["DELETE"] = 'api/booking/deleteBooking/$1';
+
+// Update Booking API Routes :: PUT API Request
+$route['api/booking/update']["PUT"] = 'api/booking/updateBooking';
