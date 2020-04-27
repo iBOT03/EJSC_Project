@@ -122,7 +122,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
                 $this->load->library('Authorization_Token');
 
                 // Generate Token
-                $token_data['nik'] = $output->NIK;
+                $token_data['id'] = $output->NIK;
                 $token_data['level'] = $output->LEVEL;
                 $token_data['foto_ktp'] = $output->FOTO_KTP;
                 $token_data['nama_lengkap'] = $output->NAMA_LENGKAP;
@@ -134,9 +134,6 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
                 $token_data['time'] = time();
 
                 $akun_token = $this->authorization_token->generateToken($token_data);
-
-                print_r($this->authorization_token->userData());
-                exit;
 
                 $return_data = [
                     'nik' => $output->NIK,
