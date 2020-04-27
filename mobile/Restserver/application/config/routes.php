@@ -56,12 +56,12 @@ $route['translate_uri_dashes'] = FALSE;
 $route['API'] = 'Rest_server';
 
 // Akun API Routes
-$route['api/Akun/register'] = 'api/akun/register';
-$route['api/Akun/login'] = 'api/akun/login';
+$route['api/akun/register'] = 'api/akun/register';
+$route['api/akun/login'] = 'api/akun/login';
 
 // Event API Routes
-$route['api/Event/event'] = 'api/event/event';
-$route['api/DetailEvent/detailevent'] = 'api/detailevent/detailevent';
+$route['api/event/event'] = 'api/event/event';
+$route['api/detailevent/detail'] = 'api/detailevent/detai';
 
 //Booking API Routes
 $route['api/booking/tambah'] = 'api/booking/tambahBooking';

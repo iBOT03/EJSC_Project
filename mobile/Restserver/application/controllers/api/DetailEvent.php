@@ -32,7 +32,7 @@ class DetailEvent extends \Restserver\Libraries\Rest_Controller {
     * @link : api/event/event
     */
     // Get Data Event
-    function detailevent_get() {
+    function detail_get() {
         $id_event = $this->get('ID_EVENT');
         if ($id_event == '') {
             $event = $this->db->get('event')->result();
