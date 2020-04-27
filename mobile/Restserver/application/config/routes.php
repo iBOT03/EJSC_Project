@@ -58,3 +58,7 @@ $route['API'] = 'Rest_server';
 // Akun API Routes
 $route['api/Akun/register'] = 'api/akun/register';
 $route['api/Akun/login'] = 'api/akun/login';
+
+// Event API Routes
+$route['api/Event/event'] = 'api/event/event';
+$route['api/DetailEvent/detailevent'] = 'api/detailevent/detailevent';

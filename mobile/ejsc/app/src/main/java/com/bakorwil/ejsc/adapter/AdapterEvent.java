@@ -30,7 +30,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
         this.modelEvents = arrayList;
     }
 
-    public AdapterEvent(Context context, ArrayList<ModelEvent> mItems) {
+    public AdapterEvent(Context context, List<ModelEvent> mItems) {
         this.modelEventList = mItems;
         this.context = context;
     }
@@ -47,14 +47,14 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
     public void onBindViewHolder(@NonNull final HolderData holder, int position) {
         ModelEvent modelEvent = modelEventList.get(position);
         //klik untuk Intent dan parsing data ke detail event
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent detail = new Intent(holder.itemView.getContext(), DetailEventActivity.class);
-//                detail.putExtra("id_event", holder.id_event);
-//                holder.itemView.getContext().startActivity(detail);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detail = new Intent(holder.itemView.getContext(), DetailEventActivity.class);
+                detail.putExtra("id_event", holder.id_event);
+                holder.itemView.getContext().startActivity(detail);
+            }
+        });
 
         try {
             holder.id_event = modelEvent.getId_event();
