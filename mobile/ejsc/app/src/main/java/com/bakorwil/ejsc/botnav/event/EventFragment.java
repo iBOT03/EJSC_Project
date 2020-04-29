@@ -35,26 +35,28 @@ import java.util.List;
 import java.util.Map;
 
 public class EventFragment extends Fragment {
-    RecyclerView.LayoutManager layoutManager;
-    List<ModelEvent> mItem;
+    RecyclerView.LayoutManager mManager;
+    List<ModelEvent> mItems;
     RecyclerView recyclerView;
-    AdapterEvent adapterEvent;
+    AdapterEvent mAdapter;
     ProgressBar pb;
-    JSONArray jsonArray;
+    JSONArray arr;
     TextView dataKosong;
-
+    private ArrayList<ModelEvent> arrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
 
-        pb =view.findViewById(R.id.progressbar);
-        adapterEvent = new AdapterEvent(getContext(), mItem);
-        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mItems = new ArrayList<>();
+        arrayList = new ArrayList<>();
+        pb = view.findViewById(R.id.progressbar);
+        mAdapter = new AdapterEvent(getContext(), mItems);
+        mManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView = view.findViewById(R.id.rvEvent);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(mManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapterEvent);
+        recyclerView.setAdapter(mAdapter);
         dataKosong = view.findViewById(R.id.dataKosong);
 
         loadJSON();
@@ -63,69 +65,70 @@ public class EventFragment extends Fragment {
     }
 
     private void loadJSON() {
-
-        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, null, new Response.Listener<String>() {
+        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
 
                 try {
                     res = new JSONObject(response);
-                    JSONObject arr2 = res.getJSONObject("respon");
-                    if (arr2.getBoolean("status")) {
-                        jsonArray = res.getJSONArray("data_event");
-                        for (int i = 0; i < response.length(); i++) {
+//                    JSONObject arr2 = res.getJSONObject("response");
+                    if (res.getBoolean("status")) {
+                        arr = res.getJSONArray("data_event");
+                        for (int i = 0; i < arr.length(); i++) {
                             try {
-                                JSONObject data = jsonArray.getJSONObject(i);
+                                JSONObject data = arr.getJSONObject(i);
                                 ModelEvent md = new ModelEvent();
-                                md.setId_event(data.getString("id_event"));
-                                md.setJudul(data.getString("judul"));
-                                md.setFoto(data.getString("foto"));
-                                md.setPenyelenggara(data.getString("penyelenggara"));
-                                md.setNama_pengisi_acara(data.getString("nama_pengisi_acara"));
-                                md.setTgl_mulai(data.getString("tanggal_mulai"));
-                                md.setTgl_selesai(data.getString("tanggal_selesai"));
-                                md.setWaktu(data.getString("waktu"));
-                                md.setRuangan(data.getString("id_ruangan"));
-                                md.setAsal_peserta(data.getString("asal_peserta"));
-                                md.setJumlah_peserta(data.getString("jumlah_peserta"));
-                                md.setKeterangan(data.getString("keterangan"));
-                                md.setStatus(data.getString("status"));
-                                mItem.add(md);
-                            } catch (JSONException e) {
-                                Log.e("erronya atas", "" + e);
-                                e.printStackTrace();
+
+                                md.setId_event(data.getString("ID_EVENT"));
+                                md.setJudul(data.getString("JUDUL"));
+                                md.setFoto(data.getString("FOTO"));
+                                md.setPenyelenggara(data.getString("PENYELENGGARA"));
+                                md.setNama_pengisi_acara(data.getString("NAMA_PENGISI_ACARA"));
+                                md.setTgl_mulai(data.getString("TANGGAL_MULAI"));
+                                md.setTgl_selesai(data.getString("TANGGAL_SELESAI"));
+                                md.setWaktu(data.getString("WAKTU"));
+                                md.setRuangan(data.getString("ID_RUANGAN"));
+                                md.setAsal_peserta(data.getString("ASAL_PESERTA"));
+                                md.setJumlah_peserta(data.getString("JUMLAH_PESERTA"));
+                                md.setKeterangan(data.getString("KETERANGAN"));
+                                md.setStatus(data.getString("STATUS"));
+                                mItems.add(md);
+                            } catch (Exception ex) {
+                                Log.e("Error", "" + ex);
+                                ex.printStackTrace();
                             }
                         }
                         pb.setVisibility(View.GONE);
-                        adapterEvent.notifyDataSetChanged();
-                        if (mItem.isEmpty()) {
+                        mAdapter.notifyDataSetChanged();
+                        if (mItems.isEmpty()) {
                             dataKosong.setVisibility(View.VISIBLE);
                         } else {
                             dataKosong.setVisibility(View.GONE);
                         }
                     } else {
-                        Toast.makeText(getActivity(), "cek login", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "cek_login", Toast.LENGTH_SHORT).show();
                     }
                     Log.e("tes", res.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e("erronya ", "" + e);
+                    Log.e("Error", "" + e);
                 }
             }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d("volley", "errornya : " + error.getMessage());
-            }
-        }) {
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Volley", "Error : " + error.getMessage());
+                    }
+                }) {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+//                params.put("token" , authdata.getInstance(getActivity()).getToken());
                 return params;
             }
         };
-        AppController.getInstance().addToRequestQueue(senddata);
+        AppController.getInstance().addToRequestQueue(sendData);
     }
 }

@@ -21,17 +21,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> {
-//    private static final String data_url = "http://192.168.1.6/EJSC_Project/mobile/api/event.php";
+    private List<ModelEvent> mItems;
     private Context context;
-    private ArrayList<ModelEvent> modelEvents;
-    private List<ModelEvent> modelEventList;
+    private ArrayList<ModelEvent> modelEvent;
 
     AdapterEvent(ArrayList<ModelEvent> arrayList) {
-        this.modelEvents = arrayList;
+        this.modelEvent = arrayList;
     }
 
     public AdapterEvent(Context context, List<ModelEvent> mItems) {
-        this.modelEventList = mItems;
+        this.mItems = mItems;
         this.context = context;
     }
 
@@ -45,13 +44,13 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
 
     @Override
     public void onBindViewHolder(@NonNull final HolderData holder, int position) {
-        ModelEvent modelEvent = modelEventList.get(position);
+        ModelEvent modelEvent = mItems.get(position);
         //klik untuk Intent dan parsing data ke detail event
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail = new Intent(holder.itemView.getContext(), DetailEventActivity.class);
-                detail.putExtra("id_event", holder.id_event);
+                detail.putExtra("ID_EVENT", holder.id_event);
                 holder.itemView.getContext().startActivity(detail);
             }
         });
@@ -72,7 +71,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
 
     @Override
     public int getItemCount() {
-        return modelEventList.size();
+        return mItems.size();
     }
 
     public class HolderData extends RecyclerView.ViewHolder {

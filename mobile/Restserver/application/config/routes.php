@@ -61,7 +61,7 @@ $route['api/akun/login'] = 'api/akun/login';
 
 // Event API Routes
 $route['api/event/event'] = 'api/event/event';
-$route['api/detailevent/detail'] = 'api/detailevent/detai';
+$route['api/event/detail'] = 'api/detailevent/detail';
 
 //Booking API Routes
 $route['api/booking/tambah'] = 'api/booking/tambahBooking';

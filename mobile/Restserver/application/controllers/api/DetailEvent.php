@@ -29,9 +29,9 @@ class DetailEvent extends \Restserver\Libraries\Rest_Controller {
     * @param: status
     *------------------------------
     * @method : GET
-    * @link : api/event/event
+    * @link : api/event/detail
     */
-    // Get Data Event
+    // Get Detail Event
     function detail_get() {
         $id_event = $this->get('ID_EVENT');
         if ($id_event == '') {
@@ -50,7 +50,7 @@ class DetailEvent extends \Restserver\Libraries\Rest_Controller {
         // Get Data Event Success
         $message = [
             'status' => TRUE,
-            'data_detailevent' => $event,
+            'datadetailevent' => $event,
             'message' => "Berhasil Get Data Detail Event"
         ];
         $this->response($message, REST_Controller::HTTP_OK);
