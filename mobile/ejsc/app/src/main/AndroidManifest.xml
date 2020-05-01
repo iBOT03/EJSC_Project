@@ -16,6 +16,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
+        <activity
+            android:name=".botnav.event.EventActivity"
+            android:configChanges="orientation"
+            android:label="@string/event"
+            android:parentActivityName=".BottomNavigation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".botnav.event.DetailEventActivity" />
         <activity android:name=".akun.EditAkunActivity" />
         <activity
