@@ -81,7 +81,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
 
         public HolderData(@NonNull View itemView) {
             super(itemView);
-            foto = itemView.findViewById(R.id.ivPosterEvent);
+            foto = itemView.findViewById(R.id.ivPoster);
             tanggal = itemView.findViewById(R.id.tvTglEvent);
             judul = itemView.findViewById(R.id.tvJudulEvent);
             keterangan = itemView.findViewById(R.id.tvKeteranganEvent);

@@ -24,7 +24,7 @@
                 android:id="@+id/eventSelesai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/lightBlue"
                 android:elevation="1dp"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"

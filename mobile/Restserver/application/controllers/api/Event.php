@@ -8,6 +8,7 @@ class Event extends \Restserver\Libraries\Rest_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('Event_Model', 'EventModel');
     }
 
     /**
@@ -32,28 +33,29 @@ class Event extends \Restserver\Libraries\Rest_Controller {
     * @link : api/event/event
     */
     // Get Data Event
-    function event_get() {
-        $id_event = $this->get('ID_EVENT');
-        if ($id_event == '') {
-            $event = $this->db->get('event')->result();
+    function index_get() {
+        $id = $this->get('ID_EVENT');
 
-            // Error Get Data Event
-            $message = [
-                'status' => FALSE,
-                'message' => "Gagal Get Data Event"
-            ];
-            $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+        if ($id === null) {
+            $event = $this->EventModel->getEvent();
         } else {
-            $this->db->where('ID_EVENT', $id_event);
-            $event = $this->db->get('event')->result();
+            $event = $this->EventModel->getEvent($id);
         }
-        // Get Data Event Success
-        $message = [
-            'status' => TRUE,
-            'data_event' => $event,
-            'message' => "Berhasil Get Data Event"
-        ];
-        $this->response($message, REST_Controller::HTTP_OK);
+        
+        if ($event) {
+            $this->response([
+                //Get Data Event Success
+                'data_event' => $event,
+                'status' => TRUE,
+                'message' => "Berhasil Get Data Event",
+            ],  REST_Controller::HTTP_OK);
+        } else {
+            //Error Get Data Event
+            $this->response([
+                'status' => FALSE,
+                'message' => "ID Tidak Ditemukan"
+            ], REST_Controller::HTTP_NOT_FOUND);
+        }
     }
 }
 ?>

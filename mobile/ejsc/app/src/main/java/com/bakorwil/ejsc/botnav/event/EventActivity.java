@@ -1,18 +1,16 @@
 package com.bakorwil.ejsc.botnav.event;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -34,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EventFragment extends Fragment {
+public class EventActivity extends AppCompatActivity {
     RecyclerView.LayoutManager mManager;
     List<ModelEvent> mItems;
     RecyclerView recyclerView;
@@ -44,24 +42,32 @@ public class EventFragment extends Fragment {
     TextView dataKosong;
     private ArrayList<ModelEvent> arrayList;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_event, container, false);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_event);
 
         mItems = new ArrayList<>();
         arrayList = new ArrayList<>();
-        pb = view.findViewById(R.id.progressbar);
-        mAdapter = new AdapterEvent(getContext(), mItems);
-        mManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView = view.findViewById(R.id.rvEvent);
+        pb = findViewById(R.id.progressbar);
+        mAdapter = new AdapterEvent(getApplicationContext(), mItems);
+        mManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView = findViewById(R.id.rvEvent);
         recyclerView.setLayoutManager(mManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(mAdapter);
-        dataKosong = view.findViewById(R.id.dataKosong);
+        dataKosong = findViewById(R.id.dataKosong);
 
         loadJSON();
+    }
 
-        return view;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadJSON() {
@@ -71,7 +77,7 @@ public class EventFragment extends Fragment {
                 JSONObject res = null;
                 try {
                     res = new JSONObject(response);
-//                    JSONObject arr2 = res.getJSONObject("response");
+//                    JSONObject arrr = res.getJSONObject("respon");
                     if (res.getBoolean("status")) {
                         arr = res.getJSONArray("data_event");
                         for (int i = 0; i < arr.length(); i++) {
@@ -106,7 +112,7 @@ public class EventFragment extends Fragment {
                             dataKosong.setVisibility(View.GONE);
                         }
                     } else {
-                        Toast.makeText(getActivity(), "cek_login", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EventActivity.this, "cek_login", Toast.LENGTH_SHORT).show();
                     }
                     Log.e("tes", res.toString());
                 } catch (JSONException e) {

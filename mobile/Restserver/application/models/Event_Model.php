@@ -4,12 +4,29 @@ class Event_Model extends CI_Model {
     protected $event_table = 'event';
 
     /*
-    * Registrasi Akun
+    * GET Event
     *------------------------------
-    * @param: {array} Akun Data
+    * @param: {array} Detail Event Data
     */
-    public function detail_event($id) {
-        $query = $this->db->SELECT('*')->FROM('event')->where('ID_EVENT',$id)->get();
-        return $query->result();
+    public function getEvent($id = null) {
+        if ($id === null) {
+        return $this->db->get('event')->result_array();
+        } else {
+            return $this->db->get_where('event', ['ID_EVENT' => $id])->result_array();
+        }
     }
+
+    /*
+    * Detail Event
+    *------------------------------
+    * @param: {array} Detail Event Data
+    */
+    // public function getDetailEvent($id = null) {
+    //     if ($id === null) {
+    //         return $this->db->get('event')->result_array();
+    //     } else {
+    //         return $this->db->get_where('event', ['ID_EVENT' => $id])->result_array();
+    //     }
+    // }
 }
+?>
