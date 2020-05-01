@@ -56,6 +56,34 @@
         app:layout_constraintTop_toBottomOf="@+id/text_selamat_datang"
         tools:text="@tools:sample/lorem/random" />
 
+    <TextView
+        android:id="@+id/event_terbaru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="208dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/event_terbaru"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_user" />
+
+    <TextView
+        android:id="@+id/tampilkan_semua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="278dp"
+        android:layout_marginTop="208dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/tampilkan_semua"
+        android:textAlignment="center"
+        android:textColor="#037E8C"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nama_user" />
+
     <ScrollView
         android:layout_width="418dp"
         android:layout_height="735dp"

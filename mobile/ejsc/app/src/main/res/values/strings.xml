@@ -55,4 +55,6 @@
     <string name="event_telah_selesai">Event Telah Selesai</string>
     <string name="foto_ktp">Foto KTP</string>
     <string name="upload_foto_ktp">Upload Foto KTP</string>
+    <string name="event_terbaru">Event Terbaru</string>
+    <string name="tampilkan_semua">Tampilkan Semua</string>
 </resources>
