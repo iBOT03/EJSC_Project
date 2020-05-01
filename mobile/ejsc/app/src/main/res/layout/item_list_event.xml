@@ -14,7 +14,7 @@
         android:layout_height="90dp">
 
         <ImageView
-            android:id="@+id/ivPosterEvent"
+            android:id="@+id/ivPoster"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -35,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/ivPosterEvent"
+            app:layout_constraintStart_toEndOf="@+id/ivPoster"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 

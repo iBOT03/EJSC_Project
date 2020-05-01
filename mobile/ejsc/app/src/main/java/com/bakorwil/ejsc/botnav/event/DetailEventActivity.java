@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -12,16 +13,17 @@ import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
-import com.bakorwil.ejsc.model.ModelEvent;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,9 +45,11 @@ public class DetailEventActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         idEvent = getIntent().getStringExtra("ID_EVENT");
+        Log.e("idEvent", "Error:" + idEvent);
         progressDialog = new ProgressDialog(this);
         foto = findViewById(R.id.ivPosterEvent);
         judul = findViewById(R.id.tvJudulEvent);
+        progressBar = findViewById(R.id.progressbar);
         penyelenggara = findViewById(R.id.tvPenyelenggara);
         tgl_mulai = findViewById(R.id.tvTglMulai);
         keterangan = findViewById(R.id.tvKeteranganEvent);
@@ -54,19 +58,29 @@ public class DetailEventActivity extends AppCompatActivity {
         loadDetail();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void loadDetail() {
         progressDialog.setMessage("Sedang Memuat Data");
 //        progressDialog.setCancelable(false);
         progressDialog.show();
 
-        StringRequest sendData = new StringRequest(Request.Method.POST, ServerApi.URL_GET_DETAIL_EVENT + idEvent, new Response.Listener<String>() {
+        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
                 try {
                     progressDialog.cancel();
                     res = new JSONObject(response);
-                    JSONObject data = res.getJSONObject("datadetailevent");
+                    JSONArray arr = res.getJSONArray("data_event");
+                    JSONObject data = arr.getJSONObject(0);
                     judul.setText(data.getString("JUDUL"));
                     penyelenggara.setText(data.getString("PENYELENGGARA"));
                     tgl_mulai.setText(data.getString("TANGGAL_MULAI"));
@@ -94,12 +108,14 @@ public class DetailEventActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-
                 params.put("ID_EVENT", idEvent);
                 return params;
             }
         };
 
-        AppController.getInstance().addToRequestQueue(sendData);
+//        AppController.getInstance().addToRequestQueue(sendData);
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplication().getApplicationContext());
+
+        requestQueue.add(sendData);
     }
 }

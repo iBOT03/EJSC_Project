@@ -8,6 +8,7 @@ class DetailEvent extends \Restserver\Libraries\Rest_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('Event_Model', 'EventModel');
     }
 
     /**
@@ -34,7 +35,7 @@ class DetailEvent extends \Restserver\Libraries\Rest_Controller {
     // Get Detail Event
     function detail_get() {
         $id_event = $this->get('ID_EVENT');
-        if ($id_event == '') {
+        if ($id_event === null) {
             $event = $this->db->get('event')->result();
 
             // Error Get Data Event

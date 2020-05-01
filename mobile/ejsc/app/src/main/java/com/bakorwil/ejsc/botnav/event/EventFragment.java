@@ -69,7 +69,6 @@ public class EventFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
-
                 try {
                     res = new JSONObject(response);
 //                    JSONObject arr2 = res.getJSONObject("response");
