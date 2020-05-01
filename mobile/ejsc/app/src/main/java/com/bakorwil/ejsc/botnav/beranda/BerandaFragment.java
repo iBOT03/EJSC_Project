@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bakorwil.ejsc.adapter.AdapterEvent;
+import com.bakorwil.ejsc.botnav.event.EventActivity;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.bakorwil.ejsc.model.ModelEvent;
@@ -47,7 +48,7 @@ public class BerandaFragment extends Fragment {
     AdapterEvent mAdapter;
     ProgressBar pb;
     JSONArray arr;
-    TextView dataKosong;
+    TextView dataKosong, show;
     private ArrayList<ModelEvent> arrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,8 +65,30 @@ public class BerandaFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(mAdapter);
         dataKosong = view.findViewById(R.id.dataKosong);
+        show = view.findViewById(R.id.tampilkan_semua);
+
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), EventActivity.class);
+                startActivity(intent);
+            }
+        });
 
         loadJSON();
+
+        Toolbar toolbarr = view.findViewById(R.id.toolbar);
+        toolbarr.inflateMenu(R.menu.menu);
+        toolbarr.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.btnNotifikasi) {
+                    Intent notifikasi = new Intent(getActivity(), NotifikasiActivity.class);
+                    startActivity(notifikasi);
+                }
+                return false;
+            }
+        });
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu);

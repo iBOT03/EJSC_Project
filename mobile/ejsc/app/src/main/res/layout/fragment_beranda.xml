@@ -82,6 +82,7 @@
         android:textColor="#037E8C"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nama_user" />
 
     <ScrollView
@@ -94,6 +95,10 @@
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.581">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvEvent"
             android:layout_width="407dp"
@@ -103,12 +108,14 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:paddingBottom="72dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_nama_user"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_list_event" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
