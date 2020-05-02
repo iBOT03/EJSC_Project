@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.bakorwil.ejsc.R;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
+import com.synnapps.carouselview.ImageListener;
 
 public class BerandaFragment extends Fragment {
     RecyclerView.LayoutManager mManager;
@@ -49,6 +53,7 @@ public class BerandaFragment extends Fragment {
     ProgressBar pb;
     JSONArray arr;
     TextView dataKosong, show;
+    //CarouselView mImages;
     private ArrayList<ModelEvent> arrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -77,19 +82,6 @@ public class BerandaFragment extends Fragment {
 
         loadJSON();
 
-        Toolbar toolbarr = view.findViewById(R.id.toolbar);
-        toolbarr.inflateMenu(R.menu.menu);
-        toolbarr.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.btnNotifikasi) {
-                    Intent notifikasi = new Intent(getActivity(), NotifikasiActivity.class);
-                    startActivity(notifikasi);
-                }
-                return false;
-            }
-        });
-
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.menu);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -102,6 +94,22 @@ public class BerandaFragment extends Fragment {
                 return false;
             }
         });
+
+        CarouselView carouselView = view.findViewById(R.id.carousel);
+        carouselView.setPageCount(mImages.length);
+        carouselView.setImageListener(new ImageListener() {
+            @Override
+            public void setImageForPosition(int position, ImageView imageView) {
+                imageView.setImageResource(mImages[position]);
+            }
+        });
+        carouselView.setImageClickListener(new ImageClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getContext(), mImagesTitle[position], Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
     }
 
@@ -173,4 +181,12 @@ public class BerandaFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(sendData);
 
     }
+
+    private int[] mImages = new int[] {
+            R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder
+    };
+
+    private String[] mImagesTitle = new String[] {
+            "Meeting Room", "Training Room", "Conference Room", "Co-Working Space"
+    };
 }
