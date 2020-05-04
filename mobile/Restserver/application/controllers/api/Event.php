@@ -34,28 +34,42 @@ class Event extends \Restserver\Libraries\Rest_Controller {
     */
     // Get Data Event
     function index_get() {
-        $id = $this->get('ID_EVENT');
+        header("Access-Control-Allow-Origin: *");
 
-        if ($id === null) {
-            $event = $this->EventModel->getEvent();
-        } else {
-            $event = $this->EventModel->getEvent($id);
-        }
-        
-        if ($event) {
-            $this->response([
-                //Get Data Event Success
-                'data_event' => $event,
-                'status' => TRUE,
-                'message' => "Berhasil Get Data Event",
-            ],  REST_Controller::HTTP_OK);
-        } else {
-            //Error Get Data Event
-            $this->response([
-                'status' => FALSE,
-                'message' => "ID Tidak Ditemukan"
-            ], REST_Controller::HTTP_NOT_FOUND);
-        }
+        // Load Authorization Library
+//        $this->load->library('Authorization_Token');
+
+        /**
+         * User Token Validation
+         */
+        $id = $this->get('ID_EVENT');
+//        $is_valid_token = $this->authorization_token->validateToken();
+//        if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
+            
+            // GET Data Event
+            if ($id === null) {
+                $event = $this->EventModel->getEvent();
+            } else {
+                $event = $this->EventModel->getEvent($id);
+            }
+            
+            if ($event) {
+                $this->response([
+                    //Get Data Event Success
+                    'data_event' => $event,
+                    'status' => TRUE,
+                    'message' => "Berhasil Get Data Event",
+                ],  REST_Controller::HTTP_OK);
+            } else {
+                //Error Get Data Event
+                $this->response([
+                    'status' => FALSE,
+                    'message' => "ID Tidak Ditemukan"
+                ], REST_Controller::HTTP_NOT_FOUND);
+            }
+//        } else {
+//            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
+//        }
     }
 }
 ?>
