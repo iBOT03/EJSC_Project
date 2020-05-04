@@ -72,3 +72,6 @@ $route['api/booking/(:num)/delete']["DELETE"] = 'api/booking/deleteBooking/$1';
 
 // Update Booking API Routes :: PUT API Request
 $route['api/booking/update']["PUT"] = 'api/booking/updateBooking';
+
+// Kontak Kami API Routes
+$route['api/kontak/kontak'] = 'api/kontak/kontak';
