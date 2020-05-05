@@ -50,8 +50,8 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 // Form Validation
                 $message = array(
                     'status' => false,
-                    'error' => $this->form_validation->error_array(),
-                    'message' => validation_errors()
+                    'message' => validation_errors(),
+                    'error' => $this->form_validation->error_array()
                 );
                 $this->response($message, REST_Controller::HTTP_NOT_FOUND);
             } else {
@@ -211,8 +211,8 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 // Form Validation
                 $message = array(
                     'status' => false,
-                    'error' => $this->form_validation->error_array(),
-                    'message' => validation_errors()
+                    'message' => validation_errors(),
+                    'error' => $this->form_validation->error_array()
                 );
                 $this->response($message, REST_Controller::HTTP_NOT_FOUND);
             } else {

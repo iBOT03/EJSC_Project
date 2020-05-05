@@ -51,8 +51,8 @@ class DetailEvent extends \Restserver\Libraries\Rest_Controller {
         // Get Data Event Success
         $message = [
             'status' => TRUE,
-            'datadetailevent' => $event,
-            'message' => "Berhasil Get Data Detail Event"
+            'message' => "Berhasil Get Data Detail Event",
+            'datadetailevent' => $event
         ];
         $this->response($message, REST_Controller::HTTP_OK);
     }

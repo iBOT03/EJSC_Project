@@ -31,9 +31,9 @@ class Kontak extends \Restserver\Libraries\Rest_Controller {
         if ($kontak) {
             $this->response([
                 //Get Data Kontak Kami Success
-                'data_kontak' => $kontak,
                 'status' => TRUE,
                 'message' => "Berhasil Get Data Kontak Kami",
+                'data_kontak' => $kontak
             ],  REST_Controller::HTTP_OK);
         } else {
             //Error Get Data Kontak Kami

@@ -29,9 +29,9 @@ class Ruangan extends \Restserver\Libraries\Rest_Controller {
         if ($ruangan) {
             $this->response([
                 //Get Data Ruangan Success
-                'data_ruangan' => $ruangan,
                 'status' => TRUE,
                 'message' => "Berhasil Get Data Ruangan",
+                'data_ruangan' => $ruangan
             ],  REST_Controller::HTTP_OK);
         } else {
             //Error Get Data Ruangan 

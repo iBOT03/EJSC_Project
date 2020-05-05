@@ -56,9 +56,9 @@ class Event extends \Restserver\Libraries\Rest_Controller {
             if ($event) {
                 $this->response([
                     //Get Data Event Success
-                    'data_event' => $event,
                     'status' => TRUE,
                     'message' => "Berhasil Get Data Event",
+                    'data_event' => $event
                 ],  REST_Controller::HTTP_OK);
             } else {
                 //Error Get Data Event
