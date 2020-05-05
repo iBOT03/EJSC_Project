@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -27,6 +28,7 @@ import com.bakorwil.ejsc.botnav.event.EventActivity;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.bakorwil.ejsc.model.ModelEvent;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -51,6 +53,7 @@ public class BerandaFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterEvent mAdapter;
     ProgressBar pb;
+    ImageView btnNotifikasi;
     JSONArray arr;
     TextView dataKosong, show;
     //CarouselView mImages;
@@ -82,16 +85,12 @@ public class BerandaFragment extends Fragment {
 
         loadJSON();
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.inflateMenu(R.menu.menu);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        btnNotifikasi = view.findViewById(R.id.btn_notifikasi);
+        btnNotifikasi.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.btnNotifikasi) {
-                    Intent notifikasi = new Intent(getActivity(), NotifikasiActivity.class);
-                    startActivity(notifikasi);
-                }
-                return false;
+            public void onClick(View v) {
+                Intent notifikasi = new Intent(getContext(), NotifikasiActivity.class);
+                startActivity(notifikasi);
             }
         });
 
@@ -182,11 +181,11 @@ public class BerandaFragment extends Fragment {
 
     }
 
-    private int[] mImages = new int[] {
+    private int[] mImages = new int[]{
             R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder
     };
 
-    private String[] mImagesTitle = new String[] {
+    private String[] mImagesTitle = new String[]{
             "Meeting Room", "Training Room", "Conference Room", "Co-Working Space"
     };
 }

@@ -61,7 +61,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
             holder.judul.setText(modelEvent.getJudul());
             holder.keterangan.setText(modelEvent.getKeterangan());
             Picasso.get()
-                    .load(ServerApi.URL_GET_EVENT + modelEvent.getFoto())
+                    .load(ServerApi.URL_GET_EVENT + "../../../" + "uploads/event/" + modelEvent.getFoto())
                     .into(holder.foto);
             holder.url = modelEvent.getFoto();
         } catch (Exception ex) {

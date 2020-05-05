@@ -45,7 +45,7 @@ public class DetailEventActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         idEvent = getIntent().getStringExtra("ID_EVENT");
-        Log.e("idEvent", "Error:" + idEvent);
+        Log.e("idEvent", "IDnya:" + idEvent);
         progressDialog = new ProgressDialog(this);
         foto = findViewById(R.id.ivPosterEvent);
         judul = findViewById(R.id.tvJudulEvent);
@@ -72,7 +72,7 @@ public class DetailEventActivity extends AppCompatActivity {
 //        progressDialog.setCancelable(false);
         progressDialog.show();
 
-        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, new Response.Listener<String>() {
+        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT + "?ID_EVENT=" + idEvent, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
@@ -91,7 +91,7 @@ public class DetailEventActivity extends AppCompatActivity {
                         selesai.setVisibility(View.VISIBLE);
                     }
                     Picasso.get()
-                            .load(ServerApi.URL_GET_EVENT + data.getString("FOTO"))
+                            .load(ServerApi.URL_GET_EVENT + "../../../" + "uploads/event/" + data.getString("FOTO"))
                             .into(foto);
                 } catch (JSONException ex) {
                     ex.printStackTrace();
