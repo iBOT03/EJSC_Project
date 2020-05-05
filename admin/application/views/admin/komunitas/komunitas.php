@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
-
+ 
   <!-- Head -->
   <?php $this->load->view("admin/_partials/head.php") ?>
-
+ 
 </head>
-
+ 
 <body id="page-top">
-
+ 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+ 
     <!-- Sidebar -->
     <?php $this->load->view("admin/_partials/sidebar.php") ?>
-
+ 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
+ 
       <!-- Main Content -->
       <div id="content">
-
+ 
         <!-- Topbar -->
         <?php $this->load->view("admin/_partials/topbar.php") ?>
-
+ 
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <form method="post">
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Data Komunitas</h1>
-
+ 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
@@ -41,12 +41,12 @@
                   </span>
                   <span class="text"> Tambah Komunitas</span>
                 </a>
-
+ 
                 <div class="col mt-3">
                   <?php echo $this->session->flashdata('pesan')?>
                 </div>
               </div>
-
+ 
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -78,7 +78,7 @@
                              class="btn btn-sm btn-primary btn-circle">
                             <i class="fas fa-plus"></i>
                           </a>
-                          <a href="<?php echo site_url('admin/komunitas/edit/'.$p->ID_KOMUNITAS)?>"
+                          <a href="<?php echo site_url('admin/komunitas/ubahdata/'.$p->ID_KOMUNITAS)?>"
                              class="btn btn-sm btn-info btn-circle">
                             <i class="fa fa-pencil-alt"></i>
                           </a>
@@ -112,30 +112,30 @@
                       </div>
                     </div>
                   </div>
-
+ 
                 </div>
               </div>
-
+ 
             </div>
           </form>
        </div>
       <!-- End of Main Content -->
-
+ 
       <!-- Footer -->
       <?php $this->load->view("admin/_partials/footer.php") ?>
-
+ 
     </div>
     <!-- End of Content Wrapper -->
-
+ 
   </div>
   <!-- End of Page Wrapper -->
-
+ 
     <!-- Scroll to Top Button-->
     <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-
+ 
     <!-- Logout Modal-->
     <?php $this->load->view("admin/_partials/modal.php") ?>
-
+ 
     <script type="text/javascript">
         function confirm_modal(delete_url) {
             $('#hapusModal').modal('show', {
@@ -144,10 +144,10 @@
             document.getElementById('delete_link').setAttribute('href', delete_url);
         }
     </script>
-
+ 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
-
+ 
 </body>
-
+ 
 </html>

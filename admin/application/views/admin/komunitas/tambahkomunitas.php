@@ -190,11 +190,24 @@
                            class="form-control border-dark small mb-3"
                            placeholder=""
                            aria-describedby="basic-addon2"
+                           accept="image/*" onchange="tampilkanPreview(this,'preview')"
                            >
                   </div>
                   <?= form_error('foto', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
+              <div class="col-sm-6">
+                      <div class="input-group">
+                        <img id="preview" src="" alt="" width="320px" /> <br>                                            
+                      </div>
+                    </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="input-group">
+                        <input type="hidden" name="blank" id="blank" class="form-control border-dark small mb-3" placeholder="blank" aria-describedby="basic-addon2" maxlength="100" required> <br>
+                      </div>
+                    </div>
+                  </div>
 
               <button type="submit" href="<?php echo site_url('admin/komunitas/tambahdata') ?>" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
@@ -219,6 +232,35 @@
 
       </div>
       <!-- End of Main Content -->
+
+      <script>
+                function tampilkanPreview(gambar, idpreview) {
+                    //                membuat objek gambar
+                    var gb = gambar.files;
+                    //                loop untuk merender gambFar
+                    for (var i = 0; i < gb.length; i++) {
+                        //                    bikin variabel
+                        var gbPreview = gb[i];
+                        var imageType = /image.*/;
+                        var preview = document.getElementById(idpreview);
+                        var reader = new FileReader();
+                        if (gbPreview.type.match(imageType)) {
+                            //                        jika tipe data sesuai
+                            preview.file = gbPreview;
+                            reader.onload = (function(element) {
+                                return function(e) {
+                                    element.src = e.target.result;
+                                };
+                            })(preview);
+                            //                    membaca data URL gambar
+                            reader.readAsDataURL(gbPreview);
+                        } else {
+                            //                        jika tipe data tidak sesuai
+                            alert("Hanya dapat menampilkan preview tipe gambar. Harap simpan perubahan untuk melihat dan merubah gambar.");
+                        }
+                    }
+                }
+            </script>
 
       <!-- Footer -->
       <?php $this->load->view("admin/_partials/footer.php") ?>

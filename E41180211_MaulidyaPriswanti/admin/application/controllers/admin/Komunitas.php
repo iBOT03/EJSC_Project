@@ -1,12 +1,12 @@
 <?php
-
+ 
 class Komunitas extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 		$this->load->model('model_komunitas');
-		belumlogin();
+		//belumlogin();
 	}
-
+ 
 	public function index() {
 		$data['komunitas'] = $this->model_komunitas->index();
 		$this->load->view("admin/komunitas/komunitas" , $data);
@@ -26,14 +26,14 @@ class Komunitas extends CI_Controller {
 		$this->form_validation->set_rules('deskripsi_komunitas', 'Deskripsi Komunitas', 'required');
 		$this->form_validation->set_rules('no_komunitas', 'No Komunitas', 'required');
 		// $this->form_validation->set_rules('foto', 'Foto Komunitas', 'required');
-
+ 
 		
 		if ($this->form_validation->run() == false) { //jika data tidak lolos == isi full
 			$kategori['komunitas'] = $this->model_komunitas->jeniskomunitas();
 			$this->load->view("admin/komunitas/tambahkomunitas",$kategori);
 		} else {
 			$foto = $_FILES['foto']['name'];
-
+ 
 			$config['allowed_types'] = 'jpg|png|gif|jpeg';
 			$config['max_size'] = '2048';
 			$config['upload_path'] = './uploads';
@@ -71,11 +71,11 @@ class Komunitas extends CI_Controller {
 					'</div>');
 					redirect('admin/komunitas');
 			}
-
-
+ 
+ 
 		}
 	}
-
+ 
 	public function hapus($id){
 		$hapus = $this->model_komunitas->hapus($id);
 		if($hapus){
@@ -108,8 +108,8 @@ class Komunitas extends CI_Controller {
 		$data['kategori_komunitas'] = $this->model_komunitas->list();
 		$this->load->view("admin/komunitas/kategorikomunitas" , $data);
 	}
-
-
+ 
+ 
 public function ubahdata($id){
 		$this->form_validation->set_rules('nama_komunitas', 'Nama Komunitas', 'required');
 		$this->form_validation->set_rules('email_komunitas', 'Email Komunitas', 'required|valid_email|trim');
@@ -136,17 +136,17 @@ public function ubahdata($id){
 				'FACEBOOK' => $this->input->post('facebook_komunitas'),
 				'INSTAGRAM' => $this->input->post('ig_komunitas'),
 			), $id);
-
+ 
 		if($update){
 			$ubahfoto = $_FILES['foto']['name'];
-
+ 
 			if ($ubahfoto) {
 				$config['allowed_types'] = 'jpg|png|gif';
 				$config['max_size'] = '2048';
 				$config['upload_path'] = './uploads/';
-
+ 
 				$this->load->library('upload', $config);
-
+ 
 				if ($this->upload->do_upload('foto')) {
 					$user = $this->db->get_where('KOMUNITAS', ['ID_KOMUNITAS'=>$id])->row_array();
 					$fotolama = $user['LOGO'];
@@ -176,7 +176,7 @@ public function ubahdata($id){
 		}		
 	}
 }
-
+ 
 	public function editkategori($id){
 		
 		$data ['kat'] = $this->model_komunitas->getdetailkat($id);
@@ -231,13 +231,13 @@ public function ubahdata($id){
 		$kategori['komunitas'] = $this->model_komunitas->relasi($id);
 		$this->load->view("admin/komunitas/detailkomunitas",$kategori);
 	}
-
+ 
 	public function anggota($id){
 		$data['anggota'] = $this->model_komunitas->data_anggota($id);
 		// $data = array("akun" => $this->model_komunitas->getanggota());
 		$this->load->view("admin/komunitas/anggotakomunitas", $data);
 	}
-
-
-
+ 
+ 
+ 
 }

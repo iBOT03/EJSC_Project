@@ -1,5 +1,5 @@
 <?php 
-
+ 
     class Model_komunitas extends CI_Model{
         public function index(){
             $this->load->database();
