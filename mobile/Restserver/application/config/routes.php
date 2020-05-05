@@ -75,3 +75,6 @@ $route['api/booking/update']["PUT"] = 'api/booking/updateBooking';
 
 // Kontak Kami API Routes
 $route['api/kontak/kontak'] = 'api/kontak/kontak';
+
+// Ruangan API Routes
+$route['api/ruangan/ruangan'] = 'api/ruangan/ruangan';
