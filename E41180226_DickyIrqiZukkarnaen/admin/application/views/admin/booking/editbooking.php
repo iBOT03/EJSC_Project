@@ -77,8 +77,7 @@
                                                 name="komunitas" value="<?php echo set_value('komunitas') ?>">
                                                 <option value=""><?= $booking->NAMA_KOMUNITAS?></option>
                                                 <?php foreach ($komunitas as $row) { ?>
-                                                <option value="<?php echo $row['ID_KOMUNITAS']; ?>"
-                                                <?=($booking->ID_KOMUNITAS == $row['ID_KOMUNITAS']? 'selected' : '' ) ?>>
+                                                <option value="<?php echo $row['ID_KOMUNITAS']; ?>"<?=($booking->ID_KOMUNITAS == $row['ID_KOMUNITAS']? 'selected' : '' ) ?>>
                                                     <?php echo $row['NAMA_KOMUNITAS']; ?></option>
                                                 <?php } ?>
                                             </select>

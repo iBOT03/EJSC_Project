@@ -42,8 +42,8 @@
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Judul Event"
                        aria-describedby="basic-addon2"
-                       value="<?php echo set_value('judulevent')?>"
-                  <?= form_error('judulevent', '<small class="text-danger">', '</small>')?>>
+                       value="<?= set_value('judulevent'); ?>">
+              <?= form_error('judulevent', '<small class="text-danger">', '</small>')?>                        
               </div>
               <?= form_error('no_komunitas', '<small class="text-danger">', '</small>')?> 
               <input name="id_event"
@@ -52,7 +52,6 @@
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Judul Event"
                        aria-describedby="basic-addon2"
-                       
                        value="<?php echo $kode;?>">
               <div class="row">
                 <div class="col-sm-6">
@@ -64,9 +63,8 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Penyelenggara"
                            aria-describedby="basic-addon2"
-                           value="<?php echo set_value('penyelenggara')?>">
-                  </div>
-                  
+                           value="<?= set_value('penyelenggara');?>">
+                  </div>                  
                   <?= form_error('penyelenggara', '<small class="text-danger">', '</small>')?> 
                 </div>
                 <div class="col-sm-6">
@@ -78,10 +76,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Nama Penanggung Jawab"
                           aria-describedby="basic-addon2"
-                                value="<?php echo set_value('nama_pj')?>"
-                          >
-                  </div>
-                  
+                                value="<?= set_value('nama_pj'); ?>">
+                  </div>                  
                   <?= form_error('nama_pj', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
@@ -96,10 +92,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Mulai"
                           aria-describedby="basic-addon2"
-                                value="<?php echo set_value('tanggalmulai')?>"
-                          >
-                  </div>
-                  
+                                value="<?=set_value('tanggalmulai'); ?>">
+                  </div>                  
                   <?= form_error('tanggalmulai', '<small class="text-danger">', '</small>')?> 
                 </div>
                 <div class="col-sm-3">
@@ -111,10 +105,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Selesai"
                           aria-describedby="basic-addon2"
-                                value="<?php echo set_value('tanggalselesai')?>"
-                          >
-                  </div>
-                  
+                          value="<?= set_value('tanggalselesai'); ?>">
+                  </div>                  
                   <?= form_error('tanggalselesai', '<small class="text-danger">', '</small>')?> 
                 </div>
                 <div class="col-sm-3">
@@ -123,10 +115,9 @@
                     <input class="form-control border-dark small mb-3"
                            type="time"
                            id="waktu"
-                           value="<?php echo set_value('waktu')?>"
+                           value="<?= set_value('waktu'); ?>"
                            name="waktu">
-                  </div>
-                  
+                  </div>                  
                   <?= form_error('waktu', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
@@ -140,10 +131,8 @@
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
-                              aria-describedby="basic-addon2"
-                                    value="<?php echo set_value('keterangan')?>"></textarea>
-                  </div>
-                  
+                              aria-describedby="basic-addon2"><?= set_value('keterangan'); ?></textarea>
+                  </div>                  
                 </div>
               </div>
 
@@ -157,9 +146,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Pengisi Acara"
                           aria-describedby="basic-addon2"
-                                value=""><?php echo set_value('pengisiacara')?></textarea>
-                  </div>
-                  
+                          ><?= set_value('pengisiacara'); ?></textarea>
+                  </div>                  
                   <?= form_error('pengisiacara', '<small class="text-danger">', '</small>')?> 
                 </div>
                 <div class="col-sm-6">
@@ -171,9 +159,8 @@
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
                               aria-describedby="basic-addon2"
-                                    value=""><?php echo set_value('asalpeserta')?></textarea>
-                  </div>
-                  
+                              ><?= set_value('asalpeserta'); ?></textarea>
+                  </div>                  
                   <?= form_error('asalpeserta', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
@@ -184,7 +171,8 @@
                   <div class="input-group">
                     <select class="form-control border-dark small mb-3"
                             id="ruangan"
-                            name="ruangan">
+                            name="ruangan"
+                            value="<?= set_value('ruangan'); ?>">
                             <?php foreach ($ruangan as $r) {?>
                                <option value="<?php echo $r->ID_RUANGAN?>"><?php echo $r->NAMA_RUANGAN?></option>
                             <?php }?>
@@ -200,11 +188,10 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Jumlah Peserta"
                           aria-describedby="basic-addon2"
-                                value="<?php echo set_value('jumlahpeserta')?>"
+                          value="<?= set_value('jumlahpeserta'); ?>"
                           onkeypress="return hanyaAngka(event)"
                           >
-                  </div>
-                  
+                  </div>                  
                   <?= form_error('jumlahpeserta', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
@@ -277,7 +264,7 @@
                 <table class="table table-bordered" id="dataAlat" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width:10px">No</th>
+                      
                       <th>Nama Alat</th>
                       <th>Jumlah</th>
                       <th style="width: 50px">Aksi</th>
@@ -343,7 +330,7 @@
              var baris='';
              for(var i=0;i<data.length;i++){
                baris+= '<tr>'+
-                            '<td>'+ data[i].ID_EVENT +'</td>'+
+                          
                             '<td>'+ data[i].NAMA_ALAT +'</td>'+
                             '<td>'+ data[i].JUMLAH +'</td>'+
                             '<td hidden>'+ data[i].ID_DETAIL_EVENT +'</td>'+
@@ -361,22 +348,22 @@
           var id_alat = $("[name='peminjamanalat']").val();
           var jumlah = $("[name='jumlahalat']").val();
       
-      $.ajax({
-          type:'POST',
-          data:'id_event='+id_event+'&peminjamanalat='+id_alat+'&jumlahalat='+jumlah,
-          url:'<?php echo base_url()."index.php/admin/event/tambahdata"?>',
-          dataType:'json',
-          success: function (data) {
-            if (data.pesan=='') {
-              
-            console.log(data);
-            ambil();
-            $("[name='jumlahalat']").val('');
-            }
-          }
+            $.ajax({
+                type:'POST',
+                data:'id_event='+id_event+'&peminjamanalat='+id_alat+'&jumlahalat='+jumlah,
+                url:'<?php echo base_url()."index.php/admin/event/tambahdata"?>',
+                dataType:'json',
+                success: function (data) {
+                  if (data.pesan=='') {
+                    
+                  console.log(data);
+                  ambil();
+                  $("[name='jumlahalat']").val('');
+                  }
+                }
 
 
-      });
+            });
       }
       
       function hapusdata(id) {

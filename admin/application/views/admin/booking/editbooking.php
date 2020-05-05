@@ -27,9 +27,9 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    <?php foreach($booking as $booking):?>
                     <!-- Page Heading -->
-                    <form method="post" action="<?= site_url('admin/booking/editbooking')?>">
+                    <form method="post">
                         <h1 class="h3 mb-2 text-gray-800">Ubah Data Booking</h1>
 
                         <div class="card shadow mb-4">
@@ -41,7 +41,9 @@
                                         <div class="input-group">
                                             <input class="form-control border-dark small mb-3"
                                                    type="date"
-                                                   id="singleDatePicker">
+                                                   id="singleDatePicker"
+                                                   name="singleDatePicker"
+                                                   value="<?= $booking->TANGGAL_MULAI?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -49,34 +51,22 @@
                                         <div class="input-group">
                                             <input class="form-control border-dark small mb-3"
                                                    type="time"
-                                                   id="singleDatePicker">
+                                                   id="start"
+                                                   name="start"
+                                                   value="<?= $booking->JAM_MULAI?>">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <p>Durasi</p>
                                         <div class="input-group">
-                                            <input name="durasi"
-                                                   id="durasi"
-                                                   type="text"
-                                                   class="form-control border-dark small mb-3"
-                                                   placeholder="Durasi"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="4"
-                                                   required>
+                                            <input name="durasi" id="durasi" onkeyup="gettime()" type=number class="form-control border-dark small mb-3" placeholder="Durasi" aria-describedby="basic-addon2" maxlength="5" value="<?= $booking->DURASI?>">
                                         </div>
+                                        <?= form_error('durasi', '<small class="text-danger">', '</small>')?> 
                                     </div>
                                     <div class="col-sm-3">
-                                        <p>Jam Selesai</p>
-                                        <div class="input-group">
-                                        <input name="jamselesai"
-                                                   id="jamselesai"
-                                                   type="text"
-                                                   class="form-control border-dark small mb-3"
-                                                   placeholder="Jam Selesai"
-                                                   aria-describedby="basic-addon2"
-                                                   disabled>
-                                        </div>
-                                    </div>
+                                         <p>Jam Selesai</p>
+                                        <p id="jamselesai"></p>
+                                     </div>
                                 </div>
 
                                 <div class="row">
@@ -85,9 +75,10 @@
                                         <div class="input-group">
                                             <select class="form-control border-dark small mb-3" id="komunitas"
                                                 name="komunitas" value="<?php echo set_value('komunitas') ?>">
+                                                <option value=""><?= $booking->NAMA_KOMUNITAS?></option>
                                                 <?php foreach ($komunitas as $row) { ?>
-                                                <option value="<?php echo $row['NAMA']; ?>">
-                                                    <?php echo $row['NAMA']; ?>Pilih Komunitas</option>
+                                                <option value="<?php echo $row['ID_KOMUNITAS']; ?>"<?=($booking->ID_KOMUNITAS == $row['ID_KOMUNITAS']? 'selected' : '' ) ?>>
+                                                    <?php echo $row['NAMA_KOMUNITAS']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -103,7 +94,8 @@
                                                    placeholder="Masukkan Nama Lengkap"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="150"
-                                                   required>
+                                                   value="<?= $booking->NAMA?>"
+                                                   >
                                         </div>
                                     </div>
                                 </div>
@@ -115,7 +107,10 @@
                                             <select class="form-control border-dark small mb-3"
                                                     id="ruangan"
                                                     name="ruangan">
-                                                    <option value="">Pilih Ruangan</option>
+                                                    <option value=""><?= $booking->NAMA_RUANGAN?></option>
+                                                    <?php foreach($ruang as $r):?>
+                                                    <option value="<?= $r['ID_RUANGAN']?>"<?=($booking->ID_RUANGAN == $r['ID_RUANGAN']? 'selected' : '' ) ?>><?= $r['NAMA_RUANGAN']?></option>
+                                                    <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -130,7 +125,8 @@
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
                                                    maxlength="3"
-                                                   required>
+                                                   value="<?= $booking->JUMLAH_ORANG?>"
+                                                   >
                                         </div>
                                     </div>
                                 </div>
@@ -138,15 +134,16 @@
                                     <div class="col-sm-6">
                                         <p>Nomor Telepon</p>
                                         <div class="input-group">
-                                            <input name="jumlahpeserta"
-                                                   id="jumlahpeserta"
+                                            <input name="no_telp"
+                                                   id="no_telp"
                                                    type="text"
                                                    class="form-control border-dark small mb-3"
                                                    placeholder="Masukkan Nomor Telepon"
                                                    aria-describedby="basic-addon2"
                                                    onkeypress="return hanyaAngka(event)"
                                                    maxlength="13"
-                                                   required>
+                                                   value="<?= $booking->NOMOR_TELEPON?>"
+                                                   >
                                         </div>
                                     </div>
                                 </div>
@@ -161,7 +158,8 @@
                                                    placeholder="Masukkan Tujuan Kegiatan"
                                                    aria-describedby="basic-addon2"
                                                    maxlength="100"
-                                                   required>
+                                                   value="<?= $booking->TUJUAN?>"
+                                                   >
                                         </div>
                                     </div>
                                 </div>
@@ -174,9 +172,7 @@
                                            class="form-control border-dark small mb-3"
                                            placeholder="Masukkan Deskripsi Kegiatan"
                                            aria-describedby="basic-addon2"
-                                           maxlength="200"
-                                           required>
-                                    </textarea>
+                                           maxlength="200"><?= $booking->DESKRIPSI_KEGIATAN?></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-info btn-icon-split">
@@ -196,6 +192,7 @@
                         </div>
                         <!-- Card -->
                     </form>
+                                                <?php endforeach;?>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -224,5 +221,31 @@
     <?php $this->load->view("admin/_partials/js.php") ?>
 
 </body>
+<script>
+    function gettime() {
+        console.log('kkk');
+        var x, y, jam, menit, detik, detik2, tes;
+        
+        var tanggalmulai = document.getElementById('singleDatePicker').value + ' ' + document.getElementById('start').value;
+  
+        var durasi = document.getElementById('durasi').value;
 
+        if(durasi != null && durasi != ''){
+        var jamselesai = new Date(tanggalmulai)
+
+        console.log('jam '+ jamselesai);
+
+        jamselesai.setHours(jamselesai.getHours() + parseInt(durasi))
+        
+        console.log('jam '+ jamselesai.getHours()+':'+ jamselesai.getMinutes());
+
+        var setid = jamselesai.getHours()+':'+ jamselesai.getMinutes();
+
+        document.getElementById("jamselesai").innerHTML = '<p>'+setid+'</p>';
+        }
+      
+        
+        // result.innerHTML = hasilku;
+    }
+</script>
 </html>
