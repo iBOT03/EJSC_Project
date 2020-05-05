@@ -40,7 +40,7 @@
             <ImageView
                 android:id="@+id/ivPosterEvent"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/placeholder"
                 android:contentDescription="@string/poster_event"
                 app:layout_constraintEnd_toEndOf="parent"

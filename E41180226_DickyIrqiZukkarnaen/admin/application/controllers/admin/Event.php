@@ -30,7 +30,7 @@ class Event extends CI_Controller {
 	}
 		//ajax
 	public function hapusdata(){
-		$id=$this->input->post('ID_DETAIL_EVENT');
+        $id=$this->input->post('ID_DETAIL_EVENT');
 		$where = array('ID_DETAIL_EVENT'=>$id);
 		$this->model_event->hapus($where , 'detail_event');
 	}
@@ -78,12 +78,11 @@ class Event extends CI_Controller {
         if ($this->form_validation->run() == false) {
             $this->load->view("admin/acara/tambahevent", $data);
         } else {
-            $foto = $_FILES['foto']['name'];
             $config['allowed_types'] = 'jpg|png|gif|jpeg|pdf';
             $config['max_size'] = '2048';
             $config['upload_path'] = './uploads/event/';
-			$pdf = $_FILES['suratperijinan']['name'];
-		
+		    $foto = str_replace(' ', '_', $_FILES['foto']['name']);			
+		    $pdf = str_replace(' ', '_', $_FILES['suratperijinan']['name']);			
 			$this->load->library('upload', $config);
 
             if ($this->upload->do_upload('foto') && $this->upload->do_upload('suratperijinan')) {
@@ -91,7 +90,7 @@ class Event extends CI_Controller {
                     'ID_EVENT' => $this->input->post('id_event'),
                     'JUDUL' => $this->input->post('judulevent'),
                     'FOTO' => $foto,
-                    'SURAT_PENGAJUAN' => trim($pdf),
+                    'SURAT_PENGAJUAN' => $pdf,
                     'PENYELENGGARA' => $this->input->post('penyelenggara'),
                     'NAMA_PJ' => $this->input->post('nama_pj'),
                     'NAMA_PENGISI_ACARA' => $this->input->post('pengisiacara'),
@@ -121,10 +120,15 @@ class Event extends CI_Controller {
             }
         }
     }
-	public function edit($id) {
+    public function ambil($id){
+        $query = $this->db->query("SELECT * FROM alat, detail_event  WHERE alat.ID_ALAT = detail_event.ID_ALAT AND detail_event.ID_EVENT = '$id'")->result();
+		echo json_encode($query);
+    }
+   	public function edit($id) {
         $this->form_validation->set_rules('judulevent' , 'Judul Event' , 'required');
         if ($this->form_validation->run() == false) {
             $data['data'] = $this->model_event->relasi($id);
+            
             $data['event'] = $this->model_event->detail_event($id);
             $data['alat'] = $this->model_event->getalat();
             $data['get'] = $this->model_event->getruangan($id);

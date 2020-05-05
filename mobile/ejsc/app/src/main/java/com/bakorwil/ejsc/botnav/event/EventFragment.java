@@ -71,7 +71,6 @@ public class EventFragment extends Fragment {
                 JSONObject res = null;
                 try {
                     res = new JSONObject(response);
-//                    JSONObject arr2 = res.getJSONObject("response");
                     if (res.getBoolean("status")) {
                         arr = res.getJSONArray("data_event");
                         for (int i = 0; i < arr.length(); i++) {
@@ -124,7 +123,6 @@ public class EventFragment extends Fragment {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-//                params.put("token" , authdata.getInstance(getActivity()).getToken());
                 return params;
             }
         };

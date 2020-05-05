@@ -53,3 +53,30 @@ $route['default_controller'] = '/admin/Login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'admin/login';
+
+/**
+ * API Routes
+ */
+// Akun API Routes
+$route['api/akun/register'] = 'api/akun/register';
+$route['api/akun/login'] = 'api/akun/login';
+
+// Event API Routes
+$route['api/event/event'] = 'api/event/event';
+$route['api/event/detail'] = 'api/detailevent/detail';
+
+//Booking API Routes
+$route['api/booking/tambah'] = 'api/booking/tambahBooking';
+
+// Delete Booking API Routes
+# https://codeigniter.com/userguide3/general/routing.html
+$route['api/booking/(:num)/delete']["DELETE"] = 'api/booking/deleteBooking/$1';
+
+// Update Booking API Routes :: PUT API Request
+$route['api/booking/update']["PUT"] = 'api/booking/updateBooking';
+
+// Kontak Kami API Routes
+$route['api/kontak/kontak'] = 'api/kontak/kontak';
+
+// Ruangan API Routes
+$route['api/ruangan/ruangan'] = 'api/ruangan/ruangan';

@@ -44,6 +44,14 @@
                        aria-describedby="basic-addon2"
                        value="<?= $e['JUDUL']?>"
                        >
+                <input name="id_event"
+                       id="id_event"
+                       type="hidden"
+                       class="form-control border-dark small mb-3"
+                       placeholder="Masukkan Judul Event"
+                       aria-describedby="basic-addon2"
+                       value="<?= $e['ID_EVENT']?>"
+                       >
               </div>
 
               <div class="row">
@@ -236,39 +244,23 @@
                   </div>
                 </div>
                 <div class="col-sm-3 my-5">
-                  <a href="#" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i></a>           
+                  <button type="button" onclick="kirimdata()" id="btn-tambah" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i></button>          
                 </div>
-              </div>
+           
+                </div>
 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataAlat" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width:10px">No</th>
+                      
                       <th>Nama Alat</th>
                       <th>Jumlah</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody id="target">
-                  <?php 
-                    $no = 1;
-                  foreach($data as $d):?>
-                    <tr>
-                        <td><?=$no++?></td>
-                        <td><?=$d->NAMA_ALAT?></td>
-                        <td><?=$d->JUMLAH?></td>
-                        <td>
-                        <a href="#"
-                           onclick="hapusdata()"
-                           class="btn btn-sm btn-danger btn-circle"
-                           data-toggle="modal" data-target="#hapusModal">
-                           <i class="fa fa-trash"></i>
-                        </a>
-                        </td>
-                        
-                    </tr>
-                  <?php endforeach;?>
+                 
                   </tbody>
                 </table>
               </div>
@@ -285,7 +277,25 @@
                 </span>
                 <span class="text">Kembali</span>
               </a>
-
+              <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"
+                       aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakinuntuk menghapus?</h5>
+                          <button class="close" type="button" data-dismiss="modal"
+                                  aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Pilih "Hapus" untuk menghapus, pilih "Batal" untuk kembali ke Panel Admin.</div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info" type="button" data-dismiss="modal">Batal</button>
+                          <a id="delete_link" class="btn btn-danger" href="">Hapus</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
           <!-- /.card -->
@@ -316,19 +326,67 @@
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
   <script type="text/javascript">
+      ambildata();
+
+      function ambildata() {
+            var kode =  $("[name='id_event']").val();
+            console.log(kode);
+            $.ajax({    
+              type:'POST',
+              url:'<?php echo base_url()."index.php/admin/event/ambil/"?>'+kode,
+              dataType:'json',
+              success: function(data){
+              var baris='';
+              for(var i=0;i<data.length;i++){
+                baris+= '<tr>'+
+                             
+                              '<td>'+ data[i].NAMA_ALAT +'</td>'+
+                              '<td>'+ data[i].JUMLAH +'</td>'+
+                              '<td hidden>'+ data[i].ID_DETAIL_EVENT +'</td>'+
+                              '<td><a onclick="hapusdata('+data[i].ID_DETAIL_EVENT+')" href="" class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash"></i></a></td>'
+                          '</tr>'
+              }
+             $('#target').html(baris);
+             console.log(baris);
+          }
+        });
+          
+      }
        function hapusdata(id) {
         var tanya = confirm('apakah anda ingin hapus data ? ');
 
         if (tanya) {
           $.ajax({
             type:'POST',
-            data:'ID_DETAIL_ALAT='+id,
+            data:'ID_DETAIL_EVENT='+id,
             url:'<?php echo base_url()."index.php/admin/event/hapusdata"?>',
             success: function (data) {
               console.log(data);
             }
           });
         }
+      }
+      function kirimdata() {
+          var id_event = $("[name='id_event']").val();
+          var id_alat = $("[name='peminjamanalat']").val();
+          var jumlah = $("[name='jumlahalat']").val();
+      
+      $.ajax({
+          type:'POST',
+          data:'id_event='+id_event+'&peminjamanalat='+id_alat+'&jumlahalat='+jumlah,
+          url:'<?php echo base_url()."index.php/admin/event/tambahdata"?>',
+          dataType:'json',
+          success: function (data) {
+            if (data.pesan=='') {
+              
+            console.log(data);
+            ambildata();
+            $("[name='jumlahalat']").val('');
+            }
+          }
+
+
+      });
       }
   </script>
 </body>

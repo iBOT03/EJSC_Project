@@ -27,26 +27,12 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-        <form method="post" action="<?= site_url('admin/event/editevent')?>">
+    <?php foreach($event as $e){ ?>
+        <form method="post" enctype="multipart/form-data">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Ubah Data Event</h1>
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <a href="#" class="btn btn-sm btn-info btn-icon-split shadow-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-check"></i>
-                </span>
-                <span class="text"> Setujui</span>
-              </a>
-              <a href="#" class="btn btn-sm btn-danger btn-icon-split shadow-sm">
-                <span class="icon text-white-50">
-                  <i class="fas fa-times"></i>
-                </span>
-                <span class="text"> Tolak</span>
-              </a>
-            </div>
+         
             <div class="card-body">
               <p>Judul Event</p>
               <div class="input-group">
@@ -56,7 +42,16 @@
                        class="form-control border-dark small mb-3"
                        placeholder="Masukkan Judul Event"
                        aria-describedby="basic-addon2"
-                       required>
+                       value="<?= $e['JUDUL']?>"
+                       >
+                <input name="id_event"
+                       id="id_event"
+                       type="hidden"
+                       class="form-control border-dark small mb-3"
+                       placeholder="Masukkan Judul Event"
+                       aria-describedby="basic-addon2"
+                       value="<?= $e['ID_EVENT']?>"
+                       >
               </div>
 
               <div class="row">
@@ -69,7 +64,8 @@
                            class="form-control border-dark small mb-3"
                            placeholder="Masukkan Nama Penyelenggara"
                            aria-describedby="basic-addon2"
-                           required>
+                           value="<?= $e['PENYELENGGARA']?>"
+                           >
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -81,7 +77,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Nama Penanggung Jawab"
                           aria-describedby="basic-addon2"
-                          required>
+                          value="<?= $e['NAMA_PJ']?>"
+                          >
                   </div>
                 </div>
               </div>
@@ -96,7 +93,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Mulai"
                           aria-describedby="basic-addon2"
-                          required>
+                          value="<?= $e['TANGGAL_MULAI']?>"
+                          >
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -108,7 +106,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Tanggal Selesai"
                           aria-describedby="basic-addon2"
-                          required>
+                          value="<?= $e['TANGGAL_SELESAI']?>"
+                          >
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -117,7 +116,8 @@
                     <input class="form-control border-dark small mb-3"
                            type="time"
                            id="waktu"
-                           name="waktu">
+                           name="waktu"
+                           value="<?= $e['WAKTU']?>">
                   </div>
                 </div>
               </div>
@@ -131,9 +131,7 @@
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
-                              aria-describedby="basic-addon2"
-                              required>
-                    </textarea>
+                              aria-describedby="basic-addon2"><?= $e['KETERANGAN']?></textarea>
                   </div>
                 </div>
               </div>
@@ -147,9 +145,7 @@
                           type="text"
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Pengisi Acara"
-                          aria-describedby="basic-addon2"
-                          required>
-                    </textarea>
+                          aria-describedby="basic-addon2"><?= $e['NAMA_PENGISI_ACARA']?></textarea>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -160,9 +156,7 @@
                               type="text"
                               class="form-control border-dark small mb-3"
                               placeholder="Masukkan Keterangan Event"
-                              aria-describedby="basic-addon2"
-                              required>
-                    </textarea>
+                              aria-describedby="basic-addon2"><?= $e['ASAL_PESERTA']?></textarea>
                   </div>
                 </div>
               </div>
@@ -174,7 +168,10 @@
                     <select class="form-control border-dark small mb-3"
                             id="ruangan"
                             name="ruangan">
-                      <option value="">Pilih Ruangan</option>
+                            <option value=""><?= $e['NAMA_RUANGAN'] ?></option>
+                            <?php foreach($get as $r):?>
+                                <option value="<?=$r->ID_RUANGAN?>"<?= ($e['ID_RUANGAN'] == $r->ID_RUANGAN? 'selected' : '')?>><?php echo $r->NAMA_RUANGAN ?></option>
+                            <?php endforeach;?>
                     </select>
                   </div>
                 </div>
@@ -187,8 +184,8 @@
                           class="form-control border-dark small mb-3"
                           placeholder="Masukkan Jumlah Peserta"
                           aria-describedby="basic-addon2"
-                          onkeypress="return hanyaAngka(event)"
-                          required>
+                          value="<?= $e['JUMLAH_PESERTA']?>"
+                          onkeypress="return hanyaAngka(event)">
                   </div>
                 </div>
               </div>
@@ -197,13 +194,13 @@
                 <div class="col-sm-6">
                   <p>Upload Poster Event</p>
                   <div class="input-group">
-                    <input name="posterevent"
-                          id="posterevent"
+                    <input name="foto"
+                          id="foto"
                           type="file"                                                   
                           class="form-control border-dark small mb-3"
                           placeholder=""
                           aria-describedby="basic-addon2"
-                          required>
+                          >
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -215,7 +212,7 @@
                            class="form-control border-dark small mb-3"
                            placeholder=""
                            aria-describedby="basic-addon2"
-                           required>
+                           >
                   </div>
                 </div>
               </div>
@@ -227,47 +224,43 @@
                     <select class="form-control border-dark small mb-3"
                             id="peminjamanalat"
                             name="peminjamanalat">
-                      <option value="-">Pilih Alat yang Akan Dipinjam</option>
+                      <?php foreach ($alat as $r) {?>
+                               <option value="<?php echo $r->ID_ALAT?>"><?php echo $r->NAMA_ALAT?></option>
+                      <?php }?> 
                     </select>
                   </div>
                 </div>
                 <div class="col-sm-3">
                   <p>Jumlah Alat</p>
                   <div class="input-group">
-                    <select class="form-control border-dark small mb-3"
-                            id="jumlahalat"
-                            name="jumlahalat">
-                      <option value="-">Masukkan Jumlah Alat</option>
-                    </select>
+                  <input name="jumlahalat"
+                           id="jumlahalat"
+                           type="number"                                                   
+                           class="form-control border-dark small mb-3"
+                           placeholder=""
+                           aria-describedby="basic-addon2"
+                                 value="<?php echo set_value('jumlahalat')?>"
+                           >
                   </div>
                 </div>
                 <div class="col-sm-3 my-5">
-                  <a href="#" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i></a>           
+                  <button type="button" onclick="kirimdata()" id="btn-tambah" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i></button>          
                 </div>
-              </div>
+           
+                </div>
 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataAlat" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th style="width:10px">No</th>
+                      
                       <th>Nama Alat</th>
                       <th>Jumlah</th>
-                      <th style="width: 50px">Aksi</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <a href="#"
-                           class="btn btn-sm btn-danger btn-circle">
-                          <i class="fas fa-trash"></i>
-                        </a>
-                      </td>
-                    </tr>
+                  <tbody id="target">
+                 
                   </tbody>
                 </table>
               </div>
@@ -284,21 +277,39 @@
                 </span>
                 <span class="text">Kembali</span>
               </a>
-
+              <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"
+                       aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Apakah Anda yakinuntuk menghapus?</h5>
+                          <button class="close" type="button" data-dismiss="modal"
+                                  aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">Pilih "Hapus" untuk menghapus, pilih "Batal" untuk kembali ke Panel Admin.</div>
+                        <div class="modal-footer">
+                          <button class="btn btn-info" type="button" data-dismiss="modal">Batal</button>
+                          <a id="delete_link" class="btn btn-danger" href="">Hapus</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </div>
           </div>
           <!-- /.card -->
 
         </form>
-
+    <?php }?>
         </div>
         <!-- /.container-fluid -->
-
+        <?php $this->load->view("admin/_partials/footer.php") ?>
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <?php $this->load->view("admin/_partials/footer.php") ?>
+
 
     </div>
     <!-- End of Content Wrapper -->
@@ -314,7 +325,70 @@
 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
+  <script type="text/javascript">
+      ambildata();
 
+      function ambildata() {
+            var kode =  $("[name='id_event']").val();
+            console.log(kode);
+            $.ajax({    
+              type:'POST',
+              url:'<?php echo base_url()."index.php/admin/event/ambil/"?>'+kode,
+              dataType:'json',
+              success: function(data){
+              var baris='';
+              for(var i=0;i<data.length;i++){
+                baris+= '<tr>'+
+                             
+                              '<td>'+ data[i].NAMA_ALAT +'</td>'+
+                              '<td>'+ data[i].JUMLAH +'</td>'+
+                              '<td hidden>'+ data[i].ID_DETAIL_EVENT +'</td>'+
+                              '<td><a onclick="hapusdata('+data[i].ID_DETAIL_EVENT+')" href="" class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash"></i></a></td>'
+                          '</tr>'
+              }
+             $('#target').html(baris);
+             console.log(baris);
+          }
+        });
+          
+      }
+       function hapusdata(id) {
+        var tanya = confirm('apakah anda ingin hapus data ? ');
+
+        if (tanya) {
+          $.ajax({
+            type:'POST',
+            data:'ID_DETAIL_EVENT='+id,
+            url:'<?php echo base_url()."index.php/admin/event/hapusdata"?>',
+            success: function (data) {
+              console.log(data);
+            }
+          });
+        }
+      }
+      function kirimdata() {
+          var id_event = $("[name='id_event']").val();
+          var id_alat = $("[name='peminjamanalat']").val();
+          var jumlah = $("[name='jumlahalat']").val();
+      
+      $.ajax({
+          type:'POST',
+          data:'id_event='+id_event+'&peminjamanalat='+id_alat+'&jumlahalat='+jumlah,
+          url:'<?php echo base_url()."index.php/admin/event/tambahdata"?>',
+          dataType:'json',
+          success: function (data) {
+            if (data.pesan=='') {
+              
+            console.log(data);
+            ambildata();
+            $("[name='jumlahalat']").val('');
+            }
+          }
+
+
+      });
+      }
+  </script>
 </body>
 
 </html>
