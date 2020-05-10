@@ -3,6 +3,7 @@ package com.bakorwil.ejsc.configfile;
 public class ServerApi {
     // Rest API Akun
     public static final String URL_LOGIN = "http://192.168.1.6/EJSC_Project/admin/api/akun/login";
+    public static final String URL_LUPAPW = "http://192.168.1.6/EJSC_Project/admin/api/akun/lupa";
     public static final String URL_DAFTAR = "http://192.168.1.6/EJSC_Project/admin/api/akun/register";
     // Rest API Event
     public static final String URL_GET_EVENT = "http://192.168.1.6/EJSC_Project/admin/api/event";

@@ -1,9 +1,12 @@
 package com.bakorwil.ejsc;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.bakorwil.ejsc.akun.LoginActivity;
 import com.bakorwil.ejsc.botnav.akun.AkunFragment;
 import com.bakorwil.ejsc.botnav.beranda.BerandaFragment;
 import com.bakorwil.ejsc.botnav.booking.BookingFragment;
@@ -64,17 +67,40 @@ public class BottomNavigation extends AppCompatActivity implements BottomNavigat
         return loadFragment(fragment);
     }
 
+//    public void onBackPressed() {
+//        new AlertDialog.Builder(this)
+//                .setIcon(R.drawable.logo_ejsc)
+//                .setTitle("Keluar Aplikasi")
+//                .setMessage("Apakah Anda Ingin Keluar Dari Aplikasi?")
+//                .setPositiveButton("Ya", new DialogInterface.OnClickListener()
+//                {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        ActivityCompat.finishAffinity(BottomNavigation.this);
+//                        finish();
+//                    }
+//
+//                })
+//                .setNegativeButton("Tidak", null)
+//                .show();
+//    }
+
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(R.drawable.logo_ejsc)
                 .setTitle("Keluar Aplikasi")
                 .setMessage("Apakah Anda Ingin Keluar Dari Aplikasi?")
-                .setPositiveButton("Ya", new DialogInterface.OnClickListener()
-                {
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences pref = getSharedPreferences("akun", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("email", "0");
+                        editor.commit();
                         ActivityCompat.finishAffinity(BottomNavigation.this);
                         finish();
+                        Intent it = new Intent(BottomNavigation.this, LoginActivity.class);
+                        startActivity(it);
                     }
 
                 })
