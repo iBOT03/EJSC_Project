@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.bakorwil.ejsc.BottomNavigation;
 import com.bakorwil.ejsc.R;
+import com.bakorwil.ejsc.botnav.beranda.BerandaFragment;
 import com.bakorwil.ejsc.configfile.JSONParser;
 import com.bakorwil.ejsc.configfile.ServerApi;
 
@@ -158,6 +159,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     edt_kata_sandi.requestFocus();
                 } else {
                     new login().execute();
+                    Intent masuk = new Intent(LoginActivity.this, BerandaFragment.class);
+                    startActivity(masuk);
                 }
                 break;
             case R.id.btnDaftarSekarang:
