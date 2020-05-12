@@ -120,7 +120,8 @@ class Administrator extends CI_Controller
 
 			if ($update) {
 				//$ubahfoto = str_replace(' ', '_', $_FILES['foto']['name']);
-				$ubahfoto = "file_" . time();
+				//$ubahfoto = "file_" . time();
+				$ubahfoto = $_FILES['foto']['name'];
 
 				if ($ubahfoto) {
 					$config['allowed_types'] = 'jpg|png|gif|jpeg|pdf';

@@ -107,7 +107,8 @@ class Pengguna extends CI_Controller
 			), $nik);
 
 			if ($update) {
-				$ubahfoto = "file_" . time();
+				//$ubahfoto = "file_" . time();
+				$ubahfoto = $_FILES['foto']['name'];
 				
 				if ($ubahfoto) {
 					$config['allowed_types'] = 'jpg|png|gif|jpeg|pdf';
