@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.bakorwil.ejsc.BottomNavigation;
 import com.bakorwil.ejsc.R;
-import com.bakorwil.ejsc.botnav.beranda.BerandaFragment;
 import com.bakorwil.ejsc.configfile.JSONParser;
 import com.bakorwil.ejsc.configfile.ServerApi;
 
@@ -41,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ProgressDialog progressDialog;
     // new code added by gen z
     String username,password;
-    String cmail, cnama;
+    String cmail, cnama, nohpnya;
     int success;
     JSONArray _JSONarray = null;
     JSONObject jobtes = null;
@@ -99,12 +98,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     try {
                                         JSONObject object = _JSONarray.getJSONObject(0);
                                         String emel = object.getString("email");
-                                        String nama = object.getString("nama_lengkap");
+                                        String nama = object.getString("nama_lengkap"); // ini ngambil nama yg dari api
+                                        String nohp = object.getString("no_telepon"); // ini ngambil nohp nama isitu haru sama dengan apinya
                                         startActivity(new Intent(getApplicationContext(), BottomNavigation.class));
                                         SharedPreferences pref = getSharedPreferences("akun", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = pref.edit();
                                         editor.putString("email", emel.toString());
                                         editor.putString("nama", nama.toString());
+                                        editor.putString("nohp", nohp.toString()); // ini sudah masuk di prefrens
+                                        // untuk ngambil data prefrens ini kita buat class
                                         editor.commit();
                                         finish();
                                     } catch (JSONException e) {
@@ -159,8 +161,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     edt_kata_sandi.requestFocus();
                 } else {
                     new login().execute();
-                    Intent masuk = new Intent(LoginActivity.this, BerandaFragment.class);
-                    startActivity(masuk);
                 }
                 break;
             case R.id.btnDaftarSekarang:
@@ -175,6 +175,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         SharedPreferences pref = getSharedPreferences("akun", MODE_PRIVATE);
         cmail = pref.getString("email", "0");
         cnama = pref.getString("nama", "0");
+        nohpnya = pref.getString("nohp","0"); // ini sudah di panggil bisa di set ke textview pas kayak email tadi
+        // tinggal tambahin disini wes nohp tadi  jgn lupa buat string dulu di atas
     }
     public void onBackPressed() {
         new AlertDialog.Builder(this)
