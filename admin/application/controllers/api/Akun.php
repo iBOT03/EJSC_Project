@@ -152,7 +152,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
                 $message = [
                     'status' => TRUE,
                     'message' => "Selamat Datang di EJSC BAKORWIL V Jember",
-                    'data' => $return_data
+                    'data' => [$return_data]
                 ];
                 $this->response($message, REST_Controller::HTTP_OK);
             } else {
