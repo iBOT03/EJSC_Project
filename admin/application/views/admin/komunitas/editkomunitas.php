@@ -194,6 +194,14 @@
                   </div>
                 </div>
               </div>
+              <div class="col-sm-6">
+                      <div class="input-group">
+                          <input type="hidden" name="blank" id="blank" class="form-control border-dark small mb-3" placeholder="blank" aria-describedby="basic-addon2">            
+                          <?php foreach ($data as $row) { ?>
+                            <br>    <a href="<?= base_url('uploads/') . $row->LOGO ?>">Lihat Foto</a>
+                          <?php } ?> 
+                      </div>
+                  </div>
                   <div class="col-sm-6">
                       <div class="input-group">
                         <img id="preview" src="" alt="" width="320px" /> <br>                                            
