@@ -1,6 +1,8 @@
 package com.bakorwil.ejsc.botnav.beranda;
 
 import android.content.DialogInterface;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,6 +58,8 @@ public class BerandaFragment extends Fragment {
     ImageView btnNotifikasi;
     JSONArray arr;
     TextView dataKosong, show;
+    String cmail, cnama;
+    TextView tes;
     //CarouselView mImages;
     private ArrayList<ModelEvent> arrayList;
 
@@ -63,6 +67,9 @@ public class BerandaFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
 
+        bacaPreferensi(); //ini lupa
+        tes = view.findViewById(R.id.tv_nama_user);
+        tes.setText(cnama); //set nama
         mItems = new ArrayList<>();
         arrayList = new ArrayList<>();
         pb = view.findViewById(R.id.progressbar);
@@ -179,6 +186,12 @@ public class BerandaFragment extends Fragment {
         };
         AppController.getInstance().addToRequestQueue(sendData);
 
+    }
+
+    private void bacaPreferensi(){
+        SharedPreferences pref = getActivity().getSharedPreferences("akun", Context.MODE_PRIVATE);
+        cmail = pref.getString("email", "0"); //email
+        cnama = pref.getString("nama", "0"); // get nama buat ditampilkan
     }
 
     private int[] mImages = new int[]{
