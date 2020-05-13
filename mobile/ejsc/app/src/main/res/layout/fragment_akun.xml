@@ -28,7 +28,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:id="@+id/profile">
 
                 <TextView
                     android:id="@+id/txt_nama"
@@ -41,8 +42,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="17sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:text="@string/nama_lengkap"/>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/txt_email"
@@ -54,8 +54,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_nama"
-                    android:text="@string/email" />
+                    app:layout_constraintTop_toBottomOf="@id/txt_nama"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
