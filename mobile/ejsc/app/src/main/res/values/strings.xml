@@ -73,4 +73,10 @@
     <string name="ruangan2">Ruangan:</string>
     <string name="nama_ruangan">Nama Ruangan</string>
     <string name="kegiatan">Kegiatan:</string>
+    <string name="ket_booking">Ket. Booking</string>
+    <string name="statu">Status:</string>
+    <string name="komunitas2">Komunitas:</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="aktif">Aktif</string>
+    <string name="nama_komunitas">Nama Komunitas</string>
 </resources>

@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.bakorwil.ejsc.R;
 
-public class BookingActivity3 extends AppCompatActivity {
+public class FormBooking extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_booking3);
+		setContentView(R.layout.form_booking);
 	}
 }
