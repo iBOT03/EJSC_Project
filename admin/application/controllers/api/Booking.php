@@ -261,3 +261,4 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
     }
 }
 ?>
+

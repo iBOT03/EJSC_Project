@@ -80,3 +80,6 @@ $route['api/kontak/kontak'] = 'api/kontak/kontak';
 
 // Ruangan API Routes
 $route['api/ruangan/ruangan'] = 'api/ruangan/ruangan';
+
+//Update Akun API Routes :: PUT API Request
+$route['api/akun/update']["PUT"] = 'api/akun/updateAkun';
