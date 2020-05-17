@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".botnav.booking.BookingFragment">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/white"
-        app:title="@string/title_booking" />
+    tools:context=".botnav.booking.BookingActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar1"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,5 +36,28 @@
 
     </ScrollView>
 
+<!--    <TextView-->
+<!--        android:id="@+id/dataKosong"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:fontFamily="@font/poppins_regular"-->
+<!--        android:gravity="center"-->
+<!--        android:text="@string/belum_ada_data"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="16sp"-->
+<!--        android:visibility="gone" />-->
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressbar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:visibility="gone" />-->
 
 </RelativeLayout>

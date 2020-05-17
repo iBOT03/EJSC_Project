@@ -48,7 +48,7 @@
                                     <div class="col-sm-6">
                                         <p>Nama Lengkap</p>
                                         <div class="input-group">
-                                            <input name="nama" id="nama" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2" maxlength="150" value="<?php echo $akunn[0]->NAMA_LENGKAP; ?>" >
+                                            <input name="nama" id="nama" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2" maxlength="150" value="<?php echo $akunn[0]->NAMA_LENGKAP; ?>">
                                         </div>
                                         <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -58,14 +58,14 @@
                                     <div class="col-sm-6">
                                         <p>Email</p>
                                         <div class="input-group">
-                                            <input name="email" id="email" type="email" class="form-control border-dark small mb-3" placeholder="Masukkan Email" aria-describedby="basic-addon2" maxlength="100" value="<?= $akunn[0]->EMAIL; ?>" >
+                                            <input name="email" id="email" type="email" class="form-control border-dark small mb-3" placeholder="Masukkan Email" aria-describedby="basic-addon2" maxlength="100" value="<?= $akunn[0]->EMAIL; ?>">
                                         </div>
                                         <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Telepon/Whatsapp</p>
                                         <div class="input-group">
-                                            <input name="no_telpon" id="no_telpon" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan No Telepon/Whatsapp" aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)" maxlength="13" value="<?= $akunn[0]->NO_TELEPON; ?>" >
+                                            <input name="no_telpon" id="no_telpon" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan No Telepon/Whatsapp" aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)" maxlength="13" value="<?= $akunn[0]->NO_TELEPON; ?>">
                                         </div>
                                         <?= form_error('no_telpon', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
@@ -73,7 +73,7 @@
 
                                 <p>Alamat</p>
                                 <div class="input-group">
-                                    <textarea name="alamat" id="alamat" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Alamat" aria-describedby="basic-addon2" ><?= $akunn[0]->ALAMAT; ?></textarea>
+                                    <textarea name="alamat" id="alamat" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Alamat" aria-describedby="basic-addon2"><?= $akunn[0]->ALAMAT; ?></textarea>
                                     <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
                                 </div>
 
@@ -81,30 +81,20 @@
                                     <div class="col-sm-6">
                                         <p>Komunitas</p>
                                         <div class="input-group">
-                                        <select class="form-control border-dark small mb-3" id="komunitas"
-                                                name="komunitas" value="<?= set_value('komunitas')?>">
+                                            <select class="form-control border-dark small mb-3" id="komunitas" name="komunitas" value="<?= set_value('komunitas') ?>">
                                                 <option value="">---Pilih---</option>
 
                                                 <?php foreach ($komunitas as $row) { ?>
-                                                <option value="<?php echo $row['ID_KOMUNITAS']; ?>"
-                                                <?=($akun[0]->ID_KOMUNITAS == $row['ID_KOMUNITAS'] ? 'selected' : '' ) ?>>
-                                                    <?php echo $row['NAMA_KOMUNITAS']; ?></option>
+                                                    <option value="<?php echo $row['ID_KOMUNITAS']; ?>" <?= ($akun[0]->ID_KOMUNITAS == $row['ID_KOMUNITAS'] ? 'selected' : '') ?>>
+                                                        <?php echo $row['NAMA_KOMUNITAS']; ?></option>
                                                 <?php } ?>
-                                            </select>
-                                            <!-- <input name="komunitas" id="komunitas" type="text"
-                                                class="form-control border-dark small mb-3"
-                                                placeholder="Masukkan Komunitas" aria-describedby="basic-addon2"
-                                                maxlength="200" value="<?php //echo $akun[0]->ID_KOMUNITAS; 
-                                                                        ?>" required
-                                                > -->
+                                            </select>                                            
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Upload Foto KTP</p>
                                         <div class="input-group">
-                                            <input name="foto" id="foto" accept="image/*" onchange="tampilkanPreview(this,'preview')" 
-                                            type="file" class="form-control border-dark small mb-3" placeholder="" 
-                                            aria-describedby="basic-addon2" >
+                                            <input name="foto" id="foto" accept="image/*" onchange="tampilkanPreview(this,'preview')" type="file" class="form-control border-dark small mb-3" placeholder="" aria-describedby="basic-addon2">
                                             <!-- <input type="file" name="foto" id="foto" accept="image/*" onchange="tampilkanPreview(this,'preview')"> -->
                                         </div>
                                         <?= form_error('foto', '<small class="text-danger pl-2">', '</small>'); ?>

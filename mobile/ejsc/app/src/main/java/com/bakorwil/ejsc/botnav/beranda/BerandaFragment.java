@@ -45,6 +45,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bakorwil.ejsc.R;
+import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
@@ -60,7 +61,7 @@ public class BerandaFragment extends Fragment {
     TextView dataKosong, show;
     String cmail, cnama;
     TextView tes;
-    //CarouselView mImages;
+    CarouselView foto;
     private ArrayList<ModelEvent> arrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -81,6 +82,7 @@ public class BerandaFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
         dataKosong = view.findViewById(R.id.dataKosong);
         show = view.findViewById(R.id.tampilkan_semua);
+        foto = view.findViewById(R.id.carousel);
 
         show.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +104,9 @@ public class BerandaFragment extends Fragment {
         });
 
         CarouselView carouselView = view.findViewById(R.id.carousel);
+        //Picasso.get()
+                //.load(ServerApi.URL_RUANGAN + "../../../" + "uploads/ruangan/" + data.getString("FOTO_RUANGAN"))
+                //.into(foto);
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {
             @Override
@@ -195,7 +200,7 @@ public class BerandaFragment extends Fragment {
     }
 
     private int[] mImages = new int[]{
-            R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder, R.drawable.placeholder
+            R.drawable.coworkingspace, R.drawable.conferenceroom, R.drawable.trainingroom, R.drawable.meetingroom
     };
 
     private String[] mImagesTitle = new String[]{

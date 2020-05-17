@@ -57,4 +57,20 @@
     <string name="upload_foto_ktp">Upload Foto KTP</string>
     <string name="event_terbaru">Event Terbaru</string>
     <string name="tampilkan_semua">Tampilkan Semua</string>
+    <string name="ruangan">Ruangan</string>
+    <string name="kapasitas">Kapasitas:</string>
+    <string name="meeting_room">Meeting Room</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="jam_mulai">Jam Mulai</string>
+    <string name="durasi">Durasi</string>
+    <string name="nama">Nama</string>
+    <string name="jumlah_peserta">Jumlah Peserta</string>
+    <string name="tujuan_kegiatan">Tujuan Kegiatan</string>
+    <string name="deskripsi_kegiatan">Deskripsi Kegiatan</string>
+    <string name="jam_selesai">Jam Selesai</string>
+    <string name="detail_booking">Detail Booking</string>
+    <string name="pemesan">Pemesan:</string>
+    <string name="ruangan2">Ruangan:</string>
+    <string name="nama_ruangan">Nama Ruangan</string>
+    <string name="kegiatan">Kegiatan:</string>
 </resources>
