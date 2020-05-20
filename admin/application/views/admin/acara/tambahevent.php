@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
-
+ 
   <!-- Head -->
   <?php $this->load->view("admin/_partials/head.php") ?>
-
+ 
 </head>
-
+ 
 <body id="page-top">
-
+ 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+ 
     <!-- Sidebar -->
     <?php $this->load->view("admin/_partials/sidebar.php") ?>
-
+ 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
+ 
       <!-- Main Content -->
       <div id="content">
-
+ 
       <!-- Topbar -->
       <?php $this->load->view("admin/_partials/topbar.php") ?>
-
+ 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+ 
         <form method="post" enctype="multipart/form-data">
-
+ 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Tambah Data Event</h1>
           <div class="card shadow mb-4">
@@ -81,7 +81,7 @@
                   <?= form_error('nama_pj', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="col-sm-3">
                   <p>Tanggal Mulai</p>
@@ -135,7 +135,7 @@
                   </div>                  
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="col-sm-6">
                   <p>Pengisi Acara</p>
@@ -164,7 +164,7 @@
                   <?= form_error('asalpeserta', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="col-sm-6">
                   <p>Ruangan</p>
@@ -195,7 +195,7 @@
                   <?= form_error('jumlahpeserta', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="col-sm-6">
                   <p>Upload Poster Event</p>
@@ -226,7 +226,7 @@
                   <?= form_error('suratperijinan', '<small class="text-danger">', '</small>')?> 
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="col-sm-3">
                   <p>Peminjaman Alat</p>
@@ -259,7 +259,7 @@
                   <button type="button" onclick="kirimdata()" id="btn-tambah" class="btn btn-sm btn-info shadow-sm"><i class="fas fa-plus"></i></button>          
                 </div>
               </div>
-
+ 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataAlat" width="100%" cellspacing="0">
                   <thead>
@@ -274,7 +274,7 @@
                   </tbody>
                 </table>
               </div>
-
+ 
               <button type="submit" class="btn btn-info btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
@@ -287,40 +287,40 @@
                 </span>
                 <span class="text">Kembali</span>
               </a>
-
+ 
             </div>
           </div>
           <!-- /.card -->
-
+ 
         </form>
-
+ 
         </div>
         <!-- /.container-fluid -->
-
+ 
       </div>
       <!-- End of Main Content -->
-
+ 
       <!-- Footer -->
       <?php $this->load->view("admin/_partials/footer.php") ?>
-
+ 
     </div>
     <!-- End of Content Wrapper -->
-
+ 
   </div>
   <!-- End of Page Wrapper -->
-
+ 
   <!-- Scroll to Top Button-->
   <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-
+ 
   <!-- Logout Modal-->
   <?php //$this->load->view("admin/_partials/modal.php") ?>
-
+ 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
       <script type="text/javascript">
       
        ambil();
-
+ 
       function ambil(){
         $.ajax({
           type:'POST',
@@ -342,7 +342,7 @@
           }
         });
       }
-
+ 
       function kirimdata() {
           var id_event = $("[name='id_event']").val();
           var id_alat = $("[name='peminjamanalat']").val();
@@ -361,14 +361,14 @@
                   $("[name='jumlahalat']").val('');
                   }
                 }
-
-
+ 
+ 
             });
       }
       
       function hapusdata(id) {
         var tanya = confirm('apakah anda ingin hapus data ? ');
-
+ 
         if (tanya) {
           $.ajax({
             type:'POST',
@@ -384,5 +384,5 @@
       
       </script>
 </body>
-
+ 
 </html>

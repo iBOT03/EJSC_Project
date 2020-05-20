@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
-
+ 
   <!-- Head -->
   <?php $this->load->view("admin/_partials/head.php") ?>
-
+ 
 </head>
-
+ 
 <body id="page-top">
-
+ 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+ 
     <!-- Sidebar -->
     <?php $this->load->view("admin/_partials/sidebar.php") ?>
-
+ 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
+ 
       <!-- Main Content -->
       <div id="content">
-
+ 
       <!-- Topbar -->
       <?php $this->load->view("admin/_partials/topbar.php") ?>
       <form action="" method="post">
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+ 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">Detail Event</h1>
           <div class="card shadow mb-4">
@@ -43,9 +43,9 @@
           <div class="card shadow mb-4">
           
             <div class="card-body">
-
+ 
               <img src="<?= base_url('uploads/event/').$e['FOTO'] ?>" alt="Poster Event" class="logo-komunitas mx-auto d-block mb-5">
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Judul Event:</p>
@@ -54,7 +54,7 @@
                   <p><?= $e['JUDUL']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Penyelenggara:</p>
@@ -63,7 +63,7 @@
                   <p><?= $e['PENYELENGGARA']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Nama Penanggung Jawab:</p>
@@ -72,7 +72,7 @@
                   <p><?= $e['NAMA_PJ']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Ruangan:</p>
@@ -81,7 +81,7 @@
                   <p><?= $e['NAMA_RUANGAN']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Tanggal Mulai:</p>
@@ -90,7 +90,7 @@
                   <p><?= $e['TANGGAL_MULAI']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Tanggal Selesai:</p>
@@ -99,7 +99,7 @@
                   <p><?= $e['TANGGAL_SELESAI']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Waktu:</p>
@@ -108,7 +108,7 @@
                   <p><?= $e['WAKTU']?></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="col-sm-2">
                   <p>Nama Pengisi Acara:</p>
@@ -118,7 +118,7 @@
                   
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Asal peserta:</p>
@@ -135,7 +135,7 @@
                   <p><a href="<?= base_url('uploads/event/').$e['SURAT_PENGAJUAN'] ?>">Lihat file</a></p>
                 </div>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Jumlah Peserta:</p>
@@ -145,7 +145,7 @@
                 </div>
                 <p>orang</p>
               </div>
-
+ 
               <div class="row">
                 <div class="my-auto col-sm-2">
                   <p>Keterangan Event:</p>
@@ -154,7 +154,7 @@
                   <p><?= $e['KETERANGAN']?></p>
                 </div>
               </div>
-
+ 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataAlat" width="100%" cellspacing="0">
                   <thead>
@@ -178,40 +178,40 @@
                   </tbody>
                 </table>
               </div>
-
+ 
               <a href="<?php echo site_url('admin/event') ?>" class="btn btn-danger btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-reply"></i>
                 </span>
                 <span class="text">Kembali</span>
               </a>
-
+ 
             </div>
           </div>
           <!-- /.card -->
             <?php endforeach;?>
         </div>
         <!-- /.container-fluid -->
-
+ 
       </div>
       <!-- End of Main Content -->
-
+ 
       <!-- Footer -->
       <?php $this->load->view("admin/_partials/footer.php") ?>
-
+ 
     </div>
     <!-- End of Content Wrapper -->
     </form>
-
+ 
   </div>
   <!-- End of Page Wrapper -->
-
+ 
   <!-- Scroll to Top Button-->
   <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-
+ 
   <!-- Logout Modal-->
   <?php $this->load->view("admin/_partials/modal.php") ?>
-
+ 
   <!-- JavaScript-->
   <?php $this->load->view("admin/_partials/js.php") ?>
 <script type="text/javascript">
@@ -238,5 +238,5 @@
       }
       </script>
 </body>
-
+ 
 </html>
