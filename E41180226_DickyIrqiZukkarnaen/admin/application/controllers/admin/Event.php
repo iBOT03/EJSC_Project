@@ -1,12 +1,12 @@
 <?php
-
+ 
 class Event extends CI_Controller {
     public function __construct() {
 		parent::__construct();
 		$this->load->model('model_event');
         $this->load->helper(array('url','download')); 
 	}
-
+ 
 	public function index() {
         $data['event'] = $this->model_event->getindex();
       
@@ -22,7 +22,7 @@ class Event extends CI_Controller {
 		echo $query;
 	}
         //ajax
-
+ 
 	public function ambildata($id){
 		// $id = $this->input->post('id_event');
 		$data = $this->model_event->relasi2($id);
@@ -39,20 +39,20 @@ class Event extends CI_Controller {
 		$id_event = $this->input->post('id_event');
 		$id_alat = $this->input->post('peminjamanalat');
 		$jumlah = $this->input->post('jumlahalat');
-
+ 
 		if($jumlah==''){
 			$result['pesan'] = "Pilih Jumlah Terlebih dahulu";
 		} elseif ($id_alat=='') {
 			$result['pesan'] = "Alat Harus diisi";
 		}else {
 			$result['pesan'] = '';
-
+ 
 			$data=array(
 				'ID_EVENT' => $id_event,
 				'ID_ALAT' => $id_alat,
 				'JUMLAH' => $jumlah
 			);
-
+ 
 			$this->model_event->tambah($data , 'detail_event');
 		}
 		echo json_encode($result);
@@ -70,7 +70,7 @@ class Event extends CI_Controller {
         $this->form_validation->set_rules('jumlahpeserta', 'Jumlah Peserta', 'required');
         $this->form_validation->set_rules('suratperijinan', 'Surat', 'trim');
         $this->form_validation->set_rules('foto', 'Foto', 'trim');
-
+ 
         $data['kode'] = $this->model_event->buat_kode();
         $data['alat'] = $this->model_event->getalat();
         $data['ajax'] = $this->model_event->relasi2($data['kode']);
@@ -84,7 +84,7 @@ class Event extends CI_Controller {
 		    $foto = str_replace(' ', '_', $_FILES['foto']['name']);			
 		    $pdf = str_replace(' ', '_', $_FILES['suratperijinan']['name']);			
 			$this->load->library('upload', $config);
-
+ 
             if ($this->upload->do_upload('foto') && $this->upload->do_upload('suratperijinan')) {
                 $data = array(
                     'ID_EVENT' => $this->input->post('id_event'),
@@ -132,6 +132,7 @@ class Event extends CI_Controller {
             $data['event'] = $this->model_event->detail_event($id);
             $data['alat'] = $this->model_event->getalat();
             $data['get'] = $this->model_event->getruangan($id);
+            $data['detail'] = $this->model_event->detail($id);
             $this->load->view("admin/acara/editevent" , $data);
         }else{
             $update = $this->model_event->update(array(
@@ -147,7 +148,7 @@ class Event extends CI_Controller {
                 'JUMLAH_PESERTA' => $this->input->post('jumlahpeserta'),
                 'KETERANGAN' => $this->input->post('keterangan')
             ),$id); 
-
+ 
             if($update) {
                	$ubahfoto = $_FILES['foto']['name'];
                	$ubahpdf = $_FILES['suratperijinan']['name'];
@@ -211,12 +212,12 @@ class Event extends CI_Controller {
       
     }
 }
-
+ 
 	public function detail($id){
 		$data['data'] = $this->model_event->relasi($id);
 		$data['event'] = $this->model_event->detail_event($id);
 	
-
+ 
 		if(isset($_POST['setuju']))
         {
             $this->model_event->ubah_status_setuju($id);
@@ -235,9 +236,10 @@ class Event extends CI_Controller {
         }
 		$this->load->view("admin/acara/detailevent",$data);
     }
-
+ 
 	public function hapus($id) {
         $hapus = $this->model_event->hapusdata($id);
+        $hapus = $this->model_event->detaildalem($id);
         if ($hapus) {
             $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
 				Berhasil Menghapus Event!
@@ -250,8 +252,8 @@ class Event extends CI_Controller {
 		  redirect('admin/event');
 		}
 	}
-
+ 
 }
-
-
+ 
+ 
 ?>

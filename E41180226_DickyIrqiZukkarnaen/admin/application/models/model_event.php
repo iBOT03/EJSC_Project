@@ -1,7 +1,7 @@
 <?php 
-
+ 
     class Model_event extends CI_Model{
-
+ 
         public function getindex(){
             $this->load->database();
             return $this->db->get('event')->result();
@@ -15,10 +15,22 @@
             $query = $this->db->query("SELECT * FROM event , ruangan WHERE event.ID_RUANGAN = ruangan.ID_RUANGAN AND ID_EVENT = '$id'")->result_array();
             return $query;
         }
-     
+ 
+        public function detail($id)
+        {
+        $this->load->database();
+        $this->db->where('ID_EVENT', $id);
+        return $this->db->get("event")->result();
+        }
         public function hapusdata($id){
             $this->db->where('ID_EVENT' , $id);
             return $this->db->delete('event');
+            
+        }
+        public function detaildalem($id){
+            $this->db->where('ID_EVENT' , $id);
+            return $this->db->delete('detail_event');
+            
         }
         public function ambildata(){
             return $this->db->get('detail_alat')->result();
@@ -64,9 +76,9 @@
             $this->db->select('RIGHT(event.ID_EVENT,3) as kode',FALSE);
             $this->db->order_by('ID_EVENT', 'DESC');
             $this->db->limit(1);
-
+ 
             $query=$this->db->get('event');
-
+ 
             if ($query->num_rows()<>0) {
                 $data=$query->row();
                 $kode=intval($data->kode)+1;
@@ -100,6 +112,3 @@
             $this->db->update('event', ['STATUS' => '4']);
         }
     }
-
-
-?>
