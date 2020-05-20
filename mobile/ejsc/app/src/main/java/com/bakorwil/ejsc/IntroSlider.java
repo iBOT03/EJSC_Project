@@ -1,187 +1,143 @@
 package com.bakorwil.ejsc;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bakorwil.ejsc.akun.LoginActivity;
-import com.bakorwil.ejsc.configfile.PrefManager;
+import com.bakorwil.ejsc.adapter.IntroViewPagerAdapter;
+import com.bakorwil.ejsc.akun.DaftarActivity;
+import com.bakorwil.ejsc.model.ScreenItem;
+import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class IntroSlider extends AppCompatActivity {
     private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
-    private LinearLayout dotsLayout;
-    private TextView[] dots;
-    private int[] layouts;
-    //private Button btnSkip, btnNext;
-    private TextView btnSkip;
-    private ImageButton btnNext;
-    private PrefManager prefManager;
+    IntroViewPagerAdapter adapter;
+    TabLayout tabLayout;
+    ImageButton next;
+    int position = 0;
+    Button get, daftar;
+    Animation btnAnim;
+    TextView skip;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_intro_slider);
-        // mengecek lauch activity - sebelum memanggil setContentView()
-        prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        if (restorePrefData()) {
+            Intent splashActivity = new Intent(getApplicationContext(), SplashScreen.class);
+            startActivity(splashActivity);
             finish();
         }
 
-        // membuat transparan notifikasi
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
+        setContentView(R.layout.activity_intro_slider);
+        tabLayout = findViewById(R.id.tab_indicator);
+        next = findViewById(R.id.btn_next);
+        get = findViewById(R.id.btn_get_started);
+        daftar = findViewById(R.id.btnDaftar);
+        btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_animation);
+        skip = findViewById(R.id.tv_skip);
 
-        setContentView(R.layout.slider1);
+        final List<ScreenItem> screenItemList = new ArrayList<>();
+        screenItemList.add(new ScreenItem("", "", R.drawable.sp_bakorwil));
+        screenItemList.add(new ScreenItem("", "", R.drawable.sp_ejsc));
 
-        viewPager = (ViewPager) findViewById(R.id.screen_viewpager);
-        //dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = findViewById(R.id.tv_skip);
-        btnNext = findViewById(R.id.btn_next);
+        viewPager = findViewById(R.id.screen_viewpager);
+        adapter = new IntroViewPagerAdapter(this, screenItemList);
+        viewPager.setAdapter(adapter);
 
+        tabLayout.setupWithViewPager(viewPager);
 
-        // layout xml slide 1 sampai 4
-        // add few more layouts if you want
-        layouts = new int[]{
-                R.layout.slider1,
-                R.layout.slider2};
-
-        // tombol dots (lingkaran kecil perpindahan slide)
-        //addBottomDots(0);
-
-        // membuat transparan notifikasi
-        changeStatusBarColor();
-
-        myViewPagerAdapter = new MyViewPagerAdapter();
-        viewPager.setAdapter(myViewPagerAdapter);
-        //viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchHomeScreen();
-            }
-        });
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // mengecek page terakhir (slide 4)
-                // jika activity home sudah tampil
-                int current = getItem(+1);
-                if (current < layouts.length) {
-                    // move to next screen
-                    viewPager.setCurrentItem(current);
-                } else {
-                    launchHomeScreen();
+                position = viewPager.getCurrentItem();
+                if (position < screenItemList.size()) {
+                    position++;
+                    viewPager.setCurrentItem(position);
+                }
+                if (position == screenItemList.size() - 1) {
+                    loaddLastScreen();
                 }
             }
         });
+        daftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent q = new Intent(IntroSlider.this, DaftarActivity.class);
+                startActivity(q);
+            }
+        });
+
+        get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent q = new Intent(IntroSlider.this, com.bakorwil.ejsc.akun.LoginActivity.class);
+                startActivity(q);
+                savePrefsData();
+                finish();
+
+            }
+        });
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == screenItemList.size() - 1) {
+                    loaddLastScreen();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(screenItemList.size());
+            }
+        });
     }
 
-
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
+    private void loaddLastScreen() {
+        next.setVisibility(View.INVISIBLE);
+        get.setVisibility(View.VISIBLE);
+        tabLayout.setVisibility(View.INVISIBLE);
+        daftar.setVisibility(View.INVISIBLE);
+        skip.setVisibility(View.INVISIBLE);
+        get.setAnimation(btnAnim);
     }
 
-    private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(IntroSlider.this, LoginActivity.class));
-        finish();
+    private boolean restorePrefData() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
+        Boolean isIntroActivityOpenBefore = pref.getBoolean("isIntroOpen", false);
+        return isIntroActivityOpenBefore;
     }
 
-    //  viewpager change listener
-//    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-//
-//        @Override
-//        public void onPageSelected(int position) {
-//            addBottomDots(position);
-//
-//            // mengubah button lanjut 'NEXT' / 'GOT IT'
-//            if (position == layouts.length - 1) {
-//                // last page. make button text to GOT IT
-//                btnNext.setText(getString(R.string.start));
-//                btnSkip.setVisibility(View.GONE);
-//            } else {
-//                // still pages are left
-//                btnNext.setText(getString(R.string.next));
-//                btnSkip.setVisibility(View.VISIBLE);
-//            }
-//        }
-//
-//        @Override
-//        public void onPageScrolled(int arg0, float arg1, int arg2) {
-//
-//        }
-//
-//        @Override
-//        public void onPageScrollStateChanged(int arg0) {
-//
-//        }
-//    };
-
-    /**
-     * Making notification bar transparent
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-    }
-
-    /**
-     * View pager adapter
-     */
-    public class MyViewPagerAdapter extends PagerAdapter {
-        private LayoutInflater layoutInflater;
-
-        public MyViewPagerAdapter() {
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = layoutInflater.inflate(layouts[position], container, false);
-            container.addView(view);
-
-            return view;
-        }
-
-        @Override
-        public int getCount() {
-            return layouts.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object obj) {
-            return view == obj;
-        }
-
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            View view = (View) object;
-            container.removeView(view);
-        }
+    private void savePrefsData() {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("isIntroOpen", true);
+        editor.commit();
     }
 }

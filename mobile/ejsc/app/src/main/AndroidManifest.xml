@@ -70,13 +70,13 @@
             android:theme="@style/NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".IntroSlider"
+            android:name=".SplashScreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".IntroSlider"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
