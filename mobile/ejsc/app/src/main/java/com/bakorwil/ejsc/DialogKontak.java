@@ -19,6 +19,7 @@ import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,17 +32,15 @@ public class DialogKontak extends BottomSheetDialogFragment {
 
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
 	                         @Nullable Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.bottom_sheet_kontak_kami, container, false);
-	}
-
-	@Override
-	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.bottom_sheet_kontak_kami, container, false);
 		nowa = view.findViewById(R.id.tvWhatsappKami);
 		no_hp = view.findViewById(R.id.tvTeleponKami);
 		alamat = view.findViewById(R.id.tvAlamatKami);
 		email = view.findViewById(R.id.tvEmailKami);
 		loadData();
 		super.onViewCreated(view, savedInstanceState);
+
+		return view;
 	}
 
 	private void loadData() {
@@ -52,12 +51,13 @@ public class DialogKontak extends BottomSheetDialogFragment {
 				try {
 					res = new JSONObject(response);
 					Log.e("responnya ",""+response);
-					JSONObject arr = res.getJSONObject("data_kontak");
+					JSONArray arr = res.getJSONArray("data_kontak");
+					JSONObject data = arr.getJSONObject(0);
 
-					nowa.setText(arr.getString("WHATSAPP"));
-					no_hp.setText(arr.getString("NOMOR_TELEPON"));
-					alamat.setText(arr.getString("ALAMAT"));
-					email.setText(arr.getString("EMAIL"));
+					nowa.setText(data.getString("WHATSAPP"));
+					no_hp.setText(data.getString("NOMOR_TELEPON"));
+					alamat.setText(data.getString("ALAMAT"));
+					email.setText(data.getString("EMAIL"));
 				} catch (JSONException e) {
 					e.printStackTrace();
 					Log.e("erronya ", "" + e);
