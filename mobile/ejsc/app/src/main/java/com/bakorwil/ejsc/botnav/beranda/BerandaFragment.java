@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -26,11 +30,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bakorwil.ejsc.adapter.AdapterEvent;
+import com.bakorwil.ejsc.adapter.SlideAdapter;
+import com.bakorwil.ejsc.adapter.SliderItem;
 import com.bakorwil.ejsc.botnav.event.EventActivity;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.bakorwil.ejsc.model.ModelEvent;
-
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -64,6 +70,9 @@ public class BerandaFragment extends Fragment {
     CarouselView foto;
     private ArrayList<ModelEvent> arrayList;
 
+    private ViewPager2 viewPager2;
+    private Handler sliderHandler = new Handler();
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
@@ -82,7 +91,8 @@ public class BerandaFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
         dataKosong = view.findViewById(R.id.dataKosong);
         show = view.findViewById(R.id.tampilkan_semua);
-        foto = view.findViewById(R.id.carousel);
+        viewPager2 = view.findViewById(R.id.viewPagerImageSlider);
+        //foto = view.findViewById(R.id.carousel);
 
         show.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,25 +113,80 @@ public class BerandaFragment extends Fragment {
             }
         });
 
-        CarouselView carouselView = view.findViewById(R.id.carousel);
-        //Picasso.get()
-                //.load(ServerApi.URL_RUANGAN + "../../../" + "uploads/ruangan/" + data.getString("FOTO_RUANGAN"))
-                //.into(foto);
-        carouselView.setPageCount(mImages.length);
-        carouselView.setImageListener(new ImageListener() {
+//        CarouselView carouselView = view.findViewById(R.id.carousel);
+//        //Picasso.get()
+//                //.load(ServerApi.URL_RUANGAN + "../../../" + "uploads/ruangan/" + data.getString("FOTO_RUANGAN"))
+//                //.into(foto);
+//        carouselView.setPageCount(mImages.length);
+//        carouselView.setImageListener(new ImageListener() {
+//            @Override
+//            public void setImageForPosition(int position, ImageView imageView) {
+//                imageView.setImageResource(mImages[position]);
+//            }
+//        });
+//        carouselView.setImageClickListener(new ImageClickListener() {
+//            @Override
+//            public void onClick(int position) {
+//                Toast.makeText(getContext(), mImagesTitle[position], Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        //viewPager2 = findViewById(R.id.viewPagerImageSlider);
+
+        //disini tempat mempersiapkan list foto dari drawable
+        //kita juga bisa mendapatkannya dari api
+
+        List<SliderItem> sliderItems = new ArrayList<>();
+        sliderItems.add(new SliderItem(R.drawable.conferenceroom));
+        sliderItems.add(new SliderItem(R.drawable.coworkingspace));
+        sliderItems.add(new SliderItem(R.drawable.meetingroom));
+        sliderItems.add(new SliderItem(R.drawable.trainingroom));
+
+        viewPager2.setAdapter(new SlideAdapter(sliderItems, viewPager2));
+        viewPager2.setClipToPadding(false);
+        viewPager2.setClipChildren(false);
+        viewPager2.setOffscreenPageLimit(3);
+        viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
-            public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(mImages[position]);
+            public void transformPage(@NonNull View page, float position) {
+                float r = 1 - Math.abs(position);
+                page.setScaleY(0.85f + r * 0.15f);
             }
         });
-        carouselView.setImageClickListener(new ImageClickListener() {
+
+        viewPager2.setPageTransformer(compositePageTransformer);
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onClick(int position) {
-                Toast.makeText(getContext(), mImagesTitle[position], Toast.LENGTH_SHORT).show();
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                sliderHandler.removeCallbacks(sliderRunnable);
+                sliderHandler.postDelayed(sliderRunnable, 3000); //durasi slide 3 detik
             }
         });
 
         return view;
+    }
+
+    private Runnable sliderRunnable = new Runnable() {
+        @Override
+        public void run() {
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
+        }
+    };
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        sliderHandler.removeCallbacks(sliderRunnable);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sliderHandler.postDelayed(sliderRunnable, 3000);
     }
 
     private void loadJSON() {
@@ -199,11 +264,11 @@ public class BerandaFragment extends Fragment {
         cnama = pref.getString("nama", "0"); // get nama buat ditampilkan
     }
 
-    private int[] mImages = new int[]{
-            R.drawable.coworkingspace, R.drawable.conferenceroom, R.drawable.trainingroom, R.drawable.meetingroom
-    };
-
-    private String[] mImagesTitle = new String[]{
-            "Meeting Room", "Training Room", "Conference Room", "Co-Working Space"
-    };
+//    private int[] mImages = new int[]{
+//            R.drawable.coworkingspace, R.drawable.conferenceroom, R.drawable.trainingroom, R.drawable.meetingroom
+//    };
+//
+//    private String[] mImagesTitle = new String[]{
+//            "Meeting Room", "Training Room", "Conference Room", "Co-Working Space"
+//    };
 }

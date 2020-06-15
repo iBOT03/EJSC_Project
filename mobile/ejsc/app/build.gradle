@@ -54,4 +54,8 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.4'
     //IntroSlider
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
+    //ViewPager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    //RoundedImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
