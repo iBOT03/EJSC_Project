@@ -59,7 +59,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 $this->load->model('api/Booking_Model', 'BookingModel');
 
                 $insert_data = [
-                    'NIK' => $is_valid_token['data']->id,
+//                    'NIK' => $is_valid_token['data']->id,
                     'NAMA' => $this->input->post('nama', TRUE),
                     'NOMOR_TELEPON' => $this->input->post('nomor_telepon', TRUE),
                     'ID_KOMUNITAS' => $this->input->post('id_komunitas', TRUE),
