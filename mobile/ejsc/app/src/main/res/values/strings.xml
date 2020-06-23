@@ -30,6 +30,8 @@
     <string name="konfirmasi_kata_sandi_baru">Konfirmasi Kata Sandi Baru</string>
     <string name="blank">-</string>
     <string name="selamat_datang">Selamat Datang,</string>
+    <string name="selamat_datang2">Selamat Datang</string>
+    <string name="selamat_datang_kembali">Selamat Datang Kembali</string>
     <string name="notifikasi">Notifikasi</string>
     <string name="event">Event</string>
     <string name="judul_event">Judul Event</string>
@@ -79,4 +81,6 @@
     <string name="riwayat">Riwayat</string>
     <string name="aktif">Aktif</string>
     <string name="nama_komunitas">Nama Komunitas</string>
+    <string name="buat_akun_baru">Buat akun baru</string>
+    <string name="masuk_untuk_melanjutkan">Masuk untuk melanjutkan</string>
 </resources>
