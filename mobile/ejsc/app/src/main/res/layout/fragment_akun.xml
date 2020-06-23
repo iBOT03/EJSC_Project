@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".botnav.akun.AkunFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,9 +29,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/profile">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/txt_nama"
@@ -42,7 +44,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="17sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txt_email"
@@ -54,7 +56,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_nama"/>
+                    app:layout_constraintTop_toBottomOf="@id/txt_nama" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -99,12 +101,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
+                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"
                             android:fontFamily="@font/poppins_medium"
                             android:padding="15dp"
                             android:text="@string/edit_akun"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp"
-                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"/>
+                            android:textSize="16sp" />
 
                     </RelativeLayout>
 
@@ -123,12 +125,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
+                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"
                             android:fontFamily="@font/poppins_medium"
                             android:padding="15dp"
                             android:text="@string/kontak_kami"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp"
-                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"/>
+                            android:textSize="16sp" />
 
 
                     </RelativeLayout>

@@ -10,12 +10,13 @@
         android:id="@+id/toolbar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/title_booking"/>
+        app:title="@string/title_booking" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar3">
+        android:layout_below="@+id/toolbar3"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,10 +38,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/ruangan"
-                    android:maxLength="50"
                     android:inputType="text"
+                    android:maxLength="50"
                     android:textSize="16sp"
-                    app:fontFamily="@font/poppins_regular"/>
+                    app:fontFamily="@font/poppins_regular" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

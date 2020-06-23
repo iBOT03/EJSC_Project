@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,9 +24,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bakorwil.ejsc.R;
+import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.JSONParser;
 import com.bakorwil.ejsc.configfile.ServerApi;
 
@@ -53,8 +60,8 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class DaftarActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
-    Button btnDaftar,btnktp;
+public class DaftarActivity extends AppCompatActivity implements View.OnClickListener {
+    Button btnDaftar, btnktp, komunitas;
     TextView masuk;
     EditText edt_nik, edt_nama, edt_email, edt_nomor_telepon, edt_alamat, edt_password, edt_kofirmasi_password, edt_komunitas;
     //String NIKHolder, NamaHolder, EmailHolder, TeleponHolder, AlamatHolder, PasswordHolder, ConfirmPasswordHolder;
@@ -63,7 +70,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
     RequestQueue requestQueue;
     //    String HttpUrl = "http://192.168.1.4/EJSC_Project/mobile/api/daftar.php";
     Boolean CheckEditText;
-    String[] komunts = { "Musician", "Testd" };
+    String[] komunts = {"Musician", "Testd"};
     private int GALLERY = 1, CAMERA = 2;
     HttpURLConnection httpURLConnection;
     ByteArrayOutputStream byteArrayOutputStream;
@@ -81,7 +88,10 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
     String pesan;
     Bitmap FixBitmap;
     ImageView ShowSelectedImage;
-    String nik,nama,email,nohp,alamat,komunitas,passwd,konpasswd;
+    String nik, nama, email, nohp, alamat, passwd, konpasswd;
+    ArrayList<String> datakomunitas = new ArrayList<String>();
+    ArrayList<String> indexkomunitas = new ArrayList<String>();
+    public String kodekomunitas = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,17 +106,17 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
         edt_nik = findViewById(R.id.edt_nik);
         edt_nama = findViewById(R.id.edt_nama);
         edt_email = findViewById(R.id.edt_email);
-        edt_komunitas = findViewById(R.id.edt_komunitas);
-        Spinner spin = (Spinner) findViewById(R.id.btnPilihKomunitas);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, komunts);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(adapter);
-        spin.setOnItemSelectedListener(this);
+//        edt_komunitas = findViewById(R.id.edt_komunitas);
+//        Spinner spin = (Spinner) findViewById(R.id.btnPilihKomunitas);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, komunts);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spin.setAdapter(adapter);
+//        spin.setOnItemSelectedListener(this);
         edt_nomor_telepon = findViewById(R.id.edt_nomor_telepon);
         edt_alamat = findViewById(R.id.edt_alamat);
         edt_password = findViewById(R.id.edt_password);
         edt_kofirmasi_password = findViewById(R.id.edt_confirm_password_daftar);
-        btnDaftar = findViewById(R.id.buttonDaftar);
+        btnDaftar = findViewById(R.id.btnDaftar);
         masuk = findViewById(R.id.btnMasuk);
         btnktp = findViewById(R.id.btnUploadFotoKTP);
         btnktp.setOnClickListener(this);
@@ -115,7 +125,78 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
 
         ShowSelectedImage = findViewById(R.id.imageView3profile);
 
+        komunitas = findViewById(R.id.btnPilihKomunitas);
+        getkomunitas();
+        komunitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                androidx.appcompat.app.AlertDialog.Builder pictureDialog = new androidx.appcompat.app.AlertDialog.Builder(DaftarActivity.this);
+                pictureDialog.setTitle("Pilih Komunitas Anda");
+                pictureDialog.setItems(datakomunitas.toArray(new String[0]),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                kodekomunitas = indexkomunitas.get(which);
+                                Log.e("kodenya", "" + kodekomunitas);
+                                komunitas.setText(datakomunitas.get(which));
+
+                            }
+                        });
+                pictureDialog.show();
+            }
+        });
     }
+
+    private void getkomunitas() {
+        datakomunitas.clear();
+        indexkomunitas.clear();
+        StringRequest senddata = new StringRequest(Request.Method.GET, ServerApi.URL_GET_KOMUNITAS, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                JSONObject res = null;
+                try {
+                    res = new JSONObject(response);
+                    if (res.getBoolean("status")) {
+                        JSONArray arr = res.getJSONArray("data_komunitas");
+                        for (int i = 0; i < arr.length(); i++) {
+                            try {
+                                JSONObject datakom = arr.getJSONObject(i);
+                                String namakom = datakom.getString("NAMA_KOMUNITAS");
+                                String idkom = datakom.getString("ID_KOMUNITAS");
+                                datakomunitas.add(namakom);
+                                indexkomunitas.add(idkom);
+                            } catch (Exception ea) {
+                                ea.printStackTrace();
+
+                            }
+                        }
+
+                    } else {
+                        Toast.makeText(DaftarActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("volley", "errornya : " + error.getMessage());
+                    }
+                }) {
+
+            @Override
+            public Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("ID_KOMUNITAS", kodekomunitas);
+                return params;
+            }
+        };
+
+        AppController.getInstance().addToRequestQueue(senddata);
+    }
+
     //    public void UploadImageToServer() {
 //        if (FixBitmap!=null) {
 //            FixBitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
@@ -160,7 +241,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
 //        AsyncTaskUploadClass AsyncTaskUploadClassOBJ = new AsyncTaskUploadClass();
 //        AsyncTaskUploadClassOBJ.execute();
 //    }
-    class daftar extends AsyncTask<String, String, String>{
+    class daftar extends AsyncTask<String, String, String> {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = ProgressDialog.show(DaftarActivity.this, "Registrasi data ..", "Please Wait", false, false);
@@ -173,18 +254,18 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
             params.add(new BasicNameValuePair("level", "2"));
             params.add(new BasicNameValuePair("nama_lengkap", nama));
             params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("id_komunitas", komunitas));
+            params.add(new BasicNameValuePair("id_komunitas", kodekomunitas));
             params.add(new BasicNameValuePair("no_telepon", nohp));
             params.add(new BasicNameValuePair("alamat", alamat));
             params.add(new BasicNameValuePair("foto_ktp", "ktp.jpg"));
             params.add(new BasicNameValuePair("password", passwd));
             System.out.println(params);
             JSONObject json = JSONParser.makeHttpRequest(ServerApi.URL_DAFTAR, "POST", params);
-            if(json != null){
+            if (json != null) {
                 try {
                     status = json.getBoolean("status");
                     pesan = json.getString("message");
-                    if(status == true) {
+                    if (status == true) {
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
@@ -201,9 +282,11 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
             }
             return null;
         }
+
         protected void onProgressUpdate(String... progress) {
             super.onProgressUpdate(progress);
         }
+
         protected void onPostExecute(String file_url) {
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -219,6 +302,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
     }
+
     public class ImageProcessClass {
         public String ImageHttpRequest(String requestURL, HashMap<String, String> PData) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -267,6 +351,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
             return stringBuilder.toString();
         }
     }
+
     private void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
         pictureDialog.setTitle("Select Action");
@@ -289,6 +374,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
                 });
         pictureDialog.show();
     }
+
     public void choosePhotoFromGallary() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -299,6 +385,7 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, CAMERA);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -324,48 +411,48 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
             ShowSelectedImage.setImageBitmap(FixBitmap);
         }
     }
-    public void onClick(View vie){
-        switch (vie.getId()){
+
+    public void onClick(View vie) {
+        switch (vie.getId()) {
             case R.id.btnMasuk:
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 finish();
                 break;
             case R.id.btnUploadFotoKTP:
                 showPictureDialog();
                 break;
-            case R.id.buttonDaftar:
+            case R.id.btnDaftar:
                 nik = edt_nik.getText().toString();
                 nama = edt_nama.getText().toString();
                 email = edt_email.getText().toString();
                 nohp = edt_nomor_telepon.getText().toString();
                 alamat = edt_alamat.getText().toString();
-                komunitas = edt_komunitas.getText().toString();
                 passwd = edt_password.getText().toString();
                 konpasswd = edt_kofirmasi_password.getText().toString();
-                if (nik.equals("")){
+                if (nik.equals("")) {
                     edt_nik.setError("Tidak Boleh kosong");
                     edt_nik.requestFocus();
-                } else if(nama.equals("")){
+                } else if (nama.equals("")) {
                     edt_nama.setError("Tidak Boleh kosong");
                     edt_nama.requestFocus();
-                } else if(email.equals("")){
+                } else if (email.equals("")) {
                     edt_email.setError("Tidak Boleh kosong");
                     edt_email.requestFocus();
-                } else if(nohp.equals("")){
+                } else if (nohp.equals("")) {
                     edt_nomor_telepon.setError("Tidak Boleh kosong");
                     edt_nomor_telepon.requestFocus();
-                } else if(alamat.equals("")){
+                } else if (alamat.equals("")) {
                     edt_alamat.setError("Tidak Boleh kosong");
                     edt_alamat.requestFocus();
-                } else if(komunitas.equals("")) {
+                } else if (komunitas.equals("")) {
                     edt_komunitas.setError("Tidak Boleh kosong");
                     edt_komunitas.requestFocus();
                 } else if (FixBitmap == null) {
-                    Toast.makeText(DaftarActivity.this, "Gambar Masih Kosong !",Toast.LENGTH_SHORT).show();
-                } else if(passwd.equals("")){
+                    Toast.makeText(DaftarActivity.this, "Gambar Masih Kosong !", Toast.LENGTH_SHORT).show();
+                } else if (passwd.equals("")) {
                     edt_password.setError("Tidak Boleh kosong");
                     edt_password.requestFocus();
-                } else if(!konpasswd.equals(passwd)){
+                } else if (!konpasswd.equals(passwd)) {
                     edt_kofirmasi_password.setError("Konfirmasi Password tidak sama !");
                     edt_kofirmasi_password.requestFocus();
                 } else {
@@ -374,14 +461,5 @@ public class DaftarActivity extends AppCompatActivity implements View.OnClickLis
                 }
                 break;
         }
-    }
-    @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
-        //Toast.makeText(getApplicationContext(), "Selected User: "+komunts[position] ,Toast.LENGTH_SHORT).show();
-        edt_komunitas.setText(komunts[position]);
-    }
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO - Custom Code
     }
 }

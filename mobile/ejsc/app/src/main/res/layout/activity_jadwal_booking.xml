@@ -10,18 +10,20 @@
         android:id="@+id/toolbar4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/title_booking"/>
+        app:title="@string/title_booking" />
 
-        <DatePicker
-            android:id="@+id/dp1"
-            android:layout_below="@+id/toolbar4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"/>
+    <DatePicker
+        android:id="@+id/dp1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar4"
+        android:layout_marginStart="28dp" />
+
     <ScrollView
-        android:layout_below="@+id/dp1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dp1"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
