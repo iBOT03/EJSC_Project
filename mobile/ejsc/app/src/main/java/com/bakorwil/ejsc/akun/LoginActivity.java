@@ -28,6 +28,7 @@ import com.bakorwil.ejsc.BottomNavigation;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.JSONParser;
+import com.bakorwil.ejsc.configfile.Preferences;
 import com.bakorwil.ejsc.configfile.ServerApi;
 
 import org.apache.http.NameValuePair;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog pd;
     EditText email, password;
     Button btn_login;
+    String cmail, cnama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,12 +99,14 @@ public class LoginActivity extends AppCompatActivity {
                                 res = new JSONObject(response);
                                 Log.d("error di ", response);
                                 if (res.getBoolean("status")) {
+                                    masuk();
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
-                                    Intent login = new Intent(LoginActivity.this, BottomNavigation.class);
-                                    startActivity(login);
+//                                    Intent login = new Intent(LoginActivity.this, BottomNavigation.class);
+//                                    startActivity(login);
                                 } else {
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
                                 }
+
                             } catch (JSONException e) {
                                 pd.dismiss();
                                 Log.e("errorgan", e.getMessage());
@@ -129,6 +133,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Preferences.getLoggedInStatus(getBaseContext())) {
+            startActivity(new Intent(getBaseContext(), BottomNavigation.class));
+            finish();
+        }
+    }
+
+    private void masuk() {
+        Preferences.setLoggedInEmail(getBaseContext(), Preferences.getRegisteredEmail(getBaseContext()));
+        Preferences.setLoggedInStatus(getBaseContext(), true);
+        startActivity(new Intent(getBaseContext(), BottomNavigation.class));
+        finish();
     }
 
     public void onBackPressed() {

@@ -165,6 +165,33 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
             }
         }
     }
+
+    /**
+    * Logout Akun
+    *------------------------------
+    * @method : POST
+    * @link : api/akun/logout
+    */
+    public function logout_post() {
+        // Delete all session
+        session_destroy();
+        if (session_destroy()) {
+            // Logout success
+            $message = [
+                'status' => TRUE,
+                'message' => "Berhasil Logout"
+            ];
+            $this->response($message, REST_Controller::HTTP_OK);
+        } else {
+            // Logout Error
+                $message = [
+                    'status' => FALSE,
+                    'message' => "Gagal Logout"
+                ];
+                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+        }
+        
+    }
 }
 ?>
 
