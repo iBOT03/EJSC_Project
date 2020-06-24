@@ -37,7 +37,7 @@ public class ServerApi {
     // Rest API Komunitas
     public static final String URL_GET_KOMUNITAS = "https://ejsc.flow-byte.com/api/komunitas";
     // Rest API Kontak Kami
-    public static final String URL_KONTAK = "http://naurafarm.polije.com/ejsc/api/kontak/kontak";
+    public static final String URL_KONTAK = "https://ejsc.flow-byte.com/api/kontak";
     // Rest API Ruangan
     public static final String URL_RUANGAN = "http://naurafarm.polije.com/ejsc/api/ruangan/ruangan";
 

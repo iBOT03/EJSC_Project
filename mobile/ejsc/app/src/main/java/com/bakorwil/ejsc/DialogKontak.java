@@ -28,12 +28,13 @@ import java.util.Map;
 
 public class DialogKontak extends BottomSheetDialogFragment {
 
-	TextView nowa, alamat, email, no_hp;
+	TextView whatsapp, alamat, email, no_hp;
 
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
 	                         @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.bottom_sheet_kontak_kami, container, false);
-		nowa = view.findViewById(R.id.tvWhatsappKami);
+
+		whatsapp = view.findViewById(R.id.tvWhatsappKami);
 		no_hp = view.findViewById(R.id.tvTeleponKami);
 		alamat = view.findViewById(R.id.tvAlamatKami);
 		email = view.findViewById(R.id.tvEmailKami);
@@ -54,7 +55,7 @@ public class DialogKontak extends BottomSheetDialogFragment {
 					JSONArray arr = res.getJSONArray("data_kontak");
 					JSONObject data = arr.getJSONObject(0);
 
-					nowa.setText(data.getString("WHATSAPP"));
+					whatsapp.setText(data.getString("WHATSAPP"));
 					no_hp.setText(data.getString("NOMOR_TELEPON"));
 					alamat.setText(data.getString("ALAMAT"));
 					email.setText(data.getString("EMAIL"));
@@ -76,7 +77,6 @@ public class DialogKontak extends BottomSheetDialogFragment {
 				return params;
 			}
 		};
-
 		AppController.getInstance().addToRequestQueue(sendData);
 	}
 }
