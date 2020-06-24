@@ -60,9 +60,11 @@ $route['admin'] = 'admin/login';
 // Akun API Routes
 $route['api/akun/register'] = 'api/akun/register';
 $route['api/akun/login'] = 'api/akun/login';
+$route['api/akun/detailakun'] = 'api/akun/detailakun';
 
 // Event API Routes
 $route['api/event/event'] = 'api/event/event';
+$route['api/event/eventberanda'] = 'api/event/eventberanda';
 $route['api/event/detail'] = 'api/detailevent/detail';
 
 //Booking API Routes
@@ -84,5 +86,5 @@ $route['api/ruangan/ruangan'] = 'api/ruangan/ruangan';
 // Komunitas API Routes
 $route['api/komunitas/komunitas'] = 'api/komunitas/komunitas';
 
-//Update Akun API Routes :: PUT API Request
+// Update Akun API Routes :: PUT API Request
 $route['api/akun/update']["PUT"] = 'api/akun/updateAkun';

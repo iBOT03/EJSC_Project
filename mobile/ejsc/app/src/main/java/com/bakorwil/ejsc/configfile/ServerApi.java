@@ -34,6 +34,7 @@ public class ServerApi {
     public static final String URL_UPDATE = "http://naurafarm.polije.com/ejsc/api/akun/update";
     // Rest API Event
     public static final String URL_GET_EVENT = "https://ejsc.flow-byte.com/api/event";
+    public static final String URL_GET_EVENT_BERANDA = "https://ejsc.flow-byte.com/api/event/eventberanda";
     // Rest API Komunitas
     public static final String URL_GET_KOMUNITAS = "https://ejsc.flow-byte.com/api/komunitas";
     // Rest API Kontak Kami

@@ -73,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/viewPagerImageSlider"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
         android:scrollbars="none">
 
         <RelativeLayout

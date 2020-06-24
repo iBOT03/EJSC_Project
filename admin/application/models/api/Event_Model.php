@@ -17,16 +17,16 @@ class Event_Model extends CI_Model {
     }
 
     /*
-    * Detail Event
+    * GET Event Beranda
     *------------------------------
     * @param: {array} Detail Event Data
     */
-    // public function getDetailEvent($id = null) {
-    //     if ($id === null) {
-    //         return $this->db->get('event')->result_array();
-    //     } else {
-    //         return $this->db->get_where('event', ['ID_EVENT' => $id])->result_array();
-    //     }
-    // }
+    public function getEventBeranda($id = null) {
+        if ($id === null) {
+        return $this->db->get('event', 5)->result_array();
+        } else {
+            return $this->db->get_where('event', ['ID_EVENT' => $id], 5)->result_array();
+        }
+    }
 }
 ?>
