@@ -24,7 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/view1"
-        android:layout_marginTop="8dp">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_email"
@@ -44,10 +46,8 @@
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/iv_email"
             android:autoLink="email"
-            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:maxLines="3"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:text="@tools:sample/lorem/random" />
@@ -59,7 +59,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative_email"
-        android:layout_marginTop="8dp">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_telepon"
@@ -79,10 +81,8 @@
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/iv_telepon"
             android:autoLink="phone"
-            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:maxLines="3"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:text="@tools:sample/lorem/random" />
@@ -94,7 +94,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_telepon"
-        android:layout_marginTop="8dp">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_whatsapp"
@@ -114,10 +116,78 @@
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/iv_whatsapp"
             android:autoLink="phone"
-            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:maxLines="3"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:text="@tools:sample/lorem/random" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_whatsapp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/facebook"
+            android:padding="8dp"
+            android:src="@drawable/ic_facebook" />
+
+        <TextView
+            android:id="@+id/tvFacebookKami"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/iv_facebook"
+            android:autoLink="phone"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="3"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:text="@tools:sample/lorem/random" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_instagram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_facebook"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/instagram"
+            android:padding="8dp"
+            android:src="@drawable/ic_instagram" />
+
+        <TextView
+            android:id="@+id/tvInstagramKami"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/iv_instagram"
+            android:autoLink="web"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="3"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:text="@tools:sample/lorem/random" />
@@ -128,9 +198,11 @@
         android:id="@+id/relative_alamat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/relative_whatsapp"
+        android:layout_below="@id/relative_instagram"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="60dp">
+        android:layout_marginBottom="60dp"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/iv_alamat"
@@ -149,7 +221,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/iv_alamat"
-            android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
             android:maxLines="10"
             android:textColor="@android:color/black"
