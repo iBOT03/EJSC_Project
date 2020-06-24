@@ -27,13 +27,21 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".botnav.event.DetailEventActivity" />
-        <activity android:name=".akun.EditAkunActivity" />
+        <activity
+            android:name=".akun.EditAkunActivity"
+            android:configChanges="orientation"
+            android:label="@string/edit_akun"
+            android:parentActivityName=".BottomNavigation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".botnav.beranda.NotifikasiActivity"
             android:configChanges="orientation"
             android:label="@string/notifikasi"
             android:parentActivityName=".BottomNavigation"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".akun.ResetPasswordActivity"

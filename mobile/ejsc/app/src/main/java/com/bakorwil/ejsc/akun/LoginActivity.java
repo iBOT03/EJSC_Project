@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setIcon(R.drawable.logo_ejsc)
                 .setTitle("Keluar Aplikasi")
-                .setMessage("Apakah Anda ingin keluar dari EJSC?")
+                .setMessage("Apakah Anda ingin keluar dari aplikasi?")
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
