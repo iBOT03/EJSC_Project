@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".akun.UploadFotoKtpActivity">
+
+    <ImageView
+        android:id="@+id/logoOptimaUKM"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/logo_ejsc"
+        android:src="@drawable/logo_ejsc" />
+
+    <TextView
+        android:id="@+id/tv_upload_foto_ktp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoOptimaUKM"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/upload_foto_ktp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_ket_upload_ktp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_upload_foto_ktp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:fontFeatureSettings="14sp"
+        android:text="@string/mohon_upload_foto_ktp_anda"
+        android:textColor="#757575" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_foto_ktp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_ket_upload_ktp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/preview_foto_ktp"
+            android:layout_width="260dp"
+            android:layout_height="190dp"
+            android:background="@drawable/rounded_white"
+            android:contentDescription="@string/foto_ktp"
+            android:elevation="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/btn_tambah_foto"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/tv_ket_upload_ktp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="201dp"
+        android:contentDescription="@string/upload_foto_ktp"
+        android:src="@drawable/ic_round_add"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/btn_edit_foto"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/tv_ket_upload_ktp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="201dp"
+        android:contentDescription="@string/upload_foto_ktp"
+        android:src="@drawable/ic_round_edit"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_simpan"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/card_foto_ktp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/custom_button1"
+        android:elevation="0dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="@string/simpan"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_simpan_disable"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/card_foto_ktp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/custom_button1"
+        android:backgroundTint="@color/lightGrey"
+        android:elevation="0dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="@string/simpan"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:visibility="visible" />
+
+
+</RelativeLayout>

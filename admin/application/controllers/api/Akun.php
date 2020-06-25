@@ -45,7 +45,10 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
         $this->form_validation->set_rules('id_komunitas', 'ID Komunitas', 'trim|required');
         $this->form_validation->set_rules('no_telepon', 'No Telepon', 'trim|required|max_length[13]');
         $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
-        $this->form_validation->set_rules('foto_ktp', 'Foto KTP', 'trim|required');
+        // $this->form_validation->set_rules('foto_ktp', 'Foto KTP', 'trim|required');
+        if (empty($_FILES['foto_ktp']['name'])) {
+            $this->form_validation->set_rules('foto_ktp', 'Foto KTP', 'required');
+        }
         $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[16]');
         if ($this->form_validation->run() == FALSE) {
             // Form Validation
@@ -67,23 +70,53 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
                 'FOTO_KTP' => $this->input->post('foto_ktp', TRUE),
                 'PASSWORD' => md5($this->input->post('password', TRUE))
             ];
-            // Memasukkan Data Akun ke Database
-            $output = $this->AkunModel->insert_akun($insert_data);
-            if($output == !empty($output)) {
-                // Success 200 Code Send
-                $message = [
-                    'status' => TRUE,
-                    'message' => "Registrasi Akun Berhasil"
-                ];
-                $this->response($message, REST_Controller::HTTP_OK);
-            } else {
-                //Error
-                $message = [
-                    'status' => FALSE,
-                    'message' => "Registrasi Akun Gagal"
-                ];
-                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
-            }
+
+            // $nik = $this->input->post('nik');
+            // $level = $this->input->post('level');
+            // $nama_lengkap = $this->input->post('nama_lengkap');
+            // $email = $this->input->post('email');
+            // $id_komunitas = $this->input->post('id_komunitas');
+            // $no_telepon = $this->input->post('no_telepon');
+            // $alamat = $this->input->post('alamat');
+            // $password = md5($this->input->post('password'));
+
+            // $foto_ktp = $_FILES['foto_ktp']['name'];
+            // $config['allowed_types'] = 'jpg|png|gif|jpeg';
+            // $config['max_size'] = '5000';
+            // $config['upload_path'] = '././uploads/';
+        
+            // $this->load->library('upload', $config);
+
+            // if ($this->upload->do_upload('foto_ktp')) {
+            //     $insert_data = [
+            //         'nik' => $nik,
+            //         'level' => $level,
+            //         'nama_lengkap' => $nama_lengkap,
+            //         'email' => $email,
+            //         'id_komunitas' => $id_komunitas,
+            //         'no_telepon' => $no_telepon,
+            //         'alamat' => $alamat,
+            //         'password' => $password,
+            //         'foto_ktp' => $foto_ktp
+            //     ];
+                // Memasukkan Data Akun ke Database
+                $output = $this->AkunModel->insert_akun($insert_data);
+                if($output == !empty($output)) {
+                    // Success 200 Code Send
+                    $message = [
+                        'status' => TRUE,
+                        'message' => "Registrasi Akun Berhasil"
+                    ];
+                    $this->response($message, REST_Controller::HTTP_OK);
+                } else {
+                    //Error
+                    $message = [
+                        'status' => FALSE,
+                        'message' => "Registrasi Akun Gagal"
+                    ];
+                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+                }
+            // }
         }
     }
 
@@ -241,6 +274,3 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
         
     }
 }
-?>
-
-
