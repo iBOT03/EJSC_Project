@@ -122,13 +122,8 @@ public class UploadFotoKtpActivity extends AppCompatActivity {
                     Intent success = new Intent(UploadFotoKtpActivity.this, LoginActivity.class);
                     startActivity(success);
                     Log.e("error di ", response.toString());
-                    pd.dismiss();
                 } catch (Exception e) {
-                    Toast.makeText(UploadFotoKtpActivity.this, "Registrasi Akun Berhasil", Toast.LENGTH_SHORT).show();
-                    Intent success2 = new Intent(UploadFotoKtpActivity.this, LoginActivity.class);
-                    startActivity(success2);
-                    Log.e("error: ", "" + e);
-                    pd.dismiss();
+                    Toast.makeText(UploadFotoKtpActivity.this, "Exception: " + e, Toast.LENGTH_SHORT).show();
                 }
             }
         },

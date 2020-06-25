@@ -1,45 +1,54 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 use Restserver\Libraries\REST_Controller;
 
 require APPPATH . '/libraries/REST_Controller.php';
 
-class Akun extends \Restserver\Libraries\Rest_Controller {
+class Akun extends \Restserver\Libraries\Rest_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         // Load Akun Model
         $this->load->model('api/Akun_Model', 'AkunModel');
     }
-    
+
     /**
-    * Register Akun
-    *------------------------------
-    * @param: nik
-    * @param: nama_lengkap
-    * @param: email
-    * @param: id_komunitas
-    * @param: no_telepon
-    * @param: alamat
-    * @param: foto_ktp
-    * @param: password
-    *------------------------------
-    * @method : POST
-    * @link : api/akun/register
-    */
-    public function register_post(){
+     * Register Akun
+     *------------------------------
+     * @param: nik
+     * @param: nama_lengkap
+     * @param: email
+     * @param: id_komunitas
+     * @param: no_telepon
+     * @param: alamat
+     * @param: foto_ktp
+     * @param: password
+     *------------------------------
+     * @method : POST
+     * @link : api/akun/register
+     */
+    public function register_post()
+    {
         header("Access-Control-Allow-Origin: *");
-        
+
         # XSS Filtering
         $_POST = $this->security->xss_clean($_POST);
-        
+
         # Form Validation
-        $this->form_validation->set_rules('nik', 'NIK', 'trim|required|max_length[16]|is_unique[akun.NIK]',
+        $this->form_validation->set_rules(
+            'nik',
+            'NIK',
+            'trim|required|max_length[16]|is_unique[akun.NIK]',
             array('is_unique' => '%s Telah Terdaftar')
         );
         $this->form_validation->set_rules('level', 'Level', 'trim|required|max_length[1]');
         $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|max_length[150]');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[100]|is_unique[akun.EMAIL]',
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'trim|required|valid_email|max_length[100]|is_unique[akun.EMAIL]',
             array('is_unique' => '%s Telah Terdaftar')
         );
         $this->form_validation->set_rules('id_komunitas', 'ID Komunitas', 'trim|required');
@@ -59,6 +68,14 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
             );
             $this->response($message, REST_Controller::HTTP_NOT_FOUND);
         } else {
+
+            $foto = $_FILES['foto_ktp']['name'];
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '8000';
+            $config['upload_path'] = '././uploads/';
+
+            $this->load->library('upload', $config);
+
             $insert_data = [
                 'NIK' => $this->input->post('nik', TRUE),
                 'LEVEL' => $this->input->post('level', TRUE),
@@ -67,74 +84,46 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
                 'ID_KOMUNITAS' => $this->input->post('id_komunitas', TRUE),
                 'NO_TELEPON' => $this->input->post('no_telepon', TRUE),
                 'ALAMAT' => $this->input->post('alamat', TRUE),
-                'FOTO_KTP' => $this->input->post('foto_ktp', TRUE),
+                'FOTO_KTP' => $foto,
                 'PASSWORD' => md5($this->input->post('password', TRUE))
             ];
 
-            // $nik = $this->input->post('nik');
-            // $level = $this->input->post('level');
-            // $nama_lengkap = $this->input->post('nama_lengkap');
-            // $email = $this->input->post('email');
-            // $id_komunitas = $this->input->post('id_komunitas');
-            // $no_telepon = $this->input->post('no_telepon');
-            // $alamat = $this->input->post('alamat');
-            // $password = md5($this->input->post('password'));
-
-            // $foto_ktp = $_FILES['foto_ktp']['name'];
-            // $config['allowed_types'] = 'jpg|png|gif|jpeg';
-            // $config['max_size'] = '5000';
-            // $config['upload_path'] = '././uploads/';
-        
-            // $this->load->library('upload', $config);
-
-            // if ($this->upload->do_upload('foto_ktp')) {
-            //     $insert_data = [
-            //         'nik' => $nik,
-            //         'level' => $level,
-            //         'nama_lengkap' => $nama_lengkap,
-            //         'email' => $email,
-            //         'id_komunitas' => $id_komunitas,
-            //         'no_telepon' => $no_telepon,
-            //         'alamat' => $alamat,
-            //         'password' => $password,
-            //         'foto_ktp' => $foto_ktp
-            //     ];
-                // Memasukkan Data Akun ke Database
-                $output = $this->AkunModel->insert_akun($insert_data);
-                if($output == !empty($output)) {
-                    // Success 200 Code Send
-                    $message = [
-                        'status' => TRUE,
-                        'message' => "Registrasi Akun Berhasil"
-                    ];
-                    $this->response($message, REST_Controller::HTTP_OK);
-                } else {
-                    //Error
-                    $message = [
-                        'status' => FALSE,
-                        'message' => "Registrasi Akun Gagal"
-                    ];
-                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
-                }
-            // }
+            // Memasukkan Data Akun ke Database
+            $output = $this->AkunModel->insert_akun($insert_data);
+            if ($output == !empty($output)) {
+                // Success 200 Code Send
+                $message = [
+                    'status' => TRUE,
+                    'message' => "Registrasi Akun Berhasil"
+                ];
+                $this->response($message, REST_Controller::HTTP_OK);
+            } else {
+                //Error
+                $message = [
+                    'status' => FALSE,
+                    'message' => "Registrasi Akun Gagal"
+                ];
+                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+            }
         }
     }
 
     /**
-    * Login Akun
-    *------------------------------
-    * @param: email
-    * @param: password
-    *------------------------------
-    * @method : POST
-    * @link : api/akun/login
-    */
-    public function login_post() {
+     * Login Akun
+     *------------------------------
+     * @param: email
+     * @param: password
+     *------------------------------
+     * @method : POST
+     * @link : api/akun/login
+     */
+    public function login_post()
+    {
         header("Access-Control-Allow-Origin: *");
-        
+
         # XSS Filtering
         $_POST = $this->security->xss_clean($_POST);
-        
+
         # Form Validation
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[16]');
@@ -149,7 +138,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
         } else {
             // Load Login Function
             $output = $this->AkunModel->akun_login($this->input->post('email'), $this->input->post('password'));
-            if(!empty($output) AND $output != FALSE) {
+            if (!empty($output) and $output != FALSE) {
 
                 // Load Authorization Token Library
                 $this->load->library('Authorization_Token');
@@ -199,61 +188,62 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
         }
     }
 
-     /**
+    /**
      * Update Akun
      * @method: PUT
      * 
      */
-    public function updateAkun_put(){
+    public function updateAkun_put()
+    {
         header("Access-Control-Allow-Origin: *");
 
         // Load Authorization Library
         $this->load->library('Authorization_Token');
 
-                // Load Akun Model
-                $this->load->model('api/akun_model', 'AkunModel');
-                $id = $this->put('NIK');
-                $update_data = array(
-                    'NIK' => $this->put('NIK'),
-                    'LEVEL' => $this->put('LEVEL'),
-                    'FOTO_KTP' => $this->put('FOTO_KTP'),
-                    'NAMA_LENGKAP' => $this->put('NAMA_LENGKAP'),
-                    'EMAIL' => $this->put('EMAIL'),
-                    'NO_TELEPON' => $this->put('NO_TELEPON'),
-                    'ALAMAT' => $this->put('ALAMAT'),
-                    'ID_KOMUNITAS' => $this->put('ID_KOMUNITAS'),
-                    'PASSWORD' => md5($this->put('PASSWORD'))
-                     );
+        // Load Akun Model
+        $this->load->model('api/akun_model', 'AkunModel');
+        $id = $this->put('NIK');
+        $update_data = array(
+            'NIK' => $this->put('NIK'),
+            'LEVEL' => $this->put('LEVEL'),
+            'FOTO_KTP' => $this->put('FOTO_KTP'),
+            'NAMA_LENGKAP' => $this->put('NAMA_LENGKAP'),
+            'EMAIL' => $this->put('EMAIL'),
+            'NO_TELEPON' => $this->put('NO_TELEPON'),
+            'ALAMAT' => $this->put('ALAMAT'),
+            'ID_KOMUNITAS' => $this->put('ID_KOMUNITAS'),
+            'PASSWORD' => md5($this->put('PASSWORD'))
+        );
 
-                // Update Akun
-                $this->db->where('NIK', $id);
-                $output = $this->db->update('akun', $update_data);
+        // Update Akun
+        $this->db->where('NIK', $id);
+        $output = $this->db->update('akun', $update_data);
 
-                if($output == !empty($output)) {
-                    // Success
-                    $message = [
-                        'status' => TRUE,
-                        'message' => "Update Akun Berhasil"
-                    ];
-                    $this->response($message, REST_Controller::HTTP_OK);
-                } else {
-                    //Error
-                    $message = [
-                        'status' => FALSE,
-                        'message' => "Update Akun Gagal"
-                    ];
-                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
-                }
-           
+        if ($output == !empty($output)) {
+            // Success
+            $message = [
+                'status' => TRUE,
+                'message' => "Update Akun Berhasil"
+            ];
+            $this->response($message, REST_Controller::HTTP_OK);
+        } else {
+            //Error
+            $message = [
+                'status' => FALSE,
+                'message' => "Update Akun Gagal"
+            ];
+            $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+        }
     }
 
     /**
-    * Logout Akun
-    *------------------------------
-    * @method : POST
-    * @link : api/akun/logout
-    */
-    public function logout_post() {
+     * Logout Akun
+     *------------------------------
+     * @method : POST
+     * @link : api/akun/logout
+     */
+    public function logout_post()
+    {
         // Delete all session
         session_destroy();
         if (session_destroy()) {
@@ -265,12 +255,11 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
             $this->response($message, REST_Controller::HTTP_OK);
         } else {
             // Logout Error
-                $message = [
-                    'status' => FALSE,
-                    'message' => "Gagal Logout"
-                ];
-                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+            $message = [
+                'status' => FALSE,
+                'message' => "Gagal Logout"
+            ];
+            $this->response($message, REST_Controller::HTTP_NOT_FOUND);
         }
-        
     }
 }

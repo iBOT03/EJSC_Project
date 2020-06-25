@@ -21,6 +21,7 @@
 
     <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textColorSecondary">@color/darkGrey</item>
         <item name="android:textSize">12sp</item>
     </style>

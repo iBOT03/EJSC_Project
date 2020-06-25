@@ -40,6 +40,6 @@ public class ServerApi {
     // Rest API Kontak Kami
     public static final String URL_KONTAK = "https://ejsc.flow-byte.com/api/kontak";
     // Rest API Ruangan
-    public static final String URL_RUANGAN = "http://naurafarm.polije.com/ejsc/api/ruangan/ruangan";
+    public static final String URL_RUANGAN = "https://ejsc.flow-byte.com/api/ruangan";
 
 }
