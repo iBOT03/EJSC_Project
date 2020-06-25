@@ -166,6 +166,54 @@ class Akun extends \Restserver\Libraries\Rest_Controller {
         }
     }
 
+     /**
+     * Update Akun
+     * @method: PUT
+     * 
+     */
+    public function updateAkun_put(){
+        header("Access-Control-Allow-Origin: *");
+
+        // Load Authorization Library
+        $this->load->library('Authorization_Token');
+
+                // Load Akun Model
+                $this->load->model('api/akun_model', 'AkunModel');
+                $id = $this->put('NIK');
+                $update_data = array(
+                    'NIK' => $this->put('NIK'),
+                    'LEVEL' => $this->put('LEVEL'),
+                    'FOTO_KTP' => $this->put('FOTO_KTP'),
+                    'NAMA_LENGKAP' => $this->put('NAMA_LENGKAP'),
+                    'EMAIL' => $this->put('EMAIL'),
+                    'NO_TELEPON' => $this->put('NO_TELEPON'),
+                    'ALAMAT' => $this->put('ALAMAT'),
+                    'ID_KOMUNITAS' => $this->put('ID_KOMUNITAS'),
+                    'PASSWORD' => md5($this->put('PASSWORD'))
+                     );
+
+                // Update Akun
+                $this->db->where('NIK', $id);
+                $output = $this->db->update('akun', $update_data);
+
+                if($output == !empty($output)) {
+                    // Success
+                    $message = [
+                        'status' => TRUE,
+                        'message' => "Update Akun Berhasil"
+                    ];
+                    $this->response($message, REST_Controller::HTTP_OK);
+                } else {
+                    //Error
+                    $message = [
+                        'status' => FALSE,
+                        'message' => "Update Akun Gagal"
+                    ];
+                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+                }
+           
+    }
+
     /**
     * Logout Akun
     *------------------------------
