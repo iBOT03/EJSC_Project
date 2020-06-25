@@ -87,7 +87,6 @@
     <string name="facebook">Facebook</string>
     <string name="mohon_masukkan_email_anda">Mohon masukkan email Anda</string>
     <string name="mohon_masukkan_kode_reset_kata_sandi">Mohon masukkan kode reset kata sandi</string>
-    <string name="kode_reset_kata_sandi">Kode Reset Kata Sandi</string>
     <string name="buat_kata_sandi_baru">Buat Kata Sandi Baru</string>
     <string name="mohon_masukkan_kata_sandi_baru_anda">Mohon masukkan kata sandi baru Anda</string>
 </resources>
