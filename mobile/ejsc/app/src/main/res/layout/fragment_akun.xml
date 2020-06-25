@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:scrollbars="none"
     tools:context=".botnav.akun.AkunFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,9 +28,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profile"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/profile">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/txt_nama"
@@ -40,9 +41,10 @@
                     android:maxLines="2"
                     android:padding="8dp"
                     android:textColor="@android:color/black"
-                    android:textSize="17sp"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/lorem/random" />
 
                 <TextView
                     android:id="@+id/txt_email"
@@ -52,9 +54,10 @@
                     android:maxLines="1"
                     android:padding="8dp"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txt_nama"/>
+                    app:layout_constraintTop_toBottomOf="@id/txt_nama"
+                    tools:text="@tools:sample/lorem/random" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -99,12 +102,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
+                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:padding="15dp"
+                            android:padding="14dp"
                             android:text="@string/edit_akun"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp"
-                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"/>
+                            android:textSize="14sp" />
 
                     </RelativeLayout>
 
@@ -123,12 +126,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
+                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:padding="15dp"
+                            android:padding="14dp"
                             android:text="@string/kontak_kami"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp"
-                            android:drawableEnd="@drawable/ic_chevron_right_grey_24dp"/>
+                            android:textSize="14sp" />
 
 
                     </RelativeLayout>
@@ -150,22 +153,23 @@
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
                             android:fontFamily="@font/poppins_medium"
-                            android:padding="15dp"
+                            android:padding="14dp"
                             android:text="@string/versi_aplikasi"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/tv_versi_app"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@id/txt_versi_app"
                             android:fontFamily="@font/poppins_medium"
-                            android:padding="15dp"
+                            android:paddingTop="14dp"
+                            android:paddingBottom="14dp"
                             android:text="@string/_1_0"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                     </RelativeLayout>
 
@@ -185,10 +189,10 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:fontFamily="@font/poppins_medium"
-                            android:padding="15dp"
+                            android:padding="14dp"
                             android:text="@string/keluar"
                             android:textColor="@color/darkGrey"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
                     </RelativeLayout>
 

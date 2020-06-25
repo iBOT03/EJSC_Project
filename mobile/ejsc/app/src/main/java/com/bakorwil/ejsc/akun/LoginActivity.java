@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,9 +19,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bakorwil.ejsc.BottomNavigation;
 import com.bakorwil.ejsc.R;
+import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.JSONParser;
+import com.bakorwil.ejsc.configfile.Preferences;
 import com.bakorwil.ejsc.configfile.ServerApi;
 
 import org.apache.http.NameValuePair;
@@ -30,159 +38,124 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnMasuk;
-    TextView daftar, lupaPassword;
-    EditText edt_email, edt_kata_sandi;
-    ProgressBar progressBar;
-    ProgressDialog progressDialog;
-    // new code added by gen z
-    String username,password;
-    String cmail, cnama, nohpnya;
-    int success;
-    JSONArray _JSONarray = null;
-    JSONObject jobtes = null;
-    private static final String TAG_SUCCESS = "success";
-    //String tested;
-    boolean tested;
-    //end of new code
+public class LoginActivity extends AppCompatActivity {
+
+    TextView btn_daftar, btn_lupa_password;
+    ProgressDialog pd;
+    EditText email, password;
+    Button btn_login;
+    String cmail, cnama;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        progressDialog = new ProgressDialog(this);
-        progressBar = new ProgressBar(LoginActivity.this);
-        progressBar.setVisibility(View.GONE);
+        pd = new ProgressDialog(this);
+        email = findViewById(R.id.edt_email);
+        password = findViewById(R.id.edt_kata_sandi);
 
-        edt_email = findViewById(R.id.edt_email);
-        edt_kata_sandi = findViewById(R.id.edt_kata_sandi);
-        lupaPassword = findViewById(R.id.btnLupaPassword);
-        btnMasuk = findViewById(R.id.buttonMasuk);
-        daftar = findViewById(R.id.btnDaftarSekarang);
+        btn_lupa_password = findViewById(R.id.btnLupaPassword);
+        btn_lupa_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lp = new Intent(LoginActivity.this, LupaPasswordActivity.class);
+                startActivity(lp);
+            }
+        });
 
-        bacaPreferensi();
-        btnMasuk.setOnClickListener(this);
-        lupaPassword.setOnClickListener(this);
-        daftar.setOnClickListener(this);
-        if (cmail.equals("0")) {
-            // do something la
-        } else {
-            startActivity(new Intent(getApplicationContext(), BottomNavigation.class));
+        btn_daftar = findViewById(R.id.btnDaftarSekarang);
+        btn_daftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent daftar = new Intent(LoginActivity.this, DaftarActivity.class);
+                startActivity(daftar);
+            }
+        });
+
+        btn_login = findViewById(R.id.buttonMasuk);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pd.setMessage("Mohon Tunggu Sebentar");
+                pd.show();
+                if (email.getText().toString().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Email tidak boleh kosong", Toast.LENGTH_LONG).show();
+                    pd.dismiss();
+                } else if (password.getText().toString().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Kata sandi tidak boleh kosong", Toast.LENGTH_LONG).show();
+                    pd.dismiss();
+                } else {
+                    StringRequest login = new StringRequest(Request.Method.POST, ServerApi.URL_LOGIN, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            JSONObject res = null;
+                            try {
+                                pd.dismiss();
+                                res = new JSONObject(response);
+                                Log.d("error di ", response);
+                                if (res.getBoolean("status")) {
+                                    masuk();
+                                    Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
+//                                    Intent login = new Intent(LoginActivity.this, BottomNavigation.class);
+//                                    startActivity(login);
+                                } else {
+                                    Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                pd.dismiss();
+                                Log.e("errorgan", e.getMessage());
+                            }
+                        }
+                    },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    pd.dismiss();
+                                    Log.e("errornyaa ", "" + error);
+                                    Toast.makeText(LoginActivity.this, "Gagal Login, " + error, Toast.LENGTH_SHORT).show();
+                                }
+                            }) {
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("email", email.getText().toString());
+                            params.put("password", password.getText().toString());
+                            return params;
+                        }
+                    };
+                    AppController.getInstance().addToRequestQueue(login);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Preferences.getLoggedInStatus(getBaseContext())) {
+            startActivity(new Intent(getBaseContext(), BottomNavigation.class));
             finish();
         }
     }
-    class login extends AsyncTask<String, String, String> {
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog = ProgressDialog.show(LoginActivity.this, "Login ..", "Please Wait", false, false);
-        }
-        @Override
-        protected String doInBackground(String... arg0) {
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("email", username));
-            params.add(new BasicNameValuePair("password", password));
-            System.out.println(params);
-            JSONObject json = JSONParser.makeHttpRequest(ServerApi.URL_LOGIN, "POST", params);
-            if (json != null) {
-                try {
-                    tested = json.getBoolean("status");
-                    if (tested == true) {
-                        _JSONarray = json.getJSONArray("data");
-                        if (_JSONarray != null) {
-                            runOnUiThread(new Runnable() {
-                                public void run() {
-                                    // TODO Auto-generated method stub
-                                    try {
-                                        JSONObject object = _JSONarray.getJSONObject(0);
-                                        String emel = object.getString("email");
-                                        String nama = object.getString("nama_lengkap"); // ini ngambil nama yg dari api
-                                        String nohp = object.getString("no_telepon"); // ini ngambil nohp nama isitu haru sama dengan apinya
-                                        startActivity(new Intent(getApplicationContext(), BottomNavigation.class));
-                                        SharedPreferences pref = getSharedPreferences("akun", MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = pref.edit();
-                                        editor.putString("email", emel.toString());
-                                        editor.putString("nama", nama.toString());
-                                        editor.putString("nohp", nohp.toString()); // ini sudah masuk di prefrens
-                                        // untuk ngambil data prefrens ini kita buat class
-                                        editor.commit();
-                                        finish();
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                            System.out.println("Data Telah Ditampilkan");
-                        } else {
-                            System.out.println("JSONArray Null !!");
-                        }
-                    } else {
-                        System.out.println("Data Gagal Ditampilkan");
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } else {
 
-            }
-            return null;
-        }
-        protected void onProgressUpdate(String... progress) {
-            super.onProgressUpdate(progress);
-        }
-        protected void onPostExecute(String file_url) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                }
-            }, 5000);
-            if (tested == true) {
-                Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            } else {
-                Toast.makeText(LoginActivity.this, "Gagal Login silahkan daftar akun", Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
-            }
-        }
+    private void masuk() {
+        Preferences.setLoggedInEmail(getBaseContext(), Preferences.getRegisteredEmail(getBaseContext()));
+        Preferences.setLoggedInStatus(getBaseContext(), true);
+        startActivity(new Intent(getBaseContext(), BottomNavigation.class));
+        finish();
     }
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonMasuk:
-                username = edt_email.getText().toString();
-                password = edt_kata_sandi.getText().toString();
-                if (username.equals("")) {
-                    edt_email.setError("Belum diisi");
-                    edt_email.requestFocus();
-                } else if (password.equals("")) {
-                    edt_kata_sandi.setError("Belum diisi");
-                    edt_kata_sandi.requestFocus();
-                } else {
-                    new login().execute();
-                }
-                break;
-            case R.id.btnDaftarSekarang:
-                startActivity(new Intent(getApplicationContext(),DaftarActivity.class));
-                break;
-            case R.id.btnLupaPassword:
-                startActivity(new Intent(getApplicationContext(),LupaPasswordActivity.class));
-                break;
-        }
-    }
-    private void bacaPreferensi() {
-        SharedPreferences pref = getSharedPreferences("akun", MODE_PRIVATE);
-        cmail = pref.getString("email", "0");
-        cnama = pref.getString("nama", "0");
-        nohpnya = pref.getString("nohp","0"); // ini sudah di panggil bisa di set ke textview pas kayak email tadi
-        // tinggal tambahin disini wes nohp tadi  jgn lupa buat string dulu di atas
-    }
+
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setIcon(R.drawable.logo_ejsc)
                 .setTitle("Keluar Aplikasi")
-                .setMessage("Apakah Anda ingin keluar dari EJSC?")
+                .setMessage("Apakah Anda ingin keluar dari aplikasi?")
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

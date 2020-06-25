@@ -1,51 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".botnav.booking.BookingFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".botnav.booking.BookingFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/white"
-        app:title="@string/title_booking" />
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbar1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:background="@android:color/white"-->
+<!--        app:title="@string/title_booking" />-->
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar1"
-        android:layout_marginTop="8dp">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/toolbar1"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:scrollbars="none">-->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBooking"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="56dp"
-                android:orientation="vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="72dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                tools:listitem="@layout/item_list_ruangan" />
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rvBooking"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="56dp"-->
+<!--                android:orientation="vertical"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:paddingEnd="8dp"-->
+<!--                android:paddingBottom="72dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.0"-->
+<!--                tools:listitem="@layout/item_list_ruangan" />-->
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-    </ScrollView>
+<!--    </ScrollView>-->
 
-</LinearLayout>
+</RelativeLayout>
 
 

@@ -190,7 +190,7 @@ public class BerandaFragment extends Fragment {
     }
 
     private void loadJSON() {
-        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, new Response.Listener<String>() {
+        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT_BERANDA, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;

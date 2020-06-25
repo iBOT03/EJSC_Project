@@ -12,14 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@android:color/white"
-        app:title="@string/event" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryDark"
+        app:title="@string/event"
+        app:titleTextColor="@android:color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

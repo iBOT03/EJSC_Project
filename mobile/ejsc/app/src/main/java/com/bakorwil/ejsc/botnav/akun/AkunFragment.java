@@ -1,7 +1,9 @@
 package com.bakorwil.ejsc.botnav.akun;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,13 +14,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-
 
 import com.bakorwil.ejsc.DialogKontak;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.akun.EditAkunActivity;
 import com.bakorwil.ejsc.akun.LoginActivity;
+import com.bakorwil.ejsc.configfile.Preferences;
 
 import org.json.JSONArray;
 
@@ -35,7 +38,7 @@ public class AkunFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_akun, container, false);
 
-        bacaPreferensi();
+//        bacaPreferensi();
         txt_nama = view.findViewById(R.id.txt_nama);
         txt_nama.setText(cnama);
         txt_email = view.findViewById(R.id.txt_email);
@@ -59,8 +62,25 @@ public class AkunFragment extends Fragment {
         keluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent keluar = new Intent(getActivity(), LoginActivity.class);
-                startActivity(keluar);
+//                SharedPreferences preferences = getActivity().getSharedPreferences("akun", MODE_PRIVATE);
+//                cmail = preferences.getString("email", "0");
+//                cnama = preferences.getString("nama", "0");
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.clear();
+//                editor.apply();
+                new AlertDialog.Builder(getContext())
+                        .setIcon(R.drawable.logo_ejsc)
+                        .setTitle("Log Out")
+                        .setMessage("Apakah Anda ingin log out dari EJSC?")
+                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Preferences.clearLoginInEmail(getContext());
+                                startActivity(new Intent(getContext(), LoginActivity.class));
+                            }
+                        })
+                        .setNegativeButton("Tidak", null)
+                        .show();
             }
         });
 
@@ -74,10 +94,10 @@ public class AkunFragment extends Fragment {
         });
     }
 
-    private void bacaPreferensi() {
-        SharedPreferences pref = getActivity().getSharedPreferences("akun", MODE_PRIVATE);
-        cmail = pref.getString("email", "0");
-        cnama = pref.getString("nama", "0");
-    }
+//    private void bacaPreferensi() {
+//        SharedPreferences pref = getActivity().getSharedPreferences("akun", MODE_PRIVATE);
+//        cmail = pref.getString("email", "0");
+//        cnama = pref.getString("nama", "0");
+//    }
 }
 
