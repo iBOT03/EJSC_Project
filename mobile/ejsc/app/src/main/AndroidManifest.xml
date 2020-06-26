@@ -23,7 +23,7 @@
             android:name=".botnav.event.EventActivity"
             android:configChanges="orientation"
             android:label="@string/event"
-            android:parentActivityName=".BottomNavigation"
+            android:parentActivityName=".main.BottomNavigation"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity android:name=".botnav.event.DetailEventActivity" />
@@ -31,7 +31,7 @@
             android:name=".akun.EditAkunActivity"
             android:configChanges="orientation"
             android:label="@string/edit_akun"
-            android:parentActivityName=".BottomNavigation"
+            android:parentActivityName=".main.BottomNavigation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.DarkGreen"
             tools:ignore="LockedOrientationActivity" />
@@ -39,7 +39,7 @@
             android:name=".botnav.beranda.NotifikasiActivity"
             android:configChanges="orientation"
             android:label="@string/notifikasi"
-            android:parentActivityName=".BottomNavigation"
+            android:parentActivityName=".main.BottomNavigation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.DarkGreen"
             tools:ignore="LockedOrientationActivity" />
@@ -80,19 +80,19 @@
             android:theme="@style/AppTheme.NoActionDarkGreen"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".BottomNavigation"
+            android:name=".main.BottomNavigation"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionDarkGreen"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".main.SplashScreen"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionDarkGreen"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".IntroSlider"
+            android:name=".main.IntroSlider"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionDarkGreen"

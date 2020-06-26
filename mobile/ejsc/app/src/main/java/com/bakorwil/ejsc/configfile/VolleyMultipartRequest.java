@@ -1,4 +1,4 @@
-package com.bakorwil.ejsc;
+package com.bakorwil.ejsc.configfile;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;

@@ -1,4 +1,4 @@
-package com.bakorwil.ejsc;
+package com.bakorwil.ejsc.botnav.akun;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
