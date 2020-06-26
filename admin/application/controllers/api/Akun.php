@@ -76,7 +76,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller
             $upfoto = $this->upload->do_upload('foto_ktp');
 
             if ($upfoto) {
-                $foto = $_FILES['foto_ktp'][md5('name')];
+                $foto = $_FILES['foto_ktp']['name'];
             }
 
             $insert_data = [
