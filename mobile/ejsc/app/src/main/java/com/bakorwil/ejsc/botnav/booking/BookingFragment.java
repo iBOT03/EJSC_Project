@@ -10,9 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -25,6 +27,7 @@ import com.bakorwil.ejsc.adapter.AdapterEvent;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.bakorwil.ejsc.model.ModelEvent;
+import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,90 +39,41 @@ import java.util.List;
 import java.util.Map;
 
 public class BookingFragment extends Fragment {
-    RecyclerView.LayoutManager mManager;
-    List<ModelEvent> mItems;
-    RecyclerView recyclerView;
-    AdapterBooking mAdapter;
-    ProgressBar pb;
-    JSONArray arr;
-    TextView dataKosong;
-    private ArrayList<ModelEvent> arrayList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
-        mItems = new ArrayList<>();
-//        arrayList = new ArrayList<>();
-        mAdapter = new AdapterBooking(getContext(), mItems);
-        mManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView = view.findViewById(R.id.rvBooking);
-        recyclerView.setLayoutManager(mManager);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(mAdapter);
-        //loadJSON();
+
+        //Menerapkan TabLayout dan ViewPager pada Activity
+        final TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        final ViewPager viewPager = view.findViewById(R.id.view_pager);
+
+        //Memanggil dan Memasukan Value pada Class PagerAdapter(FragmentManager dan JumlahTab)
+        PagerAdapterBooking pagerAdapter = new PagerAdapterBooking(getChildFragmentManager(), tabLayout.getTabCount());
+
+        //Memasang Adapter pada ViewPager
+        viewPager.setAdapter(pagerAdapter);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         return view;
     }
-//    private void loadJSON() {
-//        StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                JSONObject res = null;
-//                try {
-//                    res = new JSONObject(response);
-//                    if (res.getBoolean("status")) {
-//                        arr = res.getJSONArray("data_event");
-//                        for (int i = 0; i < arr.length(); i++) {
-//                            try {
-//                                JSONObject data = arr.getJSONObject(i);
-//                                ModelEvent md = new ModelEvent();
-//                                md.setId_event(data.getString("ID_EVENT"));
-//                                md.setJudul(data.getString("JUDUL"));
-//                                md.setFoto(data.getString("FOTO"));
-//                                md.setPenyelenggara(data.getString("PENYELENGGARA"));
-//                                md.setNama_pengisi_acara(data.getString("NAMA_PENGISI_ACARA"));
-//                                md.setTgl_mulai(data.getString("TANGGAL_MULAI"));
-//                                md.setTgl_selesai(data.getString("TANGGAL_SELESAI"));
-//                                md.setWaktu(data.getString("WAKTU"));
-//                                md.setRuangan(data.getString("ID_RUANGAN"));
-//                                md.setAsal_peserta(data.getString("ASAL_PESERTA"));
-//                                md.setJumlah_peserta(data.getString("JUMLAH_PESERTA"));
-//                                md.setKeterangan(data.getString("KETERANGAN"));
-//                                md.setStatus(data.getString("STATUS"));
-//                                mItems.add(md);
-//                            } catch (Exception ex) {
-//                                Log.e("Error", "" + ex);
-//                                ex.printStackTrace();
-//                            }
-//                        }
-//                        pb.setVisibility(View.GONE);
-//                        mAdapter.notifyDataSetChanged();
-//                        if (mItems.isEmpty()) {
-//                            dataKosong.setVisibility(View.VISIBLE);
-//                        } else {
-//                            dataKosong.setVisibility(View.GONE);
-//                        }
-//                    } else {
-//                        Toast.makeText(getActivity(), "cek_login", Toast.LENGTH_SHORT).show();
-//                    }
-//                    Log.e("tes", res.toString());
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                    Log.e("Error", "" + e);
-//                }
-//            }
-//        },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("Volley", "Error : " + error.getMessage());
-//                    }
-//                }) {
-//            @Override
-//            public Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                return params;
-//            }
-//        };
-//        AppController.getInstance().addToRequestQueue(sendData);
-//    }
+
 }

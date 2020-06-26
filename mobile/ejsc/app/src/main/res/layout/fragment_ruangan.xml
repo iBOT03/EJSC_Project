@@ -4,24 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".botnav.event.EventFragment">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimaryDark"
-        android:theme="@style/AppTheme.DarkGreen"
-        app:title="@string/event"
-        app:titleTextColor="@android:color/white" />
+    android:background="@android:color/white"
+    tools:context=".botnav.booking.RuanganFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:scrollbars="none">
 
         <RelativeLayout
@@ -29,15 +19,13 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvEvent"
+                android:id="@+id/rv_ruangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:orientation="vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                tools:listitem="@layout/item_list_event" />
+                tools:listitem="@layout/item_card_ruangan" />
 
         </RelativeLayout>
 

@@ -50,6 +50,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
             android:maxLines="1"
+            android:singleLine="true"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:text="@tools:sample/lorem/random" />
