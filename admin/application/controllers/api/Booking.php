@@ -8,6 +8,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model('api/Booking_Model', 'BookingModel');
     }
 
     /**
@@ -15,17 +16,17 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
      * ------------------------------
      * @method: POST
      */
-    public function tambahBooking_post() {
+    public function tambah_post() {
         header("Access-Control-Allow-Origin: *");
 
         // Load Authorization Library
-        $this->load->library('Authorization_Token');
+        // $this->load->library('Authorization_Token');
 
         /**
          * User Token Validation
          */
-        $is_valid_token = $this->authorization_token->validateToken();
-        if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
+        // $is_valid_token = $this->authorization_token->validateToken();
+        // if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
             
             // Tambah Booking Baru
 
@@ -33,7 +34,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
             $_POST = $this->security->xss_clean($_POST);
         
             # Form Validation
-            //$this->form_validation->set_rules('nik', 'NIK', 'trim|required|max_length[16]');
+            $this->form_validation->set_rules('nik', 'NIK', 'trim|required|max_length[16]');
             $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[150]');
             $this->form_validation->set_rules('nomor_telepon', 'No Telepon', 'trim|required|max_length[13]');
             $this->form_validation->set_rules('id_komunitas', 'ID Komunitas', 'trim|required|max_length[200]');
@@ -46,6 +47,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
             $this->form_validation->set_rules('jam_mulai', 'Jam Mulai', 'trim|required');
             $this->form_validation->set_rules('jam_selesai', 'Jam Selesai', 'trim|required');
             $this->form_validation->set_rules('status', 'Status', 'trim|required|max_length[1]');
+            
             if ($this->form_validation->run() == FALSE) {
                 // Form Validation
                 $message = array(
@@ -59,7 +61,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 $this->load->model('api/Booking_Model', 'BookingModel');
 
                 $insert_data = [
-//                    'NIK' => $is_valid_token['data']->id,
+                    'NIK' => $this->input->post('nik', TRUE),
                     'NAMA' => $this->input->post('nama', TRUE),
                     'NOMOR_TELEPON' => $this->input->post('nomor_telepon', TRUE),
                     'ID_KOMUNITAS' => $this->input->post('id_komunitas', TRUE),
@@ -93,9 +95,9 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                     $this->response($message, REST_Controller::HTTP_NOT_FOUND);
                 }
             }
-        } else {
-            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
-        }
+        // } else {
+        //     $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
+        // }
     }
 
     /**

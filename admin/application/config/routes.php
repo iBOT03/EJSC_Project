@@ -68,7 +68,7 @@ $route['api/event/eventberanda'] = 'api/event/eventberanda';
 $route['api/event/detail'] = 'api/detailevent/detail';
 
 //Booking API Routes
-$route['api/booking/tambah'] = 'api/booking/tambahBooking';
+$route['api/booking/tambah'] = 'api/booking/tambah';
 
 // Delete Booking API Routes
 # https://codeigniter.com/userguide3/general/routing.html
