@@ -15,7 +15,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvEvent"
@@ -23,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="56dp"
+                android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
                 tools:listitem="@layout/item_list_event" />
 

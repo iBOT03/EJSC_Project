@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ public class EditAkunActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_akun);
+
         email = findViewById(R.id.edt_email);
         nama = findViewById(R.id.edt_nama);
         password = findViewById(R.id.edt_password_lama);
@@ -54,5 +56,14 @@ public class EditAkunActivity extends AppCompatActivity {
         cmail = pref.getString("email", "0");
         cnama = pref.getString("nama", "0");
         cpass = pref.getString("password", "0");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

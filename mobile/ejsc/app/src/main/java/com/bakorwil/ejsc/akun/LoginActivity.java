@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_lupa_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lp = new Intent(LoginActivity.this, LupaPasswordActivity.class);
+                Intent lp = new Intent(LoginActivity.this, WebViewLupaPasswordActivity.class);
                 startActivity(lp);
             }
         });
@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onErrorResponse(VolleyError error) {
                                     pd.dismiss();
                                     Log.e("errornyaa ", "" + error);
-                                    Toast.makeText(LoginActivity.this, "Gagal Login, " + error, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Email atau Kata Sandi Salah", Toast.LENGTH_SHORT).show();
                                 }
                             }) {
                         @Override

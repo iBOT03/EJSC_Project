@@ -24,19 +24,26 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">Lupa Kata Sandi?</h1>
-                                        <p class="mb-4">Masukkan email Anda dan kami akan mengirim link untuk mereset kata sandi Anda</p>
+                                        <h1 class="h4 text-gray-900 mb-2">Ubah Kata Sandi Anda</h1>
+                                        <h5><?= $this->session->userdata('reset_email'); ?></h5>
                                     </div>
-                                    <?php echo $this->session->flashdata('message'); ?>
-                                    <form class="user" method="post" action="<?php base_url('auth/forgotpassword'); ?>">
+                                    <?= $this->session->flashdata('message') ?>
+                                    <form class="user" method="POST" action="<?= base_url('admin/auth/changePassword') ?>">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan alamat email..." value="<?php set_value('email'); ?>">
-                                            <?php form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <input type="password" class="form-control form-control-user" id="password1" name="password1" aria-describedby="emailHelp" placeholder="Masukkan Kata Sandi Baru..." value="<?= set_value('password1') ?>">
+                                            <?php echo form_error('password1', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" id="password2" name="password2" aria-describedby="emailHelp" placeholder="Konfirmasi Kata Sandi Baru..." value="<?= set_value('password2') ?>">
+                                            <?php echo form_error('password2', '<small class="text-danger pl-3">', '</small>') ?>
+                                        </div>
+
                                         <button type="submit" class="btn btn-info btn-user btn-block">
-                                            Reset Kata Sandi
+                                            Ubah Kata Sandi
                                         </button>
+
                                     </form>
+
                                 </div>
                             </div>
                         </div>

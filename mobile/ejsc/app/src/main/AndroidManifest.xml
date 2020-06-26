@@ -18,7 +18,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity
+            android:name=".akun.WebViewLupaPasswordActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".botnav.event.EventActivity"
             android:configChanges="orientation"
