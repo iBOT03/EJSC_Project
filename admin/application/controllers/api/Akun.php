@@ -68,13 +68,16 @@ class Akun extends \Restserver\Libraries\Rest_Controller
             );
             $this->response($message, REST_Controller::HTTP_NOT_FOUND);
         } else {
-
-            $foto = $_FILES['foto_ktp']['name'];
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '8000';
-            $config['upload_path'] = '././uploads/';
+            $config['upload_path'] = '././uploads/KTP/';
 
             $this->load->library('upload', $config);
+            $upfoto = $this->upload->do_upload('foto_ktp');
+
+            if ($upfoto) {
+                $foto = $_FILES['foto_ktp'][md5('name')];
+            }
 
             $insert_data = [
                 'NIK' => $this->input->post('nik', TRUE),
@@ -203,16 +206,25 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         // Load Akun Model
         $this->load->model('api/akun_model', 'AkunModel');
         $id = $this->put('NIK');
+
+        $foto = $_FILES['foto_ktp']['name'];
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = '8000';
+        $config['upload_path'] = '././uploads/';
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('foto_ktp');
+
         $update_data = array(
-            'NIK' => $this->put('NIK'),
-            'LEVEL' => $this->put('LEVEL'),
-            'FOTO_KTP' => $this->put('FOTO_KTP'),
-            'NAMA_LENGKAP' => $this->put('NAMA_LENGKAP'),
-            'EMAIL' => $this->put('EMAIL'),
-            'NO_TELEPON' => $this->put('NO_TELEPON'),
-            'ALAMAT' => $this->put('ALAMAT'),
-            'ID_KOMUNITAS' => $this->put('ID_KOMUNITAS'),
-            'PASSWORD' => md5($this->put('PASSWORD'))
+            'NIK' => $this->put('nik'),
+            'LEVEL' => $this->put('level'),
+            'FOTO_KTP' => $foto,
+            'NAMA_LENGKAP' => $this->put('nama_lengkap'),
+            'EMAIL' => $this->put('email'),
+            'NO_TELEPON' => $this->put('no_telepon'),
+            'ALAMAT' => $this->put('alamat'),
+            'ID_KOMUNITAS' => $this->put('id_komunitas'),
+            'PASSWORD' => md5($this->put('password'))
         );
 
         // Update Akun

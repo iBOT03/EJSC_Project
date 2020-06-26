@@ -130,7 +130,9 @@ public class UploadFotoKtpActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(UploadFotoKtpActivity.this, "Error mas", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UploadFotoKtpActivity.this, "Registrasi Akun Berhasil", Toast.LENGTH_SHORT).show();
+                        Intent success = new Intent(UploadFotoKtpActivity.this, LoginActivity.class);
+                        startActivity(success);
                         Log.d("error di ", error.toString());
                         pd.dismiss();
                     }
