@@ -70,13 +70,13 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         } else {
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_size'] = '8000';
-            $config['upload_path'] = '././uploads/KTP';
+            $config['upload_path'] = '././uploads/KTP/';
 
             $this->load->library('upload', $config);
             $upfoto = $this->upload->do_upload('foto_ktp');
 
             if ($upfoto) {
-                $foto = $_FILES['foto_ktp']['name'];
+                $foto = $_FILES['foto_ktp'][md5('name')];
             }
 
             $insert_data = [
