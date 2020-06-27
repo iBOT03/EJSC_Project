@@ -34,7 +34,7 @@ class Akun_Model extends CI_Model {
         }
     }
 
-        /*
+    /*
     * Update Akun
     *------------------------------
     * @param: {array} Booking Data

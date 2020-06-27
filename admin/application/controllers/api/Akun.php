@@ -112,21 +112,20 @@ class Akun extends \Restserver\Libraries\Rest_Controller
     }
 
     /**
-     * Login Akun
-     *------------------------------
-     * @param: email
-     * @param: password
-     *------------------------------
-     * @method : POST
-     * @link : api/akun/login
-     */
-    public function login_post()
-    {
+    * Login Akun
+    *------------------------------
+    * @param: email
+    * @param: password
+    *------------------------------
+    * @method : POST
+    * @link : api/akun/login
+    */
+    public function login_post() {
         header("Access-Control-Allow-Origin: *");
-
+        
         # XSS Filtering
         $_POST = $this->security->xss_clean($_POST);
-
+        
         # Form Validation
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[16]');
@@ -141,7 +140,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         } else {
             // Load Login Function
             $output = $this->AkunModel->akun_login($this->input->post('email'), $this->input->post('password'));
-            if (!empty($output) and $output != FALSE) {
+            if(!empty($output) AND $output != FALSE) {
 
                 // Load Authorization Token Library
                 $this->load->library('Authorization_Token');
