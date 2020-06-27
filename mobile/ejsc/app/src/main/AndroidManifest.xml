@@ -18,6 +18,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".botnav.booking.DetailRuanganActivity"></activity>
         <activity
             android:name=".akun.WebViewLupaPasswordActivity"
             android:configChanges="orientation"

@@ -38,34 +38,19 @@
                                     <div class="col-sm-6">
                                         <p>Nama Ruangan</p>
                                         <div class="input-group">
-                                            <input name="namaruangan"
-                                                   id="namaruangan"
-                                                   type="text"
-                                                   class="form-control border-dark small mb-3"
-                                                   placeholder="Masukkan Nama Ruangan"
-                                                   aria-describedby="basic-addon2"
-                                                   maxlength="100"
-                                                   >
+                                            <input name="namaruangan" id="namaruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Nama Ruangan" aria-describedby="basic-addon2" maxlength="100">
                                         </div>
-                                        <?= form_error('namaruangan', '<small class="text-danger">', '</small>')?>
-    
+                                        <?= form_error('namaruangan', '<small class="text-danger">', '</small>') ?>
+
                                     </div>
 
                                     <div class="col-sm-6">
                                         <p>Kapasitas Ruangan</p>
                                         <div class="input-group">
-                                            <input name="kapasitasruangan"
-                                                   id="kapasitasruangan"
-                                                   type="text"
-                                                   class="form-control border-dark small mb-3"
-                                                   placeholder="Masukkan Kapasitas Ruangan"
-                                                   aria-describedby="basic-addon2"
-                                                   onkeypress="return hanyaAngka(event)"
-                                                   maxlength="3"
-                                                   >
+                                            <input name="kapasitasruangan" id="kapasitasruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Kapasitas Ruangan" aria-describedby="basic-addon2" onkeypress="return hanyaAngka(event)" maxlength="3">
                                         </div>
-                                        <?= form_error('kapasitasruangan', '<small class="text-danger">', '</small>')?>
-    
+                                        <?= form_error('kapasitasruangan', '<small class="text-danger">', '</small>') ?>
+
                                     </div>
                                 </div>
 
@@ -73,15 +58,14 @@
                                     <div class="col-sm-6">
                                         <p>Upload Foto Ruangan</p>
                                         <div class="input-group">
-                                            <input name="foto"
-                                                   id="foto"
-                                                   type="file"                                                   
-                                                   class="form-control border-dark small mb-3"
-                                                   placeholder=""
-                                                   aria-describedby="basic-addon2"
-                                                   >
+                                            <input name="foto" id="foto" type="file" class="form-control border-dark small mb-3" placeholder="" aria-describedby="basic-addon2">
                                         </div>
                                     </div>
+                                </div>
+
+                                <p>Deskripsi Ruangan</p>
+                                <div class="input-group">
+                                    <textarea name="deskripsiruangan" id="deskripsi" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Deskripsi Ruangan" aria-describedby="basic-addon2"></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-info btn-icon-split">
