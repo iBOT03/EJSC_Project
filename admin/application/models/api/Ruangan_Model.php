@@ -6,10 +6,14 @@ class Ruangan_Model extends CI_Model {
     /*
     * GET Ruangan
     *------------------------------
-    * @param: {array} Ruangan Data
+    * @param: {array} Detail Ruangan Data
     */
-    public function getRuangan() {
+    public function getRuangan($id = null) {
+        if ($id === null) {
         return $this->db->get('ruangan')->result_array();
+        } else {
+            return $this->db->get_where('ruangan', ['ID_RUANGAN' => $id])->result_array();
+        }
     }
 }
 ?>

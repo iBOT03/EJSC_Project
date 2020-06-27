@@ -24,22 +24,42 @@ class Ruangan extends \Restserver\Libraries\Rest_Controller {
     */
     // Get Data Ruangan
     function index_get() {
-        $ruangan = $this->RuanganModel->getRuangan();
-        
-        if ($ruangan) {
-            $this->response([
-                //Get Data Ruangan Success
-                'status' => TRUE,
-                'message' => "Berhasil Get Data Ruangan",
-                'data_ruangan' => $ruangan
-            ],  REST_Controller::HTTP_OK);
-        } else {
-            //Error Get Data Ruangan 
-            $this->response([
-                'status' => FALSE,
-                'message' => "Data Tidak Ditemukan"
-            ], REST_Controller::HTTP_NOT_FOUND);
-        }
+        header("Access-Control-Allow-Origin: *");
+
+        // Load Authorization Library
+//        $this->load->library('Authorization_Token');
+
+        /**
+         * User Token Validation
+         */
+        $id = $this->get('ID_RUANGAN');
+//        $is_valid_token = $this->authorization_token->validateToken();
+//        if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
+            
+            // GET Data Ruang
+            if ($id === null) {
+                $ruangan = $this->RuanganModel->getRuangan();
+            } else {
+                $ruangan = $this->RuanganModel->getRuangan($id);
+            }
+            
+            if ($ruangan) {
+                $this->response([
+                    //Get Data Ruangan Success
+                    'status' => TRUE,
+                    'message' => "Berhasil Get Data Ruangan",
+                    'data_ruangan' => $ruangan
+                ],  REST_Controller::HTTP_OK);
+            } else {
+                //Error Get Data Ruangan
+                $this->response([
+                    'status' => FALSE,
+                    'message' => "ID Tidak Ditemukan"
+                ], REST_Controller::HTTP_NOT_FOUND);
+            }
+//        } else {
+//            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
+//        }
     }
 }
 ?>
