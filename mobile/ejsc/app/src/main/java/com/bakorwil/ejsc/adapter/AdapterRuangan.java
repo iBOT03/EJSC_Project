@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ public class AdapterRuangan extends RecyclerView.Adapter<AdapterRuangan.HolderDa
     public void onBindViewHolder(@NonNull final AdapterRuangan.HolderData holder, int position) {
         ModelRuangan modelRuangan = mItems.get(position);
         //klik untuk Intent dan parsing data ke detail ruangan
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.btn_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent detail = new Intent(holder.itemView.getContext(), DetailRuanganActivity.class);
@@ -73,12 +74,14 @@ public class AdapterRuangan extends RecyclerView.Adapter<AdapterRuangan.HolderDa
         ImageView foto_ruangan;
         TextView nama_ruangan, kapasitas_ruangan;
         String url, id_ruangan;
+        Button btn_detail;
 
         public HolderData(@NonNull View itemView) {
             super(itemView);
             foto_ruangan = itemView.findViewById(R.id.iv_foto_ruangan);
             nama_ruangan = itemView.findViewById(R.id.tv_nama_ruangan);
             kapasitas_ruangan = itemView.findViewById(R.id.tv_kapasitas_ruangan);
+            btn_detail = itemView.findViewById(R.id.btn_detail_ruangan);
         }
     }
 }

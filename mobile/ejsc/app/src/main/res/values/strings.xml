@@ -96,4 +96,6 @@
     <string name="foto_ruangan">Foto Ruangan</string>
     <string name="detail_ruangan">Detail Ruangan</string>
     <string name="booking_ruangan">Booking Ruangan</string>
+    <string name="jam">jam</string>
+    <string name="booking_sekarang">Booking Sekarang</string>
 </resources>

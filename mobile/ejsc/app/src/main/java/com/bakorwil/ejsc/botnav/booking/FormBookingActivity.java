@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.bakorwil.ejsc.R;
 
-public class FormBooking extends AppCompatActivity {
+public class FormBookingActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
