@@ -112,20 +112,21 @@ class Akun extends \Restserver\Libraries\Rest_Controller
     }
 
     /**
-    * Login Akun
-    *------------------------------
-    * @param: email
-    * @param: password
-    *------------------------------
-    * @method : POST
-    * @link : api/akun/login
-    */
-    public function login_post() {
+     * Login Akun
+     *------------------------------
+     * @param: email
+     * @param: password
+     *------------------------------
+     * @method : POST
+     * @link : api/akun/login
+     */
+    public function login_post()
+    {
         header("Access-Control-Allow-Origin: *");
-        
+
         # XSS Filtering
         $_POST = $this->security->xss_clean($_POST);
-        
+
         # Form Validation
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[16]');
@@ -140,25 +141,25 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         } else {
             // Load Login Function
             $output = $this->AkunModel->akun_login($this->input->post('email'), $this->input->post('password'));
-            if(!empty($output) AND $output != FALSE) {
+            if (!empty($output) and $output != FALSE) {
 
                 // Load Authorization Token Library
                 $this->load->library('Authorization_Token');
 
                 // Generate Token
-                $token_data['id'] = $output->NIK;
-                $token_data['level'] = $output->LEVEL;
-                $token_data['foto_ktp'] = $output->FOTO_KTP;
-                $token_data['nama_lengkap'] = $output->NAMA_LENGKAP;
-                $token_data['email'] = $output->EMAIL;
-                $token_data['no_telepon'] = $output->NO_TELEPON;
-                $token_data['alamat'] = $output->ALAMAT;
-                $token_data['id_komunitas'] = $output->NIK;
-                $token_data['password'] = $output->ID_KOMUNITAS;
+                // $token_data['id'] = $output->NIK;
+                // $token_data['level'] = $output->LEVEL;
+                // $token_data['foto_ktp'] = $output->FOTO_KTP;
+                // $token_data['nama_lengkap'] = $output->NAMA_LENGKAP;
+                // $token_data['email'] = $output->EMAIL;
+                // $token_data['no_telepon'] = $output->NO_TELEPON;
+                // $token_data['alamat'] = $output->ALAMAT;
+                // $token_data['id_komunitas'] = $output->NIK;
+                // $token_data['password'] = $output->ID_KOMUNITAS;
                 $token_data['time'] = time();
 
                 $akun_token = $this->authorization_token->generateToken($token_data);
-
+                $output = $this->db->get_where('akun', ['EMAIL' => $this->input->post('email')])->row();
                 $return_data = [
                     'nik' => $output->NIK,
                     'level' => $output->LEVEL,
@@ -195,7 +196,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller
      * @method: PUT
      * 
      */
-    public function updateAkun_put()
+    public function update_put()
     {
         header("Access-Control-Allow-Origin: *");
 
@@ -203,21 +204,24 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         $this->load->library('Authorization_Token');
 
         // Load Akun Model
-        $this->load->model('api/akun_model', 'AkunModel');
+        $this->load->model('api/Akun_Model', 'AkunModel');
         $id = $this->put('NIK');
 
-        $foto = $_FILES['foto_ktp']['name'];
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = '8000';
-        $config['upload_path'] = '././uploads/';
+        // $config['allowed_types'] = 'jpg|png|jpeg';
+        // $config['max_size'] = '8000';
+        // $config['upload_path'] = '././uploads/KTP/';
 
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('foto_ktp');
+        // $this->load->library('upload', $config);
+        // $upfoto = $this->upload->do_upload('foto_ktp');
+
+        // if ($upfoto) {
+        //     $foto = $_FILES['foto_ktp']['name'];
+        // }
 
         $update_data = array(
             'NIK' => $this->put('nik'),
             'LEVEL' => $this->put('level'),
-            'FOTO_KTP' => $foto,
+            // 'FOTO_KTP' => $foto,
             'NAMA_LENGKAP' => $this->put('nama_lengkap'),
             'EMAIL' => $this->put('email'),
             'NO_TELEPON' => $this->put('no_telepon'),

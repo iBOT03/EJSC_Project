@@ -28,7 +28,7 @@ class Akun_Model extends CI_Model {
             if(md5($password) === $akun_pass) {
                 return $q->row();
             }
-            return FALSE;
+            return TRUE;
         } else {
             return FALSE;
         }
@@ -44,7 +44,7 @@ class Akun_Model extends CI_Model {
         $query = $this->db->get_where($this->akun_table, [
             'NIK' => $data['nik'],
             'LEVEL' => $data['level'],
-            'FOTO_KTP' => $data['foto_ktp'],
+            // 'FOTO_KTP' => $data['foto_ktp'],
             'NAMA_LENGKAP' => $data['nama_lengkap'],
             'EMAIL' => $data['email'],
             'NO_TELEPON' => $data['no_telepon'],
@@ -57,7 +57,7 @@ class Akun_Model extends CI_Model {
                 $update_data = [
                     'NIK' => $data['nik'],
                     'LEVEL' => $data['level'],
-                    'FOTO_KTP' => $data['foto_ktp'],
+                    // 'FOTO_KTP' => $data['foto_ktp'],
                     'NAMA_LENGKAP' => $data['nama_lengkap'],
                     'EMAIL' => $data['email'],
                     'NO_TELEPON' => $data['no_telepon'],

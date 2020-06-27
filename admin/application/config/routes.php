@@ -87,4 +87,4 @@ $route['api/ruangan/ruangan'] = 'api/ruangan/ruangan';
 $route['api/komunitas/komunitas'] = 'api/komunitas/komunitas';
 
 // Update Akun API Routes :: PUT API Request
-$route['api/akun/update']["PUT"] = 'api/akun/updateAkun';
+$route['api/akun/update'] = 'api/akun/update';
