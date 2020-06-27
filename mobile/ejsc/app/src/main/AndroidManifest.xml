@@ -18,7 +18,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".botnav.booking.DetailRuanganActivity"></activity>
+        <activity
+            android:name=".botnav.booking.DetailRuanganActivity"
+            android:configChanges="orientation"
+            android:label="@string/detail_ruangan"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".akun.WebViewLupaPasswordActivity"
             android:configChanges="orientation"

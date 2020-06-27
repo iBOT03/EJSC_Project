@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bakorwil.ejsc.R;
+import com.bakorwil.ejsc.botnav.booking.DetailRuanganActivity;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.bakorwil.ejsc.model.ModelRuangan;
 import com.squareup.picasso.Picasso;
@@ -42,14 +43,14 @@ public class AdapterRuangan extends RecyclerView.Adapter<AdapterRuangan.HolderDa
     public void onBindViewHolder(@NonNull final AdapterRuangan.HolderData holder, int position) {
         ModelRuangan modelRuangan = mItems.get(position);
         //klik untuk Intent dan parsing data ke detail ruangan
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent detail = new Intent(holder.itemView.getContext(), DetailRuanganActivity.class);
-//                detail.putExtra("ID_RUANGAN", holder.id_ruangan);
-//                holder.itemView.getContext().startActivity(detail);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detail = new Intent(holder.itemView.getContext(), DetailRuanganActivity.class);
+                detail.putExtra("ID_RUANGAN", holder.id_ruangan);
+                holder.itemView.getContext().startActivity(detail);
+            }
+        });
 
         try {
             holder.id_ruangan = modelRuangan.getId_ruangan();

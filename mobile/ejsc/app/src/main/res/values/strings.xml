@@ -93,4 +93,7 @@
     <string name="riwayat_booking">Riwayat Booking</string>
     <string name="detail">Detail</string>
     <string name="orang">Orang</string>
+    <string name="foto_ruangan">Foto Ruangan</string>
+    <string name="detail_ruangan">Detail Ruangan</string>
+    <string name="booking_ruangan">Booking Ruangan</string>
 </resources>
