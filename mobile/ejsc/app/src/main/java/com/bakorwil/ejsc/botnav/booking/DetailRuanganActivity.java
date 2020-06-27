@@ -3,10 +3,12 @@ package com.bakorwil.ejsc.botnav.booking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,6 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bakorwil.ejsc.R;
+import com.bakorwil.ejsc.akun.DaftarActivity;
+import com.bakorwil.ejsc.akun.UploadFotoKtpActivity;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.squareup.picasso.Picasso;
 
@@ -35,6 +39,7 @@ public class DetailRuanganActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ProgressDialog progressDialog;
     String id_ruangan;
+    Button btn_booking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,18 @@ public class DetailRuanganActivity extends AppCompatActivity {
         nama = findViewById(R.id.tv_nama_ruangan);
         kapasitas = findViewById(R.id.tv_kapasitas_ruangan);
         deskripsi = findViewById(R.id.tv_deskripsi_ruangan);
+
+        btn_booking = findViewById(R.id.btn_booking);
+        btn_booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent move_data = new Intent(DetailRuanganActivity.this, FormBookingActivity.class);
+                move_data.putExtra("nama_ruangan", nama.getText().toString());
+                move_data.putExtra("kapasitas", kapasitas.getText().toString());
+                startActivity(move_data);
+                Log.e("MOVE DATA: ", "" + move_data);
+            }
+        });
 
         loadDetail();
 

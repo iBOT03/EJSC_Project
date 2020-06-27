@@ -12,8 +12,8 @@ class Ruangan_Model extends CI_Model {
         if ($id === null) {
         return $this->db->get('ruangan')->result_array();
         } else {
-            return $this->db->get_where('ruangan', ['ID_RUANGAN' => $id])->result_array();
-        }
+            return 
+        }$this->db->get_where('ruangan', ['ID_RUANGAN' => $id])->result_array();
     }
 }
 ?>
