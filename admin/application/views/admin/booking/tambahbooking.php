@@ -75,14 +75,6 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <!-- <div class="col-sm-6">
-                                        <p>Nama Penanggung Jawab</p>
-                                        <div class="input-group">
-                                            <input name="nama" id="nama" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Nama Lengkap" aria-describedby="basic-addon2" maxlength="150">
-                                        </div>
-                                        <?= form_error('nama', '<small class="text-danger">', '</small>') ?>
-                                    </div> -->
                                 </div>
 
                                 <div class="row">
