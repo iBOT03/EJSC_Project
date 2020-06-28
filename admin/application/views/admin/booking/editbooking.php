@@ -83,6 +83,23 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p>NIK</p>
+                                        <div class="input-group">
+                                            <input name="nik"
+                                                   id="nik"
+                                                   type="text"
+                                                   class="form-control border-dark small mb-3"
+                                                   placeholder="Masukkan NIK anda"
+                                                   aria-describedby="basic-addon2"
+                                                   maxlength="150"
+                                                   value="<?= $booking->NIK?>"
+                                                   >
+                                        </div>
+                                    </div>
 
                                     <div class="col-sm-6">
                                         <p>Nama Penanggung Jawab</p>
