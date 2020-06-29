@@ -5,58 +5,66 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class Preferences {
-    static final String KEY_EMAIL_TEREGISTER = "email", KEY_PASS_TEREGISTER = "password";
-    static final String KEY_EMAIL_SEDANG_LOGIN = "Email_logged_in";
-    static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
+    private static Preferences mInstance;
+    public static Context mCtx;
+    public static final String SHARED_PREF_NAME = "shareejsc";
+    private static final String sudahlogin = "n";
+    private static final String KEY_NIK = "nik";
+    private static final String KEY_NAMA = "nama_lengkap";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_TOKEN = "token";
+
+    private Preferences(Context context) {
+        mCtx = context;
+    }
+
+    public static synchronized Preferences getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new Preferences(context);
+        }
+        return mInstance;
+    }
+
+    public boolean setdatauser(String xnik, String xnama_lengkap, String xemail, String xtoken) {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(KEY_NIK, xnik);
+        editor.putString(KEY_NAMA, xnama_lengkap);
+        editor.putString(KEY_EMAIL, xemail);
+        editor.putString(sudahlogin, "y");
+        editor.putString(KEY_TOKEN, xtoken);
+        editor.apply();
+        return true;
+    }
 
     private static SharedPreferences getSharedPreference(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static void setRegisteredEmail(Context context, String email) {
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString(KEY_EMAIL_TEREGISTER, email);
+    public String getNama() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_NAMA, null);
+    }
+
+    public String getEmail() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_EMAIL, null);
+    }
+
+    public boolean ceklogin() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        if (sharedPreferences.getString(KEY_NIK, null) != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean logout() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
         editor.apply();
-    }
-
-    public static String getRegisteredEmail(Context context) {
-        return getSharedPreference(context).getString(KEY_EMAIL_TEREGISTER, "");
-    }
-
-    public static void setRegisteredPass(Context context, String password) {
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString(KEY_PASS_TEREGISTER, password);
-        editor.apply();
-    }
-
-    public static String getRegisteredPass(Context context) {
-        return getSharedPreference(context).getString(KEY_PASS_TEREGISTER, "");
-    }
-
-    public static void setLoggedInEmail(Context context, String email) {
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putString(KEY_EMAIL_SEDANG_LOGIN, email);
-        editor.apply();
-    }
-
-    public static String getLoggedInEmail(Context context) {
-        return getSharedPreference(context).getString(KEY_EMAIL_SEDANG_LOGIN, "");
-    }
-
-    public static void setLoggedInStatus(Context context, boolean status) {
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.putBoolean(KEY_STATUS_SEDANG_LOGIN, status);
-        editor.apply();
-    }
-
-    public static Boolean getLoggedInStatus(Context context) {
-        return getSharedPreference(context).getBoolean(KEY_STATUS_SEDANG_LOGIN, false);
-    }
-
-    public static void clearLoginInEmail(Context context) {
-        SharedPreferences.Editor editor = getSharedPreference(context).edit();
-        editor.remove(KEY_EMAIL_SEDANG_LOGIN);
-        editor.remove(KEY_STATUS_SEDANG_LOGIN);
-        editor.apply();
+        return true;
     }
 }
