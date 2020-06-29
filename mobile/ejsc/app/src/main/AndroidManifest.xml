@@ -64,24 +64,6 @@
             android:theme="@style/AppTheme.DarkGreen"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".akun.ResetPasswordActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionDarkGreen"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".akun.KodeResetActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionDarkGreen"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".akun.LupaPasswordActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionDarkGreen"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
             android:name=".akun.UploadFotoKtpActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"

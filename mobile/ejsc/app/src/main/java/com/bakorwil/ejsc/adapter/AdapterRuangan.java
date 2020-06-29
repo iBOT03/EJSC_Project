@@ -36,7 +36,7 @@ public class AdapterRuangan extends RecyclerView.Adapter<AdapterRuangan.HolderDa
     }
 
     public AdapterRuangan.HolderData onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View layout = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_card_ruangan, viewGroup, false);
+        View layout = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list_ruangan, viewGroup, false);
         AdapterRuangan.HolderData holderData = new AdapterRuangan.HolderData((layout));
         return holderData;
     }
