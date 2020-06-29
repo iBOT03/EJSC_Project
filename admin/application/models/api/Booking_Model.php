@@ -75,5 +75,17 @@ class Booking_Model extends CI_Model {
         }
         return false;
     }
+
+    /*
+    * GET Riwayat Booking
+    *------------------------------
+    * @param: {array} Riwayat Booking Data
+    */
+    public function getRiwayat($id = null) {
+        // if ($id === null) {
+        // return $this->db->get('booking')->result_array();
+        // } else {
+            return $this->db->get_where('booking', ['NIK' => $id])->result_array();
+        //}
+    }
 }
-?>
