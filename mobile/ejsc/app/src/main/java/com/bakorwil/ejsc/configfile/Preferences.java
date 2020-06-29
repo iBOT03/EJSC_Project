@@ -12,6 +12,8 @@ public class Preferences {
     private static final String KEY_NIK = "nik";
     private static final String KEY_NAMA = "nama_lengkap";
     private static final String KEY_EMAIL = "email";
+    private static final String KEY_TELEPON = "no_telepon";
+    private static final String KEY_ALAMAT = "alamat";
     private static final String KEY_TOKEN = "token";
 
     private Preferences(Context context) {
@@ -25,13 +27,15 @@ public class Preferences {
         return mInstance;
     }
 
-    public boolean setdatauser(String xnik, String xnama_lengkap, String xemail, String xtoken) {
+    public boolean setdatauser(String xnik, String xnama_lengkap, String xemail, String xtelepon, String xalamat, String xtoken) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(KEY_NIK, xnik);
         editor.putString(KEY_NAMA, xnama_lengkap);
         editor.putString(KEY_EMAIL, xemail);
+        editor.putString(KEY_TELEPON, xtelepon);
+        editor.putString(KEY_ALAMAT, xalamat);
         editor.putString(sudahlogin, "y");
         editor.putString(KEY_TOKEN, xtoken);
         editor.apply();
@@ -55,6 +59,16 @@ public class Preferences {
     public String getEmail() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_EMAIL, null);
+    }
+
+    public String getTelepon() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_TELEPON, null);
+    }
+
+    public String getAlamat() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_ALAMAT, null);
     }
 
     public boolean ceklogin() {

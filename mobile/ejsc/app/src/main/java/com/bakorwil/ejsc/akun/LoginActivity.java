@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog pd;
     EditText email, password;
     Button btn_login;
-    String cmail, cnama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,12 +88,13 @@ public class LoginActivity extends AppCompatActivity {
                                 res = new JSONObject(response);
                                 Log.d("error di ", response);
                                 if (res.getBoolean("status")) {
-//                                    masuk();
                                     JSONObject datalogin = res.getJSONObject("data");
                                     Preferences.getInstance(getApplicationContext()).setdatauser(
                                             datalogin.getString("nik"),
                                             datalogin.getString("nama_lengkap"),
                                             datalogin.getString("email"),
+                                            datalogin.getString("no_telepon"),
+                                            datalogin.getString("alamat"),
                                             datalogin.getString("token")
                                     );
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();

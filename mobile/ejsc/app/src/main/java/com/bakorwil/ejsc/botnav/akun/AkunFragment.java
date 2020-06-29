@@ -1,13 +1,10 @@
 package com.bakorwil.ejsc.botnav.akun;
 
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +17,9 @@ import androidx.fragment.app.Fragment;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.akun.EditAkunActivity;
 import com.bakorwil.ejsc.akun.LoginActivity;
-import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.Preferences;
-import com.bakorwil.ejsc.configfile.ServerApi;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class AkunFragment extends Fragment {
     TextView editAkun, txt_nama, txt_email, keluar, kontakkami;
