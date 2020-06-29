@@ -60,6 +60,11 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.HolderDa
             holder.jam_mulai.setText(modelBooking.getJam_mulai());
             holder.jam_selesai.setText(modelBooking.getJam_selesai());
             holder.status.setText(modelBooking.getStatus());
+            if (modelBooking.getStatus().equals("1")) {
+                holder.status.setText("Aktif");
+            } else if (modelBooking.getStatus().equals("3")) {
+                holder.status.setText("Selesai");
+            }
             holder.nama.setText(modelBooking.getNama());
             holder.jumlah_orang.setText(modelBooking.getJumlah_orang());
             holder.tujuan.setText(modelBooking.getTujuan());

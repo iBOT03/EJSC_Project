@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -50,7 +51,6 @@ public class DetailRiwayatBooking extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar);
         tanggal = findViewById(R.id.tv_tanggal_mulai);
         jam_mulai = findViewById(R.id.tv_jam_mulai);
-        jam_selesai = findViewById(R.id.tv_jam_selesai);
         nama_lengkap = findViewById(R.id.tv_nama_pemesan);
         jumlah_peserta = findViewById(R.id.tv_jumlah_orang);
         tujuan = findViewById(R.id.tv_tujuan);
@@ -75,7 +75,6 @@ public class DetailRiwayatBooking extends AppCompatActivity {
 					JSONObject data = arr.getJSONObject(0);
 					tanggal.setText(data.getString("TANGGAL_MULAI"));
 					jam_mulai.setText(data.getString("JAM_MULAI"));
-					jam_selesai.setText(data.getString("JAM_SELESAI"));
 					nama_lengkap.setText(data.getString("NAMA"));
 					jumlah_peserta.setText(data.getString("JUMLAH_ORANG"));
 					tujuan.setText(data.getString("TUJUAN"));
@@ -107,5 +106,14 @@ public class DetailRiwayatBooking extends AppCompatActivity {
 		};
 		RequestQueue requestQueue = Volley.newRequestQueue(getApplication().getApplicationContext());
 		requestQueue.add(sendData);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
