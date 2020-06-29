@@ -94,7 +94,6 @@ public class BerandaFragment extends Fragment {
         dataKosong = view.findViewById(R.id.dataKosong);
         show = view.findViewById(R.id.tampilkan_semua);
         viewPager2 = view.findViewById(R.id.viewPagerImageSlider);
-        //foto = view.findViewById(R.id.carousel);
 
         show.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,24 +113,6 @@ public class BerandaFragment extends Fragment {
                 startActivity(notifikasi);
             }
         });
-
-//        CarouselView carouselView = view.findViewById(R.id.carousel);
-//        //Picasso.get()
-//                //.load(ServerApi.URL_RUANGAN + "../../../" + "uploads/ruangan/" + data.getString("FOTO_RUANGAN"))
-//                //.into(foto);
-//        carouselView.setPageCount(mImages.length);
-//        carouselView.setImageListener(new ImageListener() {
-//            @Override
-//            public void setImageForPosition(int position, ImageView imageView) {
-//                imageView.setImageResource(mImages[position]);
-//            }
-//        });
-//        carouselView.setImageClickListener(new ImageClickListener() {
-//            @Override
-//            public void onClick(int position) {
-//                Toast.makeText(getContext(), mImagesTitle[position], Toast.LENGTH_SHORT).show();
-//            }
-//        });
         //viewPager2 = findViewById(R.id.viewPagerImageSlider);
 
         //disini tempat mempersiapkan list foto dari drawable
