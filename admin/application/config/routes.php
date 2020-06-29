@@ -69,13 +69,10 @@ $route['api/event/detail'] = 'api/detailevent/detail';
 
 //Booking API Routes
 $route['api/booking/tambah'] = 'api/booking/tambah';
-
-// Delete Booking API Routes
 # https://codeigniter.com/userguide3/general/routing.html
 $route['api/booking/(:num)/delete']["DELETE"] = 'api/booking/deleteBooking/$1';
-
-// Update Booking API Routes :: PUT API Request
 $route['api/booking/update']["PUT"] = 'api/booking/updateBooking';
+$route['api/booking/riwayat'] = 'api/booking/riwayat';
 
 // Kontak Kami API Routes
 $route['api/kontak/kontak'] = 'api/kontak/kontak';

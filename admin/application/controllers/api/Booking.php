@@ -1,12 +1,14 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 use Restserver\Libraries\REST_Controller;
 
 require APPPATH . '/libraries/REST_Controller.php';
 
-class Booking extends \Restserver\Libraries\Rest_Controller {
+class Booking extends \Restserver\Libraries\Rest_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('api/Booking_Model', 'BookingModel');
     }
@@ -16,7 +18,8 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
      * ------------------------------
      * @method: POST
      */
-    public function tambah_post() {
+    public function tambah_post()
+    {
         header("Access-Control-Allow-Origin: *");
 
         // Load Authorization Library
@@ -27,74 +30,74 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
          */
         // $is_valid_token = $this->authorization_token->validateToken();
         // if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
-            
-            // Tambah Booking Baru
 
-            # XSS Filtering
-            $_POST = $this->security->xss_clean($_POST);
-        
-            # Form Validation
-            $this->form_validation->set_rules('nik', 'NIK', 'trim|required|max_length[16]');
-            $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[150]');
-            $this->form_validation->set_rules('nomor_telepon', 'No Telepon', 'trim|required|max_length[13]');
-            $this->form_validation->set_rules('id_komunitas', 'ID Komunitas', 'trim|required|max_length[200]');
-            $this->form_validation->set_rules('id_ruangan', 'ID Ruangan', 'trim|required|max_length[50]');
-            $this->form_validation->set_rules('jumlah_orang', 'Jumlah Orang', 'trim|required|max_length[3]');
-            $this->form_validation->set_rules('deskripsi_kegiatan', 'Deskripsi Kegiatan', 'trim|required');
-            $this->form_validation->set_rules('tujuan', 'Tujuan', 'trim|required');
-            $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'trim|required');
-            $this->form_validation->set_rules('durasi', 'Durasi', 'trim|required');
-            $this->form_validation->set_rules('jam_mulai', 'Jam Mulai', 'trim|required');
-            $this->form_validation->set_rules('jam_selesai', 'Jam Selesai', 'trim|required');
-            $this->form_validation->set_rules('status', 'Status', 'trim|required|max_length[1]');
-            
-            if ($this->form_validation->run() == FALSE) {
-                // Form Validation
-                $message = array(
-                    'status' => false,
-                    'message' => validation_errors(),
-                    'error' => $this->form_validation->error_array()
-                );
-                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
-            } else {
-                // Load Booking Model
-                $this->load->model('api/Booking_Model', 'BookingModel');
+        // Tambah Booking Baru
 
-                $insert_data = [
-                    'NIK' => $this->input->post('nik', TRUE),
-                    'NAMA' => $this->input->post('nama', TRUE),
-                    'NOMOR_TELEPON' => $this->input->post('nomor_telepon', TRUE),
-                    'ID_KOMUNITAS' => $this->input->post('id_komunitas', TRUE),
-                    'ID_RUANGAN' => $this->input->post('id_ruangan', TRUE),
-                    'JUMLAH_ORANG' => $this->input->post('jumlah_orang', TRUE),
-                    'DESKRIPSI_KEGIATAN' => $this->input->post('deskripsi_kegiatan', TRUE),
-                    'TUJUAN' => $this->input->post('tujuan', TRUE),
-                    'TANGGAL_MULAI' => $this->input->post('tanggal_mulai', TRUE),
-                    'DURASI' => $this->input->post('durasi', TRUE),
-                    'JAM_MULAI' => $this->input->post('jam_mulai', TRUE),
-                    'JAM_SELESAI' => $this->input->post('jam_selesai', TRUE),
-                    'STATUS' => $this->input->post('status', TRUE)
+        # XSS Filtering
+        $_POST = $this->security->xss_clean($_POST);
+
+        # Form Validation
+        $this->form_validation->set_rules('nik', 'NIK', 'trim|required|max_length[16]');
+        $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[150]');
+        $this->form_validation->set_rules('nomor_telepon', 'No Telepon', 'trim|required|max_length[13]');
+        $this->form_validation->set_rules('id_komunitas', 'ID Komunitas', 'trim|required|max_length[200]');
+        $this->form_validation->set_rules('id_ruangan', 'ID Ruangan', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('jumlah_orang', 'Jumlah Orang', 'trim|required|max_length[3]');
+        $this->form_validation->set_rules('deskripsi_kegiatan', 'Deskripsi Kegiatan', 'trim|required');
+        $this->form_validation->set_rules('tujuan', 'Tujuan', 'trim|required');
+        $this->form_validation->set_rules('tanggal_mulai', 'Tanggal Mulai', 'trim|required');
+        $this->form_validation->set_rules('durasi', 'Durasi', 'trim|required');
+        $this->form_validation->set_rules('jam_mulai', 'Jam Mulai', 'trim|required');
+        $this->form_validation->set_rules('jam_selesai', 'Jam Selesai', 'trim|required');
+        $this->form_validation->set_rules('status', 'Status', 'trim|required|max_length[1]');
+
+        if ($this->form_validation->run() == FALSE) {
+            // Form Validation
+            $message = array(
+                'status' => false,
+                'message' => validation_errors(),
+                'error' => $this->form_validation->error_array()
+            );
+            $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+        } else {
+            // Load Booking Model
+            $this->load->model('api/Booking_Model', 'BookingModel');
+
+            $insert_data = [
+                'NIK' => $this->input->post('nik', TRUE),
+                'NAMA' => $this->input->post('nama', TRUE),
+                'NOMOR_TELEPON' => $this->input->post('nomor_telepon', TRUE),
+                'ID_KOMUNITAS' => $this->input->post('id_komunitas', TRUE),
+                'ID_RUANGAN' => $this->input->post('id_ruangan', TRUE),
+                'JUMLAH_ORANG' => $this->input->post('jumlah_orang', TRUE),
+                'DESKRIPSI_KEGIATAN' => $this->input->post('deskripsi_kegiatan', TRUE),
+                'TUJUAN' => $this->input->post('tujuan', TRUE),
+                'TANGGAL_MULAI' => $this->input->post('tanggal_mulai', TRUE),
+                'DURASI' => $this->input->post('durasi', TRUE),
+                'JAM_MULAI' => $this->input->post('jam_mulai', TRUE),
+                'JAM_SELESAI' => $this->input->post('jam_selesai', TRUE),
+                'STATUS' => $this->input->post('status', TRUE)
+            ];
+
+            // Insert Booking
+            $output = $this->BookingModel->tambah_booking($insert_data);
+
+            if ($output == !empty($output)) {
+                // Success
+                $message = [
+                    'status' => TRUE,
+                    'message' => "Proses Booking Berhasil"
                 ];
-
-                // Insert Booking
-                $output = $this->BookingModel->tambah_booking($insert_data);
-
-                if($output == !empty($output)) {
-                    // Success
-                    $message = [
-                        'status' => TRUE,
-                        'message' => "Proses Booking Berhasil"
-                    ];
-                    $this->response($message, REST_Controller::HTTP_OK);
-                } else {
-                    //Error
-                    $message = [
-                        'status' => FALSE,
-                        'message' => "Proses Booking Gagal"
-                    ];
-                    $this->response($message, REST_Controller::HTTP_NOT_FOUND);
-                }
+                $this->response($message, REST_Controller::HTTP_OK);
+            } else {
+                //Error
+                $message = [
+                    'status' => FALSE,
+                    'message' => "Proses Booking Gagal"
+                ];
+                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
             }
+        }
         // } else {
         //     $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
         // }
@@ -105,7 +108,8 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
      * ------------------------------
      * @method: DELETE
      */
-    public function deleteBooking_delete($id) {
+    public function deleteBooking_delete($id)
+    {
         header("Access-Control-Allow-Origin: *");
 
         // Load Authorization Library
@@ -115,14 +119,14 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
          * User Token Validation
          */
         $is_valid_token = $this->authorization_token->validateToken();
-        if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
-            
+        if (!empty($is_valid_token) and $is_valid_token['status'] === TRUE) {
+
             // Delete Booking
 
             # XSS Filtering
             $id = $this->security->xss_clean($id);
-        
-            if (empty($id) AND !is_numeric($id)) {
+
+            if (empty($id) and !is_numeric($id)) {
                 $this->response(['status' => FALSE, 'message' => 'Invalid Booking ID'], REST_Controller::HTTP_NOT_FOUND);
             } else {
                 // Load Booking Model
@@ -136,7 +140,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 // Delete Booking
                 $output = $this->BookingModel->delete_booking($delete_booking);
 
-                if($output > 0 AND !empty($output)) {
+                if ($output > 0 and !empty($output)) {
                     // Success
                     $message = [
                         'status' => TRUE,
@@ -153,7 +157,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 }
             }
         } else {
-            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
+            $this->response(['status' => FALSE, 'message' => $is_valid_token['message']], REST_Controller::HTTP_NOT_FOUND);
         }
     }
 
@@ -162,7 +166,8 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
      * ------------------------------
      * @method: PUT
      */
-    public function updateBooking_put() {
+    public function updateBooking_put()
+    {
         header("Access-Control-Allow-Origin: *");
 
         // Load Authorization Library
@@ -172,8 +177,8 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
          * User Token Validation
          */
         $is_valid_token = $this->authorization_token->validateToken();
-        if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
-            
+        if (!empty($is_valid_token) and $is_valid_token['status'] === TRUE) {
+
             // Update Booking Baru
 
             # XSS Filtering
@@ -194,7 +199,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 'JAM_SELESAI' => $this->input->post('jam_selesai', TRUE),
                 'STATUS' => $this->input->post('status', TRUE),
             ]);
-        
+
             # Form Validation
             $this->form_validation->set_rules('id_booking', 'ID Booking', 'trim|required|numeric');
             $this->form_validation->set_rules('nama', 'Nama', 'trim|required|max_length[150]');
@@ -241,7 +246,7 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 // Update Booking
                 $output = $this->BookingModel->update_booking($update_data);
 
-                if($output == !empty($output)) {
+                if ($output == !empty($output)) {
                     // Success
                     $message = [
                         'status' => TRUE,
@@ -258,9 +263,68 @@ class Booking extends \Restserver\Libraries\Rest_Controller {
                 }
             }
         } else {
-            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
+            $this->response(['status' => FALSE, 'message' => $is_valid_token['message']], REST_Controller::HTTP_NOT_FOUND);
         }
     }
-}
-?>
 
+    /**
+     * Get Riwayat Booking dengan API
+     *------------------------------
+     * @param: id_booking
+     * @param: nik
+     * @param: nama
+     * @param: no_telepon
+     * @param: id_komunitas
+     * @param: id_ruangan
+     * @param: jumlah_orang
+     * @param: deskripsi_kegiatan
+     * @param: tujuan
+     * @param: tanggal_mulai
+     * @param: durasi
+     * @param: jam_mulai
+     * @param: jam_selesai
+     *------------------------------
+     * @method : GET
+     * @link : api/booking/riwayat
+     */
+    // Get Data Riwayat Booking
+    function riwayat_get()
+    {
+        header("Access-Control-Allow-Origin: *");
+
+        // Load Authorization Library
+        //        $this->load->library('Authorization_Token');
+
+        /**
+         * User Token Validation
+         */
+        $id = $this->get('NIK');
+        //        $is_valid_token = $this->authorization_token->validateToken();
+        //        if (!empty($is_valid_token) AND $is_valid_token['status'] === TRUE) {
+
+        // GET Data Riwayat Booking
+        if ($id === null) {
+            $riwayat = $this->BookingModel->getRiwayat();
+        } else {
+            $riwayat = $this->BookingModel->getRiwayat($id);
+        }
+
+        if ($riwayat) {
+            $this->response([
+                //Get Data Riwayat Booking Success
+                'status' => TRUE,
+                'message' => "Berhasil Get Data Riwayat Booking",
+                'data_riwayat' => $riwayat
+            ],  REST_Controller::HTTP_OK);
+        } else {
+            //Error Get Data Riwayat Booking
+            $this->response([
+                'status' => FALSE,
+                'message' => "ID Tidak Ditemukan"
+            ], REST_Controller::HTTP_NOT_FOUND);
+        }
+        //        } else {
+        //            $this->response(['status' => FALSE, 'message' => $is_valid_token['message'] ], REST_Controller::HTTP_NOT_FOUND);
+        //        }
+    }
+}
