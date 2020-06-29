@@ -177,7 +177,7 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
-
+                pb.setVisibility(View.GONE);
                 try {
                     res = new JSONObject(response);
                     if (res.getBoolean("status")) {
