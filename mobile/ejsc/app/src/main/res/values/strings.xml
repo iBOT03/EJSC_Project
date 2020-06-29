@@ -76,7 +76,7 @@
     <string name="nama_ruangan">Nama Ruangan</string>
     <string name="kegiatan">Kegiatan:</string>
     <string name="ket_booking">Ket. Booking</string>
-    <string name="statu">Status:</string>
+    <string name="status">Status:</string>
     <string name="komunitas2">Komunitas:</string>
     <string name="riwayat">Riwayat</string>
     <string name="aktif">Aktif</string>
@@ -99,4 +99,5 @@
     <string name="jam">jam</string>
     <string name="booking_sekarang">Booking Sekarang</string>
     <string name="form_booking">Formulir Booking</string>
+    <string name="dash">-</string>
 </resources>

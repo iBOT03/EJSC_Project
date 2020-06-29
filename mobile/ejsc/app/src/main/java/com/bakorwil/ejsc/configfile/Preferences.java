@@ -42,6 +42,11 @@ public class Preferences {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public String getNik() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_NIK, null);
+    }
+
     public String getNama() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_NAMA, null);
