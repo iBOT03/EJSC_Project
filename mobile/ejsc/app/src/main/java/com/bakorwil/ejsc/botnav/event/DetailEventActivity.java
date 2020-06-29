@@ -69,7 +69,6 @@ public class DetailEventActivity extends AppCompatActivity {
 
     private void loadDetail() {
         progressDialog.setMessage("Sedang Memuat Data");
-//        progressDialog.setCancelable(false);
         progressDialog.show();
 
         StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT + "?ID_EVENT=" + idEvent, new Response.Listener<String>() {
@@ -87,7 +86,7 @@ public class DetailEventActivity extends AppCompatActivity {
                     keterangan.setText(data.getString("KETERANGAN"));
                     if (data.getString("STATUS").equals("1")) {
                         selesai.setVisibility(View.GONE);
-                    } else {
+                    } else if (data.getString("STATUS").equals("3")) {
                         selesai.setVisibility(View.VISIBLE);
                     }
                     Picasso.get()
@@ -112,10 +111,7 @@ public class DetailEventActivity extends AppCompatActivity {
                 return params;
             }
         };
-
-//        AppController.getInstance().addToRequestQueue(sendData);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplication().getApplicationContext());
-
         requestQueue.add(sendData);
     }
 }
