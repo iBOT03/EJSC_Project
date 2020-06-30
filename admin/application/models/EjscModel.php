@@ -96,8 +96,13 @@ class EjscModel extends CI_Model
     //GET DATA BOOKING
     public function getBooking()
     {
-        $this->load->database();
-        return $this->db->get("booking")->result();
+        // $this->load->database();
+        // return $this->db->get("booking")->result();        
+        $query = $this->db->query("SELECT * FROM booking 
+                 WHERE TANGGAL_MULAI >= '" . $_POST["tanggalMulai"] . "' 
+                 AND TANGGAL_MULAI <= '" . $_POST["sampaiDengan"] . "' 
+                 ORDER BY TANGGAL_MULAI DESC");
+        return $query->result();
     }
     //GET TOTAL PENGGUNA
     public function pengguna()

@@ -55,9 +55,9 @@ class Booking extends CI_Controller {
 			$jammulai = $this->input->post('start');
 			$durasi = $this->input->post('durasi');
 		
-			$tgldanwaktu= date('Y-m-d H:i',strtotime($jammulai,strtotime($tgl)));
+			$tgldanwaktu= date('H:i',strtotime($jammulai,strtotime($tgl)));
 			
-			$done= date('Y-m-d H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
+			$done= date('H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
 			
 			$tambah = $this->model_booking->insert(array(
 					'NIK' => $this->input->post('nik'),
@@ -125,9 +125,9 @@ class Booking extends CI_Controller {
 			$jammulai = $this->input->post('start');
 			$durasi = $this->input->post('durasi');
 		
-			$tgldanwaktu= date('Y-m-d H:i',strtotime($jammulai,strtotime($tgl)));
+			$tgldanwaktu= date('H:i',strtotime($jammulai,strtotime($tgl)));
 			
-			$done= date('Y-m-d H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
+			$done= date('H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
 
 			$update = $this->model_booking->updatedata(array(
 					'NIK' => $this->input->post('nik'),
