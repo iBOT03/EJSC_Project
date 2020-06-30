@@ -102,7 +102,8 @@ public class BerandaFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        String telepon = Preferences.getInstance(getContext()).getTelepon();
+        Log.e("TELEPON", "" + telepon);
         loadEventBeranda();
 
         btnNotifikasi = view.findViewById(R.id.btn_notifikasi);
