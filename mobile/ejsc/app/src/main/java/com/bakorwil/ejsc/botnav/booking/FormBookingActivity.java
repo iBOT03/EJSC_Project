@@ -2,15 +2,19 @@ package com.bakorwil.ejsc.botnav.booking;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,14 +32,20 @@ import com.bakorwil.ejsc.configfile.ServerApi;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+
+import okhttp3.internal.Util;
 
 public class FormBookingActivity extends AppCompatActivity {
     EditText nama, telepon, komunitas, nama_ruangan, tanggal, jam_mulai, durasi, jam_selesai, jumlah_peserta, tujuan, deskripsi;
-	String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan;
-	Button btn_booking_sekarang;
-	ProgressDialog pd;
+    String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan;
+    Button btn_booking_sekarang;
+    ProgressDialog pd;
+    final Calendar myCalendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +55,13 @@ public class FormBookingActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Get intent parsing data dari DetailRuangan
-		ex_nama_ruangan = getIntent().getStringExtra("nama_ruangan");
-		ex_kapasitas = getIntent().getStringExtra("kapasitas");
+        ex_nama_ruangan = getIntent().getStringExtra("nama_ruangan");
+        ex_kapasitas = getIntent().getStringExtra("kapasitas");
 
-		pd = new ProgressDialog(this);
+        pd = new ProgressDialog(this);
         nama = findViewById(R.id.edt_nama);
-		exnama = Preferences.getInstance(getApplicationContext()).getNama();
-		nama.setText(exnama);
+        exnama = Preferences.getInstance(getApplicationContext()).getNama();
+        nama.setText(exnama);
         telepon = findViewById(R.id.edt_telepon);
         extelepon = Preferences.getInstance(getApplicationContext()).getTelepon();
         telepon.setText(extelepon);
@@ -60,8 +70,44 @@ public class FormBookingActivity extends AppCompatActivity {
         komunitas.setText(exkomunitas);
         nama_ruangan = findViewById(R.id.edt_nama_ruangan);
         nama_ruangan.setText(ex_nama_ruangan);
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
         tanggal = findViewById(R.id.edt_tanggal);
+        tanggal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(FormBookingActivity.this, date,
+                        myCalendar.get(Calendar.DAY_OF_MONTH),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.YEAR)).show();
+            }
+        });
         jam_mulai = findViewById(R.id.edt_jam_mulai);
+        jam_mulai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(FormBookingActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        jam_mulai.setText(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
         durasi = findViewById(R.id.edt_durasi);
         jam_selesai = findViewById(R.id.edt_jam_selesai);
         jumlah_peserta = findViewById(R.id.edt_jumlah_peserta);
@@ -151,6 +197,12 @@ public class FormBookingActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void updateLabel() {
+        String myFormat = "dd MMM yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        tanggal.setText(sdf.format(myCalendar.getTime()));
     }
 
     @Override
