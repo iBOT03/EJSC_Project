@@ -74,7 +74,6 @@ public class FormBookingActivity extends AppCompatActivity {
         exkomunitas = Preferences.getInstance(getApplicationContext()).getKomunitas();
 
         exnik = Preferences.getInstance(getApplicationContext()).getNik();
-        exruangan = Preferences.getInstance(getApplicationContext()).getRuangan();
         if(exkomunitas.equals(1)){
             tessss = "Dev Naked";
         } else if(exkomunitas.equals(2)){
@@ -85,7 +84,7 @@ public class FormBookingActivity extends AppCompatActivity {
             tessss = "Flowbyte Dev";
         }
         komunitas.setText(tessss);
-        komunitas.setText(exkomunitas);
+        //komunitas.setText(exkomunitas);
         Log.e("IDKOMUNITASSSSS", "" + exkomunitas);
         nama_ruangan = findViewById(R.id.edt_nama_ruangan);
         nama_ruangan.setText(ex_nama_ruangan);
