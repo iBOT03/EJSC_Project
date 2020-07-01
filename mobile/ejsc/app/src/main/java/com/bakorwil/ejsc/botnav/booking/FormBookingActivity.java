@@ -28,6 +28,7 @@ import com.bakorwil.ejsc.akun.UploadFotoKtpActivity;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.Preferences;
 import com.bakorwil.ejsc.configfile.ServerApi;
+import com.bumptech.glide.util.ExceptionCatchingInputStream;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,9 +43,10 @@ import okhttp3.internal.Util;
 
 public class FormBookingActivity extends AppCompatActivity {
     EditText nama, telepon, komunitas, nama_ruangan, tanggal, jam_mulai, durasi, jam_selesai, jumlah_peserta, tujuan, deskripsi;
-    String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan;
+    String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan, exnik;
     Button btn_booking_sekarang;
     ProgressDialog pd;
+    String tessss;
     final Calendar myCalendar = Calendar.getInstance();
 
     @Override
@@ -67,7 +69,18 @@ public class FormBookingActivity extends AppCompatActivity {
         telepon.setText(extelepon);
         komunitas = findViewById(R.id.edt_komunitas);
         exkomunitas = Preferences.getInstance(getApplicationContext()).getKomunitas();
-        komunitas.setText(exkomunitas);
+        exnik = Preferences.getInstance(getApplicationContext()).getNik();
+        exruangan = Preferences.getInstance(getApplicationContext()).getRuangan();
+        if(exkomunitas.equals(1)){
+            tessss = "Dev Naked";
+        } else if(exkomunitas.equals(2)){
+            tessss = "Coding";
+        } else if(exkomunitas.equals(3)){
+            tessss = "Komunitas Musisi Jember";
+        } else {
+            tessss = "Flowbyte Dev";
+        }
+        komunitas.setText(tessss);
         nama_ruangan = findViewById(R.id.edt_nama_ruangan);
         nama_ruangan.setText(ex_nama_ruangan);
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -142,9 +155,9 @@ public class FormBookingActivity extends AppCompatActivity {
                     Toast.makeText(FormBookingActivity.this, "Deskripsi kegiatan tidak boleh kosong", Toast.LENGTH_SHORT).show();
                     pd.dismiss();
                 } else {
-                    pd.setTitle("Mohon Tunggu Sebentar");
+                    pd.setTitle("Mohon Tunggu Sebenta");
                     pd.show();
-                    StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_TAMBAH_BOOKING, new Response.Listener<String>() {
+                    final StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_TAMBAH_BOOKING, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             JSONObject res = null;
@@ -162,7 +175,9 @@ public class FormBookingActivity extends AppCompatActivity {
                                 }
                             } catch (JSONException e) {
                                 pd.dismiss();
+                                e.printStackTrace();
                                 Log.e("errorgan", e.getMessage());
+
                             }
                         }
                     },
@@ -171,6 +186,7 @@ public class FormBookingActivity extends AppCompatActivity {
                                 public void onErrorResponse(VolleyError error) {
                                     pd.dismiss();
                                     Log.e("errornyaa ", "" + error);
+
                                     Toast.makeText(FormBookingActivity.this, "Gagal booking ruangan", Toast.LENGTH_SHORT).show();
                                 }
 
@@ -178,18 +194,19 @@ public class FormBookingActivity extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params = new HashMap<>();
+                            params.put("nik", exnik.toString());
                             params.put("nama", nama.getText().toString());
                             params.put("nomor_telepon", telepon.getText().toString());
-                            params.put("id_komunitas", komunitas.getText().toString());
-                            params.put("id_ruangan", nama.getText().toString());
+                            params.put("id_komunitas", exkomunitas.toString());//komunitas.getText().toString());
+                            params.put("id_ruangan", "4"); //nama.getText().toString());
                             params.put("jumlah_orang", jumlah_peserta.getText().toString());
-                            params.put("deskripsi_kegiatan", deskripsi.getText().toString());
+                            params.put("deskripsi_kegiatanharian", deskripsi.getText().toString());
                             params.put("tujuan", tujuan.getText().toString());
                             params.put("durasi", durasi.getText().toString());
                             params.put("jam_mulai", jam_mulai.getText().toString());
                             params.put("jam_selesai", jam_selesai.getText().toString());
-                            params.put("status", "1");
-
+                            params.put("statusduda", "1");
+                            Log.e("data: ", "" + params);
                             return params;
                         }
                     };
