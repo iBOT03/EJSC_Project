@@ -22,8 +22,6 @@ import com.android.volley.toolbox.Volley;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.configfile.Preferences;
 import com.bakorwil.ejsc.configfile.ServerApi;
-import com.bakorwil.ejsc.configfile.Util;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,17 +31,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DetailRiwayatBooking extends AppCompatActivity {
-    TextView tanggal, jam_mulai, jam_selesai, nama_lengkap, jumlah_peserta, tujuan, deskripsi, status;
+    TextView tanggal, jam_mulai, jam_selesai, nama_lengkap, jumlah_peserta, tujuan, deskripsi, status, komunitas, nama_ruangan;
     String id_booking, id_ruangan, id_komunitas, nik;
     ProgressBar progressBar;
     ProgressDialog progressDialog;
     String[] status_booking = {"", "Aktif", "Pending", "Selesai", "Batal"};
-    String xnama_komunitas, xnama, xnama_ruangan, xtanggal_mulai, xjam_mulai, xjumlah_orang, xtujuan, xdeskripsi;
+    String xnama_komunitas, xnama, xnama_ruangan, xtanggal_mulai, xjam_mulai, xjam_selesai, xjumlah_orang, xtujuan, xdeskripsi;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_riwayat_booking);
+        setContentView(R.layout.activity_detail_riwayat_booking);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -53,17 +51,22 @@ public class DetailRiwayatBooking extends AppCompatActivity {
         xnama_ruangan = getIntent().getStringExtra("nama_ruangan");
         xtanggal_mulai = getIntent().getStringExtra("tanggal_mulai");
         xjam_mulai = getIntent().getStringExtra("jam_mulai");
+        xjam_selesai = getIntent().getStringExtra("jam_selesai");
         xjumlah_orang = getIntent().getStringExtra("jumlah_orang");
         xtujuan = getIntent().getStringExtra("tujuan");
         xdeskripsi = getIntent().getStringExtra("deskripsi");
 
         nik = Preferences.getInstance(getApplicationContext()).getNik();
+//        xnama_komunitas = Preferences.getInstance(getApplicationContext()).getKomunitas();
         Log.e("NIK", "" + nik);
         progressDialog = new ProgressDialog(this);
         progressBar = findViewById(R.id.progressbar);
         tanggal = findViewById(R.id.tv_tanggal_mulai);
         jam_mulai = findViewById(R.id.tv_jam_mulai);
+        jam_selesai = findViewById(R.id.tv_jam_selesai);
         nama_lengkap = findViewById(R.id.tv_nama_pemesan);
+        nama_ruangan = findViewById(R.id.tv_nama_ruangan);
+        komunitas = findViewById(R.id.tv_nama_komunitas);
         jumlah_peserta = findViewById(R.id.tv_jumlah_orang);
         tujuan = findViewById(R.id.tv_tujuan);
         deskripsi = findViewById(R.id.tv_deskripsi_kegiatan);
@@ -71,7 +74,10 @@ public class DetailRiwayatBooking extends AppCompatActivity {
 
         tanggal.setText(xtanggal_mulai);
         jam_mulai.setText(xjam_mulai);
+        jam_selesai.setText(xjam_selesai);
         nama_lengkap.setText(xnama);
+        nama_ruangan.setText(xnama_ruangan);
+//        komunitas.setText(xnama_komunitas);
         jumlah_peserta.setText(xjumlah_orang);
         tujuan.setText(xtujuan);
         deskripsi.setText(xdeskripsi);

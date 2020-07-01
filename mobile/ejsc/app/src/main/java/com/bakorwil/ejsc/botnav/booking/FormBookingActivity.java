@@ -43,11 +43,16 @@ import okhttp3.internal.Util;
 
 public class FormBookingActivity extends AppCompatActivity {
     EditText nama, telepon, komunitas, nama_ruangan, tanggal, jam_mulai, durasi, jam_selesai, jumlah_peserta, tujuan, deskripsi;
+
     String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan, exnik;
+
+    String ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas;
+
     Button btn_booking_sekarang;
     ProgressDialog pd;
     String tessss;
     final Calendar myCalendar = Calendar.getInstance();
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class FormBookingActivity extends AppCompatActivity {
         telepon.setText(extelepon);
         komunitas = findViewById(R.id.edt_komunitas);
         exkomunitas = Preferences.getInstance(getApplicationContext()).getKomunitas();
+
         exnik = Preferences.getInstance(getApplicationContext()).getNik();
         exruangan = Preferences.getInstance(getApplicationContext()).getRuangan();
         if(exkomunitas.equals(1)){
@@ -81,25 +87,27 @@ public class FormBookingActivity extends AppCompatActivity {
             tessss = "Flowbyte Dev";
         }
         komunitas.setText(tessss);
+        komunitas.setText(exkomunitas);
+        Log.e("IDKOMUNITASSSSS", "" + exkomunitas);
         nama_ruangan = findViewById(R.id.edt_nama_ruangan);
         nama_ruangan.setText(ex_nama_ruangan);
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-        };
+
         tanggal = findViewById(R.id.edt_tanggal);
         tanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(FormBookingActivity.this, date,
-                        myCalendar.get(Calendar.DAY_OF_MONTH),
-                        myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.YEAR)).show();
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(FormBookingActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                updateLabel();
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
             }
         });
         jam_mulai = findViewById(R.id.edt_jam_mulai);
@@ -109,7 +117,6 @@ public class FormBookingActivity extends AppCompatActivity {
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
-
                 TimePickerDialog mTimePicker;
                 mTimePicker = new TimePickerDialog(FormBookingActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override

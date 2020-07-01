@@ -54,11 +54,11 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.HolderDa
 
                 detail.putExtra("nama_ruangan", holder.nama_ruangan.getText().toString());
                 detail.putExtra("tanggal_mulai", holder.tanggal_mulai.getText().toString());
-                detail.putExtra("jam_mulai", holder.tanggal_mulai.getText().toString());
+                detail.putExtra("jam_mulai", holder.jam_mulai.getText().toString());
+                detail.putExtra("jam_selesai", holder.jam_selesai.getText().toString());
                 detail.putExtra("status", holder.status.getText().toString());
                 detail.putExtra("nama", holder.nama);
                 detail.putExtra("nama_komunitas", holder.nama_komunitas);
-                detail.putExtra("nama_ruangan", holder.nama_ruangan.getText().toString());
                 detail.putExtra("jumlah_orang", holder.jumlah_orang);
                 detail.putExtra("tujuan", holder.tujuan);
                 detail.putExtra("deskripsi", holder.deskripsi);
@@ -79,7 +79,6 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.HolderDa
             holder.jumlah_orang = modelBooking.getJumlah_orang();
             holder.tujuan = modelBooking.getTujuan();
             holder.deskripsi = modelBooking.getDeskripsi_kegiatan();
-
             holder.nama_ruangan.setText(modelBooking.getNama_ruangan());
             holder.tanggal_mulai.setText(modelBooking.getTanggal_mulai());
             holder.jam_mulai.setText(modelBooking.getJam_mulai());
@@ -103,7 +102,7 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.HolderDa
             super(itemView);
             tanggal_mulai = itemView.findViewById(R.id.tv_riwayat_tanggal);
             jam_mulai = itemView.findViewById(R.id.tv_riwayat_jam_mulai);
-            jam_selesai = itemView.findViewById(R.id.tvJudulEvent);
+            jam_selesai = itemView.findViewById(R.id.tv_riwayat_jam_selesai);
             status = itemView.findViewById(R.id.tv_status_booking);
             nama_ruangan = itemView.findViewById(R.id.tv_riwayat_ruangan);
 //            jumlah_orang = itemView.findViewById(R.id.tvKeteranganEvent);

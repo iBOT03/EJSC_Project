@@ -31,8 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="aa"
                 android:fontFamily="@font/poppins_medium"
+                android:text="Status"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -82,11 +82,37 @@
                 android:layout_below="@id/tv_riwayat_ruangan"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:layout_toEndOf="@id/tv_riwayat_tanggal"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/jam_mulai"
+                android:textColor="@color/darkGrey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txt_dash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_riwayat_ruangan"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_toEndOf="@id/tv_riwayat_jam_mulai"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/dash"
+                android:textColor="@color/darkGrey"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_riwayat_jam_selesai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_riwayat_ruangan"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_toEndOf="@id/txt_dash"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/jam_selesai"
                 android:textColor="@color/darkGrey"
                 android:textSize="12sp" />
 
