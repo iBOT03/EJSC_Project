@@ -204,7 +204,7 @@ public class FormBookingActivity extends AppCompatActivity {
                             params.put("id_komunitas", exkomunitas.toString());//komunitas.getText().toString());
                             params.put("id_ruangan", "4"); //nama.getText().toString());
                             params.put("jumlah_orang", jumlah_peserta.getText().toString());
-                            params.put("deskripsi_kegiatanharian", deskripsi.getText().toString());
+                            params.put("deskripsi_kegiatan", deskripsi.getText().toString());
                             params.put("tujuan", tujuan.getText().toString());
                             params.put("durasi", durasi.getText().toString());
                             params.put("jam_mulai", jam_mulai.getText().toString());
