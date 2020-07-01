@@ -46,8 +46,6 @@ public class FormBookingActivity extends AppCompatActivity {
 
     String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan, exnik;
 
-    String ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas;
-
     Button btn_booking_sekarang;
     ProgressDialog pd;
     String tessss;
