@@ -32,8 +32,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="@string/tanggal"
                     android:textColor="@android:color/black"
@@ -43,11 +44,36 @@
                     android:id="@+id/tv_jam_mulai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
+                    android:layout_below="@id/tv_tanggal_mulai"
+                    android:layout_alignParentStart="true"
                     android:layout_marginStart="8dp"
-                    android:layout_toEndOf="@id/tv_tanggal_mulai"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="@string/jam_mulai"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txt_dash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tanggal_mulai"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@id/tv_jam_mulai"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/dash"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_jam_selesai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tanggal_mulai"
+                    android:layout_marginBottom="8dp"
+                    android:layout_toEndOf="@id/txt_dash"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/jam_selesai"
                     android:textColor="@android:color/black"
                     android:textSize="14sp" />
 
@@ -55,7 +81,6 @@
                     android:id="@+id/tv_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="8dp"
@@ -91,7 +116,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/pemesan"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -130,7 +155,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/ruangan2"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -181,7 +206,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="@string/kegiatan"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
