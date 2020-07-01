@@ -83,7 +83,6 @@
                     android:id="@+id/edt_komunitas"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:enabled="false"
                     android:hint="@string/komunitas"
                     android:inputType="text"
                     android:maxLength="200"
@@ -219,8 +218,9 @@
                     android:id="@+id/edt_jam_selesai"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:focusable="false"
                     android:hint="@string/jam_selesai"
-                    android:inputType="datetime"
+                    android:inputType="time"
                     android:textSize="16sp"
                     app:fontFamily="@font/poppins_regular" />
 

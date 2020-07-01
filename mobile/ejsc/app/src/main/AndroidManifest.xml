@@ -18,7 +18,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".botnav.booking.InvoiceActivity"></activity>
+        <activity
+            android:name=".botnav.booking.InvoiceActivity"
+            android:configChanges="orientation"
+            android:label="@string/detail_booking"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".main.BottomNavigation"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".botnav.booking.DetailRiwayatBooking"
             android:configChanges="orientation"

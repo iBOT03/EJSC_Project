@@ -64,6 +64,7 @@ public class DetailRuanganActivity extends AppCompatActivity {
                 Intent move_data = new Intent(DetailRuanganActivity.this, FormBookingActivity.class);
                 move_data.putExtra("nama_ruangan", nama.getText().toString());
                 move_data.putExtra("kapasitas", kapasitas.getText().toString());
+                move_data.putExtra("id_ruangan", id_ruangan);
                 startActivity(move_data);
                 Log.e("MOVE DATA: ", "" + move_data);
             }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.botnav.event.DetailEventActivity;
 import com.bakorwil.ejsc.configfile.ServerApi;
+import com.bakorwil.ejsc.configfile.Util;
 import com.bakorwil.ejsc.model.ModelEvent;
 import com.squareup.picasso.Picasso;
 
@@ -57,7 +58,7 @@ public class AdapterEvent extends RecyclerView.Adapter<AdapterEvent.HolderData> 
 
         try {
             holder.id_event = modelEvent.getId_event();
-            holder.tanggal.setText(modelEvent.getTgl_mulai());
+            holder.tanggal.setText(Util.settanggal(modelEvent.getTgl_mulai()));
             holder.judul.setText(modelEvent.getJudul());
             holder.keterangan.setText(modelEvent.getKeterangan());
             Picasso.get()
