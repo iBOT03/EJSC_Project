@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 		$user = $this->db->get_where('akun', ['email' => $email]) ->row_array();
 		if($user){
 			if($user['LEVEL'] == 1){
-				if(password_verify($password, $user['PASSWORD'])) {
+				if(md5($password, $user['PASSWORD'])) {
 					$data = [
 						'NAMA_LENGKAP' => $user['NAMA_LENGKAP']
 					];
