@@ -75,5 +75,21 @@ class Booking_Model extends CI_Model {
         }
         return false;
     }
+
+    /*
+    * GET Riwayat Booking
+    *------------------------------
+    * @param: {array} Riwayat Booking Data
+    */
+    public function getRiwayat($id = null) {
+        // if ($id === null) {
+        // return $this->db->get('booking')->result_array();
+        // } else {
+            // return $this->db->get_where('booking', ['NIK' => $id])->result_array();
+        //}
+        $query = $this->db->query("SELECT * FROM `booking`, `ruangan`, `komunitas`, `akun` WHERE
+        ruangan.ID_RUANGAN = booking.ID_RUANGAN AND booking.ID_KOMUNITAS = komunitas.ID_KOMUNITAS AND
+        akun.NIK = booking.NIK AND akun.NIK = '$id'")->result_array();
+        return $query;
+    }
 }
-?>

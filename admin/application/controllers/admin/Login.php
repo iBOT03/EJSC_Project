@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 			redirect('admin/login');
 				}
 			} else {
-				$this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Halaman Ini Khusus Admin!</div>');
+				$this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Halaman Ini khusus admin! User harap login melalui aplikasi android EJSC</div>');
 			redirect('admin/login');
 			}
 		} else {			

@@ -81,6 +81,14 @@
 
               <div class="row">
                 <div class="my-auto col-sm-2">
+                  <p>NIK:</p>
+                </div>
+                <div class="my-auto col-sm-9">
+                  <p><?= $b->NIK?></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="my-auto col-sm-2">
                   <p>Nama Penanggung Jawab:</p>
                 </div>
                 <div class="my-auto col-sm-9">

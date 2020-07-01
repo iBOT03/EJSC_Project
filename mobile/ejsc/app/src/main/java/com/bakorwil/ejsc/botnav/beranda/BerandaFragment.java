@@ -34,6 +34,7 @@ import com.bakorwil.ejsc.adapter.SlideAdapter;
 import com.bakorwil.ejsc.adapter.SliderItem;
 import com.bakorwil.ejsc.botnav.event.EventActivity;
 import com.bakorwil.ejsc.configfile.AppController;
+import com.bakorwil.ejsc.configfile.Preferences;
 import com.bakorwil.ejsc.configfile.ServerApi;
 import com.bakorwil.ejsc.model.ModelEvent;
 import androidx.appcompat.app.AppCompatActivity;
@@ -65,7 +66,7 @@ public class BerandaFragment extends Fragment {
     ImageView btnNotifikasi;
     JSONArray arr;
     TextView dataKosong, show;
-    String cmail, cnama;
+    String cmail, cnama, xnama;
     TextView tes;
     CarouselView foto;
     private ArrayList<ModelEvent> arrayList;
@@ -77,9 +78,10 @@ public class BerandaFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
 
-        bacaPreferensi(); //ini lupa
+        xnama = Preferences.getInstance(getContext()).getNama();
+        Log.e("NAMA", "" + xnama);
         tes = view.findViewById(R.id.tv_nama_user);
-        tes.setText(cnama); //set nama
+        tes.setText(xnama);
         mItems = new ArrayList<>();
         arrayList = new ArrayList<>();
         pb = view.findViewById(R.id.progressbar);
@@ -92,7 +94,6 @@ public class BerandaFragment extends Fragment {
         dataKosong = view.findViewById(R.id.dataKosong);
         show = view.findViewById(R.id.tampilkan_semua);
         viewPager2 = view.findViewById(R.id.viewPagerImageSlider);
-        //foto = view.findViewById(R.id.carousel);
 
         show.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +102,9 @@ public class BerandaFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        loadJSON();
+        String telepon = Preferences.getInstance(getContext()).getTelepon();
+        Log.e("TELEPON", "" + telepon);
+        loadEventBeranda();
 
         btnNotifikasi = view.findViewById(R.id.btn_notifikasi);
         btnNotifikasi.setOnClickListener(new View.OnClickListener() {
@@ -112,24 +114,6 @@ public class BerandaFragment extends Fragment {
                 startActivity(notifikasi);
             }
         });
-
-//        CarouselView carouselView = view.findViewById(R.id.carousel);
-//        //Picasso.get()
-//                //.load(ServerApi.URL_RUANGAN + "../../../" + "uploads/ruangan/" + data.getString("FOTO_RUANGAN"))
-//                //.into(foto);
-//        carouselView.setPageCount(mImages.length);
-//        carouselView.setImageListener(new ImageListener() {
-//            @Override
-//            public void setImageForPosition(int position, ImageView imageView) {
-//                imageView.setImageResource(mImages[position]);
-//            }
-//        });
-//        carouselView.setImageClickListener(new ImageClickListener() {
-//            @Override
-//            public void onClick(int position) {
-//                Toast.makeText(getContext(), mImagesTitle[position], Toast.LENGTH_SHORT).show();
-//            }
-//        });
         //viewPager2 = findViewById(R.id.viewPagerImageSlider);
 
         //disini tempat mempersiapkan list foto dari drawable
@@ -189,15 +173,14 @@ public class BerandaFragment extends Fragment {
         sliderHandler.postDelayed(sliderRunnable, 3000);
     }
 
-    private void loadJSON() {
+    private void loadEventBeranda() {
         StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT_BERANDA, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
-
+                pb.setVisibility(View.GONE);
                 try {
                     res = new JSONObject(response);
-//                    JSONObject arr2 = res.getJSONObject("response");
                     if (res.getBoolean("status")) {
                         arr = res.getJSONArray("data_event");
                         for (int i = 0; i < arr.length(); i++) {
@@ -250,25 +233,9 @@ public class BerandaFragment extends Fragment {
             @Override
             public Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-//                params.put("token" , authdata.getInstance(getActivity()).getToken());
                 return params;
             }
         };
         AppController.getInstance().addToRequestQueue(sendData);
-
     }
-
-    private void bacaPreferensi(){
-        SharedPreferences pref = getActivity().getSharedPreferences("akun", Context.MODE_PRIVATE);
-        cmail = pref.getString("email", "0"); //email
-        cnama = pref.getString("nama", "0"); // get nama buat ditampilkan
-    }
-
-//    private int[] mImages = new int[]{
-//            R.drawable.coworkingspace, R.drawable.conferenceroom, R.drawable.trainingroom, R.drawable.meetingroom
-//    };
-//
-//    private String[] mImagesTitle = new String[]{
-//            "Meeting Room", "Training Room", "Conference Room", "Co-Working Space"
-//    };
 }

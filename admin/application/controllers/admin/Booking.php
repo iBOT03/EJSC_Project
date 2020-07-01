@@ -38,6 +38,7 @@ class Booking extends CI_Controller {
 		$this->form_validation->set_rules('singleDatePicker' , 'Tanggal Mulai' , 'required');
 		$this->form_validation->set_rules('start' , 'Jam Mulai' , 'required');
 		$this->form_validation->set_rules('durasi' , 'Durasi Waktu' , 'required');
+		$this->form_validation->set_rules('nik', 'NIK', 'required|trim|numeric|max_length[16]');
 		$this->form_validation->set_rules('nama' , 'Nama Penanggung Jawab' , 'required');
 		$this->form_validation->set_rules('jumlahpeserta' , 'Jumlah Peserta' , 'required');
 		$this->form_validation->set_rules('no_telp' , 'Nomor Telepon' , 'required');
@@ -54,11 +55,12 @@ class Booking extends CI_Controller {
 			$jammulai = $this->input->post('start');
 			$durasi = $this->input->post('durasi');
 		
-			$tgldanwaktu= date('Y-m-d H:i',strtotime($jammulai,strtotime($tgl)));
+			$tgldanwaktu= date('H:i',strtotime($jammulai,strtotime($tgl)));
 			
-			$done= date('Y-m-d H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
+			$done= date('H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
 			
 			$tambah = $this->model_booking->insert(array(
+					'NIK' => $this->input->post('nik'),
 					'NAMA' => $this->input->post('nama'),
 					'NOMOR_TELEPON' => $this->input->post('no_telp'),
 					'ID_KOMUNITAS' => $this->input->post('komunitas'),
@@ -123,11 +125,12 @@ class Booking extends CI_Controller {
 			$jammulai = $this->input->post('start');
 			$durasi = $this->input->post('durasi');
 		
-			$tgldanwaktu= date('Y-m-d H:i',strtotime($jammulai,strtotime($tgl)));
+			$tgldanwaktu= date('H:i',strtotime($jammulai,strtotime($tgl)));
 			
-			$done= date('Y-m-d H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
+			$done= date('H:i',strtotime("+{$durasi}hours",strtotime($tgldanwaktu)));
 
 			$update = $this->model_booking->updatedata(array(
+					'NIK' => $this->input->post('nik'),
 					'NAMA' => $this->input->post('nama'),
 					'NOMOR_TELEPON' => $this->input->post('no_telp'),
 					'ID_KOMUNITAS' => $this->input->post('komunitas'),
@@ -193,5 +196,3 @@ class Booking extends CI_Controller {
 
 
 }
-
-?>

@@ -18,7 +18,35 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity android:name=".botnav.booking.InvoiceActivity"></activity>
+        <activity
+            android:name=".botnav.booking.DetailRiwayatBooking"
+            android:configChanges="orientation"
+            android:label="@string/detail_booking"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".botnav.booking.FormBookingActivity"
+            android:configChanges="orientation"
+            android:label="@string/form_booking"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".botnav.booking.DetailRuanganActivity"
+            android:configChanges="orientation"
+            android:label="@string/detail_ruangan"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".akun.WebViewLupaPasswordActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.DarkGreen"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".botnav.event.EventActivity"
             android:configChanges="orientation"
@@ -42,24 +70,6 @@
             android:parentActivityName=".main.BottomNavigation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.DarkGreen"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".akun.ResetPasswordActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionDarkGreen"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".akun.KodeResetActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionDarkGreen"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".akun.LupaPasswordActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionDarkGreen"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".akun.UploadFotoKtpActivity"

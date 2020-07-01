@@ -79,10 +79,9 @@
                                         <p>Komunitas</p>
                                         <div class="input-group">
                                             <select class="form-control border-dark small mb-3" id="komunitas" name="komunitas" required>
-                                                <option value="<?= set_value('komunitas')?>">---Pilih---</option>
+                                                <option value="<?= set_value('komunitas') ?>">---Pilih---</option>
                                                 <?php foreach ($komunitas as $row) { ?>
-                                                    <option value="<?php echo $row['ID_KOMUNITAS']; ?>"
-                                                    >
+                                                    <option value="<?php echo $row['ID_KOMUNITAS']; ?>">
                                                         <?php echo $row['NAMA_KOMUNITAS']; ?></option>
                                                 <?php } ?>
                                             </select>
@@ -103,7 +102,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="input-group">
-                                            <img id="preview" src="" alt="" width="320px" /> <br>                                            
+                                            <img id="preview" src="" alt="" width="320px" /> <br>
                                         </div>
                                     </div>
                                 </div>
@@ -112,15 +111,15 @@
                                         <p>Password</p>
                                         <div class="input-group">
                                             <input name="password1" id="password1" type="password" class="form-control border-dark small mb-3" placeholder="Masukkan Password" aria-describedby="basic-addon2" maxlength="16">
-                                            <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                         </div>
+                                        <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Konfirmasi Password</p>
                                         <div class="input-group">
                                             <input name="password2" id="password2" type="password" class="form-control border-dark small mb-3" placeholder="Konfirmasi Password" aria-describedby="basic-addon2" maxlength="16">
-                                            <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                         </div>
+                                        <?= form_error('password2', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 

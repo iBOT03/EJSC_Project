@@ -86,7 +86,7 @@
                                 <div class="input-group">
                                     <textarea name="alamat" id="alamat" type="text"
                                         class="form-control border-dark small mb-3" placeholder="Masukkan Alamat"
-                                        aria-describedby="basic-addon2" value="<?= set_value('alamat'); ?>"></textarea>
+                                        aria-describedby="basic-addon2" ><?= set_value('alamat'); ?></textarea>
                                 </div>
                                 <?= form_error('alamat', '<small class="text-danger pl-2">', '</small>'); ?>
 

@@ -1,15 +1,16 @@
 package com.bakorwil.ejsc.main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.akun.LoginActivity;
+import com.bakorwil.ejsc.configfile.Preferences;
 
 import static java.lang.Thread.sleep;
 
@@ -32,10 +33,14 @@ public class SplashScreen extends AppCompatActivity {
                 try {
                     sleep(1000);
                     SplashScreen.this.finish();
-                    Intent b = new Intent(SplashScreen.this, LoginActivity.class);
-                    startActivity(b);
+                    if (Preferences.getInstance(getApplicationContext()).ceklogin()) {
+                        Intent success = new Intent(SplashScreen.this, BottomNavigation.class);
+                        startActivity(success);
+                    } else {
+                        Intent error = new Intent(SplashScreen.this, LoginActivity.class);
+                        startActivity(error);
+                    }
                 } catch (InterruptedException e) {
-
                     e.printStackTrace();
                 }
             }

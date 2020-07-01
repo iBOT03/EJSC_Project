@@ -59,12 +59,12 @@ public class EventFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
         dataKosong = view.findViewById(R.id.dataKosong);
 
-        loadJSON();
+        loadEvent();
 
         return view;
     }
 
-    private void loadJSON() {
+    private void loadEvent() {
         StringRequest sendData = new StringRequest(Request.Method.GET, ServerApi.URL_GET_EVENT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

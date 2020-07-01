@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     ProgressDialog pd;
     EditText email, password;
     Button btn_login;
-    String cmail, cnama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_lupa_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lp = new Intent(LoginActivity.this, LupaPasswordActivity.class);
+                Intent lp = new Intent(LoginActivity.this, WebViewLupaPasswordActivity.class);
                 startActivity(lp);
             }
         });
@@ -89,10 +88,19 @@ public class LoginActivity extends AppCompatActivity {
                                 res = new JSONObject(response);
                                 Log.d("error di ", response);
                                 if (res.getBoolean("status")) {
-                                    masuk();
+                                    JSONObject datalogin = res.getJSONObject("data");
+                                    Preferences.getInstance(getApplicationContext()).setdatauser(
+                                            datalogin.getString("nik"),
+                                            datalogin.getString("nama_lengkap"),
+                                            datalogin.getString("id_komunitas"),
+                                            datalogin.getString("email"),
+                                            datalogin.getString("no_telepon"),
+                                            datalogin.getString("alamat"),
+                                            datalogin.getString("token")
+                                    );
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
-//                                    Intent login = new Intent(LoginActivity.this, BottomNavigation.class);
-//                                    startActivity(login);
+                                    Intent login = new Intent(LoginActivity.this, BottomNavigation.class);
+                                    startActivity(login);
                                 } else {
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
                                 }
@@ -108,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onErrorResponse(VolleyError error) {
                                     pd.dismiss();
                                     Log.e("errornyaa ", "" + error);
-                                    Toast.makeText(LoginActivity.this, "Gagal Login, " + error, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Email atau Kata Sandi Salah", Toast.LENGTH_SHORT).show();
                                 }
                             }) {
                         @Override
@@ -123,22 +131,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (Preferences.getLoggedInStatus(getBaseContext())) {
-            startActivity(new Intent(getBaseContext(), BottomNavigation.class));
-            finish();
-        }
-    }
-
-    private void masuk() {
-        Preferences.setLoggedInEmail(getBaseContext(), Preferences.getRegisteredEmail(getBaseContext()));
-        Preferences.setLoggedInStatus(getBaseContext(), true);
-        startActivity(new Intent(getBaseContext(), BottomNavigation.class));
-        finish();
     }
 
     public void onBackPressed() {

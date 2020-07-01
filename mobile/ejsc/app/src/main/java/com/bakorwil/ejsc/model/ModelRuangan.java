@@ -5,6 +5,15 @@ public class ModelRuangan {
     String foto_ruangan;
     String nama_ruangan;
     String kapasitas;
+    String deskripsi;
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
 
     public String getId_ruangan() {
         return id_ruangan;
@@ -43,5 +52,6 @@ public class ModelRuangan {
         this.foto_ruangan = foto_ruangan;
         this.nama_ruangan = nama_ruangan;
         this.kapasitas = kapasitas;
+        this.deskripsi = deskripsi;
     }
 }

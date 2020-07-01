@@ -28,13 +28,13 @@ class Akun_Model extends CI_Model {
             if(md5($password) === $akun_pass) {
                 return $q->row();
             }
-            return FALSE;
+            return TRUE;
         } else {
             return FALSE;
         }
     }
 
-        /*
+    /*
     * Update Akun
     *------------------------------
     * @param: {array} Booking Data
@@ -42,28 +42,28 @@ class Akun_Model extends CI_Model {
     public function update_akun(array $data) {
         // Cek Akun Exists dengan NIK
         $query = $this->db->get_where($this->akun_table, [
-            'NIK' => $data['nik'],
-            'LEVEL' => $data['level'],
-            'FOTO_KTP' => $data['foto_ktp'],
-            'NAMA_LENGKAP' => $data['nama_lengkap'],
-            'EMAIL' => $data['email'],
-            'NO_TELEPON' => $data['no_telepon'],
-            'ALAMAT' => $data['alamat'],
-            'ID_KOMUNITAS' => $data['id_komunitas'],
-            'PASSWORD' => $data['password'],
+            'NIK' => $data['NIK'],
+            'LEVEL' => $data['LEVEL'],
+            // 'FOTO_KTP' => $data['FOTO_KTP'],
+            'NAMA_LENGKAP' => $data['NAMA_LENGKAP'],
+            'EMAIL' => $data['EMAIL'],
+            'NO_TELEPON' => $data['NO_TELEPON'],
+            'ALAMAT' => $data['ALAMAT'],
+            'ID_KOMUNITAS' => $data['ID_KOMUNITAS'],
+            'PASSWORD' => $data['PASSWORD'],
             ]);
             if ($this->db->affected_rows() > 0) {
                 // Update Akun
                 $update_data = [
-                    'NIK' => $data['nik'],
-                    'LEVEL' => $data['level'],
-                    'FOTO_KTP' => $data['foto_ktp'],
-                    'NAMA_LENGKAP' => $data['nama_lengkap'],
-                    'EMAIL' => $data['email'],
-                    'NO_TELEPON' => $data['no_telepon'],
-                    'ALAMAT' => $data['alamat'],
-                    'ID_KOMUNITAS' => $data['id_komunitas'],
-                    'PASSWORD' => $data['password'],
+                    'NIK' => $data['NIK'],
+                    'LEVEL' => $data['LEVEL'],
+                    // 'FOTO_KTP' => $data['FOTO_KTP'],
+                    'NAMA_LENGKAP' => $data['NAMA_LENGKAP'],
+                    'EMAIL' => $data['EMAIL'],
+                    'NO_TELEPON' => $data['NO_TELEPON'],
+                    'ALAMAT' => $data['ALAMAT'],
+                    'ID_KOMUNITAS' => $data['ID_KOMUNITAS'],
+                    'PASSWORD' => $data['PASSWORD'],
             ];
             return $this->db->update($this->akun_table, $update_data, ['nik' => $query->row('NIK')]);
         }

@@ -27,95 +27,76 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <?php foreach ($ruangan as $r) { ?>
-                    <!-- Page Heading -->
-            <form method="post" enctype="multipart/form-data">
-                <h1 class="h3 mb-2 text-gray-800">Ubah Data Ruangan</h1>
+                    <?php foreach ($ruangan as $r) { ?>
+                        <!-- Page Heading -->
+                        <form method="post" enctype="multipart/form-data">
+                            <h1 class="h3 mb-2 text-gray-800">Ubah Data Ruangan</h1>
 
-                <div class="card shadow mb-4">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p>Nama Ruangan</p>
-                                <div class="input-group">
-                                    <input name="namaruangan"
-                                            id="namaruangan"
-                                            type="text"
-                                            class="form-control border-dark small mb-3"
-                                            placeholder="Masukkan Nama Ruangan"
-                                            aria-describedby="basic-addon2"
-                                            maxlength="100"
-                                            value="<?php echo $r->NAMA_RUANGAN?>"
-                                            readonly
-                                        >
+                            <div class="card shadow mb-4">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Nama Ruangan</p>
+                                            <div class="input-group">
+                                                <input name="namaruangan" id="namaruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Nama Ruangan" aria-describedby="basic-addon2" maxlength="100" value="<?php echo $r->NAMA_RUANGAN ?>" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <p>Kapasitas Ruangan</p>
+                                            <div class="input-group">
+                                                <input name="kapasitasruangan" id="kapasitasruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Kapasitas Ruangan" aria-describedby="basic-addon2" maxlength="3" value="<?php echo $r->KAPASITAS ?>" onkeypress="return hanyaAngka(event)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <p>Upload Foto Ruangan</p>
+                                            <div class="input-group">
+                                                <input name="foto" id="foto" type="file" class="form-control border-dark small mb-3" placeholder="" aria-describedby="basic-addon2">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <p>Upload Foto Ruangan</p>
+                                            <div class="input-group">
+                                                <img src="<?= base_url('uploads/ruangan/' . $r->FOTO_RUANGAN) ?>" alt="" srcset="" width="100px">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>Deskripsi Ruangan</p>
+                                    <div class="input-group">
+                                        <textarea name="deskripsiruangan" id="deskripsiruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Deskripsi Ruangan" aria-describedby="basic-addon2"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-info btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </span>
+                                        <span class="text">Ubah Data Ruangan</span>
+                                    </button>
+                                    
+                                    <a href="<?php echo site_url('admin/ruangan') ?>" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-reply"></i>
+                                        </span>
+                                        <span class="text">Kembali</span>
+                                    </a>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6">
-                                <p>Kapasitas Ruangan</p>
-                                <div class="input-group">
-                                    <input name="kapasitasruangan"
-                                            id="kapasitasruangan"
-                                            type="text"
-                                            class="form-control border-dark small mb-3"
-                                            placeholder="Masukkan Kapasitas Ruangan"
-                                            aria-describedby="basic-addon2"
-                                            maxlength="3"
-                                            value="<?php echo $r->KAPASITAS?>"
-                                            onkeypress="return hanyaAngka(event)"
-                                            >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p>Upload Foto Ruangan</p>
-                                <div class="input-group">
-                                    <input name="foto"
-                                            id="foto"
-                                            type="file"                                                   
-                                            class="form-control border-dark small mb-3"
-                                            placeholder=""
-                                            aria-describedby="basic-addon2"
-                                            >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p>Upload Foto Ruangan</p>
-                                <div class="input-group">
-                                 <img src="<?= base_url('uploads/ruangan/'.$r->FOTO_RUANGAN)?>" alt="" srcset="" width="100px">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-info btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-pencil-alt"></i>
-                            </span>
-                            <span class="text">Ubah Data Ruangan</span>
-                        </button>
-                        <a href="<?php echo site_url('admin/ruangan') ?>" class="btn btn-danger btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-reply"></i>
-                            </span>
-                            <span class="text">Kembali</span>
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
                 </div>
             </div>
 
 
-    <!-- Footer -->
-    <?php $this->load->view("admin/_partials/footer.php") ?>
+            <!-- Footer -->
+            <?php $this->load->view("admin/_partials/footer.php") ?>
 
-    </div>
-    <!-- End of Content Wrapper -->
-                <?php } ?>
+        </div>
+        <!-- End of Content Wrapper -->
+    <?php } ?>
     </div>
     <!-- End of Page Wrapper -->
 

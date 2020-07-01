@@ -29,6 +29,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">East Java Super Corridor</h1>
                                         <?php echo $this->session->flashdata('pesan'); ?>
+                                        <?php echo $this->session->flashdata('message'); ?>
                                     </div>
 
                                     <form class="user" method="post">

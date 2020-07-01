@@ -76,7 +76,7 @@
     <string name="nama_ruangan">Nama Ruangan</string>
     <string name="kegiatan">Kegiatan:</string>
     <string name="ket_booking">Ket. Booking</string>
-    <string name="statu">Status:</string>
+    <string name="status">Status:</string>
     <string name="komunitas2">Komunitas:</string>
     <string name="riwayat">Riwayat</string>
     <string name="aktif">Aktif</string>
@@ -93,4 +93,13 @@
     <string name="riwayat_booking">Riwayat Booking</string>
     <string name="detail">Detail</string>
     <string name="orang">Orang</string>
+    <string name="foto_ruangan">Foto Ruangan</string>
+    <string name="detail_ruangan">Detail Ruangan</string>
+    <string name="booking_ruangan">Booking Ruangan</string>
+    <string name="jam">jam</string>
+    <string name="booking_sekarang">Booking Sekarang</string>
+    <string name="form_booking">Formulir Booking</string>
+    <string name="dash">-</string>
+    <string name="jadwal_booking_ruangan">Jadwal Booking Ruangan:</string>
+    <string name="akun">Akun</string>
 </resources>

@@ -79,6 +79,7 @@
                   <thead>
                     <tr>
                       <th style="width: 30px">Jam</th>
+                      <th>NIK</th>
                       <th>Nama</th>
                       <th>Komunitas</th>
                       <th>Kegiatan</th>
@@ -92,6 +93,7 @@
                           <!-- <?php foreach($booking as $b):?>
                           <tr>
                             <td><?=$b->JAM_MULAI ?></td>
+                            <td><?=$b->NIK ?></td>
                             <td><?=$b->NAMA ?></td>
                             <td><?=$b->NAMA_KOMUNITAS ?></td>
                             <td><?=$b->TUJUAN ?></td>
@@ -194,6 +196,7 @@
                     for(var i=0;i<data.length;i++){
                        baris+= '<tr>'+
                                 '<td>'+ data[i].JAM_MULAI+'</td>'+
+                                '<td>'+ data[i].NIK+'</td>'+
                                 '<td>'+ data[i].NAMA+'</td>'+
                                 '<td>'+ data[i].NAMA_KOMUNITAS+'</td>'+
                                 '<td>'+ data[i].TUJUAN +'</td>'+
@@ -218,6 +221,7 @@
                     for(var i=0;i<data.length;i++){
                        baris+= '<tr>'+
                                 '<td>'+ data[i].JAM_MULAI+'</td>'+
+                                '<td>'+ data[i].NIK+'</td>'+
                                 '<td>'+ data[i].NAMA+'</td>'+
                                 '<td>'+ data[i].NAMA_KOMUNITAS+'</td>'+
                                 '<td>'+ data[i].TUJUAN +'</td>'+
@@ -271,6 +275,7 @@
                     for(var i=0;i<data.length;i++){
                        baris+= '<tr>'+
                                 '<td>'+ data[i].JAM_MULAI+'</td>'+
+                                '<td>'+ data[i].NIK+'</td>'+
                                 '<td>'+ data[i].NAMA+'</td>'+
                                 '<td>'+ data[i].NAMA_KOMUNITAS+'</td>'+
                                 '<td>'+ data[i].TUJUAN +'</td>'+

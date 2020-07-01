@@ -27,6 +27,7 @@
                                         <h1 class="h4 text-gray-900 mb-2">Lupa Kata Sandi?</h1>
                                         <p class="mb-4">Masukkan email Anda dan kami akan mengirim link untuk mereset kata sandi Anda</p>
                                     </div>
+                                    <?php echo $this->session->flashdata('message'); ?>
                                     <form class="user" method="post" action="<?php base_url('auth/forgotpassword'); ?>">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukkan alamat email..." value="<?php set_value('email'); ?>">
@@ -45,6 +46,9 @@
             </div>
 
         </div>
+
+        <!-- Footer -->
+        <?php $this->load->view("admin/_partials/footer.php") ?>
 
     </div>
 

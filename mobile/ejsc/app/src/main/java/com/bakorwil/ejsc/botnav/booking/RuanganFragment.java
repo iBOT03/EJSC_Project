@@ -23,7 +23,6 @@ import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.adapter.AdapterRuangan;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
-import com.bakorwil.ejsc.model.ModelEvent;
 import com.bakorwil.ejsc.model.ModelRuangan;
 
 import org.json.JSONArray;

@@ -24,8 +24,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
+                android:nestedScrollingEnabled="false"
                 android:orientation="vertical"
-                tools:listitem="@layout/item_card_ruangan" />
+                tools:listitem="@layout/item_list_ruangan" />
 
         </RelativeLayout>
 
@@ -53,6 +54,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
 </RelativeLayout>
