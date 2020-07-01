@@ -12,6 +12,7 @@ public class ServerApi {
 //    public static final String URL_KONTAK = "http://192.168.1.9/EJSC_Project/admin/api/kontak/kontak";
     // Rest API Ruangan
 //    public static final String URL_RUANGAN = "http://192.168.1.9/EJSC_Project/admin/api/ruangan/ruangan";
+//    public static final String URL_TAMBAH_BOOKING = "http://192.168.1.7/EJSC_Project/admin/api/booking/tambah";
 
 
     // Rest API Akun Hosting Flowbyte

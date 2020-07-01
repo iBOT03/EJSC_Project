@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
                                             datalogin.getString("email"),
                                             datalogin.getString("no_telepon"),
                                             datalogin.getString("alamat"),
-                                            datalogin.getString("id_ruangan"),
                                             datalogin.getString("token")
                                     );
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
