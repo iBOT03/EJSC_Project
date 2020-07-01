@@ -63,7 +63,7 @@ public class BerandaFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterEvent mAdapter;
     ProgressBar pb;
-    ImageView btnNotifikasi;
+//    ImageView btnNotifikasi;
     JSONArray arr;
     TextView dataKosong, show;
     String cmail, cnama, xnama;
@@ -106,14 +106,14 @@ public class BerandaFragment extends Fragment {
         Log.e("TELEPON", "" + telepon);
         loadEventBeranda();
 
-        btnNotifikasi = view.findViewById(R.id.btn_notifikasi);
-        btnNotifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent notifikasi = new Intent(getContext(), NotifikasiActivity.class);
-                startActivity(notifikasi);
-            }
-        });
+//        btnNotifikasi = view.findViewById(R.id.btn_notifikasi);
+//        btnNotifikasi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent notifikasi = new Intent(getContext(), NotifikasiActivity.class);
+//                startActivity(notifikasi);
+//            }
+//        });
         //viewPager2 = findViewById(R.id.viewPagerImageSlider);
 
         //disini tempat mempersiapkan list foto dari drawable

@@ -3,6 +3,7 @@ package com.bakorwil.ejsc.configfile;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 public class Preferences {
     private static Preferences mInstance;
@@ -16,7 +17,7 @@ public class Preferences {
     private static final String KEY_TELEPON = "no_telepon";
     private static final String KEY_ALAMAT = "alamat";
     private static final String KEY_TOKEN = "token";
-    private static final String KEY_RUANGAN = "id_ruangan";
+    private static final String KEY_LEVEL = "2";
 
     private Preferences(Context context) {
         mCtx = context;
@@ -29,12 +30,14 @@ public class Preferences {
         return mInstance;
     }
 
-    public boolean setdatauser(String xnik, String xnama_lengkap, String xkomunitas, String xemail, String xtelepon, String xalamat, String xtoken) {
+    public boolean setdatauser(String xnik, String xlevel, String xnama_lengkap, String xkomunitas, String xemail, String xtelepon, String xalamat, String xtoken) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(KEY_NIK, xnik);
+        editor.putString(KEY_LEVEL, xlevel);
         editor.putString(KEY_NAMA, xnama_lengkap);
+        Log.e("NAMA", xnama_lengkap);
         editor.putString(KEY_KOMUNITAS, xkomunitas);
         editor.putString(KEY_EMAIL, xemail);
         editor.putString(KEY_TELEPON, xtelepon);
@@ -52,6 +55,11 @@ public class Preferences {
     public String getNik() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_NIK, null);
+    }
+
+    public String getLevel() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_LEVEL, null);
     }
 
     public String getNama() {

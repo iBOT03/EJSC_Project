@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                     JSONObject datalogin = res.getJSONObject("data");
                                     Preferences.getInstance(getApplicationContext()).setdatauser(
                                             datalogin.getString("nik"),
+                                            datalogin.getString("level"),
                                             datalogin.getString("nama_lengkap"),
                                             datalogin.getString("id_komunitas"),
                                             datalogin.getString("email"),
@@ -98,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                             datalogin.getString("alamat"),
                                             datalogin.getString("token")
                                     );
+                                    Log.e("DATALOGIN", "" + datalogin);
                                     Toast.makeText(LoginActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
                                     Intent login = new Intent(LoginActivity.this, BottomNavigation.class);
                                     startActivity(login);

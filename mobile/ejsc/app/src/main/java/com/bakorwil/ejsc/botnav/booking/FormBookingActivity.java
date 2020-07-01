@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -23,12 +22,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bakorwil.ejsc.R;
-import com.bakorwil.ejsc.akun.DaftarActivity;
-import com.bakorwil.ejsc.akun.UploadFotoKtpActivity;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.Preferences;
-import com.bakorwil.ejsc.configfile.ServerApi;
-import com.bumptech.glide.util.ExceptionCatchingInputStream;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,16 +34,12 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import okhttp3.internal.Util;
-
 public class FormBookingActivity extends AppCompatActivity {
     EditText nama, telepon, komunitas, nama_ruangan, tanggal, jam_mulai, durasi, jam_selesai, jumlah_peserta, tujuan, deskripsi;
-
-    String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan, exnik;
-
+    String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan, exnik, tessss, xnama_ruangan, xid_ruangan, xkapasitas;
     Button btn_booking_sekarang;
     ProgressDialog pd;
-    String tessss;
+
     final Calendar myCalendar = Calendar.getInstance();
     private int mYear, mMonth, mDay, mHour, mMinute;
 
@@ -62,6 +53,13 @@ public class FormBookingActivity extends AppCompatActivity {
         //Get intent parsing data dari DetailRuangan
         ex_nama_ruangan = getIntent().getStringExtra("nama_ruangan");
         ex_kapasitas = getIntent().getStringExtra("kapasitas");
+        xid_ruangan = getIntent().getStringExtra("id_ruangan");
+        xnama_ruangan = getIntent().getStringExtra("nama_ruangan");
+        xkapasitas = getIntent().getStringExtra("kapasitas");
+
+        Log.e("INTENT_IDRUANGAN", "" + xid_ruangan);
+        Log.e("INTENT_NAMARUANGAN", "" + xnama_ruangan);
+        Log.e("INTENT_KAPASITAS", "" + xkapasitas);
 
         pd = new ProgressDialog(this);
         nama = findViewById(R.id.edt_nama);
@@ -74,17 +72,8 @@ public class FormBookingActivity extends AppCompatActivity {
         exkomunitas = Preferences.getInstance(getApplicationContext()).getKomunitas();
 
         exnik = Preferences.getInstance(getApplicationContext()).getNik();
-        if(exkomunitas.equals(1)){
-            tessss = "Dev Naked";
-        } else if(exkomunitas.equals(2)){
-            tessss = "Coding";
-        } else if(exkomunitas.equals(3)){
-            tessss = "Komunitas Musisi Jember";
-        } else {
-            tessss = "Flowbyte Dev";
-        }
-        komunitas.setText(tessss);
-        //komunitas.setText(exkomunitas);
+        Log.e("NIK", "" + exnik);
+        komunitas.setText(exkomunitas);
         Log.e("IDKOMUNITASSSSS", "" + exkomunitas);
         nama_ruangan = findViewById(R.id.edt_nama_ruangan);
         nama_ruangan.setText(ex_nama_ruangan);
@@ -121,12 +110,29 @@ public class FormBookingActivity extends AppCompatActivity {
                         jam_mulai.setText(selectedHour + ":" + selectedMinute);
                     }
                 }, hour, minute, true);
-                mTimePicker.setTitle("Select Time");
+                mTimePicker.setTitle("Jam Mulai");
                 mTimePicker.show();
             }
         });
         durasi = findViewById(R.id.edt_durasi);
         jam_selesai = findViewById(R.id.edt_jam_selesai);
+        jam_selesai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(FormBookingActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        jam_selesai.setText(selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true);
+                mTimePicker.setTitle("Jam Selesai");
+                mTimePicker.show();
+            }
+        });
         jumlah_peserta = findViewById(R.id.edt_jumlah_peserta);
         tujuan = findViewById(R.id.edt_tujuan);
         deskripsi = findViewById(R.id.edt_deskripsi_kegiatan);
@@ -137,8 +143,10 @@ public class FormBookingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pd.setMessage("Mohon Tunggu Sebentar");
                 pd.show();
-                if (tanggal.getText().toString().isEmpty()) {
-                    Toast.makeText(FormBookingActivity.this, "NIK tidak boleh kosong", Toast.LENGTH_LONG).show();
+                if (jumlah_peserta.getText().toString() == xkapasitas) {
+                    Toast.makeText(FormBookingActivity.this, "Jumlah peserta melebihi kapasitas ruangan", Toast.LENGTH_LONG).show();
+                } else if (tanggal.getText().toString().isEmpty()) {
+                    Toast.makeText(FormBookingActivity.this, "Tanggal tidak boleh kosong", Toast.LENGTH_LONG).show();
                     pd.dismiss();
                 } else if (jam_mulai.getText().toString().isEmpty()) {
                     Toast.makeText(FormBookingActivity.this, "Jam mulai tidak boleh kosong", Toast.LENGTH_SHORT).show();
@@ -161,7 +169,7 @@ public class FormBookingActivity extends AppCompatActivity {
                 } else {
                     pd.setTitle("Mohon Tunggu Sebenta");
                     pd.show();
-                    final StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_TAMBAH_BOOKING, new Response.Listener<String>() {
+                    final StringRequest senddata = new StringRequest(Request.Method.POST, "https://ejsc.flow-byte.com/api/booking/tambah", new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             JSONObject res = null;
@@ -171,8 +179,21 @@ public class FormBookingActivity extends AppCompatActivity {
                                 Log.d("error di ", response);
                                 if (res.getBoolean("status")) {
                                     Toast.makeText(FormBookingActivity.this, "Booking ruangan berhasil", Toast.LENGTH_SHORT).show();
-//                                    Intent moving = new Intent(FormBookingActivity.this, InvoiceActivity.class);
-//                                    startActivity(moving);
+                                    Intent moving = new Intent(FormBookingActivity.this, InvoiceActivity.class);
+                                    moving.putExtra("nama", nama.getText().toString());
+                                    moving.putExtra("no_telepon", telepon.getText().toString());
+                                    moving.putExtra("id_komunitas", komunitas.getText().toString());
+                                    moving.putExtra("id_ruangan", nama_ruangan.getText().toString());
+                                    moving.putExtra("deskripsi", deskripsi.getText().toString());
+                                    moving.putExtra("tujuan", tujuan.getText().toString());
+                                    moving.putExtra("jumlah_orang", jumlah_peserta.getText().toString());
+                                    moving.putExtra("tanggal_mulai", tanggal.getText().toString());
+                                    moving.putExtra("durasi", durasi.getText().toString());
+                                    moving.putExtra("jam_mulai", jam_mulai.getText().toString());
+                                    moving.putExtra("jam_selesai", jam_selesai.getText().toString());
+                                    moving.putExtra("status", "1");
+                                    Log.e("DATABOOKING", "" + moving);
+                                    startActivity(moving);
                                 } else {
                                     Toast.makeText(FormBookingActivity.this, res.getString("message"), Toast.LENGTH_SHORT).show();
 
@@ -190,7 +211,6 @@ public class FormBookingActivity extends AppCompatActivity {
                                 public void onErrorResponse(VolleyError error) {
                                     pd.dismiss();
                                     Log.e("errornyaa ", "" + error);
-
                                     Toast.makeText(FormBookingActivity.this, "Gagal booking ruangan", Toast.LENGTH_SHORT).show();
                                 }
 
@@ -198,14 +218,15 @@ public class FormBookingActivity extends AppCompatActivity {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params = new HashMap<>();
-                            params.put("nik", exnik.toString());
+                            params.put("nik", exnik);
                             params.put("nama", nama.getText().toString());
                             params.put("nomor_telepon", telepon.getText().toString());
-                            params.put("id_komunitas", exkomunitas.toString());//komunitas.getText().toString());
-                            params.put("id_ruangan", "4"); //nama.getText().toString());
+                            params.put("id_komunitas", exkomunitas);
+                            params.put("id_ruangan", xid_ruangan);
                             params.put("jumlah_orang", jumlah_peserta.getText().toString());
                             params.put("deskripsi_kegiatan", deskripsi.getText().toString());
                             params.put("tujuan", tujuan.getText().toString());
+                            params.put("tanggal_mulai", tanggal.getText().toString());
                             params.put("durasi", durasi.getText().toString());
                             params.put("jam_mulai", jam_mulai.getText().toString());
                             params.put("jam_selesai", jam_selesai.getText().toString());

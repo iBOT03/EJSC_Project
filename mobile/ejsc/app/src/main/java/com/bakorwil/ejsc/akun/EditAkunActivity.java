@@ -34,7 +34,7 @@ public class EditAkunActivity extends AppCompatActivity {
     EditText nik, email, nama, telepon, alamat, password, password2, password3;
     Button simpan, batal;
     ProgressDialog progressDialog;
-    String xnik, xnama, xemail, xtelepon, xalamat;
+    String xnik, xnama, xemail, xtelepon, xalamat, xid_komunitas, xlevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,14 @@ public class EditAkunActivity extends AppCompatActivity {
         telepon.setText(xtelepon);
         xalamat = Preferences.getInstance(getApplicationContext()).getAlamat();
         alamat.setText(xalamat);
+        xid_komunitas = Preferences.getInstance(getApplicationContext()).getKomunitas();
+        xlevel = Preferences.getInstance(getApplicationContext()).getLevel();
 
+        Log.e("NIK", "" + xnik);
+        Log.e("LEVEL", "" + xlevel);
+        Log.e("IDKOMUNITAS", "" + xid_komunitas);
+        Log.e("EMAIL", "" + xemail);
+        Log.e("NAMA", "" + xnama);
         Log.e("TELEPON", "" + xtelepon);
         Log.e("ALAMAT", "" + xalamat);
 
@@ -73,7 +80,7 @@ public class EditAkunActivity extends AppCompatActivity {
                 } else if (password.getText().toString().isEmpty()) {
                     Toast.makeText(EditAkunActivity.this, "Kata sandi lama wajib diisi", Toast.LENGTH_SHORT).show();
                 } else {
-                    StringRequest senddata = new StringRequest(Request.Method.PUT, ServerApi.URL_UPDATE, new Response.Listener<String>() {
+                    StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_UPDATE, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             JSONObject res = null;
@@ -95,21 +102,23 @@ public class EditAkunActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Log.e("errornyaa ", "" + error);
-                            Toast.makeText(getApplicationContext(), "Gagal, " + error, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Gagal Edit Akun", Toast.LENGTH_SHORT).show();
                         }
                     }) {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params = new HashMap<>();
-//                            params.put("token", Preferences.getInstance(getApplicationContext()).getToken());
-                            params.put("email", email.getText().toString());
-                            params.put("no_telepon", telepon.getText().toString());
-                            params.put("alamat", alamat.getText().toString());
-                            params.put("nama_pengguna", nama.getText().toString());
-                            params.put("password", password.getText().toString());
+                            params.put("NIK", xnik);
+                            params.put("LEVEL", "2");
+                            params.put("NAMA_LENGKAP", nama.getText().toString());
+                            params.put("EMAIL", xemail);
+                            params.put("NO_TELEPON", telepon.getText().toString());
+                            params.put("ALAMAT", alamat.getText().toString());
+                            params.put("ID_KOMUNITAS", xid_komunitas);
+                            params.put("PASSWORD", password.getText().toString());
 //                            params.put("password", password2.getText().toString());
 //                            params.put("password", pass.getText().toString());
-
+                            Log.e("DATAEDITAKUN", "" + params);
                             return params;
                         }
                     };

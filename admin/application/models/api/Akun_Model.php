@@ -65,7 +65,7 @@ class Akun_Model extends CI_Model {
                     'ID_KOMUNITAS' => $data['ID_KOMUNITAS'],
                     'PASSWORD' => $data['PASSWORD'],
             ];
-            return $this->db->update($this->akun_table, $update_data, ['nik' => $query->row('NIK')]);
+            return $this->db->update($this->akun_table, $update_data, ['NIK' => $query->row('NIK')]);
         }
         return false;
     }
