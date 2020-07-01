@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Preferences.getInstance(getApplicationContext()).setdatauser(
                                             datalogin.getString("nik"),
                                             datalogin.getString("nama_lengkap"),
+                                            datalogin.getString("id_komunitas"),
                                             datalogin.getString("email"),
                                             datalogin.getString("no_telepon"),
                                             datalogin.getString("alamat"),

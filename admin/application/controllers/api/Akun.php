@@ -219,15 +219,15 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         // }
 
         $update_data = array(
-            'NIK' => $this->put('nik'),
-            'LEVEL' => $this->put('level'),
+            'NIK' => $this->put('NIK'),
+            'LEVEL' => $this->put('LEVEL'),
             // 'FOTO_KTP' => $foto,
-            'NAMA_LENGKAP' => $this->put('nama_lengkap'),
-            'EMAIL' => $this->put('email'),
-            'NO_TELEPON' => $this->put('no_telepon'),
-            'ALAMAT' => $this->put('alamat'),
-            'ID_KOMUNITAS' => $this->put('id_komunitas'),
-            'PASSWORD' => md5($this->put('password'))
+            'NAMA_LENGKAP' => $this->put('NAMA_LENGKAP'),
+            'EMAIL' => $this->put('EMAIL'),
+            'NO_TELEPON' => $this->put('NO_TELEPON'),
+            'ALAMAT' => $this->put('ALAMAT'),
+            'ID_KOMUNITAS' => $this->put('ID_KOMUNITAS'),
+            'PASSWORD' => md5($this->put('PASSWORD'))
         );
 
         // Update Akun

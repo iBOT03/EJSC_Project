@@ -26,6 +26,7 @@ import com.bakorwil.ejsc.adapter.AdapterBooking;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.Preferences;
 import com.bakorwil.ejsc.configfile.ServerApi;
+import com.bakorwil.ejsc.configfile.Util;
 import com.bakorwil.ejsc.model.ModelBooking;
 
 import org.json.JSONArray;
@@ -96,20 +97,17 @@ public class RiwayatFragment extends Fragment {
                                 md.setNama(data.getString("NAMA"));
                                 md.setNomor_telepon(data.getString("NOMOR_TELEPON"));
                                 md.setId_komunitas(data.getString("ID_KOMUNITAS"));
+                                md.setNama_ruangan(data.getString("NAMA_RUANGAN"));
                                 md.setId_ruangan(data.getString("ID_RUANGAN"));
                                 md.setJumlah_orang(data.getString("JUMLAH_ORANG"));
                                 md.setDeskripsi_kegiatan(data.getString("DESKRIPSI_KEGIATAN"));
                                 md.setTujuan(data.getString("TUJUAN"));
-                                md.setTanggal_mulai(data.getString("TANGGAL_MULAI"));
+                                md.setTanggal_mulai(Util.settanggal(data.getString("TANGGAL_MULAI")));
                                 md.setDurasi(data.getString("DURASI"));
                                 md.setJam_mulai(data.getString("JAM_MULAI"));
+                                md.setStatus(data.getString("STATUS"));
+                                Log.e("STATUSNYAAAAAAAA", "" + data.getString("STATUS"));
                                 md.setJam_selesai(data.getString("JAM_SELESAI"));
-                                md.setStatus(status_booking[Integer.parseInt(data.getString("STATUS"))]);
-//                                if (data.getString("STATUS").equals(1)) {
-//                                    layout_status.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-//                                } else if (data.getString("STATUS").equals(3)) {
-//                                    layout_status.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-//                                }
                                 mItems.add(md);
                             } catch (Exception ex) {
                                 Log.e("Error", "" + ex);

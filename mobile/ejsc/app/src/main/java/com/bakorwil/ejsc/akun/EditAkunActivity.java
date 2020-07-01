@@ -61,6 +61,9 @@ public class EditAkunActivity extends AppCompatActivity {
         xalamat = Preferences.getInstance(getApplicationContext()).getAlamat();
         alamat.setText(xalamat);
 
+        Log.e("TELEPON", "" + xtelepon);
+        Log.e("ALAMAT", "" + xalamat);
+
         simpan = findViewById(R.id.buttonSimpan);
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override

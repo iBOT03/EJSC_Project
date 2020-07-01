@@ -6,7 +6,9 @@ public class ModelBooking {
     String nama;
     String nomor_telepon;
     String id_komunitas;
+    String nama_komunitas;
     String id_ruangan;
+    String nama_ruangan;
     String jumlah_orang;
     String deskripsi_kegiatan;
     String tujuan;
@@ -56,12 +58,28 @@ public class ModelBooking {
         this.id_komunitas = id_komunitas;
     }
 
+    public String getNama_komunitas() {
+        return nama_komunitas;
+    }
+
+    public void setNama_komunitas(String nama_komunitas) {
+        this.nama_komunitas = nama_komunitas;
+    }
+
     public String getId_ruangan() {
         return id_ruangan;
     }
 
     public void setId_ruangan(String id_ruangan) {
         this.id_ruangan = id_ruangan;
+    }
+
+    public String getNama_ruangan() {
+        return nama_ruangan;
+    }
+
+    public void setNama_ruangan(String nama_ruangan) {
+        this.nama_ruangan = nama_ruangan;
     }
 
     public String getJumlah_orang() {
@@ -134,7 +152,9 @@ public class ModelBooking {
         this.nama = nama;
         this.nomor_telepon = nomor_telepon;
         this.id_komunitas = id_komunitas;
+        this.nama_komunitas = nama_komunitas;
         this.id_ruangan = id_ruangan;
+        this.nama_ruangan = nama_ruangan;
         this.jumlah_orang = jumlah_orang;
         this.deskripsi_kegiatan = deskripsi_kegiatan;
         this.tujuan = tujuan;
