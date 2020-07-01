@@ -39,6 +39,7 @@ public class FormBookingActivity extends AppCompatActivity {
     String status, ex_nama_ruangan, ex_kapasitas, exnama, extelepon, exkomunitas, exruangan, exnik, tessss, xnama_ruangan, xid_ruangan, xkapasitas;
     Button btn_booking_sekarang;
     ProgressDialog pd;
+    Integer jumlah_orang, jumlah_kapasitas;
 
     final Calendar myCalendar = Calendar.getInstance();
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -141,9 +142,9 @@ public class FormBookingActivity extends AppCompatActivity {
         btn_booking_sekarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd.setMessage("Mohon Tunggu Sebentar");
-                pd.show();
-                if (jumlah_peserta.getText().toString() == xkapasitas) {
+                jumlah_orang = Integer.parseInt(jumlah_peserta.getText().toString());
+                jumlah_kapasitas = Integer.parseInt(xkapasitas);
+                if (jumlah_orang > jumlah_kapasitas) {
                     Toast.makeText(FormBookingActivity.this, "Jumlah peserta melebihi kapasitas ruangan", Toast.LENGTH_LONG).show();
                 } else if (tanggal.getText().toString().isEmpty()) {
                     Toast.makeText(FormBookingActivity.this, "Tanggal tidak boleh kosong", Toast.LENGTH_LONG).show();
