@@ -209,7 +209,7 @@ public class FormBookingActivity extends AppCompatActivity {
                             params.put("durasi", durasi.getText().toString());
                             params.put("jam_mulai", jam_mulai.getText().toString());
                             params.put("jam_selesai", jam_selesai.getText().toString());
-                            params.put("statusduda", "1");
+                            params.put("status", "1");
                             Log.e("data: ", "" + params);
                             return params;
                         }
