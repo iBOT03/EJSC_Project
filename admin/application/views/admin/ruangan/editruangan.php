@@ -52,24 +52,19 @@
 
                                     <div class="row">
                                         <div class="col-sm-6">
+                                            <p>Deskripsi Ruangan</p>
+                                            <div class="input-group">
+                                                <textarea name="deskripsiruangan" id="deskripsiruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Deskripsi Ruangan" aria-describedby="basic-addon2" value=""><?= $r->DESKRIPSI; ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
                                             <p>Upload Foto Ruangan</p>
                                             <div class="input-group">
                                                 <input name="foto" id="foto" type="file" class="form-control border-dark small mb-3" placeholder="" aria-describedby="basic-addon2">
                                             </div>
                                         </div>
-
-                                        <div class="col-sm-6">
-                                            <p>Upload Foto Ruangan</p>
-                                            <div class="input-group">
-                                                <img src="<?= base_url('uploads/ruangan/' . $r->FOTO_RUANGAN) ?>" alt="" srcset="" width="100px">
-                                            </div>
-                                        </div>
                                     </div>
 
-                                    <p>Deskripsi Ruangan</p>
-                                    <div class="input-group">
-                                        <textarea name="deskripsiruangan" id="deskripsiruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Deskripsi Ruangan" aria-describedby="basic-addon2"></textarea>
-                                    </div>
 
                                     <button type="submit" class="btn btn-info btn-icon-split">
                                         <span class="icon text-white-50">
@@ -77,7 +72,6 @@
                                         </span>
                                         <span class="text">Ubah Data Ruangan</span>
                                     </button>
-                                    
                                     <a href="<?php echo site_url('admin/ruangan') ?>" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-reply"></i>

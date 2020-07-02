@@ -56,16 +56,19 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
+                                        <p>Deskripsi Ruangan</p>
+                                        <div class="input-group">
+                                            <textarea name="deskripsiruangan" id="deskripsiruangan" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Deskripsi Ruangan" aria-describedby="basic-addon2"></textarea>
+                                        </div>
+                                        <?= form_error('deskripsiruangan', '<small class="text-danger">', '</small>') ?>
+
+                                    </div>
+                                    <div class="col-sm-6">
                                         <p>Upload Foto Ruangan</p>
                                         <div class="input-group">
                                             <input name="foto" id="foto" type="file" class="form-control border-dark small mb-3" placeholder="" aria-describedby="basic-addon2">
                                         </div>
                                     </div>
-                                </div>
-
-                                <p>Deskripsi Ruangan</p>
-                                <div class="input-group">
-                                    <textarea name="deskripsiruangan" id="deskripsi" type="text" class="form-control border-dark small mb-3" placeholder="Masukkan Deskripsi Ruangan" aria-describedby="basic-addon2"></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-info btn-icon-split">

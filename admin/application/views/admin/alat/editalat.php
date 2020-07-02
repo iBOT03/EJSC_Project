@@ -27,6 +27,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <?php foreach($alat as $row ){ ?>
 
                     <!-- Page Heading -->
                     <form method="post">
@@ -40,8 +41,9 @@
                                             <input name="nama" id="nama" type="text"
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Nama Alat" aria-describedby="basic-addon2"
-                                                value="">
+                                                value="<?php echo $row->NAMA_ALAT; ?>">
                                         </div>
+                                        <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Jumlah Alat</p>
@@ -50,8 +52,9 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Jumlah Alat" aria-describedby="basic-addon2"
                                                 onkeypress="return hanyaAngka(event)"
-                                                value="">
+                                                value="<?php echo $row->JUMLAH_ALAT; ?>">
                                         </div>
+                                        <?= form_error('jumlah', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 
@@ -75,6 +78,7 @@
 
                 </div>
                 <!-- /.container-fluid -->
+                <?php } ?>
 
             </div>
             <!-- End of Main Content -->

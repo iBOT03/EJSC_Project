@@ -235,6 +235,14 @@ class Event extends CI_Controller {
                         </div>');
             redirect('admin/event');
         }
+        else if(isset($_POST['selesai']))
+        {
+            $this->Model_Event->ubah_status_selesai($id);
+            $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+                        Persetujuan Event Selesai !
+                        </div>');
+            redirect('admin/event');
+        }
 		$this->load->view("admin/acara/detailevent",$data);
     }
 

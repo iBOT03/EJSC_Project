@@ -111,4 +111,10 @@
             $this->db->where('ID_EVENT', $id);
             $this->db->update('event', ['STATUS' => '4']);
         }
+
+        public function ubah_status_selesai($id)
+        {
+            $this->db->where('ID_EVENT', $id);
+            $this->db->update('event', ['STATUS' => '3']);
+        }
     }

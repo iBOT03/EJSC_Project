@@ -83,7 +83,7 @@
                       <th>Nama</th>
                       <th>Komunitas</th>
                       <th>Kegiatan</th>
-                      
+                      <th>Tanggal Booking</th>
                       <th>Durasi</th>
                       <th style="width: 60px">Status</th>
                       <th style="width: 100px">Aksi</th>
@@ -200,6 +200,7 @@
                                 '<td>'+ data[i].NAMA+'</td>'+
                                 '<td>'+ data[i].NAMA_KOMUNITAS+'</td>'+
                                 '<td>'+ data[i].TUJUAN +'</td>'+
+                                '<td>'+ data[i].TANGGAL_MULAI +'</td>'+
                                 '<td>'+ data[i].DURASI +" "+"Jam"+'</td>'+
                                
                                 '<td>'+ status[data[i].STATUS]+'</td>'+
@@ -225,6 +226,7 @@
                                 '<td>'+ data[i].NAMA+'</td>'+
                                 '<td>'+ data[i].NAMA_KOMUNITAS+'</td>'+
                                 '<td>'+ data[i].TUJUAN +'</td>'+
+                                '<td>'+ data[i].TANGGAL_MULAI +'</td>'+
                                 '<td>'+ data[i].DURASI +" "+"Jam"+'</td>'+
                                
                                 '<td>'+ status[data[i].STATUS] +'</td>'+
@@ -279,6 +281,7 @@
                                 '<td>'+ data[i].NAMA+'</td>'+
                                 '<td>'+ data[i].NAMA_KOMUNITAS+'</td>'+
                                 '<td>'+ data[i].TUJUAN +'</td>'+
+                                '<td>'+ data[i].TANGGAL_MULAI +'</td>'+
                                 '<td>'+ data[i].DURASI +" "+"Jam"+'</td>'+
                                
                                 '<td>'+ status[data[i].STATUS]+'</td>'+

@@ -41,6 +41,7 @@
                                                 class="form-control border-dark small mb-3"
                                                 placeholder="Masukkan Nama Alat" aria-describedby="basic-addon2">
                                         </div>
+                                        <?= form_error('nama', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
                                         <p>Jumlah Alat</p>
@@ -50,6 +51,7 @@
                                                 placeholder="Masukkan Jumlah Alat" aria-describedby="basic-addon2"
                                                 onkeypress="return hanyaAngka(event)">
                                         </div>
+                                        <?= form_error('jumlah', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                 </div>
 

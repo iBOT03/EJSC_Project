@@ -53,25 +53,37 @@
                                             <th>Jumlah</th>
                                             <th style="width: 96px">Aksi</th>
                                         </tr>
+                                        <?php
+                                        foreach ($alat as $row){
+                                          ?>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
                                             <td>
-                                                <a href="<?php echo site_url('admin/alat/edit/')?>"
+                                                <?= $row->ID_ALAT; ?>
+                                            </td>
+                                            <td>
+                                                <?= $row->NAMA_ALAT; ?>
+                                            </td>
+                                            <td>
+                                                <?= $row->JUMLAH_ALAT; ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo site_url('admin/alat/edit/'. $row->ID_ALAT)?>"
                                                     class="btn btn-sm btn-info btn-circle">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="<?php echo site_url('admin/alat/hapus/') ?>"
-                                                    onclick=""
+                                                <a href="<?php echo site_url('admin/alat/hapus/' . $row->ID_ALAT) ?>"
+                                                    onclick="confirm_modal('<?php echo 'alat/hapus/' . $row->ID_ALAT; ?>')"
                                                     class="btn btn-sm btn-danger btn-circle" data-toggle="modal"
                                                     data-target="#hapusModal">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
+                                        <?php
+                                        } 
+                                        ?>
                                     </tbody>
                                 </table>
                                 <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog"
