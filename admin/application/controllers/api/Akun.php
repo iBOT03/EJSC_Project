@@ -142,9 +142,10 @@ class Akun extends \Restserver\Libraries\Rest_Controller
         } else {
             // Load Login Function
             $output = $this->AkunModel->akun_login(
-                    $this->input->post('email'), 
-                    $this->input->post('password')
-                );
+                $this->input->post('email'),
+                $this->input->post('password')
+            );
+
             if (!empty($output) and $output != FALSE) {
 
                 // Load Authorization Token Library
@@ -190,7 +191,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller
                     'status' => FALSE,
                     'message' => "Email atau Password Salah"
                 ];
-                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+                $this->response($output, REST_Controller::HTTP_NOT_FOUND);
             }
         }
     }

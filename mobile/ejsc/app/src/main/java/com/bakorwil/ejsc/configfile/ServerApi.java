@@ -4,7 +4,7 @@ public class ServerApi {
     // Rest API Akun Local
 //    public static final String URL_LOGIN = "http://192.168.1.9/EJSC_Project/admin/api/akun/login";
 //    public static final String URL_LUPAPW = "http://192.168.1.9/EJSC_Project/admin/api/akun/lupa";
-//    public static final String URL_DAFTAR = "http://192.168.1.9/EJSC_Project/admin/api/akun/register";
+//    public static final String URL_DAFTAR = "http://192.168.1.7/EJSC_Project/admin/api/akun/register";
 //    public static final String URL_UPDATE = "http://192.168.1.9/EJSC_Project/admin/api/akun/update";
     // Rest API Event
 //    public static final String URL_GET_EVENT = "http://192.168.1.9/EJSC_Project/admin/api/event";

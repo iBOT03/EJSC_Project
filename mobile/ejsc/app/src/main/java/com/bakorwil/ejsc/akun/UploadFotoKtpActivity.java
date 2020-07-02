@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
@@ -72,6 +73,16 @@ public class UploadFotoKtpActivity extends AppCompatActivity {
         alamat = getIntent().getStringExtra("alamat");
         id_komunitas = getIntent().getStringExtra("id_komunitas");
         password = getIntent().getStringExtra("password");
+
+        Log.e("nik" , "" + nik);
+        Log.e("nik" , "" + level);
+        Log.e("nik" , "" + nama_lengkap);
+        Log.e("nik" , "" + email);
+        Log.e("nik" , "" + no_telepon);
+        Log.e("nik" , "" + alamat);
+        Log.e("nik" , "" + id_komunitas);
+        Log.e("nik" , "" + password);
+
 
         preview_foto_ktp = findViewById(R.id.preview_foto_ktp);
         pd = new ProgressDialog(this);
@@ -139,14 +150,14 @@ public class UploadFotoKtpActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("nik", nik);
-                params.put("level", level);
+                params.put("level", "2");
                 params.put("nama_lengkap", nama_lengkap);
                 params.put("email", email);
                 params.put("no_telepon", no_telepon);
                 params.put("alamat", alamat);
                 params.put("id_komunitas", id_komunitas);
                 params.put("password", password);
-                Log.e("data: ", "" + params);
+                Log.e("data dari param: ", "" + params);
                 return params;
             }
 
@@ -159,7 +170,9 @@ public class UploadFotoKtpActivity extends AppCompatActivity {
                 return params;
             }
         };
-        Volley.newRequestQueue(this).add(volleyMultipartRequest);
+//        Volley.newRequestQueue(this).add(volleyMultipartRequest);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(volleyMultipartRequest);
     }
 
     private void setRequestImage() {

@@ -27,6 +27,8 @@ class Akun_Model extends CI_Model {
             $akun_pass = $q->row('PASSWORD');
             if(md5($password) === $akun_pass) {
                 return $q->row();
+            } else {
+                return FALSE;
             }
             return TRUE;
         } else {
