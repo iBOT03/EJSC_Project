@@ -120,6 +120,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller
      * @method : POST
      * @link : api/akun/login
      */
+
     public function login_post()
     {
         header("Access-Control-Allow-Origin: *");
@@ -140,7 +141,10 @@ class Akun extends \Restserver\Libraries\Rest_Controller
             $this->response($message, REST_Controller::HTTP_NOT_FOUND);
         } else {
             // Load Login Function
-            $output = $this->AkunModel->akun_login($this->input->post('email'), $this->input->post('password'));
+            $output = $this->AkunModel->akun_login(
+                    $this->input->post('email'), 
+                    $this->input->post('password')
+                );
             if (!empty($output) and $output != FALSE) {
 
                 // Load Authorization Token Library
