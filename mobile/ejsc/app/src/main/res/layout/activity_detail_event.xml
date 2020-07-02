@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:visibility="gone"
             android:background="@color/lightBlue"
             android:elevation="1dp"
             android:fontFamily="@font/poppins_medium"
@@ -38,7 +37,8 @@
             android:padding="8dp"
             android:text="@string/event_telah_selesai"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -58,6 +58,7 @@
                 android:id="@+id/ivPosterEvent"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
+                android:scaleType="centerCrop"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:contentDescription="@string/poster_event" />
@@ -71,10 +72,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/poppins_semibold"
                 android:maxLines="5"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 tools:text="@tools:sample/lorem/random" />
 
             <TextView
@@ -90,37 +91,44 @@
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/fotoPenyelenggara"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_below="@id/textView"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/placeholder" />
-
-            <TextView
-                android:id="@+id/tvPenyelenggara"
+            <RelativeLayout
+                android:id="@+id/layout_penyelenggara"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_toEndOf="@id/fotoPenyelenggara"
-                android:fontFamily="@font/poppins_medium"
-                android:maxLines="3"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/lorem/random" />
+                android:layout_centerHorizontal="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/fotoPenyelenggara"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/placeholder" />
+
+                <TextView
+                    android:id="@+id/tvPenyelenggara"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toEndOf="@id/fotoPenyelenggara"
+                    android:fontFamily="@font/poppins_medium"
+                    android:maxLines="3"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    tools:text="@tools:sample/lorem/random" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/fotoPenyelenggara"
+                android:layout_below="@id/layout_penyelenggara"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
@@ -136,7 +144,6 @@
                 android:layout_below="@id/textView1"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/poppins_regular"
                 android:maxLines="1"
