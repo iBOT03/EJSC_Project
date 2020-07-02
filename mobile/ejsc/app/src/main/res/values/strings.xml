@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EJSC</string>
+    <string name="app_name">EJSC Jember</string>
     <string name="daftar">Daftar</string>
     <string name="mulai">Mulai</string>
     <string name="skip">Skip</string>
@@ -102,4 +102,5 @@
     <string name="dash">-</string>
     <string name="jadwal_booking_ruangan">Jadwal Booking Ruangan:</string>
     <string name="akun">Akun</string>
+    <string name="detail_event">Detail Event</string>
 </resources>

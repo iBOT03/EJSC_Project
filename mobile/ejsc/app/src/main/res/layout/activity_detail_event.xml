@@ -58,20 +58,21 @@
                 android:id="@+id/ivPosterEvent"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:scaleType="centerCrop"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:contentDescription="@string/poster_event" />
+                android:contentDescription="@string/poster_event"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/tvJudulEvent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ivPosterEvent"
+                android:layout_centerHorizontal="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:maxLines="5"
                 android:textColor="@android:color/black"
@@ -84,11 +85,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvJudulEvent"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/diselenggarakan_oleh"
-                android:textColor="@android:color/black"
+                android:textColor="@color/darkGrey"
                 android:textSize="12sp" />
 
             <RelativeLayout
@@ -104,7 +105,7 @@
                     android:layout_height="60dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:src="@drawable/placeholder" />
 
@@ -114,9 +115,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_toEndOf="@id/fotoPenyelenggara"
-                    android:fontFamily="@font/poppins_medium"
+                    android:fontFamily="@font/poppins_regular"
                     android:maxLines="3"
                     android:textColor="@android:color/black"
                     android:textSize="14sp"
@@ -130,11 +131,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/layout_penyelenggara"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins_regular"
                 android:text="@string/waktu_pelaksanaan"
-                android:textColor="@android:color/black"
+                android:textColor="@color/darkGrey"
                 android:textSize="12sp" />
 
             <TextView
@@ -143,13 +144,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView1"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/poppins_regular"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins_light"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:textColor="@color/darkGrey"
-                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
                 tools:text="@tools:sample/lorem/random" />
 
             <TextView
@@ -158,12 +159,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvTglMulai"
                 android:layout_centerHorizontal="true"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="32dp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 tools:text="@tools:sample/lorem/random" />
 
         </RelativeLayout>

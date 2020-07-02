@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.ServerApi;
+import com.bakorwil.ejsc.configfile.Util;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -82,7 +83,7 @@ public class DetailEventActivity extends AppCompatActivity {
                     JSONObject data = arr.getJSONObject(0);
                     judul.setText(data.getString("JUDUL"));
                     penyelenggara.setText(data.getString("PENYELENGGARA"));
-                    tgl_mulai.setText(data.getString("TANGGAL_MULAI"));
+                    tgl_mulai.setText(Util.settanggal(data.getString("TANGGAL_MULAI")));
                     keterangan.setText(data.getString("KETERANGAN"));
                     if (data.getString("STATUS").equals("1")) {
                         selesai.setVisibility(View.GONE);
