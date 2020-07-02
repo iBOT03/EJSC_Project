@@ -91,7 +91,8 @@ public class FormBookingActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                updateLabel();
+//                                updateLabel();
+                                tanggal.setText(year + "-" + dayOfMonth + "-" + (monthOfYear + 1));
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
