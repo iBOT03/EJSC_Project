@@ -21,7 +21,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/logo_ejsc"
-            android:src="@drawable/logo_ejsc" />
+            android:src="@drawable/logo_ejsc_jember" />
 
         <TextView
             android:id="@+id/txt_selamat_datang"
