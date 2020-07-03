@@ -24,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.bakorwil.ejsc.R;
 import com.bakorwil.ejsc.configfile.AppController;
 import com.bakorwil.ejsc.configfile.Preferences;
+import com.bakorwil.ejsc.configfile.ServerApi;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -171,7 +172,7 @@ public class FormBookingActivity extends AppCompatActivity {
                 } else {
                     pd.setTitle("Mohon Tunggu Sebenta");
                     pd.show();
-                    final StringRequest senddata = new StringRequest(Request.Method.POST, "https://ejsc.flow-byte.com/api/booking/tambah", new Response.Listener<String>() {
+                    final StringRequest senddata = new StringRequest(Request.Method.POST, ServerApi.URL_TAMBAH_BOOKING, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             JSONObject res = null;
