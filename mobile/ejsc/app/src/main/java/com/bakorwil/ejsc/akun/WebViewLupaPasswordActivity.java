@@ -27,5 +27,6 @@ public class WebViewLupaPasswordActivity extends AppCompatActivity {
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl("https://ejsc.flow-byte.com/admin/auth/forgotpassword");
+//        webView.loadUrl("http://ejsc.wsjti.com/admin/auth/forgotpassword");
     }
 }

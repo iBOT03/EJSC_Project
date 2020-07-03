@@ -15,41 +15,39 @@ public class ServerApi {
 //    public static final String URL_TAMBAH_BOOKING = "http://192.168.1.7/EJSC_Project/admin/api/booking/tambah";
 
 
-//    // Rest API Akun Hosting Flowbyte
-//    public static final String URL_DAFTAR = "https://ejsc.flow-byte.com/api/akun/register";
-//    public static final String URL_LOGIN = "https://ejsc.flow-byte.com/api/akun/login";
-//    public static final String URL_LOGOUT = "https://ejsc.flow-byte.com/api/akun/logout";
-//    public static final String URL_LUPAPW = "https://ejsc.flow-byte.com/api/akun/lupa";
-//    public static final String URL_UPDATE = "https://ejsc.flow-byte.com/api/akun/update";
-//    // Rest API Booking Hosting Flowbyte
-//    public static final String URL_TAMBAH_BOOKING = "https://ejsc.flow-byte.com/api/booking/tambah";
-//    public static final String URL_GET_RIWAYAT_BOOKING = "https://ejsc.flow-byte.com/api/booking/riwayat";
-//    // Rest API Event
-//    public static final String URL_GET_EVENT = "https://ejsc.flow-byte.com/api/event";
-//    public static final String URL_GET_EVENT_BERANDA = "https://ejsc.flow-byte.com/api/event/eventberanda";
-//    // Rest API Komunitas
-//    public static final String URL_GET_KOMUNITAS = "https://ejsc.flow-byte.com/api/komunitas";
-//    // Rest API Kontak Kami
-//    public static final String URL_KONTAK = "https://ejsc.flow-byte.com/api/kontak";
-//    // Rest API Ruangan
-//    public static final String URL_GET_RUANGAN = "https://ejsc.flow-byte.com/api/ruangan";
+    // Rest API Akun Hosting Flowbyte
+    public static final String URL_DAFTAR = "https://ejsc.flow-byte.com/api/akun/register";
+    public static final String URL_LOGIN = "https://ejsc.flow-byte.com/api/akun/login";
+    public static final String URL_UPDATE = "https://ejsc.flow-byte.com/api/akun/update";
+    // Rest API Booking Hosting Flowbyte
+    public static final String URL_TAMBAH_BOOKING = "https://ejsc.flow-byte.com/api/booking/tambah";
+    public static final String URL_GET_RIWAYAT_BOOKING = "https://ejsc.flow-byte.com/api/booking/riwayat";
+    // Rest API Event
+    public static final String URL_GET_EVENT = "https://ejsc.flow-byte.com/api/event";
+    public static final String URL_GET_EVENT_BERANDA = "https://ejsc.flow-byte.com/api/event/eventberanda";
+    // Rest API Komunitas
+    public static final String URL_GET_KOMUNITAS = "https://ejsc.flow-byte.com/api/komunitas";
+    // Rest API Kontak Kami
+    public static final String URL_KONTAK = "https://ejsc.flow-byte.com/api/kontak";
+    // Rest API Ruangan
+    public static final String URL_GET_RUANGAN = "https://ejsc.flow-byte.com/api/ruangan";
 
 
-    // Rest API Akun Hosting WSJTI
-    public static final String URL_DAFTAR = "http://ejsc.wsjti.com/api/akun/register";
-    public static final String URL_LOGIN = "http://ejsc.wsjti.com/api/akun/login";
-    public static final String URL_UPDATE = "http://ejsc.wsjti.com/api/akun/update";
-    // Rest API Booking Hosting WSJTI
-    public static final String URL_TAMBAH_BOOKING = "http://ejsc.wsjti.com/api/booking/tambah";
-    public static final String URL_GET_RIWAYAT_BOOKING = "http://ejsc.wsjti.com/api/booking/riwayat";
-    // Rest API Event Hosting WSJTI
-    public static final String URL_GET_EVENT = "http://ejsc.wsjti.com/api/event";
-    public static final String URL_GET_EVENT_BERANDA = "http://ejsc.wsjti.com/api/event/eventberanda";
-    // Rest API Komunitas Hosting WSJTI
-    public static final String URL_GET_KOMUNITAS = "http://ejsc.wsjti.com/api/komunitas";
-    // Rest API Kontak Kami Hosting WSJTI
-    public static final String URL_KONTAK = "http://ejsc.wsjti.com/api/kontak";
-    // Rest API Ruangan Hosting WSJTI
-    public static final String URL_GET_RUANGAN = "http://ejsc.wsjti.com/api/ruangan";
+//    // Rest API Akun Hosting WSJTI
+//    public static final String URL_DAFTAR = "http://ejsc.wsjti.com/api/akun/register";
+//    public static final String URL_LOGIN = "http://ejsc.wsjti.com/api/akun/login";
+//    public static final String URL_UPDATE = "http://ejsc.wsjti.com/api/akun/update";
+//    // Rest API Booking Hosting WSJTI
+//    public static final String URL_TAMBAH_BOOKING = "http://ejsc.wsjti.com/api/booking/tambah";
+//    public static final String URL_GET_RIWAYAT_BOOKING = "http://ejsc.wsjti.com/api/booking/riwayat";
+//    // Rest API Event Hosting WSJTI
+//    public static final String URL_GET_EVENT = "http://ejsc.wsjti.com/api/event";
+//    public static final String URL_GET_EVENT_BERANDA = "http://ejsc.wsjti.com/api/event/eventberanda";
+//    // Rest API Komunitas Hosting WSJTI
+//    public static final String URL_GET_KOMUNITAS = "http://ejsc.wsjti.com/api/komunitas";
+//    // Rest API Kontak Kami Hosting WSJTI
+//    public static final String URL_KONTAK = "http://ejsc.wsjti.com/api/kontak";
+//    // Rest API Ruangan Hosting WSJTI
+//    public static final String URL_GET_RUANGAN = "http://ejsc.wsjti.com/api/ruangan";
 
 }
