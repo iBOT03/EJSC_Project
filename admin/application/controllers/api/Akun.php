@@ -191,7 +191,7 @@ class Akun extends \Restserver\Libraries\Rest_Controller
                     'status' => FALSE,
                     'message' => "Email atau Password Salah"
                 ];
-                $this->response($output, REST_Controller::HTTP_NOT_FOUND);
+                $this->response($message, REST_Controller::HTTP_NOT_FOUND);
             }
         }
     }
